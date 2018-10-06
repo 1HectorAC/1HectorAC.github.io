@@ -11,47 +11,50 @@
         <div class="container">
             <h1> Homework 2</h1><br>
             <h4>Assignment Summary</h4>
-            <p>The first main goal is to use and learn about branching in git. Then it is to create a webpage that mainly shows a good understanding of javascript and jquery. The page must involve taking in an input and producing an output on the page. The webpage must also use html, css, and bootstrap. The details can be found at <a href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW2.html">http://www.wou.edu/~morses/classes/cs46x/assignments/HW2.html.</a></p>
+            <p>The first main goal is to use and learn about branching in git. Then we must create a webpage that displays a good understanding of javascript and jquery. The page must involve taking in an input and producing an output on the page. The webpage must also use html, css, and bootstrap. The details can be found at <a href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW2.html">http://www.wou.edu/~morses/classes/cs46x/assignments/HW2.html.</a></p>
+            
             <h4>Step 1 (Git Branching): </h4>
-            <p>I first just made a branch and then checked it out since all of the work in this assignment must be done in this branch. (Note: I also quickly checked out the master branch and made a README.md file so that the changes when I merge branches will display)</p>
+            <p>I first made a branch and then checked it out since all of the work in this assignment must be done in this branch. (Note: I also quickly checked out the master branch and made a README.md file so that the changes when I merge branches will display)</p>
             <pre>
                 <code>
 Cd cs460
 Git branch test1
 Git checkout test1</code>
             </pre>
-            <p>I will also mention now that I will use the merge command to merge the test1 branch and the master in the end as required. The commands were:</p>
+            <p>I will also mention now that I will use the merge command to merge the test1 branch and the master in the end as required. The commands was(while in master branch):</p>
             <pre>
                 <code>
 git merge test1</code>
             </pre>
             
             <h4>Step 2 (Planning and Design): </h4>
-            <p>I first came up with the idea of a guess 3 numbers generated randomly and then came up with the basic layout in a sketch specification on in like what are the inputs and outputs.</p>
+            <p>I first came up with the main idea of what the page will do which was: we will generate 3 numbers and you must  try to guess what they will be. I then came up with the basic layout in a sketch and added specific details about how the page will work and what it will do on the page. General ideal sketch below:</p>
             <img src="images/hw2/plan.png" alt="">    
               
             <h4>Step 3 (Html and Css): </h4>
-            <p>The html was mostly pretty simple and straightforward but their are a few important things learned. The first are about the script file. I made sure to keep the script file at the end of the body tag so that everything on page loaded before it did any javascript stuff. The jquery library had its own file that I need to put in and then I also included my own js file. </p>
+            <p>The html was mostly pretty simple and straightforward but their are a few important things learned. The first are about the script files. I made sure to keep the script file at the end of the body tag so that everything on page loaded before it did any javascript stuff. The jquery library had its own file that I need to put in and then I also included my own js file. Note that the jquery file could be downloaded and referenced locally or we could use a CDN and just reference the specified URL. </p>
             <pre>
                 <code>
-&it;script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"&gt;&it;/script&gt;
-&it;script src="logic.js"&gt;&it;/script&gt;
+&lt;script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="logic.js"&gt;&lt;/script&gt;
                 </code>           
             </pre>
-            <p>The second is that I made an empty div element with the class “results”. This was important in that it set up a location to modify and add elements for the js script. </p>
-            <p>They final key part was the form setup and input element. When I was thinking about input validation I noticed that the input element can be restricted to numbers and limit the range with attributes. This is can be shown here:</p>
+            <p>The second key part was about how I added new elements to the page. I made an empty div element with the class “results” and this was important for setting up a location for which new elements will be added to. </p>
+            
+            <p>They final key part was the form setup and input element. A usefull resorce in html input that was very usefull was: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input</a>. When I was looking though the page I noticed that the input element can do some input validation for me instead of checking it in the javascript. The input element had attributes like max and min to restrict the range of values for a number type which was usefull in what I need. This is can be shown here:</p>
             <img src="images/hw2/form.PNG" alt="">
-            <p>The css file didn’t have a whole lot. I first wanted to adjust the size of the input boxes because they were too small for just putting in one number. Everything else were pretty small changes like color and alignment of elements.</p>
+            <p>The css file didn’t have a whole lot to it. It was also a part I focused on a little less given I wasn't as focused on how it looked. I first wanted to adjust the size of the input boxes because they were too small for just putting in one number. Everything else were pretty small changes like color and alignment of elements.</p>
             <img src="images/hw2/cssfile.PNG" alt="">
             
             <h4>Step 4 (Javascript and JQuery): </h4>
-            <p>I first made sure to setup all the key variables in the beginning, which I find more convenient in looking at what my variables were. Then I made sure to add some data validation. The html input element already had some of this but one part I needed to check is if all the inputs were the same and alert the user that its invalid. </p>
+            <p>I first made sure to setup all the key variables in the beginning, which I find more convenient in looking at what my variables were. Then I made sure to add some data validation. The html input element already had some of this but one part I needed to check is if all the inputs were the same and alert the user that it is invalid. This just involved an if statement and can be shown here:</p>
             <img src="images/hw2/inputVal.PNG" alt="">
-            <p>Then I setup and array of 3 random numbers which were they keys. They also needed to be check if all were equal but differently than the input since if this part had a duplicate then I have to change values rather than just give a warning.</p>
+            <p>Then I needed to setup an array of 3 random numbers which were the keys values. They also needed to be check if any were equal to each other and changed if so. This check was also differently than the input validation involving duplicate numbers since if this part had a duplicate then I had to change values rather than just give a warning. The code can be seen here:</p>
             <img src="images/hw2/randNum.PNG" alt="">
-            <p>Now that I had valid inputs and keys I then had to write the logic to compare them:</p>
+            <p>Now that I had valid inputs and keys I then had to write the logic to compare them which was just a straight forward comparison of each value:</p>
             <img src="images/hw2/compare.PNG" alt="">
-            <p>I then just outputed everything I had(note: I added that last line to prevent the page from just going back to default  and restarting after running):</p>
+            
+            <p>I finally just outputed everything I had(note: I added that last line to prevent the page from just going back to default  and restarting after running. It was relevant on how the event was being handled using jquery):</p>
             <img src="images/hw2/output.PNG" alt="">  
         </div>
     </body>
