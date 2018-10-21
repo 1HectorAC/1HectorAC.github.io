@@ -13,11 +13,11 @@
        </div>
         <div class="container">  
             <h4>Assignment Summary:</h4>
-            <p>The main goal for this assignment is to make a simple MVC web application that doesn't use a database. We will use HTTP GET and POST to understand the differences and how to use them. We will use C#, html and razor html to complete this task on visual studio. Here is the link to the full assignment details </p>
+            <p>The main goal for this assignment is to make a simple MVC web application that doesn't use a database. We will use HTTP GET and POST to understand the differences and how to use them. We will use C#, html and razor html to complete this task on visual studio. Here is the link to the full assignment details: <a href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW4_1819.html">http://www.wou.edu/~morses/classes/cs46x/assignments/HW4_1819.html</a></p>
             <hr>
             
             <h4>Step 1 (Setup):</h4>
-            <p>I will start by creating an MVC project. I do this by…. I then save the project in an HW4 folder from my cs460 repository. I then clear the project from thinks I don't really need like the about.cshtml and contact.cshtml files. I proceeded to make two branches with the commands:</p>
+            <p>I will start by creating an MVC project. I then save the project in an HW4 folder of my cs460 repository. I then clear the project from thinks I don't really need like the about.cshtml and contact.cshtml files. I proceeded to make two branches with the commands:</p>
             <pre>
                 <code>
 Git branch HW4MtoMCon
@@ -29,25 +29,28 @@ Git branch HW4ColMix
             <hr>
     
             <h4>Step 2 (Home Landng Page):</h4>
-            <p>I first start off with setting up the home page. A good portion of it was just modifying some of the template code that was already there in the Index and layout file. Nothing really significant to mention on this part.</p>
+            <p>I then work on setting up the home page. A good portion of this part was just modifying some of the template code that was already there in the Index and layout file. Nothing really significant to mention on this part.</p>
             <hr>
             
             <h4>Step 3 (Liles to Metric Converter):</h4>
             <h5 class="subT">HomeController:</h5>
-            <p>So we first setup the action method to get a view in the home controller. This also contains the the converter logic here. It is a pretty simple switch statement to select what units to convert it to using the units sent by the form.I had used a request object to get the query string sent by the form.</p>
-            <img src="" alt="">
+            <p>So I first setup the action method to get a view in the home controller. This is also where I wrote the converter logic. It is a pretty simple switch statement to select what units to convert it to using the units sent by the form. I had to use a request object to get the query string sent by the form. Then I just passed the ViewBag with the message result to the view.</p>
+            <img src="/cs460/images/hw4Images/homeCon.PNG" class="img-fluid" alt="">
             <h5 class="subT">Converter:</h5>
-            <p>This part setup up the form that the client will end up using to input data to our server. I will also not that a lot of the form validation is down in the html input elements parameters.</p>
-            <img src="" alt="">
+            <p>This part involved setting up the form html. The most significant part here was the form validation involved in the input element. This section had thing like limited to numbers, allowing 2 decimal splaces, and a range limit. I added a randomly long number that works as the range limit since it wouldn't be good to allow a limitless input.</p>
+            <img src="/cs460/images/hw4Images/converter.PNG" class="img-fluid" alt="">
             <hr>
             
             <h4>Step 4 (Color Mixer):</h4>
             <p></p>
             <h5 class="subT">ColorController:</h5>
-            <p>The controller contains both a get and post version of create view action. This is necessary since the client will use get  then post after submitting the form. The logic in this part involved splitting the hexadecimal value into its three parts and then converting a value into a double value, adding the red, blue, and green of the two inputted colors and then converting it back. Something to not is that I had a check to convert it to a six digit hexadecimal if it was three digits. It also had a bit of form validation in this part in terms of if the hexadecimal input value was 4 or 5 digits long(not counting the #) then it wouldn't do anything. This was necessary since it was the only exception in the range limit a set  on the html validation that will come from the other part.</p>
-            <img src="" alt="">
+            <p>The controller contains both a GET and POST version of the Create view action. The GET version was pretty simple and doesn't require much explaing. The POST one contained more important parts to mention. The logic in this part involved splitting the hexadecimal value into its three parts and then converting the values into a double value, adding the red, blue, and green of the two inputted colors, adding them, and then converting it back. Something to note is that I had a check to convert it to a six digit hexadecimal if it was three digits. It also had some form validation in this part in terms of if the hexadecimal input value was 4 or 5 digits long (not counting the #) then it wouldn't do anything. This was necessary since it was the only exception in the range limit I set on the html validation that was valid.</p>
+            <img src="/cs460/images/hw4Images/colorCreate1.PNG" class="img-fluid" alt="">
+            <img src="/cs460/images/hw4Images/colorCreate2.PNG" class="img-fluid" alt="">
             <h5 class="subT">Create:</h5>
-            <p>Creating the form though razor html wasn't that much trouble. The challenge here was setting up the proper form validation. I decided that using a regular expression in the input element would be the most efficient  way to do this. The only problem I had is that I couldn't figure how i would restrict the string length to just 3 or 6 so I ended up making the range from 3 to 6. I then made a check in the server side in the controller. It will pretty much not do any calculations if it sees a string of 4 or 5 and the html in the this page will detect it and give a small error message where the result would be instead.</p>
+            <p> Creating the form though razor html wasn't that much trouble. The challenge here was setting up the proper form validation. I decided that using a regular expression in the input element would be the most efficient  way to do this. The only problem I had is that I couldn't figure how i would restrict the string length to just 3 or 6 so I ended up making the range from 3 to 6. I then made a check in the server side in the controller. It will pretty much not do any calculations if it sees a string of 4 or 5 and the html in the this page will detect it and give a small error message where the result would be instead.</p>
+            <img src="/cs460/images/hw4Images/create1.PNG" class="img-fluid" alt="">
+            <img src="/cs460/images/hw4Images/create2.PNG" class="img-fluid" alt="">
             <hr>
             
             <h4>Step 5 (Result):</h4>
