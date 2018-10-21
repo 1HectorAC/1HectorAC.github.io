@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta cahrset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    
+        <link rel = "stylesheet" href = "css/default.css">
+        <title> HW 4 Blog</title>
+    </head>
+    <body>
+       <div class="container title">  
+           <h1> Homework 4</h1>
+       </div>
+        <div class="container">  
+            <h4>Assignment Summary:</h4>
+            <p>The main goal for this assignment is to make a simple MVC web application that doesn't use a database. We will use HTTP GET and POST to understand the differences and how to use them. We will use C#, html and razor html to complete this task on visual studio. Here is the link to the full assignment details </p>
+            <hr>
+            
+            <h4>Step 1 (Setup):</h4>
+            <p>I will start by creating an MVC project. I do this by…. I then save the project in an HW4 folder from my cs460 repository. I then clear the project from thinks I don't really need like the about.cshtml and contact.cshtml files. I proceeded to make two branches with the commands:</p>
+            <pre>
+                <code>
+Git branch HW4MtoMCon
+Git branch HW4ColMix
+
+                </code>
+            </pre>
+            <p>I then work on the two parts(Miles to Metric and Color mixer) in each branch and merge them in the end.</p>
+            <hr>
+    
+            <h4>Step 2 (Home Landng Page):</h4>
+            <p>I first start off with setting up the home page. A good portion of it was just modifying some of the template code that was already there in the Index and layout file. Nothing really significant to mention on this part.</p>
+            <hr>
+            
+            <h4>Step 3 (Liles to Metric Converter):</h4>
+            <h5 class="subT">HomeController:</h5>
+            <p>So we first setup the action method to get a view in the home controller. This also contains the the converter logic here. It is a pretty simple switch statement to select what units to convert it to using the units sent by the form.I had used a request object to get the query string sent by the form.</p>
+            <img src="" alt="">
+            <h5 class="subT">Converter:</h5>
+            <p>This part setup up the form that the client will end up using to input data to our server. I will also not that a lot of the form validation is down in the html input elements parameters.</p>
+            <img src="" alt="">
+            <hr>
+            
+            <h4>Step 4 (Color Mixer):</h4>
+            <p></p>
+            <h5 class="subT">ColorController:</h5>
+            <p>The controller contains both a get and post version of create view action. This is necessary since the client will use get  then post after submitting the form. The logic in this part involved splitting the hexadecimal value into its three parts and then converting a value into a double value, adding the red, blue, and green of the two inputted colors and then converting it back. Something to not is that I had a check to convert it to a six digit hexadecimal if it was three digits. It also had a bit of form validation in this part in terms of if the hexadecimal input value was 4 or 5 digits long(not counting the #) then it wouldn't do anything. This was necessary since it was the only exception in the range limit a set  on the html validation that will come from the other part.</p>
+            <img src="" alt="">
+            <h5 class="subT">Create:</h5>
+            <p>Creating the form though razor html wasn't that much trouble. The challenge here was setting up the proper form validation. I decided that using a regular expression in the input element would be the most efficient  way to do this. The only problem I had is that I couldn't figure how i would restrict the string length to just 3 or 6 so I ended up making the range from 3 to 6. I then made a check in the server side in the controller. It will pretty much not do any calculations if it sees a string of 4 or 5 and the html in the this page will detect it and give a small error message where the result would be instead.</p>
+            <hr>
+            
+            <h4>Step 5 (Result):</h4>
+            <p>I finaly had to merge the branches. So for each branch I first merged the master to them and then merged the branch into the master:</p>
+            <pre>
+                <code>
+git checkout HW4MtoMCon
+git merge master
+//resolved merge conflicts..
+git checkout master
+git merge HW4MtoMCon
+//repeat with HW4ColMix branch
+                </code>
+            </pre>
+            <hr>
+
+        </div>
+    </body>
+</html>
