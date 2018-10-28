@@ -24,29 +24,29 @@
             <h4>Step 3 (Code):</h4>
             <h5 class="subT">TennantRequest.cs:</h5>
             <p>This file was the model to represent a request. It was saved in the model folder. Not much difficulty in this part. The most notable part here where the data annotations that the variables had. One problem that I came across in this part was using the “phone” data annotation. At first I thought thought that this would be enough to validate the phone number variable but that wasn’t the case. It pretty much only made sure the right characters were used. I then had to use regular expressions to format it more to US standards. This was especially important because I think It had no limit of on the length of characters before. Here is how snippet on the variables and data annotations were formatted:</p>
-            <img src="" class="img-fluid" alt="">
+            <img src="images/hw5Images/model%20snip.PNG" class="img-fluid" alt="">
             <h5 class="subT">TennantRequestContext.cs:</h5>
             <p>This file was the database context class that had the connection to the database and a collection of the TennentRequest model. Not much to write in this part.</p>
-            <img src="" class="img-fluid" alt="">
+            <img src="images/hw5Images/context.PNG" class="img-fluid" alt="">
             <p> I then had to set up the string connection to actually connect to the database I made. This was as simple as just going to the web.config file and pasting this code:</p>
-            <img src="" class="img-fluid" alt="">
+            <img src="images/hw5Images/webConfig.PNG" class="img-fluid" alt="">
             <p>Note that the connection string was taken by going to the SQL object explorer, right clicking on the database, selecting properties, and copying the string connection from there.</p>
             
             <h5 class="subT">HomeController.cs:</h5>
             <p>This part had the way to setup the views. A key part here was how a context was passed to the view. A clear example is shown in the “Display” action method.</p>
-            <img src="" class="img-fluid" alt="">
+            <img src="images/hw5Images/HC%20display.PNG" class="img-fluid" alt="">
             <p>Another important part was the the section involved in the Create action method, specifically the POST one. It contained some checks for the variable it was passed. It also had a redirect call when things went as planned. Here is the example:</p>
-            <img src="" class="img-fluid" alt="">
+            <img src="images/hw5Images/HC%20create.PNG" class="img-fluid" alt="">
             
             <h5 class="subT">Create.cshtml:</h5>
             <p>The notable part here was how I used lambda functions to set up the form elements with razor html. Here is an example of one of the form elements created this way.</p>
-            <img src="" class="img-fluid" alt="">
+            <img src="images/hw5Images/create.PNG" class="img-fluid" alt="">
             <h5 class="subT">Display.cshtml:</h5>
             <p>The important part here was how the items in the TennantRequests list were looped though and displayed involving a lambda functions. Here are a few examples:</p>
-            <img src="" class="img-fluid" alt="">
+            <img src="images/hw5Images/display.PNG" class="img-fluid" alt="">
             <hr>
             <h4>Step 4 (Results):</h4>
-            <p></p>
+            <p>Test result video (Note that  It has no sound):</p>
 
         </div>
     </body>
