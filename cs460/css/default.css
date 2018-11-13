@@ -9,7 +9,8 @@
 }
 img{
     display: block;
-    max-width: 750px;
+    max-width: 630px;
+    max-height: 750px;
 }
 
 .title{
