@@ -1,71 +1,262 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta cahrset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    
-        <link rel = "stylesheet" href = "css/default.css">
-        <title> HW1 Blog</title>
-    </head>
-    <body>
-       <div class="container title">
-           <h1> Homework 1</h1>
-       </div>
-        <div class="container">  
+<html lang="en">
+
+<head>
+    <meta cahrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/default.css">
+    <title> HW1 Blog</title>
+</head>
+
+<body>
+    <div class="title text-center">
+        <h1>Homework 1</h1>
+        <h5>(HTML, CSS, Bootstrap)</h5>
+    </div>
+
+    <div class="container text-center">
+        <div class="blackPanel">
             <h4>Assignment Summary</h4>
-            <p>The first main goal is to use git by understanding some basic commands, how repositories work, as well as know how to control a remote repository on a github or bitbucket. We will also need to create a basic website using html, css, and bootstrap. We will finally need to create a portfolio page using github pages to display all of our work. A link to the the full assignment and requirements are <a href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW1.html">here.</a></p>
-            <h4>Step 1(using git and github): </h4>
-            <p>The first thing to consider is any downloads I need to take care of. The good thing is that I already had git downloaded so that saved me a bit of time. To use github I need to make an account on <a href="https://github.com/">https://github.com/</a>.This was a was a pretty straightforward process. I already had some prior knowledge about git which helped complete this. I then made sure to use git bash since the instructor wanted us to use a command line when using git. The next thing i did is set up the user name and email that will show on each commit with the commands:
-            </p>
-            <pre>
-                <code>
+            <hr style="background-color: white;" />
+            <p>The first main goal is to use git by understanding some basic commands, how repositories work, as well as
+                know how to control a remote repository on a github or bitbucket. We will also need to create a basic
+                website using html, css, and bootstrap. We will finally need to create a portfolio page using github
+                pages to display all of our work. A link to the the full assignment and requirements are <a
+                    href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW1.html">here.</a></p>
+
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="blackPanel">
+            <h4>Step 1 (Git and Github): </h4>
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-6">
+                    <p>The first thing to consider is any downloads I need to take care of. The good thing is that I
+                        already had git downloaded so that saved me a bit of time. To use github I need to make an
+                        account on <a href="https://github.com/">https://github.com/</a>.This was a was a pretty
+                        straightforward process. I already had some prior knowledge about git which helped complete
+                        this. I then made sure to use git bash since the instructor wanted us to use a command line when
+                        using git. The next thing i did is set up the user name and email that will show on each commit
+                        with the commands:</p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel" style="margin-top:30px"><code>
 git config --global user.name “Hector Acosta-Cervantes”
-git config --global user.email hacostacervantes17@mail.wou.edu</code>    
-            </pre>
-            
-            <p>I then created the local repository, linked to a remote server and pushed the local repository to the server(note: I went to github and made a repository already to store the repository):</p>
-            <pre>
-                <code>
+git config --global user.email hacostacervantes17@wou.edu
+                    </code></pre>
+                </div>
+                <div class="col-md-6">
+                    <br />
+                    <p>I then created the local repository, linked to a remote server and pushed the local repository to
+                        the server (note: I went to github and made a repository already to store the repository):</p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
 cd documents
 mkdir cs460
 cd cs460
 git init
 git remote add origin https://github.com/1HectorAC/cs460.git
 git push origin master
-</code>      
-            </pre>
-            
-            <h4>Step2(making a website with html, css, bootstrap): </h4>
-            <p>I took a web applications class a few years back so I already has some experience using html and css. The first think I did was try to get a better understanding on how to use bootstrap. I looked up an introduction on it at<a href="http://getbootstrap.com/docs/4.1/getting-started/introduction/"> http://getbootstrap.com/docs/4.1/getting-started/introduction/</a> and learned that you could download a file or reference the URL in head of the html to use it. I decided to reference the URL like this:</p>
-            <pre>
-                <code>
-&it; link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" &gt;</code>
-            </pre>
-            <p>I then looked up how to use it and found this link useful on understanding the grid format: <a href="https://getbootstrap.com/docs/3.3/css/">https://getbootstrap.com/docs/3.3/css/</a> . 
-            Now for the website itself I didn't think much about the subject or content so I just made it about boxes. I also just copied filler content from a search of “box” in wikipedia and added some nonsense since the point wasn't about content. The first key part I worked on was the navigation bar. It pretty much just involved setting up an ul list in the html file and adding links to them. There was also a bit I had to add in the css file in order for it to display well. Like to get it to align horizontally.
-            </p>
-            <p>Navigation var code:</p>
-            <img src="images/navEx.PNG">
-            <p> The bootstrap part of the assignment didn't involve a whole lot of stuff to write. The code I wrote usually involved the use of "containers" to align sections of code. </p>
-            <p>Bootstrap columns code:</p>
-            <img src="images/bootstrapSC.PNG">
-            <img src="images/bootstrapMC.PNG">
-            <p> Setting up HTML tables and lists were pretty easy and didnt require much work to do at all given how basic it is. </p>
-            <p>Html Table:</p>
-            <img src="images/tableEx.PNG">
-            <p>Html ol list:</p>
-            <img src="images/olEx.PNG">
-            <p>Html ul list:</p>
-            <img src="images/ulEx.PNG">
-            <p>In the css file I made to sure to organize the stylings in sections with comments seperations. I mostly had things to fix alignment and size issues. I also used more vivrant color to see how it would affect the page and then I made sure to adjust things before finishing it up.</p>
-            
-            <img src="images/cssEx.PNG">
-            <p>One thing I might want to consider is to lower the number of classes I use in the future.</p>
-            <h4>Step 3 (setting up a portfolio): </h4>
-            <p>The first think I need to know is how to setup a github page to use as a portfolio. The link <a href="https://pages.github.com">https://pages.github.com/</a> provided a good amount of information on how to setup a github pages. So then I created a new repository called 1hectorac.github.io, which must be named based on your username in github. I made a local directory and linked them. I originally thought about using jekyll to create the blog pages but I felt that it would be faster to just use what I know and stick with html pages for now. I might consider looking up jekyll later if I have the time.
-I also had to make sure to make an  “index.html” since that is what will originally loads when I go to my github page.
-</p>
+                        </code></pre>
+                </div>
+            </div>
+            <br />
+            <h4>Step 2 (Making a website with html, css, bootstrap): </h4>
+            <hr style="background-color: white;" />
+
+            <div class="row">
+                <div class="col md-12">
+                    <p>I took a web applications class a few years back so I already has some experience using html and
+                        css. The first think I did was try to get a better understanding on how to use bootstrap.
+                        I looked up an introduction on it at
+                        <a href="http://getbootstrap.com/docs/4.1/getting-started/introduction/">
+                            http://getbootstrap.com/docs/4.1/getting-started/introduction/</a> and learned that you
+                        could download a file or reference the URL in head of the html to use it.
+                        I decided to reference the URL like this:
+                    </p>
+                    <pre class="codeBlockPanel"><code>
+&it; link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" &gt;
+                    </code></pre>
+                </div>
+                <div class="col-md-6">
+                    <p>I then looked up how to use it and found this link useful on understanding the grid format: <a
+                            href="https://getbootstrap.com/docs/3.3/css/">https://getbootstrap.com/docs/3.3/css/</a> .
+                        Now for the website itself I didn't think much about the subject or content so I just made it
+                        about boxes. I also just copied filler content from a search of “box” in wikipedia and added
+                        some nonsense since the point wasn't about content. The first key part I worked on was the
+                        navigation bar. It pretty much just
+                        involved setting up an ul list in the html file and adding links to them. There was also a
+                        bit I had to add in the css file in order for it to display well. Like to get it to align
+                        horizontally.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p>Navigation Var Code:</p>
+                    <pre class="codeBlockPanel" style="text-align: left;"><code>
+&lt;div class="container nav"&gt;
+    &lt;ul id="bar"&gt;
+        &lt;li class="nlist"&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nlist"&gt;&lt;a href="types.html"&gt;Types&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nlist"&gt;&lt;a href="goals.html"&gt;Goals&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nlist"&gt;&lt;a href="contacts.html"&gt;Contacts&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+                    </code></pre>
+                </div>
+                <div class="col-md-6">
+                    <br />
+                    <br />
+                    <p> The bootstrap part of the assignment didn't involve a whole lot of stuff to write. The code I
+                        wrote usually involved the use of "containers" to align sections of code. </p>
+                </div>
+                <div class="col-md-6">
+                    <p>Bootstrap Columns Code:</p>
+                    <pre class="codeBlockPanel" style="text-align: left;"><code>
+&lt;div class="row"&gt;
+    &lt;div class="col-lg-12 box"&gt;
+        &lt;img src="imges/boxlogo.png"/&gt;&lt;p&gt;Box 1: content here.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-12 box"&gt;
+        &lt;img src="images/boxlogo.png"/&gt;&lt;p&gt;Box 2: content here.&lt;/p&gt;
+    &lt;/div&gt;
+    ...
+&lt;/div&gt;
+&lt;div class="row"&gt;
+    &lt;div class="col-lg-4 box"&gt;
+        &lt;img src="imges/boxlogo.png"/&gt;&lt;p&gt;Type 1: content here.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-4 box"&gt;
+        &lt;img src="imges/boxlogo.png"/&gt;&lt;p&gt;Type 2: content here.&lt;/p&gt;
+    &lt;/div&gt;
+    ...
+&lt;/div&gt;
+                    </code></pre>
+                </div>
+                <div class="col-md-12">
+                    <br />
+                    <p> Setting up HTML tables and lists were pretty easy and didnt require much work to do at all given
+                        how basic it is. </p>
+                </div>
+                <div class="col-md-3">
+                    <p>Html Table:</p>
+                    <pre class="codeBlockPanel"><code>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;size1&lt;/th&gt;
+        &lt;th&gt;size2&lt;/th&gt;
+        &lt;th&gt;size3&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;sm1&lt;/th&gt;
+        &lt;th&gt;md1&lt;/th&gt;
+        &lt;th&gt;lg1&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;sm2&lt;/th&gt;
+        &lt;th&gt;md2&lt;/th&gt;
+        &lt;th&gt;lg2&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+                </code></pre>
+                </div>
+                <div class="col-md-4">
+                    <p>Html ol list:</p>
+                    <pre class="codeBlockPanel"><code>
+&lt;ol&gt;
+    &lt;li&gt;archieve something one&lt;/li&gt; 
+    &lt;li&gt;archieve something two&lt;/li&gt;
+    &lt;li&gt;archieve something three&lt;/li&gt;
+&lt;/ol&gt;
+                    </code></pre>
+                </div>
+                <div class="col-md-5">
+                    <p>Html ul list:</p>
+                    <pre class="codeBlockPanel"><code>
+&lt;ul&gt;
+    &lt;li&gt; Facebook:
+        &lt;a href="testLink.html"&gt;Facebook/box.com&lt;/a&gt;
+    &lt;/li&gt; 
+    &lt;li&gt; Twitter:
+        &lt;a href="testLink.html"&gt;twitter/box.com&lt;/a&gt;
+    &lt;/li&gt; 
+    &lt;li&gt; Phone: 503 xxx xxxx&lt;/li&gt; 
+    &lt;li&gt; Email:
+        &lt;a href="testLink.html"&gt;stuff@box.com&lt;/a&gt;
+    &lt;/li&gt; 
+&lt;/ul&gt;
+                    </code></pre>
+                </div>
+                <div class="col-md-12">
+                    <p>In the css file I made to sure to organize the stylings in sections with comments seperations. I
+                        mostly had things to fix alignment and size issues. I also used more vibrant color to see how
+                        it would affect the page and then I made sure to adjust things before finishing it up.
+                        One thing I might want to consider is to lower the number of classes I use in the future.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>CSS Code Part 1:</p>
+                    <pre class="codeBlockPanel"><code>
+body{ font-size:18px; }
+/*******header field********/
+.header{
+    background-color:#b6fbe6;
+    padding-top:30px;
+    padding-bottom:30px;
+}
+/********nav bar*******/
+#bar{
+    list-style-type:none;
+    padding: 0px;
+    margin: auto;
+}
+.nlist{
+    float: left;
+    border: 1px solid white;
+    font-size:25px;
+    padding: 5px 50px 5px 50px;
+    background-color: #4c5a61;
+}                    
+                    </code></pre>
+                </div>
+                <div class="col-md-6">
+                    <p>CSS Code Part 2:</p>
+                    <pre class="codeBlockPanel"><code>
+/*li.nlist is required to only modify nav and not all links*/
+li.nlist a{
+    display:block;
+    color:#ffffff;
+}
+/***********content field**************/
+.content{
+    background-color:#b6fb36;
+    padding-top:30px;
+    padding-bottom: 50px;
+}
+th{ font-size: 30px; }
+td{
+    border: 3px solid black;
+    font-size: 40px;
+}
+                    </code></pre>
+                </div>
+                <br />
+                <h4>Step 3 (Setting up a Portfolio): </h4>
+                <hr style="background-color: white;" />
+                <p>The first thing I need to know is how to setup a github page to use as a portfolio. The link <a
+                        href="https://pages.github.com">https://pages.github.com/</a> provided a good amount of
+                    information on how to setup a github pages. So then I created a new repository called
+                    1hectorac.github.io, which must be named based on your username in github. I made a local
+                    directory and linked them. I originally thought about using jekyll to create the blog pages
+                    but I felt that it would be faster to just use what I know and stick
+                    with html pages for now. I might consider looking up jekyll later if I have the time.
+                    I also had to make sure to make an “index.html” since that is what will originally loads when I go
+                    to my github page.</p>
+            </div>
         </div>
-        
-    </body>   
+</body>
+
 </html>
