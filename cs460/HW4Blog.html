@@ -1,81 +1,149 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta cahrset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    
-        <link rel = "stylesheet" href = "css/default.css">
-        <title> HW 4 Blog</title>
-    </head>
-    <body>
-       <div class="container title">  
-           <h1> Homework 4</h1>
-       </div>
-        <div class="container">  
-            <h4>Assignment Summary:</h4>
-            <p>The main goal for this assignment is to make a simple MVC web application that doesn't use a database. We will use HTTP GET and POST to understand the differences and how to use them. We will use C#, html and razor html to complete this task on visual studio. Here is the link to the full assignment details: <a href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW4_1819.html">http://www.wou.edu/~morses/classes/cs46x/assignments/HW4_1819.html</a></p>
-            <hr>
-            
-            <h4>Step 1 (Setup):</h4>
-            <p>I will start by creating an MVC project. I then save the project in an HW4 folder of my cs460 repository. I then clear the project from thinks I don't really need like the about.cshtml and contact.cshtml files. I proceeded to make two branches with the commands:</p>
-            <pre>
-                <code>
-Git branch HW4MtoMCon
-Git branch HW4ColMix
+<html lang="en">
 
-                </code>
-            </pre>
-            <p>I then work on the two parts(Miles to Metric and Color mixer) in each branch and merge them in the end.</p>
-            <hr>
-    
-            <h4>Step 2 (Home Landng Page):</h4>
-            <p>I then work on setting up the home page. A good portion of this part was just modifying some of the template code that was already there in the Index and layout file. Nothing really significant to mention on this part.</p>
-            <hr>
-            
-            <h4>Step 3 (Liles to Metric Converter):</h4>
-            <h5 class="subT">HomeController.cs:</h5>
-            <p>So I first setup the action method to get a view in the home controller. This is also where I wrote the converter logic. It is a pretty simple switch statement to select what units to convert it to using the units sent by the form. I had to use a request object to get the query string sent by the form. Then I just passed the ViewBag with the message result to the view.</p>
-            <img src="/cs460/images/hw4Images/homeCon.PNG" class="img-fluid" alt="">
-            <h5 class="subT">Converter.cshtml:</h5>
-            <p>This part involved setting up the form html. The most significant part here was the form validation involved in the input element. This section had thing like limited to numbers, allowing 2 decimal splaces, and a range limit. I added a randomly long number that works as the range limit since it wouldn't be good to allow a limitless input.</p>
-            <img src="/cs460/images/hw4Images/converter.PNG" class="img-fluid" alt="">
-            <hr>
-            
+<head>
+    <meta cahrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/default.css">
+    <title> HW 4 Blog</title>
+</head>
+
+<body>
+    <div class="title text-center">
+        <h1>Homework 4</h1>
+        <h5>(MVC App No Database)</h5>
+    </div>
+
+    <div class="container text-center">
+        <div class="blackPanel">
+            <h4>Assignment Summary</h4>
+            <hr style="background-color: white;" />
+            <p>The main goal for this assignment is to make a simple MVC web application that doesn't use a database. We
+                will use HTTP GET and POST to understand the differences and how to use them. We will use C#, html and
+                razor html to complete this task on visual studio. Here is the link to the full assignment details: <a
+                    href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW4_1819.html">http://www.wou.edu/~morses/classes/cs46x/assignments/HW4_1819.html</a>
+            </p>
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="blackPanel">
+            <h4>Step 1 (Setup): </h4>
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-6">
+                    <p>I will start by creating an MVC project. I then save the project in an HW4 folder of my cs460
+                        repository. I then clear the project from thinks I don't really need like the about.cshtml and
+                        contact.cshtml files. I proceeded to make two branches with the commands:</p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+    Git branch HW4MtoMCon
+    Git branch HW4ColMix
+                        </code></pre>
+                </div>
+            </div>
+            <p>I then work on the two parts (Miles to Metric and Color mixer) in each branch and merge them in the end.
+            </p>
+            <br />
+            <h4>Step 2 (Home Landing Page):</h4>
+            <hr style="background-color: white;" />
+            <p>I then work on setting up the home page. A good portion of this part was just modifying some of the
+                template code that was already there in the Index and layout file. Nothing really significant to mention
+                on this part.</p>
+            <br />
+            <h4>Step 3 (Miles to Metric Converter):</h4>
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i>HomeController.cs:</i></h5>
+                    <p>So I first setup the action method to get a view in the home controller. This is also where I
+                        wrote the converter logic. It is a pretty simple switch statement to select what units to
+                        convert it to using the units sent by the form. I had to use a request object to get the query
+                        string sent by the form. Then I just passed the ViewBag with the message result to the view.</p>
+                    <img src="/cs460/images/hw4Images/homeCon.PNG" class="formatedImage" alt="">
+                </div>
+                <div class="col-md-6">
+                    <h5><i>Converter.cshtml:</i></h5>
+                    <p>This part involved setting up the form html. The most significant part here was the form
+                        validation involved in the input element. This section had thing like limited to numbers,
+                        allowing 2 decimal splaces, and a range limit. I added a randomly long number that works as the
+                        range limit since it wouldn't be good to allow a limitless input.</p>
+                    <img src="/cs460/images/hw4Images/converter.PNG" class="formatedImage" alt="">
+                </div>
+            </div>
+            <br />
             <h4>Step 4 (Color Mixer):</h4>
-            <p></p>
-            <h5 class="subT">ColorController.cs:</h5>
-            <p>The controller contains both a GET and POST version of the Create view action. The GET version was pretty simple and doesn't require much explaing. The POST one contained more important parts to mention. The logic in this part involved splitting the hexadecimal value into its three parts and then converting the values into a double value, adding the red, blue, and green of the two inputted colors, adding them, and then converting it back. Something to note is that I had a check to convert it to a six digit hexadecimal if it was three digits. It also had some form validation in this part in terms of if the hexadecimal input value was 4 or 5 digits long (not counting the #) then it wouldn't do anything. This was necessary since it was the only exception in the range limit I set on the html validation that was valid.</p>
-            <img src="/cs460/images/hw4Images/colorCreate1.PNG" class="img-fluid" alt="">
-            <img src="/cs460/images/hw4Images/colorCreate2.PNG" class="img-fluid" alt="">
-            <h5 class="subT">Create.cshtml:</h5>
-            <p> This part involved making the form with razor html. The challenge here was setting up the proper form validation. I decided that using a regular expression in the input element would be the most efficient  way to do this. The biggest problem I had is that I couldn't figure how I would restrict the string length to just 3 or 6 so I ended up making the range from 3 to 6. I then made a check in the server side through the controller. It will pretty much not do any calculations if it sees a string of 4 or 5 and the html in the this page will detect it and give a small error message I setup.</p>
-            <img src="/cs460/images/hw4Images/create1.PNG" class="img-fluid" alt="">
-            <img src="/cs460/images/hw4Images/create2.PNG" class="img-fluid" alt="">
-            <hr>
-            
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-12">
+                    <h5><i>ColorController.cs:</i></h5>
+                    <p>The controller contains both a GET and POST version of the Create view action. The GET version
+                        was pretty simple and doesn't require much explaing. The POST one contained more important parts
+                        to mention. The logic in this part involved splitting the hexadecimal value into its three parts
+                        and then converting the values into a double value, adding the red, blue, and green of the two
+                        inputted colors, adding them, and then converting it back. Something to note is that I had a
+                        check to convert it to a six digit hexadecimal if it was three digits. It also had some form
+                        validation in this part in terms of if the hexadecimal input value was 4 or 5 digits long (not
+                        counting the #) then it wouldn't do anything. This was necessary since it was the only exception
+                        in the range limit I set on the html validation that was valid.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Part 1 Code:</p>
+                    <img src="/cs460/images/hw4Images/colorCreate1.PNG" class="formatedImage" alt="">
+                </div>
+                <div class="col-md-6">
+                    <p>Part 2 Code:</p>
+                    <img src="/cs460/images/hw4Images/colorCreate2.PNG" class="formatedImage" alt="">
+
+                </div>
+                <div class="col-md-12">
+                    <br />
+                    <h5><i>Create.cshtml:</i></h5>
+                    <p> This part involved making the form with razor html. The challenge here was setting up the proper
+                        form validation. I decided that using a regular expression in the input element would be the
+                        most efficient way to do this. The biggest problem I had is that I couldn't figure how I would
+                        restrict the string length to just 3 or 6 so I ended up making the range from 3 to 6. I then
+                        made a check in the server side through the controller. It will pretty much not do any
+                        calculations if it sees a string of 4 or 5 and the html in the this page will detect it and give
+                        a small error message I setup.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Part 1 Code:</p>
+                    <img src="/cs460/images/hw4Images/create1.PNG" class="formatedImage" alt="">
+                </div>
+                <div class="col-md-6">
+                    <p>Part 2 Code:</p>
+                    <img src="/cs460/images/hw4Images/create2.PNG" class="formatedImage" alt="">
+                </div>
+            </div>
+            <br />
             <h4>Step 5 (Result):</h4>
-            <p>I finaly had to merge the branches. For each branch I first merged the master to them and then merged the branch into the master Here are the commands representing this:</p>
-            <pre>
-                <code>
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-6">
+                    <br />
+                    <p>I finaly had to merge the branches. For each branch I first merged the master to them and then
+                        merged the branch into the master Here are the commands representing this:</p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
 git checkout HW4MtoMCon
 git merge master
 //resolved merge conflicts..
 git checkout master
 git merge HW4MtoMCon
 //repeat with HW4ColMix branch
-                </code>
-            </pre>
-            <p>Test result video (Video has no sound):</p>
-            
-            
-            
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/G3sZYMMUoOQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
-            
-            <hr>
-            
-            
-
+                        </code></pre>
+                </div>
+            </div>
+            <p>Test Result Video (No Sound):</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/G3sZYMMUoOQ" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
