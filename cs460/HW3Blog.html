@@ -1,91 +1,183 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta cahrset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    
-        <link rel = "stylesheet" href = "css/default.css">
-        <title> HW3 Blog</title>
-    </head>
-    <body>
-       <div class="container title">  
-           <h1> Homework 3</h1>
-       </div>
-        <div class="container">  
-            <h4>Assignment Summary:</h4>
-            <p>The goal of this assignment is to translate the code of a java file into a C# file. The file must follow C# standards, must be properly commented, and should run the same as the java when executed. The details and code for the java file can be found here: <a href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW3_1819.html">http://www.wou.edu/~morses/classes/cs46x/assignments/HW3_1819.html.</a>
+<html lang="en">
+
+<head>
+    <meta cahrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/default.css">
+    <title> HW3 Blog</title>
+</head>
+
+<body>
+    <div class="title text-center">
+        <h1>Homework 3</h1>
+        <h5>(C#)</h5>
+    </div>
+
+    <div class="container text-center">
+        <div class="blackPanel">
+            <h4>Assignment Summary</h4>
+            <hr style="background-color: white;" />
+            <p>The goal of this assignment is to translate the code of a java file into a C# file. The file must follow
+                C# standards, must be properly commented, and should run the same as the java when executed. The details
+                and code for the java file can be found here: <a
+                    href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW3_1819.html">http://www.wou.edu/~morses/classes/cs46x/assignments/HW3_1819.html.</a>
             </p>
-            <hr>
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="blackPanel">
             <h4>Step 1 (Setting Up): </h4>
-            <p>The first thing we had to do was to download and install the visual studio IDE. I already had it on my laptop from over a year ago when I was trying to learn to make Unity games  and installed visual studio to write C# files. That saved me some time. My experience using C# wasn't that amazing considering I just learned what I needed at the time and I didn't have much of a foundation.
+            <hr style="background-color: white;" />
+            <p>The first thing we had to do was to download and install the visual studio IDE. I already had it on my
+                laptop from over a year ago when I was trying to learn to make Unity games and installed visual studio
+                to write C# files. That saved me some time. My experience using C# wasn't that amazing considering I
+                just learned what I needed at the time and I didn't have much of a foundation.
             </p>
-            <hr>
+            <br />
             <h4>Step 2 (Java Code): </h4>
-            <p>I dont have a whole lot of experience with java but I have learned it a while back on my own so reading the code shouldn't be much trouble. Looking at the java code it doesn't look like there is a whole lot that will be different in the C# file. Most of the file are pretty simple and straightforward. The Main file is probably the only part that requires a bit of thinking to understand but it isn't that bad either. I will largely take note of differences that will need to be resolved in translating the file.
+            <hr style="background-color: white;" />
+            <p>I dont have a whole lot of experience with java but I have learned it a while back on my own so reading
+                the code shouldn't be much trouble. Looking at the java code it doesn't look like there is a whole lot
+                that will be different in the C# file. Most of the file are pretty simple and straightforward. The Main
+                file is probably the only part that requires a bit of thinking to understand but it isn't that bad
+                either. I will largely take note of differences that will need to be resolved in translating the file.
             </p>
-            <hr>
+            <br />
             <h4>Step 3 (Git Setup): </h4>
-            <p>All the work in this assignment has to be done in a new branch so I will quickly create one and check it out with the commands:
-            </p>
-            <pre>
-               <code>
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-6">
+                    <p>All the work in this assignment has to be done in a new branch so I will quickly create one and
+                        check it out with the commands:
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
 Cd cs460
 Git branch HW3Ver
 Git checkout HW3Ver
-               </code>  
-            </pre>
-            <p>Note that I will merge this branch back into the master branch in the end with the command(while in master branch):</p>
-            <pre>
-                <code>
+                            </code></pre>
+                </div>
+                <div class="col-md-6">
+                    <p>Note that I will merge this branch back into the master branch in the end with the command(while
+                        in master branch):</p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
 git merge HW3Ver
-                </code>
-            </pre>
-            <hr>
+                            </code></pre>
+                </div>
+            </div>
             <h4>Step 4 (C# Changes): </h4>
-            <h5 class="subT">Node.java to Node.cs</h5>
-            <p>The big difference here was just setting up a property to get and set the data variable, which was changed to private. The code is pretty simple and accessing data is as easy as calling the "Data" instead of directly with "data".</p>
-            <img src="images/hw3Images/NodeProp.PNG" alt="">
-            <h5 class="subT">QueueInterface.java to IQueue.cs</h5>
-            <p>The big difference here was the file name change. In C# it was more proper to start interfaces  with "I".
-            </p>
-            <h5 class="subT">QueueUnderflowException.java to QueueUnderflowException.cs</h5>
-            <p>Some differences that I came across where how to extend a class. They didn't have much of a difference  with C# using a “:” instead of an “extends”. Calling the extended classes constructor was also a bit different with a different keyword and location to place it.
-            </p>
-            <img src="images/hw3Images/ExceptionExtend.PNG" alt="">
-            <h5 class="subT">LinkedQueue.java to LinkedQueue.cs</h5>
-            <p>This file had a difference in implementing an interface by using “:” instead of “implements”. Another thing that I learned was the difference in exception types (or names of them) from java and C#. I had to look up a list of exception of C# to know what was available to use. This site was usefull in figuring out which to use: <a href="https://www.developerfusion.com/article/1889/exception-handling-in-c/3/">https://www.developerfusion.com/article/1889/exception-handling-in-c/3/.</a>
-            </p>
-            <p>I also noticed that in c# you can’t set a generic type to null unlike in java. This solution involved just setting the variable to default(type) instead of a null value. Like this:</p>
-            <pre>
-                <code>
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-6 offset-md-1">
+                    <h5><i>Node.java to Node.cs</i></h5>
+                    <p>The big difference here was just setting up a property to get and set the data variable, which
+                        was changed to private. The code is pretty simple and accessing data is as easy as calling the
+                        "Data" instead of directly with "data".</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="formatedImage" src="images/hw3Images/NodeProp.PNG" alt="">
+                    <br /><br />
+                </div>
+                <div class="col-md-12">
+                    <h5><i>QueueInterface.java to IQueue.cs</i></h5>
+                    <p>The big difference here was the file name change. In C# it was more proper to start interfaces
+                        with "I".
+                    </p>
+                    <br />
+                </div>
+                <div class="col-md-6 offset-md-1">
+                    <h5><i>QueueUnderflowException.java to QueueUnderflowException.cs</i></h5>
+                    <p>Some differences that I came across where how to extend a class. They didn't have much of a
+                        difference with C# using a “:” instead of an “extends”. Calling the extended classes constructor
+                        was also a bit different with a different keyword and location to place it.
+                    </p>
+
+                </div>
+                <div class="col-md-4">
+                    <img class="formatedImage" src="images/hw3Images/ExceptionExtend.PNG" alt=""><br /><br />
+                </div>
+                <div class="col-md-8">
+                    <h5><i>LinkedQueue.java to LinkedQueue.cs</i></h5>
+                    <p>This file had a difference in implementing an interface by using “:” instead of “implements”.
+                        Another thing that I learned was the difference in exception types (or names of them) from java
+                        and C#. I had to look up a list of exception of C# to know what was available to use. This site
+                        was usefull in figuring out which to use: <a
+                            href="https://www.developerfusion.com/article/1889/exception-handling-in-c/3/">https://www.developerfusion.com/article/1889/exception-handling-in-c/3/.</a>
+                        I also noticed that in c# you can’t set a generic type to null unlike in java. This solution
+                        involved just setting the variable to default(type) instead of a null value. Like this:</p>
+                    <br />
+                </div>
+                <div class="col-md-3">
+                    <br /><br />
+                    <pre class="codeBlockPanel"><code>
 T tmp = default(T);
-                </code>
-            </pre>
-            <h5 class="subT">Main.java to Program.cs</h5>
-            <p>The first thing to note is that the file that was first generated by visual studio ended up being called Program instead of main so the file names ended up changing. 
-            One thing that was slightly different was the method names in their built in linked list. I also noticed that I couldn't find a method to directly return the element of the last node (like in the java code) but instead had to access the last node and had to access the element from there. I used this site as a reference for C# linkedlist: <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.linkedlist-1?view=netframework-4.7.2">https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.linkedlist-1?view=netframework-4.7.2</a>
-            Here is the diff:
-            </p>
-            <pre>
-                <code>
+                            </code></pre>
+                </div>
+                <div class="col-md-7">
+                    <h5><i>Main.java to Program.cs</i></h5>
+                    <p>The first thing to note is that the file that was first generated by visual studio ended up being
+                        called Program instead of main so the file names ended up changing.
+                        One thing that was slightly different was the method names in their built in linked list. I also
+                        noticed that I couldn't find a method to directly return the element of the last node (like in
+                        the java code) but instead had to access the last node and had to access the element from there.
+                        I used this site as a reference for C# linkedlist: <a
+                            href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.linkedlist-1?view=netframework-4.7.2">https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.linkedlist-1?view=netframework-4.7.2</a>
+                        Here is the diff:
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <br /><br />
+                    <pre class="codeBlockPanel"><code>
 int maxLength = output.Last.Value.Length; //C#
 Vs
 int maxLength = output.getLast().length(); //Java
+                            </code></pre>
+                </div>
+                <div class="col-md-12">
+                    <br />
+                    <p>Then there was a couple small syntaxial difference like using Console.WriteLine() instead of
+                        System.out.println() to outputted in command line and name changes that aren't really worth
+                        mentioning considering how trivial they are.</p>
 
-                </code>
-            </pre>
-            <p>Then there was a couple small syntaxial difference like using Console.WriteLine() instead of System.out.println() to outputted in command line and name changes that aren't really worth mentioning considering how trivial they are.</p>
-            <h5 class="subT">General changes:</h5>
-            <p>Some general things that were noted were xml comments for classes and functions. This was done by typing “///” a line above from the target. Then I just filled out the areas with descriptions of the specified area.<p>
-            <img src="images/hw3Images/xmlCom.PNG" alt="">
-            <hr>
+                </div>
+                <div class="col-md-7">
+                    <h5><i>General changes</i></h5>
+                    <p>Some general things that were noted were xml comments for classes and functions. This was done by
+                        typing “///” a line above from the target. Then I just filled out the areas with descriptions of
+                        the specified area.
+                    <p>
+                        <br />
+                </div>
+                <div class="col-md-5">
+                    <img class="formatedImage" src="images/hw3Images/xmlCom.PNG" alt="">
+                </div>
+            </div>
             <h4>Step 5 (Results): </h4>
-            <p>When it came to running the java program I first entered “javac Main.java” and then “java Main #” in the command line,where # is the input number Here are a few test runs from running the java program:
-            </p>
-           <img src="images/hw3Images/TRj.PNG"   alt="">
-           <p>To run the C# program i first looked for the .exe file created by visual studio and then on the command line I enter “./CreateBinary.exe #” where # is the input number. Here are a few test runs from running the C# program with the same values as the java program:
-           </p>
-            <img src="images/hw3Images/TRc.PNG" alt="">
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-6">
+                    <p>When it came to running the java program I first entered “javac Main.java” and then “java Main #”
+                        in the command line,where # is the input number Here are a few test runs from running the java
+                        program:
+                    </p>
+                    <img class="formatedImage" src="images/hw3Images/TRj.PNG" alt="">
+                </div>
+                <div class="col-md-6">
+                    <p>To run the C# program i first looked for the .exe file created by visual studio and then on the
+                        command line I enter “./CreateBinary.exe #” where # is the input number. Here are a few test
+                        runs from running the C# program with the same values as the java program:
+                    </p>
+                    <img class="formatedImage" src="images/hw3Images/TRc.PNG" alt="">
+                </div>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
