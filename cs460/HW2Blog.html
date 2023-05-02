@@ -1,66 +1,177 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta cahrset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">    
-        <link rel = "stylesheet" href = "css/default.css">
-        <title> HW2 Blog</title>
-    </head>
-    <body>
-       <div class="container title">
-           <h1> Homework 2</h1>
-       </div>
-        <div class="container">
-            
+<html lang="en">
+
+<head>
+    <meta cahrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/default.css">
+    <title> HW2 Blog</title>
+</head>
+
+<body>
+    <div class="title text-center">
+        <h1>Homework 2</h1>
+        <h5>(Javascript and JQuery)</h5>
+    </div>
+
+    <div class="container text-center">
+        <div class="blackPanel">
             <h4>Assignment Summary</h4>
-            <p>The first main goal is to use and learn about branching in git. Then we must create a webpage that displays a good understanding of javascript and jquery. The page must involve taking in an input and producing an output on the page. The webpage must also use html, css, and bootstrap. The details can be found at <a href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW2.html">http://www.wou.edu/~morses/classes/cs46x/assignments/HW2.html.</a></p>
-            
-            <h4>Step 1 (Git Branching): </h4>
-            <p>I first made a branch and then checked it out since all of the work in this assignment must be done in this branch. (Note: I also quickly checked out the master branch and made a README.md file so that the changes when I merge branches will display)</p>
-            <pre>
-                <code>
-Cd cs460
-Git branch test1
-Git checkout test1</code>
-            </pre>
-            <p>I will also mention now that I will use the merge command to merge the test1 branch and the master in the end as required. The commands was(while in master branch):</p>
-            <pre>
-                <code>
-git merge test1</code>
-            </pre>
-            
+            <hr style="background-color: white;" />
+            <p>The first main goal is to use and learn about branching in git. Then we must create a webpage that
+                displays a good understanding of javascript and jquery. The page must involve taking in an input and
+                producing an output on the page. The webpage must also use html, css, and bootstrap. The details can be
+                found at <a
+                    href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW2.html">http://www.wou.edu/~morses/classes/cs46x/assignments/HW2.html.</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <div class="blackPanel">
+            <h4>Step 1 (Git Branching):</h4>
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-7">
+                    <p>I first made a branch and then checked it out since all of the work in this assignment must be
+                        done in this branch. (Note: I also quickly checked out the master branch and made a README.md
+                        file so that the changes when I merge branches will display)</p>
+                </div>
+                <div class="col-md-5">
+                    <pre class="codeBlockPanel"><code>
+cd cs460
+git branch test1
+git checkout test1
+                        </code></pre>
+                </div>
+                <div class="col-md-8">
+                    <p>I will also mention now that I will use the merge command to merge the test1 branch and the
+                        master in the end as required. The commands was(while in master branch):</p>
+                </div>
+                <div class="col-md-4">
+                    <pre class="codeBlockPanel"><code>
+git merge test1
+                        </code></pre>
+                </div>
+            </div>
+            <br />
             <h4>Step 2 (Planning and Design): </h4>
-            <p>I first came up with the main idea of what the page will do which was: we will generate 3 numbers and you must  try to guess what they will be. I then came up with the basic layout in a sketch and added specific details about how the page will work and what it will do on the page. General ideal sketch below:</p>
-            <img src="images/hw2/plan.png" alt="">    
-              
-            <h4>Step 3 (Html and Css): </h4>
-            <p>The html was mostly pretty simple and straightforward but their are a few important things learned. The first are about the script files. I made sure to keep the script file at the end of the body tag so that everything on page loaded before it did any javascript stuff. The jquery library had its own file that I need to put in and then I also included my own js file. Note that the jquery file could be downloaded and referenced locally or we could use a CDN and just reference the specified URL. </p>
-            <pre>
-                <code>
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-4 offset-md-1">
+                    <br />
+                    <p>I first came up with the main idea of what the page will do which was: we will generate 3 numbers
+                        and you must try to guess what they will be. I then came up with the basic layout in a sketch
+                        and added specific details about how the page will work and what it will do on the page. General
+                        ideal sketch:</p>
+                </div>
+                <div class="col-md-6">
+                    <img class="formatedImage" src="images/hw2/plan.png" alt="">
+                </div>
+            </div>
+            <br />
+            <h4>Step 3 (HTML and CSS): </h4>
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-12">
+                    <p>The html was mostly pretty simple and straightforward but their are a few important things
+                        learned. The first are about the script files. I made sure to keep the script file at the end of
+                        the body tag so that everything on page loaded before it did any javascript stuff. The jquery
+                        library had its own file that I need to put in and then I also included my own js file. Note
+                        that the jquery file could be downloaded and referenced locally or we could use a CDN and just
+                        reference the specified URL. </p>
+                    <pre class="codeBlockPanel"><code>
 &lt;script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
 &lt;script src="logic.js"&gt;&lt;/script&gt;
-                </code>           
-            </pre>
-            <p>The second key part was about how I added new elements to the page. I made an empty div element with the class “results” and this was important for setting up a location for which new elements will be added to. </p>
-            
-            <p>They final key part was the form setup and input element. A usefull resorce in html input that was very usefull was: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input</a>. When I was looking though the page I noticed that the input element can do some input validation for me instead of checking it in the javascript. The input element had attributes like max and min to restrict the range of values for a number type which was usefull in what I need. This is can be shown here:</p>
-            <img src="images/hw2/form.PNG" alt="">
-            <p>The css file didn’t have a whole lot to it. It was also a part I focused on a little less given I wasn't as focused on how it looked. I first wanted to adjust the size of the input boxes because they were too small for just putting in one number. Everything else were pretty small changes like color and alignment of elements.</p>
-            <img src="images/hw2/cssfile.PNG" alt="">
-            
+                        </code></pre>
+                    <p>The second key part was about how I added new elements to the page. I made an empty div element
+                        with the class “results” and this was important for setting up a location for which new elements
+                        will be added to. </p>
+                    <br />
+                </div>
+                <div class="col-md-6 offset-md-1">
+                    <br />
+                    <p>They final key part was the form setup and input element. A usefull resorce in html input that
+                        was very usefull was: <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input</a>.
+                        When I was looking though the page I noticed that the input element can do some input validation
+                        for me instead of checking it in the javascript. The input element had attributes like max and
+                        min to restrict the range of values for a number type which was usefull in what I need. This is
+                        can be shown here:</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="formatedImage" src="images/hw2/form.PNG" alt="">
+                    <br /><br />
+                </div>
+                <div class="col-md-6 offset-md-1">
+                    <br />
+                    <p>The css file didn’t have a whole lot to it. It was also a part I focused on a little less given I
+                        wasn't as focused on how it looked. I first wanted to adjust the size of the input boxes because
+                        they were too small for just putting in one number. Everything else were pretty small changes
+                        like color and alignment of elements.</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="formatedImage" src="images/hw2/cssfile.PNG" alt="">
+                </div>
+            </div>
+            <br />
             <h4>Step 4 (Javascript and JQuery): </h4>
-            <p>I first made sure to setup all the key variables in the beginning, which I find more convenient in looking at what my variables were. Then I made sure to add some data validation. The html input element already had some of this but one part I needed to check is if all the inputs were the same and alert the user that it is invalid. This just involved an if statement and can be shown here:</p>
-            <img src="images/hw2/inputVal.PNG" alt="">
-            <p>Then I needed to setup an array of 3 random numbers which were the keys values. They also needed to be check if any were equal to each other and changed if so. This check was also differently than the input validation involving duplicate numbers since if this part had a duplicate then I had to change values rather than just give a warning. The code can be seen here:</p>
-            <img src="images/hw2/randNum.PNG" alt="">
-            <p>Now that I had valid inputs and keys I then had to write the logic to compare them which was just a straight forward comparison of each value:</p>
-            <img src="images/hw2/compare.PNG" alt="">
-            
-            <p>I finally just outputed everything I had(note: I added that last line to prevent the page from just going back to default  and restarting after running. It was relevant on how the event was being handled using jquery):</p>
-            <img src="images/hw2/output.PNG" alt="">  
-            <p>Here is a screenshot of the the final webpage product with an example run on it:</p>
-            <img src="images/hw2/website.png" alt="">
+            <hr style="background-color: white;" />
+            <div class="row">
+                <div class="col-md-6 offset-md-1">
+                    <br />
+                    <p>I first made sure to setup all the key variables in the beginning, which I find more convenient
+                        in looking at what my variables were. Then I made sure to add some data validation. The html
+                        input element already had some of this but one part I needed to check is if all the inputs were
+                        the same and alert the user that it is invalid. This just involved an if statement and can be
+                        shown here:</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="formatedImage" src="images/hw2/inputVal.PNG" alt=""><br /><br />
+                </div>
+                <div class="col-md-6 offset-md-1">
+                    <br />
+                    <p>Then I needed to setup an array of 3 random numbers which were the keys values. They also needed
+                        to be check if any were equal to each other and changed if so. This check was also differently
+                        than the input validation involving duplicate numbers since if this part had a duplicate then I
+                        had to change values rather than just give a warning. The code can be seen here:</p>
+
+                </div>
+                <div class="col-md-4">
+                    <img class="formatedImage" src="images/hw2/randNum.PNG" alt=""><br /><br />
+
+                </div>
+                <div class="col-md-6 offset-md-1">
+                    <br />
+                    <p>Now that I had valid inputs and keys I then had to write the logic to compare them which was just
+                        a straight forward comparison of each value:</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="formatedImage" src="images/hw2/compare.PNG" alt=""><br /><br />
+
+                </div>
+                <div class="col-md-6 offset-md-1">
+                    <br />
+                    <p>I finally just outputed everything I had(note: I added that last line to prevent the page from
+                        just going back to default and restarting after running. It was relevant on how the event was
+                        being handled using jquery):</p>
+                </div>
+                <div class="col-md-4">
+                    <img class="formatedImage" src="images/hw2/output.PNG" alt="">
+                </div>
+                <div class="col-md-12">
+                    <br />
+                    <p>Here is a screenshot of the the final webpage product with an example run on it:</p>
+
+                </div>
+                <div class="col-md-6 offset-md-3">
+                    <img class="formatedImage" src="images/hw2/website.png" alt="">
+                </div>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
