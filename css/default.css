@@ -9,7 +9,11 @@ body{
 .title{
     background-color: #292e34;
     color: white;
-    padding:30px;
+    padding:10px;
+}
+.title h1 a{
+    text-decoration: none;
+    color:white;
 }
 .blackPanel{
     border-radius:10px; 
