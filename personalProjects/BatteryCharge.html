@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/default.css">
-    <title> MindMovment2 Blog</title>
+    <title> Battery Charge Blog</title>
 </head>
 
 <body>
@@ -78,7 +78,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
             <h4>Step 4 (Setup Connection String):</h4>
             <hr style="background-color: white;" />
             <p>Step to take for setting up connection string:</p>
-            <ol style="text-align: left;">
+            <ol class="text-start">
                 <li>On Visual Studio open "Server Explorer" (Can be accessed from top panels.)</li>
                 <li>Right click on "Data Connection."</li>
                 <li>Add connection (choses "Microsoft SQL Server", enter Server name and database name.)</li>
@@ -90,6 +90,32 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
             </ol>
             <h4>Step 5 (Generate Models and Context from DB):</h4>
             <hr style="background-color: white;" />
+            <p>I then generated the models and context class using the database. I first go to the "Package Manager
+                Console" and enter the following command to generate what I need:</p>
+            <pre class="codeBlockPanel mx-5"><code>
+Scaffold-DbContext Name=BatteryDBConnection Microsoft.EntityFrameworkCore.SqlServer -Tables 
+        BatteryTrackerUser, Device -OutputDir Models -ContextDir Models -Context BatteryContext
+            </code></pre>
+            <p>This will generate 2 tables (BatteryTrackerUser and Device) and a model context (BatteryContext) in the
+                Models folder.</p>
+            </ol>
+            <h4>Step 6 (Edit User Registration):</h4>
+            <hr style="background-color: white;" />
+            <p>I have a separate user table called "BatteryTrackerUser" that will need to be created at the same time the user makes an account. My intention in doing this was to keep some of the auto generated user stuff separated from my application. Now since the auto generated user files are abstracted away I will need to generate the files I need first. Here the are step to do this:</p>
+            <ol class="text-start">
+                <li>Right click on project folder.</li>
+                <li>Select "Add" option.</li>
+                <li>Select "New Scaffolded Item" option.</li>
+                <li>On the new panel, Select "Identity."</li>
+                <li>Checkmark the "Register" page. I also added a few other to edit styling.</li>
+                <li>Done. The register page is now generated.</li>
+            </ol>
+            <p>I then needed to add the database context I created to the register page in order to have access to the "BatteryTrackerUser" table. A few things will need to be edited to make this work. Here are the steps taken to accomplish this:</p>
+            <ol class="text-start">
+                <li>Go to register page (Areas/Identity/Pages/Account/Register). Specifically the cs file that will drop down from the cshtml file.</li>
+                <li>Add "BatteryContext" at the top of the page which is setup though Dependency Injection.  Add a private readonly BattteryContext variable, add  BatteryContext parameter to RegisterModels method, and set private BatteryContext variable to passed in parameter.</li>
+            
+            </ol>
         </div>
     </div>
 </body>
