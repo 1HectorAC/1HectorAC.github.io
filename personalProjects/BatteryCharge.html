@@ -98,10 +98,13 @@ Scaffold-DbContext Name=BatteryDBConnection Microsoft.EntityFrameworkCore.SqlSer
             </code></pre>
             <p>This will generate 2 tables (BatteryTrackerUser and Device) and a model context (BatteryContext) in the
                 Models folder.</p>
-            </ol>
+            <br />
             <h4>Step 6 (Edit User Registration):</h4>
             <hr style="background-color: white;" />
-            <p>I have a separate user table called "BatteryTrackerUser" that will need to be created at the same time the user makes an account. My intention in doing this was to keep some of the auto generated user stuff separated from my application. Now since the auto generated user files are abstracted away I will need to generate the files I need first. Here the are step to do this:</p>
+            <p>I have a separate user table called "BatteryTrackerUser" that will need to be created at the same time
+                the user makes an account. My intention in doing this was to keep some of the auto generated user stuff
+                separated from my application. Now since the auto generated user files are abstracted away I will need
+                to generate the files I need first. Here the are step to do this:</p>
             <ol class="text-start">
                 <li>Right click on project folder.</li>
                 <li>Select "Add" option.</li>
@@ -110,11 +113,93 @@ Scaffold-DbContext Name=BatteryDBConnection Microsoft.EntityFrameworkCore.SqlSer
                 <li>Checkmark the "Register" page. I also added a few other to edit styling.</li>
                 <li>Done. The register page is now generated.</li>
             </ol>
-            <p>I then needed to add the database context I created to the register page in order to have access to the "BatteryTrackerUser" table. A few things will need to be edited to make this work. Here are the steps taken to accomplish this:</p>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>I then needed to add the database context I created to the register page in order to have access
+                        to the "BatteryTrackerUser" table. A few things will need to be edited to make this work.
+                        I first went to the register.cs file (located in Areas/Identy/Pages/Account/Register file with
+                        the cs file being a dropdown from register.cshtml file.) I then Added the "BatteryContext" at
+                        the top of the page which is setup though Dependency Injection. This involves adding a private
+                        readonly BattteryContext variable, BatteryContext parameter to RegisterModels method, and set
+                        private BatteryContext variable to passed in parameter. Thirdly I removed some of the connection
+                        code in "BatteryContext" and move it to the Program.cs file. Section to remove and add shown
+                        shown here:</p>
+                </div>
+                <div class="col-md-12">
+                    <pre class="codeBlockPanel mx-5"><code>
+//Removed from BatteryContext.cs
+ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =&gt; 
+        optionsBuilder.UseSqlServer("Name=BatteryDBConnection");
+
+// Added to Program.cs File
+var connectionString = builder.Configuration.GetConnectionString("BatteryDBConnection");
+builder.Services.AddDbContext<BatteryContext>(options =&gt; options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(options =&gt; options.UseSqlServer(connectionString));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+                    </code></pre>
+                </div>
+                <div class="col-md-5">
+                    <br />
+                    <p>Finally I created a "BatteryTrackerUser" in the register page. In the register page we go to the
+                        "OnPostAsync" method and before the email sender send an email we add the following:</p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+var batteryTrackerUser = new BatteryTrackerUser { AspNetUserId = userId };
+_batteryContext.BatteryTrackerUsers.Add(batteryTrackerUser);
+await _batteryContext.SaveChangesAsync();
+                    </code></pre>
+                </div>
+            </div>
+            <p>With that the BatteryTrackerUser is created on register of a user.</p>
+            <br />
+            <h4>Step 7 (Scaffolding Device CRUD):</h4>
+            <hr style="background-color: white;" />
+            <p>The next step is to scaffold CRUD pages for a device. Steps:</p>
             <ol class="text-start">
-                <li>Go to register page (Areas/Identity/Pages/Account/Register). Specifically the cs file that will drop down from the cshtml file.</li>
-                <li>Add "BatteryContext" at the top of the page which is setup though Dependency Injection.  Add a private readonly BattteryContext variable, add  BatteryContext parameter to RegisterModels method, and set private BatteryContext variable to passed in parameter.</li>
-            
+                <li>Right click on controller folder.</li>
+                <li>Click on "Add" option.</li>
+                <li>Click on "New Scaffolded Item" option.</li>
+                <li>On new window, Select "MVC Controller with view, using EF."</li>
+                <li>Enter the Data Context Class field with "BatteryContext" and the Model Class field with "Device."
+                </li>
+                <li>Done. CRUD pages should be generated.</li>
+            </ol>
+            <br />
+            <h4>Step 8 (View Restrictions of Devices):</h4>
+            <hr style="background-color: white;" />
+            <p>I then needed to make sure devices can only be handled by logged in users and that they cant access each
+                others. I first restrict device page access to logged in users. This can be done by adding the Authorize
+                attribute above every method involving a device. I then dealt with users restricted to just their own
+                devices. To accomplish this I added a quick check in most device method to compare the id of the current
+                user with the id owner of the device it is trying to access. It will then redirect if there is a
+                mismatch. Example shown:</p>
+            <pre class="codeBlockPanel mx-5"><code>
+// User check in DevicesController.cs
+var deviceUserId = _context.Devices.Include(d => d.Owner).First(i => i.Id == id).Owner!.AspNetUserId;
+var loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+if (loggedInUserId != deviceUserId)
+        return RedirectToAction(nameof(Index));
+            </code></pre>
+            <p>Similar checks were also added to view and create devices but were a bit more simpler.</p>
+            <br />
+            <h4>Step 9 (ChargeTimes Page):</h4>
+            <hr style="background-color: white;" />
+            <p>The last main feature is the "ChargeTimes" page. This is a page that will inform the user about if a
+                device they own needs to be recharged. The page displays the days since the last charge (current date -
+                last charge date) as well as the time span the battery can last without charge (Note: last charge date
+                and charge time span are both fields for a device). It will also color coat the text red if the days
+                since last charge is larger than the time span.</p>
+            <p>The first part is to setup a view model for the necessary data since I don’t need all the data of a
+                device and I will also need another field for days since last change(which isn't in the Device Model.)
+                Steps:</p>
+            <ol class="text-start">
+                <li>Create Models/VIewModels folder.</li>
+                <li>Create RechargeDeviceDetails.cs file in ViewModel folder.</li>
+                <li>Add Id, Name, LastRechargeDate, RechargeCycle To RechargeDeviceDetails Model (Note: Fields are identical to the Device Model.)</li>
+                <li>Add integer DaysSinceLastRecharge field to RechargeDeviceDetails Model.</li>
+                <li>Model done.</li>
+                
             </ol>
         </div>
     </div>
