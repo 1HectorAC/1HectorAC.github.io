@@ -34,6 +34,9 @@ a:hover{
     display:inline-block;
     text-align: left;
 }
+.ulShift li{
+    margin-bottom: 10px;
+}
 
 .codeBlockPanel{
     color:white;
