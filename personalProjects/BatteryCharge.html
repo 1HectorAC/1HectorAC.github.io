@@ -55,10 +55,32 @@
         <div class="blackPanel">
             <h4>Step 1 (Database):</h4>
             <hr style="background-color: white;" />
-            <p>I used a database first approach so one of my first task was just setting up a database. The database was
-                pretty simple with just 2 table. The two tables were BatteryTrackerUser and Device.</p>
-            <p>//Add diagram later.</p>
-            <p>After that I used SQL management studio to make the database.</p>
+            <div class="row">
+                <div class="col-md-8">
+                    <p>I used a database first approach so one of my first task was just setting up a database. The
+                        database was
+                        pretty simple with just 2 table. The two tables were BatteryTrackerUser and Device. The tables
+                        are simple enough were I don't really need a diagram to explain them so I made a basic
+                        description of their columns.</p>
+                    <p>After that I used SQL management studio to make the database.</p>
+                </div>
+                <div class="col-md-4 smallListSpacing text-start">
+                    <h5>Tables:</h5>
+                    <h5><u>BatteryTrackerUser:</u></h5>
+                    <p>Name (INT PRIMARY KEY)</p>
+                    <p>AspNetUserId (NVARCHAR)</p>
+                    <h5><u>Device:</u></h5>
+                    <p>Id (INT PRIMARY KEY)</p>
+                    <P>OwnerId (INT FOREIGN KEY)</P>
+                    <p>Name (NVARCHAR)</p>
+                    <P>BatteryReplacementCount (INT)</P>
+                    <p>DateBought (DATE)</p>
+                    <p>BatteryCapacity (INT)</p>
+                    <p>BatteryVoltage (INT)</p>
+                    <p>LastRechargeDate (DATE)</p>
+                    <p>RechargeCycle (INT)</p>
+                </div>
+            </div>
             <br />
             <h4>Step 2 (Project Setup):</h4>
             <hr style="background-color: white;" />
@@ -88,6 +110,13 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
                         href="https://www.sharepointcafe.net/2021/04/secret-manager-in-dotnet-core.html#:~:text=Secret%20Manager%20is%20a%20feature%20in%20ASP.Net%20Core,database%20password%20will%20not%20be%20shared%20with%20them.">here.</a>
                 </li>
             </ol>
+            <pre class="codeBlockPanel mx-5"><code>
+// Example connection string code
+"ConnectionStrings": {
+    "DatabaseName": "Enter connection String here"
+    }
+            </code></pre>
+            <br />
             <h4>Step 5 (Generate Models and Context from DB):</h4>
             <hr style="background-color: white;" />
             <p>I then generated the models and context class using the database. I first go to the "Package Manager
@@ -145,6 +174,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
                 </div>
                 <div class="col-md-7">
                     <pre class="codeBlockPanel"><code>
+// Create BatteryTrackerUser in Register.cs
 var batteryTrackerUser = new BatteryTrackerUser { AspNetUserId = userId };
 _batteryContext.BatteryTrackerUsers.Add(batteryTrackerUser);
 await _batteryContext.SaveChangesAsync();
