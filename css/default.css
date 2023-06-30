@@ -17,10 +17,24 @@ body{
 }
 .blackPanel{
     border-radius:10px; 
-    padding:10px; 
+    padding:20px 20px 20px 30px; 
     margin: 10px; 
     background-color: rgb(41, 46, 52, .8);
     color:white;
+   
+}
+.blackPanelWithMorePadding{
+    border-radius:10px; 
+    padding:40px 80px 20px 80px; 
+    margin: 10px; 
+    background-color: rgb(41, 46, 52, .8);
+    color:white;
+}
+
+@media (max-width: 978px) {
+    .blackPanelWithMorePadding {
+      padding:20px 20px 20px 20px;
+    }
 }
 
 a{
@@ -44,6 +58,7 @@ a:hover{
     border-radius: 10px;
     text-align:left;
     padding-left:10px;
+    margin:10px;
 }
 
 .formatedImage{
@@ -54,3 +69,13 @@ a:hover{
 .smallListSpacing p{
     line-height: 5px;
 }
+
+.paragraphText{
+    text-indent: 30px;
+}
+
+.whiteLine{
+    background-color: white;
+    margin:5px;
+}
+

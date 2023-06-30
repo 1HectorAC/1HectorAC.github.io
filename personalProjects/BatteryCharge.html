@@ -21,84 +21,94 @@
             <h4>Battery Charge Blog (ASP.NET Core MVC)</h4>
         </div>
     </div>
-    <div class="container text-center">
-        <div class="blackPanel">
-            <h4>Summary</h4>
-            <hr style="background-color: white;" />
-            <p>
-                This website is about tracking the charge of old device batteries to maintain their lifespan. Users can
-                log in to add devices and see which devices need to be recharged.. Link to the git hub repositiory <a
-                    href="https://github.com/1HectorAC/BatteryCharge">here.</a>
-            </p>
-        </div>
+    <div class="container">
+
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Summary</h4>
+                    <hr style="background-color: white;" />
+                    <p class="paragraphText">
+                        This website is about tracking the charge of old device batteries to maintain their lifespan.
+                        Users can
+                        log in to add devices and see which devices need to be recharged. Link to the git hub
+                        repositiory <a href="https://github.com/1HectorAC/BatteryCharge">here.</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div class="blackPanel">
                     <h4>Goal</h4>
                     <hr style="background-color: white;" />
-                    <p>The goal was to get more familiar with ASP.NET Core MVC web framework. I have some experience
+                    <p class="paragraphText">The goal was to get more familiar with ASP.NET Core MVC web framework. I
+                        have some experience
                         with ASP.NET MVC so most of my focus was on understanding some of the changes between the two.
                     </p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="blackPanel">
                     <h4>Tools</h4>
                     <hr style="background-color: white;" />
-                    <p>
+                    <p class="paragraphText">
                         The main language I used was C#. ASP.NET Core MVC web framework was used and Visual Studio 2021
                         was my IDE. I also use SQL Server with SQL Management Studio.
                     </p>
                 </div>
             </div>
         </div>
-        <div class="blackPanel">
+        <div class="blackPanelWithMorePadding">
             <h4>Step 1 (Database):</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <div class="row">
-                <div class="col-md-8">
-                    <p>I used a database first approach so one of my first task was just setting up a database. The
+                <div class="col-md-5">
+                    <p class="paragraphText">I used a database first approach so one of my first task was just setting
+                        up a database. The
                         database was
                         pretty simple with just 2 table. The two tables were BatteryTrackerUser and Device. The tables
                         are simple enough were I don't really need a diagram to explain them so I made a basic
-                        description of their columns.</p>
-                    <p>After that I used SQL management studio to make the database.</p>
+                        description of their columns. After that I used SQL management studio to make the database.</p>
                 </div>
-                <div class="col-md-4 smallListSpacing text-start">
-                    <h5>Tables:</h5>
-                    <h5><u>BatteryTrackerUser:</u></h5>
-                    <p>Name (INT PRIMARY KEY)</p>
-                    <p>AspNetUserId (NVARCHAR)</p>
-                    <h5><u>Device:</u></h5>
-                    <p>Id (INT PRIMARY KEY)</p>
-                    <P>OwnerId (INT FOREIGN KEY)</P>
-                    <p>Name (NVARCHAR)</p>
-                    <P>BatteryReplacementCount (INT)</P>
-                    <p>DateBought (DATE)</p>
-                    <p>BatteryCapacity (INT)</p>
-                    <p>BatteryVoltage (INT)</p>
-                    <p>LastRechargeDate (DATE)</p>
-                    <p>RechargeCycle (INT)</p>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+// TABLES
+Device:                          BatteryTrackerUser:
+   Id (INT PRIMARY KEY)             Name (INT PRIMARY KEY)
+   OwnerId (INT FOREIGN KEY)        kAspNetUserId (NVARCHAR)
+   Name (NVARCHAR)
+   BatteryReplacementCount (INT)
+   DateBought (DATE)
+   BatteryCapacity (INT)
+   BatteryVoltage (INT)
+   LastRechargeDate (DATE)
+   RechargeCycle (INT)
+                    </code></pre>
+
                 </div>
             </div>
-            <br />
+            <br /><br />
+
             <h4>Step 2 (Project Setup):</h4>
-            <hr style="background-color: white;" />
-            <p>On visual studio I created a project with the template "ASP.NET core Web App (MVC)." I also set the
+            <hr class="whiteLine" />
+            <p class="paragraphText">On visual studio I created a project with the template "ASP.NET core Web App
+                (MVC)." I also set the
                 Authentication type to "Individual Account."</p>
-            <br />
+            <br /><br />
+
             <h4>Step 3 (Nuget Packages):</h4>
-            <hr style="background-color: white;" />
-            <p>The next step was to download all the necessary Nuget packages. With Visual Studio I can just select the
+            <hr class="whiteLine" />
+            <p class="paragraphText">The next step was to download all the necessary Nuget packages. With Visual Studio
+                I can just select the
                 "Nuget Packet Manager" option in the top "Tools" bar to add them. With the Nuget Packet Manager command
                 prompt I can just run the following command to get what I need:</p>
-            <pre class="codeBlockPanel mx-5"><code>
+            <pre class="codeBlockPanel"><code>
 Install-Package Microsoft.EntityFrameworkCore.Tools
 Install-Package Microsoft.EntityFrameworkCore.SqlServer
             </code></pre>
-            <br />
+            <br /><br />
+
             <h4>Step 4 (Setup Connection String):</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <p>Step to take for setting up connection string:</p>
             <ol class="text-start">
                 <li>On Visual Studio open "Server Explorer" (Can be accessed from top panels.)</li>
@@ -110,27 +120,32 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
                         href="https://www.sharepointcafe.net/2021/04/secret-manager-in-dotnet-core.html#:~:text=Secret%20Manager%20is%20a%20feature%20in%20ASP.Net%20Core,database%20password%20will%20not%20be%20shared%20with%20them.">here.</a>
                 </li>
             </ol>
-            <pre class="codeBlockPanel mx-5"><code>
+            <pre class="codeBlockPanel"><code>
 // Example connection string code
 "ConnectionStrings": {
     "DatabaseName": "Enter connection String here"
     }
             </code></pre>
-            <br />
+            <br /><br />
+
             <h4>Step 5 (Generate Models and Context from DB):</h4>
-            <hr style="background-color: white;" />
-            <p>I then generated the models and context class using the database. I first go to the "Package Manager
+            <hr class="whiteLine" />
+            <p class="paragraphText">I then generated the models and context class using the database. I first go to the
+                "Package Manager
                 Console" and enter the following command to generate what I need:</p>
-            <pre class="codeBlockPanel mx-5"><code>
+            <pre class="codeBlockPanel"><code>
 Scaffold-DbContext Name=BatteryDBConnection Microsoft.EntityFrameworkCore.SqlServer -Tables 
         BatteryTrackerUser, Device -OutputDir Models -ContextDir Models -Context BatteryContext
             </code></pre>
-            <p>This will generate 2 tables (BatteryTrackerUser and Device) and a model context (BatteryContext) in the
+            <p class="paragraphText">This will generate 2 tables (BatteryTrackerUser and Device) and a model context
+                (BatteryContext) in the
                 Models folder.</p>
-            <br />
+            <br /><br />
+
             <h4>Step 6 (Edit User Registration):</h4>
-            <hr style="background-color: white;" />
-            <p>I have a separate user table called "BatteryTrackerUser" that will need to be created at the same time
+            <hr class="whiteLine" />
+            <p class="paragraphText">I have a separate user table called "BatteryTrackerUser" that will need to be
+                created at the same time
                 the user makes an account. My intention in doing this was to keep some of the auto generated user stuff
                 separated from my application. Now since the auto generated user files are abstracted away I will need
                 to generate the files I need first. Here the are step to do this:</p>
@@ -142,20 +157,17 @@ Scaffold-DbContext Name=BatteryDBConnection Microsoft.EntityFrameworkCore.SqlSer
                 <li>Checkmark the "Register" page. I also added a few other to edit styling.</li>
                 <li>Done. The register page is now generated.</li>
             </ol>
-            <div class="row">
-                <div class="col-md-12">
-                    <p>I then needed to add the database context I created to the register page in order to have access
-                        to the "BatteryTrackerUser" table. A few things will need to be edited to make this work.
-                        I first went to the register.cs file (located in Areas/Identy/Pages/Account/Register file with
-                        the cs file being a dropdown from register.cshtml file.) I then Added the "BatteryContext" at
-                        the top of the page which is setup though Dependency Injection. This involves adding a private
-                        readonly BattteryContext variable, BatteryContext parameter to RegisterModels method, and set
-                        private BatteryContext variable to passed in parameter. Thirdly I removed some of the connection
-                        code in "BatteryContext" and move it to the Program.cs file. Section to remove and add shown
-                        shown here:</p>
-                </div>
-                <div class="col-md-12">
-                    <pre class="codeBlockPanel mx-5"><code>
+            <p class="paragraphText">I then needed to add the database context I created to the register page in
+                order to have access
+                to the "BatteryTrackerUser" table. A few things will need to be edited to make this work.
+                I first went to the register.cs file (located in Areas/Identy/Pages/Account/Register file with
+                the cs file being a dropdown from register.cshtml file.) I then Added the "BatteryContext" at
+                the top of the page which is setup though Dependency Injection. This involves adding a private
+                readonly BattteryContext variable, BatteryContext parameter to RegisterModels method, and set
+                private BatteryContext variable to passed in parameter. Thirdly I removed some of the connection
+                code in "BatteryContext" and move it to the Program.cs file. Section to remove and add shown
+                shown here:</p>
+            <pre class="codeBlockPanel"><code>
 //Removed from BatteryContext.cs
  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =&gt; 
         optionsBuilder.UseSqlServer("Name=BatteryDBConnection");
@@ -165,26 +177,21 @@ var connectionString = builder.Configuration.GetConnectionString("BatteryDBConne
 builder.Services.AddDbContext<BatteryContext>(options =&gt; options.UseSqlServer(connectionString));
 builder.Services.AddDbContext<ApplicationDbContext>(options =&gt; options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-                    </code></pre>
-                </div>
-                <div class="col-md-5">
-                    <br />
-                    <p>Finally I created a "BatteryTrackerUser" in the register page. In the register page we go to the
-                        "OnPostAsync" method and before the email sender send an email we add the following:</p>
-                </div>
-                <div class="col-md-7">
-                    <pre class="codeBlockPanel"><code>
+            </code></pre>
+            <p class="paragraphText">Finally I created a "BatteryTrackerUser" in the register page. In the
+                register page we go to the
+                "OnPostAsync" method and before the email sender send an email we add the following:</p>
+            <pre class="codeBlockPanel"><code>
 // Create BatteryTrackerUser in Register.cs
 var batteryTrackerUser = new BatteryTrackerUser { AspNetUserId = userId };
 _batteryContext.BatteryTrackerUsers.Add(batteryTrackerUser);
 await _batteryContext.SaveChangesAsync();
-                    </code></pre>
-                </div>
-            </div>
-            <p>With that the BatteryTrackerUser is created on register of a user.</p>
-            <br />
+            </code></pre>
+            <p class="paragraphText">With that the BatteryTrackerUser is created on register of a user.</p>
+            <br /><br />
+
             <h4>Step 7 (Scaffolding Device CRUD):</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <p>The next step is to scaffold CRUD pages for a device. Steps:</p>
             <ol class="text-start">
                 <li>Right click on controller folder.</li>
@@ -195,32 +202,39 @@ await _batteryContext.SaveChangesAsync();
                 </li>
                 <li>Done. CRUD pages should be generated.</li>
             </ol>
-            <br />
+            <br /><br />
+
             <h4>Step 8 (View Restrictions of Devices):</h4>
-            <hr style="background-color: white;" />
-            <p>I then needed to make sure devices can only be handled by logged in users and that they cant access each
+            <hr class="whiteLine" />
+            <p class="paragraphText">I then needed to make sure devices can only be handled by logged in users and that
+                they cant access each
                 others. I first restrict device page access to logged in users. This can be done by adding the Authorize
                 attribute above every method involving a device. I then dealt with users restricted to just their own
                 devices. To accomplish this I added a quick check in most device method to compare the id of the current
                 user with the id owner of the device it is trying to access. It will then redirect if there is a
                 mismatch. Example shown:</p>
-            <pre class="codeBlockPanel mx-5"><code>
+
+            <pre class="codeBlockPanel"><code>
 // User check in DevicesController.cs
 var deviceUserId = _context.Devices.Include(d => d.Owner).First(i => i.Id == id).Owner!.AspNetUserId;
 var loggedInUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 if (loggedInUserId != deviceUserId)
         return RedirectToAction(nameof(Index));
             </code></pre>
-            <p>Similar checks were also added to view and create devices but were a bit more simpler.</p>
-            <br />
+            <p class="paragraphText">Similar checks were also added to view and create devices but were a bit more
+                simpler.</p>
+            <br /><br />
+
             <h4>Step 9 (ChargeTimes Page):</h4>
-            <hr style="background-color: white;" />
-            <p>The last main feature is the "ChargeTimes" page. This is a page that will inform the user about if a
+            <hr class="whiteLine" />
+            <p class="paragraphText">The last main feature is the "ChargeTimes" page. This is a page that will inform
+                the user about if a
                 device they own needs to be recharged. The page displays the days since the last charge (current date -
                 last charge date) as well as the time span the battery can last without charge (Note: last charge date
                 and charge time span are both fields for a device). It will also color coat the text red if the days
                 since last charge is larger than the time span.</p>
-            <p>The first part is to setup a view model for the necessary data since I don’t need all the data of a
+            <p class="paragraphText">The first part is to setup a view model for the necessary data since I don’t need
+                all the data of a
                 device and I will also need another field for days since last change(which isn't in the Device Model.)
                 Steps:</p>
             <ol class="text-start">
@@ -231,14 +245,13 @@ if (loggedInUserId != deviceUserId)
                 <li>Add integer DaysSinceLastRecharge field to RechargeDeviceDetails Model.</li>
                 <li>Model done.</li>
             </ol>
-
-            <p>Now that I have the ViewModel done I can setup the ChargeTimes page. I began by copying the layout of the
+            <p class="paragraphText">Now that I have the ViewModel done I can setup the ChargeTimes page. I began by
+                copying the layout of the
                 index page in the DeviceController. The Device index page and the ChargeTimes page are similar in that
                 they both display a list of a model type. The big difference is setting up the data for the
                 RechargeDeviceDetails model in ChargeTimes. This is done with a Linq query where most of the values are
                 passed by a device and the days since last charge is calcualted. Example of this code:</p>
-
-            <pre class="codeBlockPanel mx-5"><code>
+            <pre class="codeBlockPanel"><code>
 // Section of ChargeTimes method in DevicesController
 var currentDateDays = DateOnly.FromDateTime(DateTime.Today).DayNumber;
 
@@ -249,18 +262,21 @@ var batteryChargeDetails = batteryContext.Select(
         RechargeCycle = i.RechargeCycle, 
         DaysSinceLastRecharge = currentDateDays - DateOnly.FromDateTime(i.LastRechargeDate).DayNumber });
             </code></pre>
-            <p>I also wanted to briefly show how the text becomes colored red when it needs a charge. This one is just a
+            <p class="paragraphText">I also wanted to briefly show how the text becomes colored red when it needs a
+                charge. This one is just a
                 simple if statement that will add a class that color coats the text if added. Example:</p>
-            <pre class="codeBlockPanel mx-5"><code>
+            <pre class="codeBlockPanel"><code>
 // Section in ChargeTimes.cshtml
 &lt;h2 class="@(item.DaysSinceLastRecharge &gt;= item.RechargeCycle ? "alertText" : "" )"&gt;
     @item.DaysSinceLastRecharge / @item.RechargeCycle days
 &lt;/h2&gt;
             </code></pre>
-            <br />
+            <br /><br />
+
             <h4>Final Thoughts:</h4>
-            <hr style="background-color: white;" />
-            <p>My previously experience with ASP.Net MVC has really made using ASP.Net Core MVC a lot easier. Many of
+            <hr class="whiteLine" />
+            <p class="paragraphText">My previously experience with ASP.Net MVC has really made using ASP.Net Core MVC a
+                lot easier. Many of
                 the concepts were the same but a lot of how to set things up has changed. For example, some of the
                 scaffolding has become more command line oriented to use, when you use the auto generated account stuff
                 the files aren't there by default, configuration setting have moved files, and etc. I wanted to also
