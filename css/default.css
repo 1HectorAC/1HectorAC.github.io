@@ -15,6 +15,14 @@ body{
     text-decoration: none;
     color:white;
 }
+.whitePanel{
+    border-radius:10px; 
+    padding:20px 20px 20px 30px; 
+    margin: 10px; 
+    background-color: rgb(207, 217, 231);
+    color:rgb(23, 25, 29);
+}
+
 .blackPanel{
     border-radius:10px; 
     padding:20px 20px 20px 30px; 
