@@ -12,42 +12,49 @@
 
 <body>
     <div class="title text-center">
-        <h1><a href="./index.html">Programming Portfolio</a></h1>
+        <h1><a href="../index.html">Programming Portfolio</a></h1>
         <h5><i>By Hector Acosta-Cervantes</i></h5>
     </div>
+    <div class="blackBar">
+        <a href="../index.html">Home</a> >
+        <a href="../personalProjectsPage.html">Personal Projects (Web Development)</a> >
+        MindMovment2 Blog
+    </div>
+
     <div class="container text-center">
-        <div class="blackPanel">
-            <h5><a href="../personalProjectsPage.html">Personal Projects (Web Development)</a></h5>
+        <div class="whitePanel">
             <h4>MindMovment2 Blog (HTML, CSS, Javascript)</h4>
         </div>
     </div>
 
-    <div class="container text-center">
-        <div class="blackPanel">
-            <h4>Summary</h4>
-            <hr style="background-color: white;" />
-            <p>
-                Mind Movement 2 is a website with a few math and memory related games. Each game will have various
-                settings to adjust the difficulty and an end game screen to display how the user did. There are 3 games
-                in total. Below I will talk about some of the key features starting with some of the general ones and
-                then moving to a few game specific ones. Link to the git hub repositiory <a href="https://github.com/1HectorAC/mindMovement2">here.</a>
-            </p>
-        </div>
+    <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Summary</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        Mind Movement 2 is a website with 3 math or memory related games. Each game will have various
+                        settings to adjust the difficulty and an end screen to display how the user did. Link to the git
+                        hub repositiory <a href="https://github.com/1HectorAC/mindMovement2">here.</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div class="blackPanel">
                     <h4>Goal</h4>
-                    <hr style="background-color: white;" />
-                    <p>The goal I had when making this website is to get more familiar with Javascript. I wanted to test
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">The goal I had when making this website is to get more familiar with
+                        Javascript. I wanted to test
                         some of
                         the dynamic capabilities of using Javascript to edit html elements.</p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="blackPanel">
                     <h4>Tools</h4>
-                    <hr style="background-color: white;" />
-                    <p>
+                    <hr class="paragraphText" />
+                    <p class="paragraphText">
                         This website used HTML, CSS, and Javascript. It also uses a few Javascript libraries like
                         Bootstrap and
                         jQuery.
@@ -56,10 +63,11 @@
             </div>
         </div>
 
-        <div class="blackPanel">
+        <div class="blackPanelWithMorePadding">
             <h4>Step 1 (Game Section Transitions):</h4>
-            <hr style="background-color: white;" />
-            <p>One of the first key aspects I needed to figure out was transition content sections (settings, playing,
+            <hr class="whiteLine" />
+            <p class="paragraphText">One of the first key aspects I needed to figure out was transition content sections
+                (settings, playing,
                 and game over.) My initial idea was to delete and create the sections using Javascript as needed using
                 forms. The problem I ran into was that this would put too much of the html in Javascript. Setting up a
                 bunch of html elements in Javascript made it a bit had to read/edit and also felt like Javascript should
@@ -68,7 +76,7 @@
                 a form. I would then hide the sections that weren't being used yet. After that I would use Javascript to
                 hide/show sections depending on the form being submitted.
             </p>
-            <p>
+            <p class="paragraphText">
                 For example, let us say the setting section is the only section showing right now. When you hit the play
                 button a form is submitted, the Javascript will handle it based on the forms id (which would be a
                 setting form), and after some work is done the setting section will become hidden and the play
@@ -76,9 +84,9 @@
                 Here is some sample code on how this works:
             </p>
             <div class="row">
-                <div class="col-md-6">
-                    <p>Html Part:</p>
+                <div class="col-md-7">
                     <pre class="codeBlockPanel"><code>
+//Html Part:
 &lt;form id="settingSection"&gt;
     //setting content
     &lt;input type="submit" value="Play" class="btn customButton"&gt;
@@ -90,10 +98,10 @@
                     </code></pre>
 
                 </div>
-                <div class="col-md-6">
-                    <p>Javascript Part:</p>
+                <div class="col-md-5">
                     <pre class="codeBlockPanel"><code>
-$("form#settingSection").submit(function (e) {
+//Javascript Part:
+$("form#settingSection").submit(function(e){
 	...
 	$('#settingSection').hide();
     	$('#gameSection').show();
@@ -101,13 +109,13 @@ $("form#settingSection").submit(function (e) {
                     </code></pre>
                 </div>
             </div>
-            <br />
+            <br /><br />
             <h4>Step 2 (Settings):</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
-                    <br />
-                    <p>Another part that every game will share is how setting are setup. This part is pretty simple. On
+                    <p class="paragraphText">Another part that every game will share is how setting are setup. This part
+                        is pretty simple. On
                         the setting section there will be dropdown buttons for various settings. When the enter button
                         is pressed and the form is submitted then the Javascript part handling that specific form will
                         set the values of the dropdown to a variable that will be used later. Example code:</p>
@@ -129,17 +137,19 @@ settingName = #("#setting-name").val();
                     </code></pre>
                 </div>
             </div>
-            <br />
+            <br /><br />
             <h4>Step 3 (Basic Operations game):</h4>
-            <hr style="background-color: white;" />
-            <p>The first game I worked on was a basic math operations game. In the game, the user chooses a math
+            <hr class="whiteLine" />
+            <p class="paragraphText">The first game I worked on was a basic math operations game. In the game, the user
+                chooses a math
                 operation (+,-, or *), total problems, and a number range(0-99.) After the settings are selected the
                 user is given a specified number of math problems using the math operation selected. A math problem is
                 shown with a textbox for an answer. When the enter button is selected the next problem is shown until
                 the game ends. At the end the users is shown how well they did.</p>
             <div class="row">
-                <div class="col-md-5">
-                    <p>The most significant part of this game is how I setup and manage the math problems. I initially
+                <div class="col-md-12">
+                    <p class="paragraphText">The most significant part of this game is how I setup and manage the math
+                        problems. I initially
                         considered just generating math problems as they are being answered one after another but I also
                         wanted the user to be able to review their answers and this approach didn’t handle that. I then
                         decided to generate all the math problems beforehand and store them in an array called
@@ -148,9 +158,9 @@ settingName = #("#setting-name").val();
                         The users answer gets pushed to this list as they are being entered. With these two array I
                         would now be able to track and show how well the user did.</p>
                 </div>
-                <div class="col-md-7">
-                    <p>How math problems are generated in Javascript:</p>
+                <div class="col-md-12">
                     <pre class="codeBlockPanel"><code>
+// How math problems are generated in Javascript:
 // maxNumberOption and minNumberOption are reletated to length of number
 function generateProblems(length, operation) {
     var answers = [];
@@ -165,47 +175,47 @@ function generateProblems(length, operation) {
 }
                     </code></pre>
                 </div>
-                <div class="col-md-6">
-                    <br />
-                    <p>I also added a timer to measure how long the user takes to answer all questions. When the game
+                <div class="col-md-5">
+                    <p class="paragraphText">I also added a timer to measure how long the user takes to answer all
+                        questions. When the game
                         starts a timer is set. There is a "currentTime" variable that is incremented and displayed every
                         1 sec. When the game ends the timer is stopped and with the "currentTime" variable we can
                         display the time at the end.</p>
                 </div>
-                <div class="col-md-6">
-                    <p>How the timer worked in javascript:</p>
-                    <pre class="codeBlockPanel"><ocde>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+// How the timer worked in javascript:
 var timer;
 …
 // start timer
 timer = setInterval(function () {
-     currentTime++; $('.timeDisplay').text(currentTime); }, 1000
-    );
+    currentTime++; $('.timeDisplay').text(currentTime);}, 1000);
 // clear timer
 clearInterval(timer);
-                    </ocde></pre>
+                    </code></pre>
                 </div>
             </div>
-            <br />
+            <br /><br />
             <h4>Step 4 (Chars Memory game):</h4>
-            <hr style="background-color: white;" />
-            <p>The second game is a string memory game. In the game, a string of random characters are generated and
+            <hr class="whiteLine" />
+            <p class="paragraphText">The second game is a string memory game. In the game, a string of random characters
+                are generated and
                 shown. After a few seconds the string disappears and a text box appears. The user must then type the
                 string into the text box and hit the enter button. The user is then shown if they were correct and the
                 process continues with a longer string each round until they lose. There is also a game over screen with
                 results at the end.</p>
             <div class="row">
-                <div class="col-md-5">
-                    <br />
-                    <p>One important aspect of the game is how the strings are being generated. The first thing I did
+                <div class="col-md-12">
+                    <p class="paragraphText">One important aspect of the game is how the strings are being generated.
+                        The first thing I did
                         was make a variable that will hold the random string called "random_string." After than I would
                         generate random characters to append to this string. Random number can be generated using
                         Math.random method with its range limited to lower case "a" to "z" and this can be repeated with
                         a for loop.</p>
                 </div>
-                <div class="col-md-7">
-                    <p>How string are generated:</p>
+                <div class="col-md-12">
                     <pre class="codeBlockPanel"><code>
+// How string are generated:
 function generate_random_string(string_length) {
     let random_string = "";
     let random_ascii;
@@ -221,7 +231,8 @@ function generate_random_string(string_length) {
                     </code></pre>
                 </div>
                 <div class="col-md-12">
-                    <p>Another important aspect was showing the correctness of an answer. After a user enters an answer
+                    <p class="paragraphText">Another important aspect was showing the correctness of an answer. After a
+                        user enters an answer
                         I wanted to not only show the actual answer with the user answer below it but I also wanted to
                         highlight how much of the users string was correct with color. I wanted to color the user
                         answers green based on how accurate it was and when the string starts to differ then it color
@@ -232,9 +243,9 @@ function generate_random_string(string_length) {
                         point with one side being the correct part and the other being the incorrect part. I already had
                         two html elements with their color already adjusted so I just set the text after there.</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <pre class="codeBlockPanel"><code>
-// how answer displayed
+// How answer displayed
 function DifferenceIndex(s1, s2) {
     var index = 0;
     var shortestLength = (s1.length &lt; s2.length) ? s1.length : s2.length;
@@ -248,9 +259,9 @@ function DifferenceIndex(s1, s2) {
 }
                     </code></pre>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <pre class="codeBlockPanel"><code>
-//set up color
+//Set up color
 if (stringAnswer.length &lt; stringProblem.length)
 	 stringAnswer += "_".repeat(stringProblem.length - stringAnswer.length);
  indexPoint = DifferenceIndex(stringAnswer, stringProblem);
@@ -261,15 +272,18 @@ $('#answerStringDisplay2').text(wrongSection);
                     </code></pre>
                 </div>
             </div>
+            <br /><br />
             <h4>Step 5 (Color Direction Game):</h4>
-            <hr style="background-color: white;" />
-            <p>The final game is a color placement memorizing game. Boxes with colors are shown for a few seconds and
+            <hr class="whiteLine" />
+            <p class="paragraphText">The final game is a color placement memorizing game. Boxes with colors are shown
+                for a few seconds and
                 then they turn black. At the top of the screen a random color will appear and the user has to hit the
                 box that represents the color shown. The game when the timer ends or the user misses a certain number of
                 times.</p>
             <div class="row">
                 <div class="col-md-6">
-                    <p>An important aspect of this game is the randomization of the initial coloring of boxes. I can't
+                    <p class="paragraphText">An important aspect of this game is the randomization of the initial
+                        coloring of boxes. I can't
                         have the same boxes have the same colors each game since it would make the game too easy after
                         one play. In the Javascript, color boxes are represented as an array of strings with each color
                         being and element in the array. The index will represent which box it is associated with. So to
@@ -286,8 +300,9 @@ function ShuffleArray(array) {
 }
                     </code></pre>
                 </div>
-                <div class="col-md-6">
-                    <p>Another important part of the game is how answer are check for correctness. So the first thing it
+                <div class="col-md-5">
+                    <p class="paragraphText">Another important part of the game is how answer are check for correctness.
+                        So the first thing it
                         involves is generating a random color. Now since the colors are represented in an array then I
                         would just need to get a random number from 0 to the total colors used. This can be done with
                         the Math.random method. Then I would need a way to handle pressing the boxes and checking if it
@@ -298,7 +313,7 @@ function ShuffleArray(array) {
                         if the box pressed was correct.
                     </p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <pre class="codeBlockPanel"><code>
 // Get random color
 currentProblem = Math.floor(Math.random() * numberOfColors);
@@ -316,9 +331,9 @@ $('.gameBtn2').click(function(){
                     </code></pre>
                 </div>
             </div>
-            <br/>
+            <br /><br />
             <h4>Last Thoughts:</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <p>An important idea I tried to keep in mind was separating logic from content. Something like this is easy
                 to forget when you just work on html and Javascript. This sort of thing just make the code easier to
                 read and understand. In the future I might also want to think about how I setup variables in Javascript

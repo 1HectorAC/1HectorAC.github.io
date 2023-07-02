@@ -7,57 +7,65 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/default.css">
-    <title> MindMovment2 Blog</title>
+    <title> Money-Saver-Calculator Blog</title>
 </head>
 
 <body>
     <div class="title text-center">
-        <h1><a href="./index.html">Programming Portfolio</a></h1>
+        <h1><a href="../index.html">Programming Portfolio</a></h1>
         <h5><i>By Hector Acosta-Cervantes</i></h5>
     </div>
+    <div class="blackBar">
+        <a href="../index.html">Home</a> >
+        <a href="../personalProjectsPage.html">Personal Projects (Web Development)</a> >
+        Money-Saver-Calculator Blog
+    </div>
     <div class="container text-center">
-        <div class="blackPanel">
-            <h5><a href="../personalProjectsPage.html">Personal Projects (Web Development)</a></h5>
+        <div class="whitePanel">
             <h4>Money-Saver-Calculator Blog (React.js)</h4>
         </div>
     </div>
 
-    <div class="container text-center">
-        <div class="blackPanel">
-            <h4>Summary</h4>
-            <hr style="background-color: white;" />
-            <p>
-                This is a website about saving money. There are 3 pages with a different money spending calculator. Each
-                page will take in input numbers and produces an output value(s) as a result. I will talk about some of
-                the key features I worked on below. Link to the git hub repositiory <a
-                    href="https://github.com/1HectorAC/mindMovement2">here.</a>
-            </p>
-        </div>
+    <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="blackPanel">
-                    <h4>Goal</h4>
-                    <hr style="background-color: white;" />
-                    <p>My main goal is to get more familiar with the code and concepts involved in react.js.</p>
+                    <h4>Summary</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        This is a website about saving money. There are 3 pages with a different money spending
+                        calculator. Each
+                        page will take in input numbers and produces an output value(s) as a result. Link to the git hub
+                        repositiory <a href="https://github.com/1HectorAC/mindMovement2">here.</a>
+                    </p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Goal</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">My main goal is to get more familiar with the code and concepts involved in
+                        react.js.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div class="blackPanel">
                     <h4>Tools</h4>
-                    <hr style="background-color: white;" />
-                    <p>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
                         Basic web languages (HTML, CSS, Javascript) and the Javascript library react.js. Node.js is also
                         used to run it.
                     </p>
                 </div>
             </div>
         </div>
-        <div class="blackPanel">
+        <div class="blackPanelWithMorePadding">
             <h4>Step 1 (Setup):</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-12">
-                    <p>To quickly get react running there were a few thing that needed to be installed. I personally ran
+                    <p class="paragraphText">To quickly get react running there were a few thing that needed to be
+                        installed. I personally ran
                         it on
                         windows using Windows Linux Subsystem. Here is a link that was useful in setting everything up.
                         <a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/react-on-wsl">Click
@@ -65,7 +73,8 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <p>After everything is installed, I opened a wls terminal and created the project using the command
+                    <p class="paragraphText">After everything is installed, I opened a wls terminal and created the
+                        project using the command
                         shown. It will generate all the necessary files to get started.</p>
                 </div>
                 <div class="col-md-6">
@@ -74,8 +83,7 @@ npx create-react-app money-saver-calculator
                     </code></pre>
                 </div>
                 <div class="col-md-6">
-                    <br />
-                    <p>Then you can just run the code below to start the server:</p>
+                    <p class="paragraphText">Then you can just run the code below to start the server:</p>
                 </div>
                 <div class="col-md-6">
                     <pre class="codeBlockPanel"><code>
@@ -83,17 +91,18 @@ npm start
                     </code></pre>
                 </div>
                 <div class="col-md-12">
-                    <p>I also made a "pages" and "components" folder in the home directory. Pages will contain web pages
+                    <p class="paragraphText">I also made a "pages" and "components" folder in the home directory. Pages
+                        will contain web pages
                         and components will contain section that can be reused.</p>
                 </div>
             </div>
-            <br />
+            <br /><br />
             <h4>Step 2 (Routes):</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
-                    <br />
-                    <p>One of the first parts I worked on was the path routing. I pretty much just went to the App.js
+                    <p class="paragraphText">One of the first parts I worked on was the path routing. I pretty much just
+                        went to the App.js
                         file and added the routes. The code was pretty simple. Example code of the routing is shown.
                         Every time a new route is needed it just involves making another route element with a
                         "path" and "element" fields. The "element" field in the code just refers to a components that is
@@ -102,7 +111,8 @@ npm start
                 <div class="col-md-6">
                     <pre class="codeBlockPanel"><code>
 // Routes in App.js file.
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { BrowserRouter,Routes,Route } 
+    from 'react-router-dom';
 import Page1 from './pages/Page1';
 import Page2 from './pages/Page2';
 
@@ -111,8 +121,8 @@ function App() {
     &lt;div className="App"&gt;
       &lt;BrowserRouter&gt;
         &lt;Routes&gt;
-            &lt;Route index element={&lt;Page1/&gt;} /&gt;
-            &lt;Route path="/Page2" element={&lt;Page2/&gt;} /&gt;
+            &lt;Route index element={&lt;Page1/&gt;}/&gt;
+            &lt;Route path="/Page2" element={&lt;Page2/&gt;}/&gt;
         &lt;/Routes&gt;
       &lt;/BrowserRouter&gt;
     &lt;/div&gt;
@@ -121,18 +131,18 @@ function App() {
                     </code></pre>
                 </div>
             </div>
-            <br />
+            <br /><br />
             <h4>Step 3 (Navbar):</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <div class="row">
-                <div class="col-md-7">
-                    <br />
-                    <p>The next part I will mention is how the nav bar was setup. This part involves wrapping the routes
+                <div class="col-md-6">
+                    <p class="paragraphText">The next part I will mention is how the nav bar was setup. This part
+                        involves wrapping the routes
                         in another "route" tag with a closing tag. This "route" tag will link to the component that
                         contains the nav bar. In this case I called it "Layout" and its path is set to "/". Example
                         shown.</p>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <pre class="codeBlockPanel"><code>
 // Navbar setup in App.js file.
 &lt;Routes&gt;
@@ -144,17 +154,18 @@ function App() {
                     </code></pre>
                 </div>
                 <div class="col-md-12">
-                    <p>I should also mention that the Layout page will also need a "&lt;Outlet/&gt;" tag at the end of
+                    <p class="paragraphText">I should also mention that the Layout page will also need a
+                        "&lt;Outlet/&gt;" tag at the end of
                         the components return with its related library reference at the top. </p>
                 </div>
             </div>
-            <br />
+            <br /><br />
             <h4>Step 4 (Components):</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
-                    <br />
-                    <p>I wanted to show a quick example of separating components given that it is a key part of react.
+                    <p class="paragraphText">I wanted to show a quick example of separating components given that it is
+                        a key part of react.
                         Here is an example of making a component using Javascript arrow function:</p>
                 </div>
                 <div class="col-md-6">
@@ -171,7 +182,7 @@ export default Test;
                     </code></pre>
                 </div>
                 <div class="col-md-6">
-                    <p>Then you can import the component in another file. Code shown:</p>
+                    <p class="paragraphText">Then you can import the component in another file. Code shown:</p>
                 </div>
                 <div class="col-md-6">
                     <pre class="codeBlockPanel"><code>
@@ -179,25 +190,25 @@ import Test from '../pages/Test';
                     </code></pre>
                 </div>
                 <div class="col-md-12">
-                    <p>Th code is pretty similar if done inline. You just don’t need to export it.
+                    <p class="paragraphText">Th code is pretty similar if done inline. You just don’t need to export it.
                         This sort of idea is applied throughout the application to not only separate the code of pages
                         but also to separate reusable part. It can also be used to just separate different section.</p>
                 </div>
             </div>
-            <br />
+            <br /><br />
             <h4>Step 5 (Calculators):</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-12">
-                    <p>There are 3 calcualtors on this website. The first is about calculating the saving from a
+                    <p class="paragraphText">There are 3 calcualtors on this website. The first is about calculating the
+                        saving from a
                         percentage off sale. The second one involves calculating the tip cost based on a certain
                         percentage. The final one is just understanding the savings from a buy 2 get 1 free. All the
                         calculators have pretty similar code so I will just talk about the feature from the first one
                         called "SaleCalculator."</p>
                 </div>
-                <div class="col-md-6">
-                    <p>
-                        <br />
+                <div class="col-md-5">
+                    <p class="paragraphText">
                         The SaleCalculator will first take in two numbers, cost of the item and the percentage off. I
                         setup hooks to control the state of these numbers and setup an "onchange" event to an input that
                         control their value. The hook is shown at the top of the SaleCalculator component. I also added
@@ -205,7 +216,7 @@ import Test from '../pages/Test';
                         mentioned. The code is only for the cost but is nearly identical for percentage off.
                     </p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <pre class="codeBlockPanel"><code>
 // Select parts of SaleCalculator.js
 import { useState } from "react";
@@ -224,22 +235,23 @@ const SaleCalculator = () => {
     return(
         &lt;div&gt;
             // Other code
-            &lt;input type="number" onChange={changeCost} /&gt;
+            &lt;input type="number" onChange={changeCost}/&gt;
             // Display results section
         &lt;/div&gt;
     )
 }
                     </code></pre>
                 </div>
-                <div class="col-md-6">
-                    <p>The final part is to display the results. With the "cost" and "percentage" variables set as a
+                <div class="col-md-12">
+                    <p class="paragraphText">The final part is to display the results. With the "cost" and "percentage"
+                        variables set as a
                         state I can reference the variables on the page and if the variables get update then the
                         reference that is display also get updated. Note that there variables can only be reference in
                         the html part with curly brackets. No I can just add the variables and calculations at the end
                         of the page after the input section. I also restricted the length of the number to 2 decimal
                         places to make it easier to see using the toFixed method. Example shown:</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <pre class="codeBlockPanel"><code>
 // Display result section in SaleCalculator.
 &lt;p&gt;(Cost - Saving = New Cost)&lt;/p&gt;
@@ -247,10 +259,11 @@ const SaleCalculator = () => {
                     </code></pre>
                 </div>
             </div>
-            <br />
+            <br /><br />
             <h4>Final Thoughts:</h4>
-            <hr style="background-color: white;" />
-            <p>Something I really like about react is the component focused organization of part. It's really easy to do
+            <hr class="whiteLine" />
+            <p class="paragraphText">Something I really like about react is the component focused organization of part.
+                It's really easy to do
                 and just makes thing easier to read. There are also some performance improvements that I thought were
                 pretty interesting involving in not reloading the whole page but just section. I will say that even
                 though getting started is pretty easy there are a lot of parts that require a bit more knowledge to do
