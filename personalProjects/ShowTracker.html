@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta cahrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/default.css">
+    <title>Show Tracker Blog</title>
+</head>
+
+<body>
+    <div class="title text-center">
+        <h1><a href="../index.html">Programming Portfolio</a></h1>
+        <h5><i>By Hector Acosta-Cervantes</i></h5>
+    </div>
+    <div class="blackBar">
+        <a href="../index.html">Home</a> >
+        <a href="../personalProjectsPage.html">Personal Projects (Web Development)</a> >
+        Show Tracker Blog
+    </div>
+    <div class="container text-center">
+        <div class="whitePanel">
+            <h4>Show Tracker Blog (Flask with Python)</h4>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Summary</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        This is a website about tracking the air days of shows. It is like a single week calendar that
+                        shows what will air on each day of the week. Users must log-in to track their shows. Link to the
+                        git hub
+                        repositiory <a href="https://github.com/1HectorAC/ShowTracker">here.</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Goal</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">The goal was to get more practice using the Flask framework with a MongoDB
+                        database and get user account capability working.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Tools</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        I used the programming language Python with the Flask web framework. I also used MongoDB for the
+                        database. Some web stuff like HTML, CSS, and Javascript are also used.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#setupSection">Setup</a></li>
+                        <li><a href="#templateSection">Templates</a></li>
+                        <li><a href="#userModelSection">User Model</a></li>
+                        <li>
+                            <a href="#userAccountSection">User Account Functionality</a>
+                            <ul>
+                                <li><a href="#userAccountSection1">HTML Form</a></li>
+                                <li><a href="#userAccountSection2">Ajax Form Handling</a></li>
+                                <li><a href="#userAccountSection3">Routes with Flask</a></li>
+                                <li><a href="#userAccountSection4">User Functions</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#userRestSection">User Restricted Pages</a></li>
+                        <li><a href="#showSection">Shows</a>
+                            <ul>
+                                <li><a href="#showSection1">Adding Shows</a></li>
+                                <li><a href="#showSection2">View Shows</a></li>
+                                <li><a href="#showSection3">Edit Shows</a></li>
+                                <li><a href="#showSection4">Delete Shows</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#finalSection">Final Thoughts</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="blackPanelWithMorePadding">
+            <h4 id="setupSection">1. Setup:</h4>
+            <hr class="whiteLine" />
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="paragraphText">Here is a little about the setup. I have a script file called "rundev.sh"
+                        that runs the project and setup some environmental variables. Example rundev.sh file shown:</p>
+                    <p class="paragraphText">A secret key will be needed to access the session dictionary. This is
+                        important for user account
+                        related features. The DB_HOST is just the connection string to the database I will be connecting
+                        to which will be a MongoDB. Link to MongoDB <a
+                            href="https://www.mongodb.com/cloud/atlas/lp/try4?utm_source=bing&utm_campaign=search_bs_pl_evergreen_atlas_core_prosp-brand_gic-null_amers-us_ps-all_desktop_eng_lead&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=415204521&adgroup=1208363748749201&msclkid=74363426dc181b29e2f05095dbaea600">here</a>.
+                    </p>
+
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+#!/usr/bin/env bash
+export FLASK_APP=app.py
+export FLASK_ENV=development
+export DB_HOST='Add connection String here'
+export SECRET_KEY='Add secret key here'
+flask run --host=0.0.0.0
+                    </code></pre>
+                </div>
+                <div class="col-md-5">
+                    <p class="paragraphText">The secret key will be set in the app.py file and the connection string
+                        will be used where ever
+                        the database is accessed, which is just in the user/models.py file. Example code:</p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+//Setting Secret Key in App.py
+import os
+app.secret_key = os.getenv('SECRET_KEY')
+
+//Setting db connection in user/models.py
+import os
+from mongoengine import connect
+connect(db="test", host=os.getenv('DB_HOST'), port=27017)
+                    </code></pre>
+                </div>
+            </div>
+
+            <br /><br />
+            <h4 id="templateSection">2. Templates:</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">I wanted to briefly mention some of the template setup that made removing
+                redundancy in the html parts
+                easier.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="paragraphText">This part involves making a base or shared file and other files will be
+                        inserted in the center of
+                        it. Example of this:</p>
+                    <pre class="codeBlockPanel"><code>
+//Shared Section (Shared.html):
+...
+{% block content %} {% endblock %}
+...
+
+//Individual Section(Individual.html):
+{% extends "Shared.html" %}
+{% block content %}
+...
+{% endblock content %}
+                    </code></pre>
+                </div>
+                <div class="col-md-6">
+                    <p class="paragraphText">There is also way to insert a section of code into other individual files.
+                        Example of this:</p>
+                    <pre class="codeBlockPanel"><code>
+Shared.html(nothing to add):
+...
+
+Individual.html:
+...
+{% include 'Shared.html' %}
+...
+                    </code></pre>
+                </div>
+            </div>
+            <br /><br />
+            <h4 id="userModelSection">3. User Model:</h4>
+            <hr class="whiteLine" />
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="paragraphText">I made a simple user model that will be used to organize the information in
+                        the database. This
+                        can be done with the MongoEngine library that works well when using MongoDB as a database. The
+                        user model is mostly user related fields with also a list of dictionaries for the shows. I would
+                        normally put the shows in a separate table but I am using a non-relational database so it is
+                        optimal to keep that information in a single place. This model will be useful later when doing
+                        database related actions. Example of user model:</p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+// In user/models.py
+class ShowUser(Document):
+    _id = StringField(required=True)
+    name = StringField(required=True, max_length=64)
+    email = StringField(required=True, max_length=64)
+    password = StringField(required=True)
+    shows = ListField(DictField())
+                    </code></pre>
+                </div>
+            </div>
+            <br /><br />
+            <h4 id="userAccountSection">4. User Account Functionality:</h4>
+            <hr class="whiteLine" />
+            <p>There are 3 user account functionality that I added to my project. The ability to login, logout, and
+                register an account. I will run through the process involved in sending data to doing the action needed.
+                The steps I will describe are shown:</p>
+            <ol>
+                <li>Receive user data with html forms</li>
+                <li>Handle submitted data with Ajax Javascript and send post request</li>
+                <li>Receive post request call in user route (Flask Framework)</li>
+                <li>Call user function when route is called.</li>
+            </ol>
+
+            <br /><br />
+            <h5 id="userAccountSection1"><i>4.a HTML Form:</i></h5>
+            <div class="row">
+                <div class="col-md-5">
+                    <p class="paragraphText">I added a simplified version of the log-in form as an example. The general
+                        idea is the same with registering. There are form fields that must be filled and those values
+                        get submitted when the submit button is pressed.</p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+// Simplified form section in template/home.html
+&lt;form name="login_form"&gt;
+    &lt;input type="text" name="email" required&gt;
+    &lt;input type="password" name="password" required&gt;
+    &lt;input type="submit" value="Log In" class="btn btn-primary"&gt;
+    &lt;p class="error error--hidden"&gt;&lt;/p&gt;
+&lt;/form&gt;
+                    </code></pre>
+                </div>
+            </div>
+            <br /><br />
+            <h5 id="userAccountSection2"><i>4.b Ajax Form Handling:</i></h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="paragraphText">This part is about how a form gets handled after it is submitted. I should
+                        mention that the code that handles the form will do different things based on the name of the
+                        form. The example I provided is based on the form to login. In the form example there is a "url"
+                        part that is specifies where the POST request gets sent to. This route is handled by Flask in a
+                        python file that I will talk about after this part. There is also a redirect if it is successful
+                        and it makes an error message visible if it was not.</p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+//static/js/scripts.js file
+$("form[name=login_form]").submit(function(e){
+    var $form = $(this);
+    var $error = $form.find(".error");
+    var data = $form.serialize();
+    $.ajax({
+        url: "/user/login",
+        type: "POST",
+        data: data,
+        dataType: "json",
+        success: function(resp) {
+            window.location.href = "/dashboard/";
+        },
+        error: function(resp){
+            $error.text(resp.responseJSON.error)
+                    .removeClass("error--hidden");
+        }
+    });
+    e.preventDefault();
+});
+                    </code></pre>
+                </div>
+                <div class="col-md-5">
+                    <p class="paragraphText">
+                        I also wanted to mention that the sign-out route can just be called with a link since no form is
+                        involved when called. Example:
+                    </p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+&lt;a href="/user/signout" class="btn btn-primary"&gt;Sign out&lt;/a&gt;
+                    </code></pre>
+                </div>
+            </div>
+            <br /><br />
+            <h5 id="userAccountSection3"><i>4.c Routes with Flask:</i></h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="paragraphText">All user related routes will be placed in the "user/routes.py" file. These
+                        user routes will call the function to do the specified user related action. I have provided an
+                        example of the route code used for signing in. I will note that a "User" class gets imported
+                        from a "models" file. This is where the function or main logic is and each route relating to the
+                        user will call a different function.</p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+//Section in user/routes.py file
+from flask import Flask
+from app import app
+from user.models import User
+@app.route("/user/login", methods=["POST"])
+def login():
+    return User().login()
+                    </code></pre>
+                </div>
+            </div>
+            <br /><br />
+            <h5 id="userAccountSection4"><i>4.d User Functions:</i></h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="paragraphText">In the "user/models.py" file I added a "User" class that will have all the
+                        user related functions. First part I added was a function to start the session. This will be
+                        important for user related features. The function just sets some session variables and removes
+                        some values that don’t need to be set.</p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+def start_session(self, user):
+    del user['password']
+    del user['shows']
+    session['logged_in'] = True
+    session['user'] = user
+    return jsonify(user), 200
+                    </code></pre>
+                </div>
+                <div class="col-md-5">
+                    <p class="paragraphText">The second function I added to the User class is the "signup" function.
+                        This part just takes the form data and creates a "ShowUser" model object. With that object I
+                        save it and start the session if successful. There is also some password encryption since we
+                        don’t want to just store the password as it is. Here is a simplified version of the code with
+                        less data validation:</p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+def signup(self):
+    # Create to user object
+    user = ShowUser(
+        _id = uuid.uuid4().hex,
+        name = request.form.get('name'),
+        email = request.form.get('email'),
+        password = request.form.get('password'),
+        shows = []
+    )
+    # Encrypt password
+    user.password = pbkdf2_sha256.encrypt(user['password'])
+    
+if user.save():
+            return self.start_session(json.loads(user.to_json()))
+    return jsonify({"error": "Signup failed"}), 400
+                    </code></pre>
+                </div>
+                <div class="col-md-3">
+                    <p class="paragraphText">The third function is the "login" function. Using the form data, this part
+                        just checks the user
+                        email to identify the user and checks the password with the passlib library. Simplified version
+                        shown:</p>
+                </div>
+                <div class="col-md-9">
+                    <pre class="codeBlockPanel"><code>
+def login(self):
+    # Check if email match exists
+    if ShowUser.objects(email=request.form.get('email')).count() != 0:
+        user = json.loads(ShowUser.objects.get(email=request.form.get('email')).to_json())
+        # Check if password match
+        if pbkdf2_sha256.verify(request.form.get('password'), user['password']): 
+            return self.start_session(user)
+    # retur error
+    return jsonify({"error": "Invalid login crdentials"}), 401
+                    </code></pre>
+                </div>
+                <div class="col-md-6">
+                    <p class="paragraphText">The forth function is the "signout" function. This part just clears the
+                        session and redirects. Example code shown:</p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+def signout(self):
+    session.clear()
+    return redirect('/')
+                    </code></pre>
+                </div>
+            </div>
+            <br /><br />
+            <h4 id="userRestSection">5. User Restricted Pages:</h4>
+            <hr class="whiteLine" />
+            <div class="row">
+                <div class="col-md-5">
+                    <p class="paragraphText">This part is about restricting access to certain pages to logged in users.
+                        To do this I made a function decorator that gets applied to a route that needs the restriction.
+                        This function checks if the "logged_in" session variable is set which will allow the route to go
+                        through or it will re-direct otherwise.</p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+// Section in App.py
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            #return orginial function trying to access
+            return f(*args, **kwargs) 
+        else:
+            return redirect('/') #redirect to home page
+    return wrap
+
+// Example route:
+@app.route('/dashboard/', methods=["GET"])
+@login_required
+def dashboard():
+                    </code></pre>
+                </div>
+            </div>
+            <br /><br />
+            <h4 id="showSection">6. Shows:</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">I added the basic CRUD (create, read, update, delete) features involving the
+                management of shows by
+                users. A lot of these have similar setups to how user related features work involving forms and routes
+                so I will largely focus on just the logic portion in the functions. I will also just show a simplified
+                version of the code for each part usually with less data validation.</p>
+            <br /><br />
+            <h5 id="showSection1"><i>6.a Adding Shows:</i></h5>
+            <p class="paragraphText">The addShow function will be stored in the User class in the user/models.py file.To
+                add a show I first create a dictionary called "show" with data values that taken
+                from the form values. I then push this show dictionary to the list of shows of the current user
+                (ShowUser.objects…).</p>
+            <pre class="codeBlockPanel"><code>
+// Simplified add show in user/models.py:
+def addShow(self):
+    # Setup time variable format using time form data.
+    time = request.form.get('hours') + ":" + request.form.get('minutes') + " " + request.form.get('amOrPm')
+    userShows = getShowsList(session['user']['email'])
+
+    # Check if title is already in users shows list.
+    if not any(d.get('title') == request.form.get('title') for d in userShows):
+        # create 'show' dictionary using form data.
+        show = {
+            "title" : request.form.get('title'),
+            "network" : request.form.get('network'),
+            "time" : time,
+            "weekday" : request.form.get('weekday')
+        }
+        # append show to users shows list.
+        ShowUser.objects(email = session['user']['email']).update_one(push__shows=show)
+        return jsonify({"success": "Sucess"}), 200
+    return jsonify({"error": "Title of show already exits."}), 401
+            </code></pre>
+            <br /><br />
+            <h5 id="showSection2"><i>6.b View Shows:</i></h5>
+            <p class="paragraphText">View shows will be setup in the dashboard function in the app.py file. Viewing the
+                show list of a user
+                involves getting the shows owned by the user, organizing it, returning the page with the data, and then
+                displaying it. I get the data using a simple function I made in user/models.py file called
+                "getShowsLIst". I then organize the shows based on weekday lists. Then I put the weekday lists into a
+                single list and return the template page with that data. I organized it this way to view the shows in
+                weekday sections.</p>
+            <pre class="codeBlockPanel"><code>
+// Viewing Shows section in app.py
+from user import routes
+from user.models import getShowsList, getShow, sortShowsByTime
+
+@app.route('/dashboard/', methods=["GET"])
+@login_required
+def dashboard():
+    showList = getShowsList(session['user']['email'])
+    showList = sortShowsByTime(showList)
+    mondays,tuesdays,wednesdays,thursdays,fridays,saturdays,sundays = [],[],[],[],[],[],[]
+
+    for show in showList:
+        #Added encoded title.
+        show['encodedTitle'] = urllib.parse.quote(show['title'], safe='')
+        if(show['weekday'] == 'monday'):
+            mondays.append(show)
+        elif(show['weekday'] == 'tuesday'):
+            tuesdays.append(show)
+        # Code shortened Here. Other days of week included.
+        else:
+            sundays.append(show)
+    weekdayList = {'Monday': mondays,
+                'Tuesday': tuesdays,
+                # Code shortened Here. Other days of week included.
+                'Sunday': sundays,
+     }
+    data = {'week': weekdayList, 'count': len(showList)}
+    return render_template('dashboard.html', shows = data)
+
+// Get shows in user/models.py
+def getShowsList(userEmail):
+    user = json.loads(ShowUser.objects.get(email = userEmail).to_json())
+    userList = user['shows']
+    return userList
+            </code></pre>
+            <br /><br />
+            <h5 id="showSection3"><i>6.c Edit Shows:</i></h5>
+            <p class="paragraphText">The editShow function will be stored in the user/models.py file. To edit a show it
+                first involves making an old show dictionary based on the title passed in. This is the show that we want
+                to edit. Then I make a new show dictionary based on form data. After that I updated the users shows list
+                by pulling the old show from the list and then pushing the new show.</p>
+            <pre class="codeBlockPanel"><code>
+// Simplified edit show in user/models.py:
+def editShow(self,title):
+    time = request.form.get('hours') + ":" + request.form.get('minutes') + " " + request.form.get('amOrPm')
+
+    # Get old show that will be repaced.
+    oldShow = getShow(session['user']['email'],title)
+    # Create new show dictionary.
+    newShow = {
+        "title" : request.form.get('title'),
+        "network" : request.form.get('network'),
+        "time" : time,
+        "weekday" : request.form.get('weekday')
+    }
+    
+    # Remove old show from users show list.
+    ShowUser.objects(email = session['user']['email']).update_one(pull__shows=oldShow)
+    
+    # Add new show to users show list.
+    ShowUser.objects(email = session['user']['email']).update_one(push__shows=newShow)
+
+    return jsonify({"success": "Sucess"}), 200
+            </code></pre>
+            <br /><br />
+            <h5 id="showSection4"><i>6.d Delete Shows:</i></h5>
+            <p class="paragraphText">The removeShow function will be stored in the user/models.py file. To delete a show
+                I just update the users shows list and pull the show based on title passed into the function.</p>
+            <pre class="codeBlockPanel"><code>
+// Simplified delete show in user/models.py:
+def removeShow(self, title):
+    ShowUser.objects(email = session['user']['email']).update_one(pull__shows__title=urllib.parse.unquote(title))
+    return redirect('/dashboard/')
+            </code></pre>
+            <br /><br />
+            <h4 id="finalSection">7. Final Thoughts:</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">One thing I learned more about from this project is on how user accounts work. My
+                previous experience with user accounts has been automatically handled and auto generated so some of the
+                parts involve like session variables and password handling were new to me. Another thing I learned more
+                about is on using MongoDB with python. I had some knowledge of this before but some parts like figuring
+                out how to store a list and edit that list in a user document was new to me. I will say that compared to
+                my experience with ASP.Net MVC Framework, there is a lot less built in the framework in comparison.
+                Flask start off with less and requires more work to get something working. This sort of approach will
+                required more time to get some things done but it also helps met get a better understanding on how they
+                work.</p>
+        </div>
+    </div>
+</body>
+
+</html>
