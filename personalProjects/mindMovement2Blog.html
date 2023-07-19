@@ -61,10 +61,24 @@
                     </p>
                 </div>
             </div>
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#gameSection">Game Section Transitions</a></li>
+                        <li><a href="#settingSection">Settings</a></li>
+                        <li><a href="#basicOpGame">Basic Operations Game</a></li>
+                        <li><a href="#charMemGame">Chars Memory Game</a></li>
+                        <li><a href="#colorDirGame">Color Direction Game</a></li>
+                        <li><a href="#finalSection">Final Thoughts</a></li>
+                    </ol>
+                </div>
+            </div>
         </div>
 
         <div class="blackPanelWithMorePadding">
-            <h4>Step 1 (Game Section Transitions):</h4>
+            <h4 id="gameSection">1. Game Section Transitions</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">One of the first key aspects I needed to figure out was transition content sections
                 (settings, playing,
@@ -110,7 +124,7 @@ $("form#settingSection").submit(function(e){
                 </div>
             </div>
             <br /><br />
-            <h4>Step 2 (Settings):</h4>
+            <h4 id="settingSection">2. Settings</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
@@ -138,7 +152,7 @@ settingName = #("#setting-name").val();
                 </div>
             </div>
             <br /><br />
-            <h4>Step 3 (Basic Operations game):</h4>
+            <h4 id="basicOpGame">3. Basic Operations Game</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The first game I worked on was a basic math operations game. In the game, the user
                 chooses a math
@@ -196,7 +210,7 @@ clearInterval(timer);
                 </div>
             </div>
             <br /><br />
-            <h4>Step 4 (Chars Memory game):</h4>
+            <h4 id="charMemGame">4. Chars Memory Game</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The second game is a string memory game. In the game, a string of random characters
                 are generated and
@@ -273,7 +287,7 @@ $('#answerStringDisplay2').text(wrongSection);
                 </div>
             </div>
             <br /><br />
-            <h4>Step 5 (Color Direction Game):</h4>
+            <h4 id="colorDirGame">5. Color Direction Game</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The final game is a color placement memorizing game. Boxes with colors are shown
                 for a few seconds and
@@ -332,9 +346,9 @@ $('.gameBtn2').click(function(){
                 </div>
             </div>
             <br /><br />
-            <h4>Last Thoughts:</h4>
+            <h4 id="finalSection">6. Final Thoughts</h4>
             <hr class="whiteLine" />
-            <p>An important idea I tried to keep in mind was separating logic from content. Something like this is easy
+            <p class="paragraphText">An important idea I tried to keep in mind was separating logic from content. Something like this is easy
                 to forget when you just work on html and Javascript. This sort of thing just make the code easier to
                 read and understand. In the future I might also want to think about how I setup variables in Javascript
                 more. I tried to minimize how many variables I had to avoid confusion but I still ran into some problem

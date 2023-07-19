@@ -60,9 +60,27 @@
                     </p>
                 </div>
             </div>
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#databaseSection">Database</a></li>
+                        <li><a href="#setupSection">Setup</a></li>
+                        <li><a href="#NPSection">Nuget Packages</a></li>
+                        <li><a href="#connectStringSection">Connection String</a></li>
+                        <li><a href="#generateMCSection">Generate Models & Context</a></li>
+                        <li><a href="#editUserSection">Edit User Registration</a></li>
+                        <li><a href="#scaffoldSection">Scaffolding Device CRUD</a></li>
+                        <li><a href="#viewRestrictSection">Device View Restrictions</a></li>
+                        <li><a href="#chargeTimeSection">ChargeTimes Page</a></li>
+                        <li><a href="#finalSection">Final Thoughts</a></li>
+                    </ol>
+                </div>
+            </div>
         </div>
         <div class="blackPanelWithMorePadding">
-            <h4>Step 1 (Database):</h4>
+            <h4 id="databaseSection">1. Database</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-5">
@@ -92,14 +110,14 @@ Device:                          BatteryTrackerUser:
             </div>
             <br /><br />
 
-            <h4>Step 2 (Project Setup):</h4>
+            <h4 id="setupSection">2. Setup</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">On visual studio I created a project with the template "ASP.NET core Web App
                 (MVC)." I also set the
                 Authentication type to "Individual Account."</p>
             <br /><br />
 
-            <h4>Step 3 (Nuget Packages):</h4>
+            <h4 id="NPSection">3. Nuget Packages</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The next step was to download all the necessary Nuget packages. With Visual Studio
                 I can just select the
@@ -111,7 +129,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
             </code></pre>
             <br /><br />
 
-            <h4>Step 4 (Setup Connection String):</h4>
+            <h4 id="connectStringSection">4. Connection String</h4>
             <hr class="whiteLine" />
             <p>Step to take for setting up connection string:</p>
             <ol class="text-start">
@@ -132,7 +150,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
             </code></pre>
             <br /><br />
 
-            <h4>Step 5 (Generate Models and Context from DB):</h4>
+            <h4 id="generateMCSection">5. Generate Models & Context</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">I then generated the models and context class using the database. I first go to the
                 "Package Manager
@@ -146,7 +164,7 @@ Scaffold-DbContext Name=BatteryDBConnection Microsoft.EntityFrameworkCore.SqlSer
                 Models folder.</p>
             <br /><br />
 
-            <h4>Step 6 (Edit User Registration):</h4>
+            <h4 id="editUserSection">6. Edit User Registration</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">I have a separate user table called "BatteryTrackerUser" that will need to be
                 created at the same time
@@ -194,7 +212,7 @@ await _batteryContext.SaveChangesAsync();
             <p class="paragraphText">With that the BatteryTrackerUser is created on register of a user.</p>
             <br /><br />
 
-            <h4>Step 7 (Scaffolding Device CRUD):</h4>
+            <h4 id="scaffoldSection">7. Scaffolding Device CRUD</h4>
             <hr class="whiteLine" />
             <p>The next step is to scaffold CRUD pages for a device. Steps:</p>
             <ol class="text-start">
@@ -208,7 +226,7 @@ await _batteryContext.SaveChangesAsync();
             </ol>
             <br /><br />
 
-            <h4>Step 8 (View Restrictions of Devices):</h4>
+            <h4 id="viewRestrictSection">8. Device View Restrictions</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">I then needed to make sure devices can only be handled by logged in users and that
                 they cant access each
@@ -229,7 +247,7 @@ if (loggedInUserId != deviceUserId)
                 simpler.</p>
             <br /><br />
 
-            <h4>Step 9 (ChargeTimes Page):</h4>
+            <h4 id="chargeTimeSection">9. ChargeTimes Page</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The last main feature is the "ChargeTimes" page. This is a page that will inform
                 the user about if a
@@ -277,7 +295,7 @@ var batteryChargeDetails = batteryContext.Select(
             </code></pre>
             <br /><br />
 
-            <h4>Final Thoughts:</h4>
+            <h4 id="finalSection">10. Final Thoughts</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">My previously experience with ASP.Net MVC has really made using ASP.Net Core MVC a
                 lot easier. Many of
