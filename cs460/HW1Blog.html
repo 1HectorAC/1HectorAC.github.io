@@ -7,17 +7,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/default.css">
-    <title> HW1 Blog</title>
+    <title>CS460 HW1 Blog</title>
 </head>
 
 <body>
     <div class="title text-center">
-        <h1><a href="./index.html">Programming Portfolio</a></h1>
+        <h1><a href="../index.html">Programming Portfolio</a></h1>
         <h5><i>By Hector Acosta-Cervantes</i></h5>
     </div>
+    <div class="blackBar">
+        <a href="../index.html">Home</a> >
+        <a href="../cs460LandingPage.html">CS460 (Software Development)</a> >
+        Homework 1 (HTML, CSS, Bootstrap) Blog
+    </div>
     <div class="container text-center">
-        <div class="blackPanel">
-            <h5><a href="../cs460LandingPage.html">CS460 Portfolio (Software Development)</a></h5>
+        <div class="whitePanel">
             <h4>Homework 1 (HTML, CSS, Bootstrap)</h4>
         </div>
     </div>
@@ -25,8 +29,9 @@
     <div class="container text-center">
         <div class="blackPanel">
             <h4>Assignment Summary</h4>
-            <hr style="background-color: white;" />
-            <p>The first main goal is to use git by understanding some basic commands, how repositories work, as well as
+            <hr class="whiteLine" />
+            <p class="paragraphText">The first main goal is to use git by understanding some basic commands, how
+                repositories work, as well as
                 know how to control a remote repository on a github or bitbucket. We will also need to create a basic
                 website using html, css, and bootstrap. We will finally need to create a portfolio page using github
                 pages to display all of our work. A link to the the full assignment and requirements are <a
@@ -35,13 +40,14 @@
         </div>
     </div>
 
-    <div class="container text-center">
-        <div class="blackPanel">
-            <h4>Step 1 (Git and Github): </h4>
-            <hr style="background-color: white;" />
+    <div class="container">
+        <div class="blackPanelWithMorePadding">
+            <h4 class="text-center">1. Git and GitHub</h4>
+            <hr class="whiteLine" />
             <div class="row">
-                <div class="col-md-6">
-                    <p>The first thing to consider is any downloads I need to take care of. The good thing is that I
+                <div class="col-md-5">
+                    <p class="paragraphText">The first thing to consider is any downloads I need to take care of. The
+                        good thing is that I
                         already had git downloaded so that saved me a bit of time. To use github I need to make an
                         account on <a href="https://github.com/">https://github.com/</a>.This was a was a pretty
                         straightforward process. I already had some prior knowledge about git which helped complete
@@ -49,18 +55,18 @@
                         using git. The next thing i did is set up the user name and email that will show on each commit
                         with the commands:</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <pre class="codeBlockPanel" style="margin-top:30px"><code>
 git config --global user.name “Hector Acosta-Cervantes”
 git config --global user.email hacostacervantes17@wou.edu
                     </code></pre>
                 </div>
-                <div class="col-md-6">
-                    <br />
-                    <p>I then created the local repository, linked to a remote server and pushed the local repository to
+                <div class="col-md-5">
+                    <p class="paragraphText">I then created the local repository, linked to a remote server and pushed
+                        the local repository to
                         the server (note: I went to github and made a repository already to store the repository):</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <pre class="codeBlockPanel"><code>
 cd documents
 mkdir cs460
@@ -71,13 +77,14 @@ git push origin master
                         </code></pre>
                 </div>
             </div>
-            <br />
-            <h4>Step 2 (Making a website with html, css, bootstrap): </h4>
-            <hr style="background-color: white;" />
+            <br /><br />
+            <h4 class="text-center">2. Making a Website with HTML, CSS, Bootstrap</h4>
+            <hr class="whiteLine" />
 
             <div class="row">
                 <div class="col md-12">
-                    <p>I took a web applications class a few years back so I already has some experience using html and
+                    <p class="paragraphText">I took a web applications class a few years back so I already has some
+                        experience using html and
                         css. The first think I did was try to get a better understanding on how to use bootstrap.
                         I looked up an introduction on it at
                         <a href="http://getbootstrap.com/docs/4.1/getting-started/introduction/">
@@ -89,8 +96,9 @@ git push origin master
 &it; link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" &gt;
                     </code></pre>
                 </div>
-                <div class="col-md-6">
-                    <p>I then looked up how to use it and found this link useful on understanding the grid format: <a
+                <div class="col-md-5">
+                    <p class="paragraphText">I then looked up how to use it and found this link useful on understanding
+                        the grid format: <a
                             href="https://getbootstrap.com/docs/3.3/css/">https://getbootstrap.com/docs/3.3/css/</a> .
                         Now for the website itself I didn't think much about the subject or content so I just made it
                         about boxes. I also just copied filler content from a search of “box” in wikipedia and added
@@ -101,28 +109,27 @@ git push origin master
                         horizontally.
                     </p>
                 </div>
-                <div class="col-md-6">
-                    <p>Navigation Var Code:</p>
+                <div class="col-md-7">
                     <pre class="codeBlockPanel" style="text-align: left;"><code>
+// Navigation Var Code:
 &lt;div class="container nav"&gt;
     &lt;ul id="bar"&gt;
         &lt;li class="nlist"&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
         &lt;li class="nlist"&gt;&lt;a href="types.html"&gt;Types&lt;/a&gt;&lt;/li&gt;
         &lt;li class="nlist"&gt;&lt;a href="goals.html"&gt;Goals&lt;/a&gt;&lt;/li&gt;
-        &lt;li class="nlist"&gt;&lt;a href="contacts.html"&gt;Contacts&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="nlist"&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;
                     </code></pre>
                 </div>
-                <div class="col-md-6">
-                    <br />
-                    <br />
-                    <p> The bootstrap part of the assignment didn't involve a whole lot of stuff to write. The code I
+                <div class="col-md-4">
+                    <p class="paragraphText"> The bootstrap part of the assignment didn't involve a whole lot of stuff
+                        to write. The code I
                         wrote usually involved the use of "containers" to align sections of code. </p>
                 </div>
-                <div class="col-md-6">
-                    <p>Bootstrap Columns Code:</p>
+                <div class="col-md-8">
                     <pre class="codeBlockPanel" style="text-align: left;"><code>
+// Bootstrap Columns Code:
 &lt;div class="row"&gt;
     &lt;div class="col-lg-12 box"&gt;
         &lt;img src="imges/boxlogo.png"/&gt;&lt;p&gt;Box 1: content here.&lt;/p&gt;
@@ -144,13 +151,12 @@ git push origin master
                     </code></pre>
                 </div>
                 <div class="col-md-12">
-                    <br />
                     <p> Setting up HTML tables and lists were pretty easy and didnt require much work to do at all given
                         how basic it is. </p>
                 </div>
                 <div class="col-md-3">
-                    <p>Html Table:</p>
                     <pre class="codeBlockPanel"><code>
+// HTML Table:
 &lt;table&gt;
     &lt;tr&gt;
         &lt;th&gt;size1&lt;/th&gt;
@@ -171,18 +177,18 @@ git push origin master
                 </code></pre>
                 </div>
                 <div class="col-md-4">
-                    <p>Html ol list:</p>
                     <pre class="codeBlockPanel"><code>
+// HTML ol list:
 &lt;ol&gt;
-    &lt;li&gt;archieve something one&lt;/li&gt; 
-    &lt;li&gt;archieve something two&lt;/li&gt;
-    &lt;li&gt;archieve something three&lt;/li&gt;
+    &lt;li&gt;archieve something 1&lt;/li&gt; 
+    &lt;li&gt;archieve something 2&lt;/li&gt;
+    &lt;li&gt;archieve something 3&lt;/li&gt;
 &lt;/ol&gt;
                     </code></pre>
                 </div>
                 <div class="col-md-5">
-                    <p>Html ul list:</p>
                     <pre class="codeBlockPanel"><code>
+// HTML ul list:
 &lt;ul&gt;
     &lt;li&gt; Facebook:
         &lt;a href="testLink.html"&gt;Facebook/box.com&lt;/a&gt;
@@ -198,14 +204,15 @@ git push origin master
                     </code></pre>
                 </div>
                 <div class="col-md-12">
-                    <p>In the css file I made to sure to organize the stylings in sections with comments seperations. I
+                    <p class="paragraphText">In the css file I made to sure to organize the stylings in sections with
+                        comments seperations. I
                         mostly had things to fix alignment and size issues. I also used more vibrant color to see how
                         it would affect the page and then I made sure to adjust things before finishing it up.
                         One thing I might want to consider is to lower the number of classes I use in the future.</p>
                 </div>
                 <div class="col-md-6">
-                    <p>CSS Code Part 1:</p>
                     <pre class="codeBlockPanel"><code>
+// CSS Code Part 1:
 body{ font-size:18px; }
 /*******header field********/
 .header{
@@ -229,9 +236,10 @@ body{ font-size:18px; }
                     </code></pre>
                 </div>
                 <div class="col-md-6">
-                    <p>CSS Code Part 2:</p>
                     <pre class="codeBlockPanel"><code>
-/*li.nlist is required to only modify nav and not all links*/
+// CSS Code Part 2:
+/*li.nlist is required to only modify nav
+         and not all links*/
 li.nlist a{
     display:block;
     color:#ffffff;
@@ -249,11 +257,12 @@ td{
 }
                     </code></pre>
                 </div>
-                <br />
-                <h4>Step 3 (Setting up a Portfolio): </h4>
-                <hr style="background-color: white;" />
-                <p>The first thing I need to know is how to setup a github page to use as a portfolio. The link <a
-                        href="https://pages.github.com">https://pages.github.com/</a> provided a good amount of
+                <br /><br />
+                <h4 class="text-center">3. Setting up a Portfolio</h4>
+                <hr class="whiteLine" />
+                <p class="paragraphText">The first thing I need to know is how to setup a github page to use as a
+                    portfolio. The link <a href="https://pages.github.com">https://pages.github.com/</a> provided a good
+                    amount of
                     information on how to setup a github pages. So then I created a new repository called
                     1hectorac.github.io, which must be named based on your username in github. I made a local
                     directory and linked them. I originally thought about using jekyll to create the blog pages
