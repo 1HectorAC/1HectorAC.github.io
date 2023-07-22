@@ -7,49 +7,61 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/default.css">
-    <title> HW 5Blog</title>
+    <title>CS460 HW5 Blog</title>
 </head>
 
 <body>
     <div class="title text-center">
-        <h1>Homework 5</h1>
-        <h5>(MVC App Simple Database)</h5>
+        <h1><a href="../index.html">Programming Portfolio</a></h1>
+        <h5><i>By Hector Acosta-Cervantes</i></h5>
+    </div>
+    <div class="blackBar">
+        <a href="../index.html">Home</a> >
+        <a href="../cs460LandingPage.html">CS460 (Software Development)</a> >
+        Homework 5 (MVC App Simple Database) Blog
+    </div>
+    <div class="container text-center">
+        <div class="whitePanel">
+            <h4>Homework 5 (MVC App Simple Database)</h4>
+        </div>
     </div>
 
-    <div class="container text-center">
+    <div class="container">
         <div class="blackPanel">
             <h4>Assignment Summary</h4>
-            <hr style="background-color: white;" />
+            <hr class="whiteLine" />
             <p>The main objective is to write an MVC web application that uses a one table local database. The web
                 application will have a page to make request to the landlord though a form online and a page to view all
                 requests in the database. Here is a link to the full assignment details: <a
                     href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW5_1819.html">http://www.wou.edu/~morses/classes/cs46x/assignments/HW5_1819.html</a>.
             </p>
-
         </div>
     </div>
-    <div class="container text-center">
-        <div class="blackPanel">
-            <h4>Step 1 (Setup): </h4>
-            <hr style="background-color: white;" />
-            <p>The first think I did was setup the home page. I pretty much just set up the links I will need and
+    <div class="container">
+        <div class="blackPanelWithMorePadding">
+            <h4>1. Setup</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">The first think I did was setup the home page. I pretty much just set up the links
+                I will need and
                 stylised it a bit to look good. I Decided to make a orange-reddish color as the basis for the website.
                 Not much else happened here. The _Layout page is also had a few cosmetic changes that aren't really
                 worth mentioning.</p>
-            <br />
-            <h4>Step 2 (Database Setup):</h4>
-            <hr style="background-color: white;" />
-            <p>So I I created the database by opening the SQL object explorer in visual studio. There I just
+            <br /><br />
+            <h4>2. Database Setup</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">So I I created the database by opening the SQL object explorer in visual studio.
+                There I just
                 rightclickled on the local database location and made a database called TennantInfo. I then made the
                 up.sql and down.sql in the App_Data. The code were pretty simple and similar to the examples in class so
                 I won't mention much else about them.</p>
-            <br />
-            <h4>Step 3 (Code):</h4>
-            <hr style="background-color: white;" />
+            <br /><br />
+            <h4>3. Code</h4>
+            <hr class="whiteLine" />
+            <h5><i>3.a TennantRequest.cs</i></h5>
             <div class="row">
-                <div class="col-md-6 offset-md-1">
-                    <h5><i>TennantRequest.cs:</i></h5>
-                    <p>This file was the model to represent a request. It was saved in the model folder. Not much
+                <div class="col-md-8">
+                    <p class="paragraphText">This file was the model to represent a request. It was saved in the model
+                        folder. Not much
                         difficulty in this part. The most notable part here where the data annotations that the
                         variables had. One problem that I came across in this part was using the “phone” data
                         annotation. At first I thought thought that this would be enough to validate the phone number
@@ -61,30 +73,40 @@
                 <div class="col-md-4">
                     <img src="images/hw5Images/model%20snip.PNG" class="formatedImage" alt=""><br /><br />
                 </div>
-                <div class="col-md-6 offset-md-1">
-                    <h5><i>TennantRequestContext.cs:</i></h5>
-                    <p>This file was the database context class that had the connection to the database and a collection
+            </div>
+            <h5><i>3.b TennantRequestContext.cs</i></h5>
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="paragraphText">This file was the database context class that had the connection to the
+                        database and a collection
                         of the TennentRequest model. Not much to write in this part.</p>
                 </div>
                 <div class="col-md-4">
                     <img src="images/hw5Images/context.PNG" class="formatedImage" alt=""><br /><br />
                 </div>
+            </div>
+            <h5><i>3.c Web.Config:</i></h5>
+            <div class="row">
                 <div class="col-md-5">
-                    <h5><i>Web.Config:</i></h5>
-                    <p> I then had to set up the string connection to actually connect to the database I made. This was
+                    <p class="paragraphText"> I then had to set up the string connection to actually connect to the
+                        database I made. This was
                         as simple as just going to the web.config file and pasting this code:</p>
-                    <p>Note that the connection string was taken by going to the SQL object explorer, right clicking on
+                    <p class="paragraphText">Note that the connection string was taken by going to the SQL object
+                        explorer, right clicking on
                         the database, selecting properties, and copying the string connection from there.</p>
                 </div>
                 <div class="col-md-7">
                     <img src="images/hw5Images/webConfig.PNG" class="formatedImage" alt="">
                 </div>
+            </div>
+            <h5><i>3.d HomeController.cs:</i></h5>
+            <div class="row">
                 <div class="col-md-6">
-                    <br />
-                    <h5><i>HomeController.cs:</i></h5>
-                    <p>This part had the way to setup the views. A key part here was how a context was passed to the
+                    <p class="paragraphText">This part had the way to setup the views. A key part here was how a context
+                        was passed to the
                         view. A clear example is shown in the “Display” action method.</p>
-                    <p>Another important part was the the section involved in the Create action method, specifically the
+                    <p class="paragraphText">Another important part was the the section involved in the Create action
+                        method, specifically the
                         POST one. It contained some checks for the variable it was passed. It also had a redirect call
                         when things went as planned. Here is the example:</p>
                 </div>
@@ -93,19 +115,23 @@
                     <img src="images/hw5Images/HC%20create.PNG" class="formatedImage" alt="">
                     <br /><br />
                 </div>
+            </div>
+            <h5><i>3.e Create.cshtml:</i></h5>
+            <div class="row">
                 <div class="col-md-6">
-                    <br />
-                    <h5><i>Create.cshtml:</i></h5>
-                    <p>The notable part here was how I used lambda functions to set up the form elements with razor
+                    <p class="paragraphText">The notable part here was how I used lambda functions to set up the form
+                        elements with razor
                         html. Here is an example of one of the form elements created this way.</p>
                 </div>
                 <div class="col-md-6">
                     <img src="images/hw5Images/create.PNG" class="formatedImage" alt=""><br /><br />
                 </div>
+            </div>
+            <h5><i>3.f Display.cshtml:</i></h5>
+            <div class="row">
                 <div class="col md-6">
-                    <br />
-                    <h5><i>Display.cshtml:</i></h5>
-                    <p>The important part here was how the items in the TennantRequests list were looped though and
+                    <p class="paragraphText">The important part here was how the items in the TennantRequests list were
+                        looped though and
                         displayed involving a lambda functions. Here are a few examples:</p>
                 </div>
                 <div class="col-md-6">
@@ -113,9 +139,9 @@
 
                 </div>
             </div>
-            <br />
-            <h4>Step 4 (Results):</h4>
-            <hr style="background-color: white;" />
+            <br /><br />
+            <h4>4. Results</h4>
+            <hr class="whiteLine" />
             <p>Test Result Video (No Sound):</p>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/7qyE3nGka_c" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
