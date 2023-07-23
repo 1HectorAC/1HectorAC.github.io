@@ -7,20 +7,31 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/default.css">
-    <title> HW 7 Blog</title>
+    <title>CS460 HW7 Blog</title>
 </head>
 
 <body>
     <div class="title text-center">
-        <h1>Homework 7</h1>
-        <h5>(Ajax and API)</h5>
+        <h1><a href="../index.html">Programming Portfolio</a></h1>
+        <h5><i>By Hector Acosta-Cervantes</i></h5>
+    </div>
+    <div class="blackBar">
+        <a href="../index.html">Home</a> >
+        <a href="../cs460LandingPage.html">CS460 (Software Development)</a> >
+        Homework 7 (Ajax and API) Blog
+    </div>
+    <div class="container text-center">
+        <div class="whitePanel">
+            <h4>Homework 7 (Ajax and API)</h4>
+        </div>
     </div>
 
-    <div class="container text-center">
+    <div class="container">
         <div class="blackPanel">
             <h4>Assignment Summary</h4>
-            <hr style="background-color: white;" />
-            <p>The main objective for this assignment is to create a mvc web application with a responsive view using
+            <hr class="whiteLine" />
+            <p class="paragraphText">The main objective for this assignment is to create a mvc web application with a
+                responsive view using
                 Ajax. We will also implement an api from giphy. The assignment involves making one web page with a text
                 box. The text box takes in an input and after each space entered it processes the last word and print or
                 translate it to a gif based on our definition of boring/amazing. Full assignment details can be found
@@ -30,14 +41,14 @@
         </div>
     </div>
 
-    <div class="container text-center">
-        <div class="blackPanel">
-            <h4>Step 1 (Setup): </h4>
-            <hr style="background-color: white;" />
+    <div class="container">
+        <div class="blackPanelWithMorePadding">
+            <h4>1. Setup</h4>
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
-                    <br />
-                    <p>The setup involves making an empty mvc web application and then a simple web page with an input
+                    <p class="paragraphText">The setup involves making an empty mvc web application and then a simple
+                        web page with an input
                         text box. Nothing notable was done in this part. One key setup part was making a custom route
                         configuration. I basically just added another route in the route.config file. There isn't a
                         whole lot to it other than that. Here is an image of the code added to the file:</p>
@@ -46,56 +57,56 @@
                     <img class="formatedImage" src="images/hw7Images/routeConfig.PNG" alt=""><br /><br />
                 </div>
             </div>
-            <h4>Step 2 (API):</h4>
-            <hr style="background-color: white;" />
+            <br /><br />
+            <h4>2. API</h4>
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
-                    <p>The important parts here where how the api key was hidden and how it was used. The way I hid the
+                    <p class="paragraphText">The important parts here where how the api key was hidden and how it was
+                        used. The way I hid the
                         api key was that it was put into a seperate file called AppSettingsSecrets.config with data and
                         key values. It looked something like this:</p>
                 </div>
                 <div class="col-md-6">
                     <pre class="codeBlockPanel"><code>
 &lt;appSettings&gt;
-    &lt;add key="APIKey" value="xxxxxxxxxxxxxxxxxxxxxxxxxx" /&gt;
+    &lt;add key="APIKey" value="xxxxxxxxxxxx" /&gt;
 &lt;/appSettings&gt;
                         </code></pre>
                 </div>
                 <div class="col-md-12">
-                    <br />
-                    <p>Then I put this file outside the project file so that the repository does not save it. Then I
+                    <p class="paragraphText">Then I put this file outside the project file so that the repository does
+                        not save it. Then I
                         went to the web.config file and at the appSettings tag I added
                         file="..\..\..\AppSettingsSecrets.config" so that it knows where to look for the file when I
                         need access to it.</p>
-                    <br />
                 </div>
                 <div class="col-md-6">
-                    <br />
-                    <p>The way the api was used is that I first made a proper url that involves the api key and
+                    <p class="paragraphText">The way the api was used is that I first made a proper url that involves
+                        the api key and
                         requested word. Then I made a request using WebRequest. I then got the response and used a
                         stream to read it and then got the data that I needed.</p>
-
                 </div>
                 <div class="col-md-6">
                     <img class="formatedImage" src="images/hw7Images/TranslatorControllerAPIInfo.PNG"
                         alt=""><br /><br />
                 </div>
                 <div class="col-md-6">
-                    <br />
-                    <p> After that I just parsed it into a JObject since all the data was in one string. From there I
+                    <p class="paragraphText"> After that I just parsed it into a JObject since all the data was in one
+                        string. From there I
                         could easily get the specified gif url that I needed.</p>
                 </div>
                 <div class="col-md-6">
                     <img class="formatedImage" src="images/hw7Images/TranslatorControllerParce.PNG" alt="">
                 </div>
             </div>
-            <br />
-            <h4>Step 3 (JavaScript Code):</h4>
-            <hr style="background-color: white;" />
+            <br /><br />
+            <h4>3. Javascript Code</h4>
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
-                    <br />
-                    <p>This part involved first listening for a key press and then if the key press was a space, which
+                    <p class="paragraphText">This part involved first listening for a key press and then if the key
+                        press was a space, which
                         signals a word being formed in the input text box, then It reads the whole string in. Then we
                         have another check if it ends with a space incase the used clicked space more than once.
                         Otherwise the next part will just constantly return the last word every time another space is
@@ -110,13 +121,13 @@
                     <img class="formatedImage" src="images/hw7Images/wordTranslator.PNG" alt="">
                 </div>
             </div>
-            <br />
-            <h4>Step 4 (Database):</h4>
-            <hr style="background-color: white;" />
+            <br /><br />
+            <h4>4. Database</h4>
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
-                    <br />
-                    <p>The database was very simple and the setup is similar to the setup of a past assignment database.
+                    <p class="paragraphText">The database was very simple and the setup is similar to the setup of a
+                        past assignment database.
                         I made a model named User.cs, a context called “UserContext.cs”, connection string in web.config
                         file… etc. Some key parts to mention are the data I need to get for the database, specifically
                         the IP Address of the requestor and the browser used. I then put a breakpoint in an action
@@ -128,11 +139,11 @@
                     <img class="formatedImage" src="images/hw7Images/TranslatorControllerDb.PNG" alt="">
                 </div>
             </div>
-            <br />
-            <h4>Step 5 (Result):</h4>
-            <hr style="background-color: white;" />
+            <br /><br />
+            <h4>5. Results</h4>
+            <hr class="whiteLine" />
             <p>Test Result Video (No Sound):</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/L_LBuYFAXd8" frameborder="0"
+            <iframe class="video" src="https://www.youtube.com/embed/L_LBuYFAXd8" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
         </div>
