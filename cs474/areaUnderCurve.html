@@ -15,63 +15,68 @@
         <h1><a href="../index.html">Programming Portfolio</a></h1>
         <h5><i>By Hector Acosta-Cervantes</i></h5>
     </div>
+    <div class="blackBar">
+        <a href="../index.html">Home</a> >
+        <a href="../cs474LandingPage.html">CS 474 (Concurrent Systems)</a> >
+        Area Under Curve Blog (C#) Blog
+    </div>
     <div class="container text-center">
-        <div class="blackPanel">
-            <h5><a href="../cs474LandingPage.html">CS474 (Concurrent Systems)</a></h5>
+        <div class="whitePanel">
             <h4>Area Under Curve Blog (C#)</h4>
         </div>
     </div>
-    <div class="container text-center">
-        <div class="blackPanel">
-            <h4>Summary</h4>
-            <hr style="background-color: white;" />
-            <p>
-                This a C# console app that runs 2 versions of find the area under the curve of this equation. There is a
-                sequential and parallel version. It will run the algorithms with different rectangle sizes when
-                calculation the area under the curve (might need some calculus knowledge to understand) and print the
-                resulting value of each. I will focus more on the key features involved in parallel programming and not
-                so much on explaining the problem itself. Link to the git hub repositiory section <a
-                    href="https://github.com/1HectorAC/CS474/tree/master/CS474AreaUnderCurve">here.</a>
-            </p>
-        </div>
+
+    <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
+                <div class="blackPanel">
+                    <h4>Summary</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        This a C# console app that runs 2 versions of find the area under the curve of this equation. There is a
+                        sequential and parallel version. It will run the algorithms with different rectangle sizes when
+                        calculation the area under the curve (might need some calculus knowledge to understand) and print the
+                        resulting value of each. I will focus more on the key features involved in parallel programming and not
+                        so much on explaining the problem itself. Link to the git hub repositiory section <a
+                            href="https://github.com/1HectorAC/CS474/tree/master/CS474AreaUnderCurve">here.</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-5">
                 <div class="blackPanel">
                     <h4>Goal</h4>
-                    <hr style="background-color: white;" />
-                    <p>The goals was to get more familiar with data parallelism in c#.
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">The goals was to get more familiar with data parallelism in c#.
                     </p>
                 </div>
-            </div>
-            <div class="col-md-6">
                 <div class="blackPanel">
                     <h4>Tools</h4>
-                    <hr style="background-color: white;" />
-                    <p>I used the programming language C# and the IDE Visual Studio.
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">I used the programming language C# and the IDE Visual Studio.
                     </p>
                 </div>
             </div>
+
         </div>
-        <div class="blackPanel">
-            <h4>The Math Problem:</h4>
-            <hr style="background-color: white;" />
-            <p>I just wanted to quickly mention what the problem is about. It is a math integral problem of 4/(1+x^2)
+        <div class="blackPanelWithMorePadding">
+            <h4>1. The Math Problem</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">I just wanted to quickly mention what the problem is about. It is a math integral problem of 4/(1+x^2)
                 with a 0 to 1 range. The program I wrote divides the section of the range based on a given size and sums
                 these rectangle sections below it in a parallel fashion by splitting up the work. It isn't that
                 important to understand how it works compared to the parallel processing tools I use to solve it. This I
                 why I will skip talking about the sequential version and get straight the parallel one.</p>
-            <br />
-            <h4>Parallel Version:</h4>
-            <hr style="background-color: white;" />
-            <h5><i>Parallel.For:</i></h5>
-            <p>This is where the data parallelism is achieved. It pretty much just involves splitting up the work of a
+            <br /><br/>
+            <h4>2. Parallel Version</h4>
+            <hr class="whiteLine" />
+            <h5><i>2.a Parallel.For</i></h5>
+            <p class="paragraphText">This is where the data parallelism is achieved. It pretty much just involves splitting up the work of a
                 for loop to different processors. In this case it is just splitting up the range into section that will
                 each add together the area under the curve of its part and then add them all together.</p>
-            <h5><i>Locking:</i></h5>
+            <h5><i>2.b Locking</i></h5>
             <div class="row">
                 <div class="col-md-5">
-                    <br />
-                    <p>Locking is important when doing parallelism with a variable that is manipulated by all
+                    <p class="paragraphText">Locking is important when doing parallelism with a variable that is manipulated by all
                         processors. Without locking there can be an error when editing a shared variable that causes an
                         overwrite of another processors modification. Locking is important to prevent this overlap. In
                         the case of my program there is an overlap when adding the section sum to the total amount.
@@ -83,7 +88,7 @@
 double total = 0;
 Mutex mLock = new Mutex();
 
-Parallel.For(0, Convert.ToInt32(Math.Ceiling(1.0 * size / chunk)), j =&gt;
+Parallel.For(0, Convert.ToInt32(Math.Ceiling(1.0*size/chunk)),j=&gt;
 {
 var localTotal = 0;
 
@@ -96,10 +101,10 @@ var localTotal = 0;
                     </code></pre>
                 </div>
             </div>
-            <br />
-            <h4>Results:</h4>
-            <hr style="background-color: white;" />
-            <p>The results involve running the sequential and parallel version with various rectangle sizes and recoding
+            <br /><br/>
+            <h4>3. Results</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">The results involve running the sequential and parallel version with various rectangle sizes and recoding
                 the times and area under curve value. Note that "chunk" is just size/processors. Console results:</p>
             <div class="row">
                 <div class="col-md-6 offset-md-3">

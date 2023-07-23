@@ -15,53 +15,61 @@
         <h1><a href="../index.html">Programming Portfolio</a></h1>
         <h5><i>By Hector Acosta-Cervantes</i></h5>
     </div>
+    <div class="blackBar">
+        <a href="../index.html">Home</a> >
+        <a href="../cs474LandingPage.html">CS 474 (Concurrent Systems)</a> >
+        Find Largest Blog (C#) Blog
+    </div>
     <div class="container text-center">
-        <div class="blackPanel">
-            <h5><a href="../cs474LandingPage.html">CS474 (Concurrent Systems)</a></h5>
+        <div class="whitePanel">
             <h4>Find Largest Blog (C#)</h4>
         </div>
     </div>
-    <div class="container text-center">
-        <div class="blackPanel">
-            <h4>Summary</h4>
-            <hr style="background-color: white;" />
-            <p>
-                This a C# console app that runs 2 versions of finding the largest number in an array. There is a
-                sequential and parallel version. It will run the algorithms with different array sizes and prints the
-                time it takes to run. I will talk about some of the key features in the program. Link to the git hub repositiory section <a
-                href="https://github.com/1HectorAC/CS474/tree/master/CS474FindLargest">here.</a>
-            </p>
-        </div>
+
+    <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="blackPanel">
-                    <h4>Goal</h4>
-                    <hr style="background-color: white;" />
-                    <p>The goals was to get started with data parallelism using C#.
+                    <h4>Summary</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        This a C# console app that runs 2 versions of finding the largest number in an array. There is a
+                        sequential and parallel version. It will run the algorithms with different array sizes and
+                        prints the
+                        time it takes to run. I will talk about some of the key features in the program. Link to the git
+                        hub repositiory section <a
+                            href="https://github.com/1HectorAC/CS474/tree/master/CS474FindLargest">here.</a>
                     </p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="blackPanel">
+                    <h4>Goal</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">The goals was to get started with data parallelism using C#.
+                    </p>
+                </div>
+                <div class="blackPanel">
                     <h4>Tools</h4>
-                    <hr style="background-color: white;" />
-                    <p>I used the programming language C# and the IDE Visual Studio.
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">I used the programming language C# and the IDE Visual Studio.
                     </p>
                 </div>
             </div>
         </div>
-        <div class="blackPanel">
-            <h4>Sequential Version:</h4>
-            <hr style="background-color: white;" />
-            <p>The sequential version doesn’t require a whole lot of explaining. It involves a for loop to iterate over
+        <div class="blackPanelWithMorePadding">
+            <h4>1. Sequential Version</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">The sequential version doesn’t require a whole lot of explaining. It involves a for
+                loop to iterate over
                 every value in the array to find the largest one.</p>
-            <br />
-            <h4>Parallel Version:</h4>
-            <hr style="background-color: white;" />
+            <br /><br />
+            <h4>2. Parallel Version:</h4>
+            <hr class="whiteLine" />
             <div class="row">
-                <div class="col-md-6">
-                    <br />
-                    <p>The most important thing to understand in the parallel version is the Parallel.For loop. The
+                <div class="col-md-5">
+                    <p class="paragraphText">The most important thing to understand in the parallel version is the
+                        Parallel.For loop. The
                         Parallel.For loop will take in 3 values. The first 2 are integers that determined the start and
                         end of the loop. This is pretty much how many sections we can split and run in parallel. The
                         third
@@ -72,7 +80,7 @@
                         processors is
                         then doing a loop through their section of the array to find the largest and setting it.</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <pre class="codeBlockPanel"><code>
 //Parallel Version of Find Largest:
 static int LargestNumberFinderParallel(int[] array, int chunk)
@@ -93,20 +101,20 @@ static int LargestNumberFinderParallel(int[] array, int chunk)
                     </code></pre>
                 </div>
             </div>
-            <br />
-            <h4>Results:</h4>
-            <hr style="background-color: white;" />
-            <p>The results involve running the sequential and parallel version with various array sizes and recoding the
+            <br /><br />
+            <h4>3. Results</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">The results involve running the sequential and parallel version with various array
+                sizes and recoding the
                 times. Console results:</p>
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <img class="formatedImage" src="images/CS474FindLargestResult.png" alt="">
                 </div>
             </div>
-            <br/>
-            <p>I will mention there is a minor flaw in my code that involves not locking. It doesn't really impact the
+            <p class="paragraphText">I will mention there is a minor flaw in my code that involves not locking. It
+                doesn't really impact the
                 results in most cases but it is something I will look at more in a later project.</p>
-            <br/>
         </div>
     </div>
 </body>

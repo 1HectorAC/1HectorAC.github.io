@@ -15,49 +15,58 @@
         <h1><a href="../index.html">Programming Portfolio</a></h1>
         <h5><i>By Hector Acosta-Cervantes</i></h5>
     </div>
+    <div class="blackBar">
+        <a href="../index.html">Home</a> >
+        <a href="../cs474LandingPage.html">CS 474 (Concurrent Systems)</a> >
+        Prime Range Blog (Python) Blog
+    </div>
     <div class="container text-center">
-        <div class="blackPanel">
-            <h5><a href="../cs474LandingPage.html">CS474 (Concurrent Systems)</a></h5>
+        <div class="whitePanel">
             <h4>Prime Range Blog (Python)</h4>
         </div>
     </div>
-    <div class="container text-center">
-        <div class="blackPanel">
-            <h4>Summary</h4>
-            <hr style="background-color: white;" />
-            <p>
-                This is a python file that runs two version of finding the prime range (highest prime - lowest prime)
-                from a list of random numbers. There is a sequential and a parallel version. The results will display
-                the prime range numbers and the time of each version. I will talk about some of the key features in the
-                program. Link to the git hub repositiory section <a
-                    href="https://github.com/1HectorAC/CS474/tree/master/CS474PrimeRange">here.</a>
-            </p>
-        </div>
+
+    <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="blackPanel">
-                    <h4>Goal</h4>
-                    <hr style="background-color: white;" />
-                    <p>The goals was to get started with control parallelism in python.
+                    <h4>Summary</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        This is a python file that runs two version of finding the prime range (highest prime - lowest
+                        prime)
+                        from a list of random numbers. There is a sequential and a parallel version. The results will
+                        display
+                        the prime range numbers and the time of each version. I will talk about some of the key features
+                        in the
+                        program. Link to the git hub repositiory section <a
+                            href="https://github.com/1HectorAC/CS474/tree/master/CS474PrimeRange">here.</a>
                     </p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="blackPanel">
+                    <h4>Goal</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">The goals was to get started with control parallelism in python.
+                    </p>
+                </div>
+                <div class="blackPanel">
                     <h4>Tools</h4>
-                    <hr style="background-color: white;" />
-                    <p>I used the programming language Python.
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">I used the programming language Python.
                     </p>
                 </div>
             </div>
+
         </div>
-        <div class="blackPanel">
-            <h4>Is Prime Function:</h4>
-            <hr style="background-color: white;" />
+        <div class="blackPanelWithMorePadding">
+            <h4>1. Is Prime Function</h4>
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-7">
-                    <br />
-                    <p>First thing I worked on was a function to check if a number is prime. It is a "For loop" from 2 to
+                    <p class="paragraphText">First thing I worked on was a function to check if a number is prime. It is
+                        a "For loop" from 2 to
                         n (where n is the inputted number) and checks if any number between is a factor of n which would
                         make it not prime if true.</p>
                 </div>
@@ -73,13 +82,13 @@ def is_prime(n):
                     </code></pre>
                 </div>
             </div>
-            <br />
-            <h4>Sequential Version:</h4>
-            <hr style="background-color: white;" />
+            <br /><br />
+            <h4>2. Sequential Version</h4>
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
-                    <br />
-                    <p>This part involves first finding the largest and smallest prime number in an array using the
+                    <p class="paragraphText">This part involves first finding the largest and smallest prime number in
+                        an array using the
                         FindSmallestPrime and FindLargestPrime functions. It uses a "For loop" to check every number in
                         the array to see if it is prime and compares to see if it is the smallest/largest. Then the
                         SequentialRun function, which calls these two functions, will take these two values and subtract
@@ -96,7 +105,7 @@ def FindSmallestPrime(list):
     return lowestPrime
     
 def FindLargestPrime(list):
-    # same as smallest with "&lt;" becoming "&gt;" in if statement
+    # same as smallest with "&lt;" becoming "&gt;"
 
 def SequentialRun(list):
     #Count the number of primes in each list.
@@ -109,16 +118,17 @@ def SequentialRun(list):
                     </code></pre>
                 </div>
             </div>
-            <br />
-            <h4>Parallel Version:</h4>
-            <hr style="background-color: white;" />
+            <br /><br />
+            <h4>3. Parallel Version</h4>
+            <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-5">
-                    <br />
-                    <p>This version is similar with the sequential version but there is a queue involved to find the
+                    <p class="paragraphText">This version is similar with the sequential version but there is a queue
+                        involved to find the
                         largest and smallest prime in parallel. I first setup a queue (queue = multiprocessing.Queue())
                         in the ParallelRun funciton. I then run two processes that will be passed the
-                        FindSmallestPrimeWithQueue and FindLargestPrimeWithQueue function. Note that the queue variable will be
+                        FindSmallestPrimeWithQueue and FindLargestPrimeWithQueue function. Note that the queue variable
+                        will be
                         passed to theses function as parameters and these function will then insert their results to the
                         queue when done. After I run and join the processes I will then get the results with the
                         queue.get(). From there I just check which is the large one and subtract them with largest
@@ -162,10 +172,11 @@ def ParallelRun(list):
                     </code></pre>
                 </div>
             </div>
-            <br />
-            <h4>Results:</h4>
-            <hr style="background-color: white;" />
-            <p>Here are the results of running both version with a specified array length and number range. Console
+            <br /><br />
+            <h4>4. Results</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">Here are the results of running both version with a specified array length and
+                number range. Console
                 Results:</p>
             <div class="row">
                 <div class="col-md-4 offset-md-4">
