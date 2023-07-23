@@ -43,10 +43,18 @@ body{
     background-color: rgb(41, 46, 52, .8);
     color:white;
 }
+.video{
+    width: 560px;
+    height: 315px;
+}
 
 @media (max-width: 978px) {
     .blackPanelWithMorePadding {
       padding:20px 20px 20px 20px;
+    }
+    .video{
+        width: 290px;
+        height: 160px
     }
 }
 
