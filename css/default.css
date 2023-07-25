@@ -70,7 +70,7 @@ a:hover{
     text-align: left;
 }
 .ulShift li{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .codeBlockPanel{
@@ -99,5 +99,11 @@ a:hover{
 .whiteLine{
     background-color: white;
     margin:5px;
+}
+
+.customButton{
+    color:rgb(29, 33, 34);
+    background-color: rgb(220, 232, 242);
+    font-weight: 500;
 }
 
