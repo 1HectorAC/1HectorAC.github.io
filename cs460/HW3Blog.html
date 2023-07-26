@@ -33,7 +33,8 @@
             <hr class="whiteLine" />
             <p class="paragraphText">The goal of this assignment is to translate the code of a java file into a C# file.
                 The file must follow
-                C# standards, must be properly commented, and should run the same as the java when executed. Assignement details
+                C# standards, must be properly commented, and should run the same as the java when executed. Assignement
+                details
                 and code for the java file can be found <a
                     href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW3_1819.html">here.</a>
             </p>
@@ -99,7 +100,17 @@ git merge HW3Ver
                         "Data" instead of directly with "data".</p>
                 </div>
                 <div class="col-md-4">
-                    <img class="formatedImage" src="images/hw3Images/NodeProp.PNG" alt="">
+                    <pre class="codeBlockPanel"><code>
+private T data;
+
+public Node<T> next;
+
+public T Data
+{
+    get { return data; }
+    set { data = value; }
+}
+                    </code></pre>
                 </div>
             </div>
             <h5><i>4.b QueueInterface.java to IQueue.cs</i></h5>
@@ -109,15 +120,25 @@ git merge HW3Ver
             </p>
             <h5><i>4.c QueueUnderflowException.java to QueueUnderflowException.cs</i></h5>
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-6">
                     <p class="paragraphText">Some differences that I came across where how to extend a class. They
                         didn't have much of a
                         difference with C# using a “:” instead of an “extends”. Calling the extended classes constructor
                         was also a bit different with a different keyword and location to place it.
                     </p>
                 </div>
-                <div class="col-md-4">
-                    <img class="formatedImage" src="images/hw3Images/ExceptionExtend.PNG" alt=""><br /><br />
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+public class QueueUnderFlowException : SystemException
+{
+    /// &lt;summary&gt;
+    /// Constructor for QueueFlowException class.
+    /// &lt;/summary&gt;
+    public QueueUnderFlowException() : base()
+    {
+    }
+    ...
+                    </code></pre>
                 </div>
             </div>
             <h5><i>4.d LinkedQueue.java to LinkedQueue.cs</i></h5>
@@ -166,16 +187,23 @@ int maxLength = output.getLast().length(); //Java
                 mentioning considering how trivial they are.</p>
             <h5><i>4.f General changes</i></h5>
             <div class="row">
-                <div class="col-md-7">
-
+                <div class="col-md-6">
                     <p class="paragraphText">Some general things that were noted were xml comments for classes and
                         functions. This was done by
                         typing “///” a line above from the target. Then I just filled out the areas with descriptions of
                         the specified area.
                     <p>
                 </div>
-                <div class="col-md-5">
-                    <img class="formatedImage" src="images/hw3Images/xmlCom.PNG" alt="">
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+/// &lt;summary&gt;
+/// Remove the front element from Queue.
+/// &lt;/summary&gt;
+/// &lt;returns&gt; The element that was removed. &lt;/returns&gt;
+public T Pop()
+{
+    ...
+                    </code></pre>
                 </div>
             </div>
             <br /><br />
