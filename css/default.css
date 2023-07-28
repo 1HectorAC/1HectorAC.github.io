@@ -72,6 +72,9 @@ a:hover{
 .ulShift li{
     margin-bottom: 15px;
 }
+.addedListSpace li{
+    margin-bottom: 15px;
+}
 
 .codeBlockPanel{
     color:white;
@@ -102,8 +105,11 @@ a:hover{
 }
 
 .customButton{
-    color:rgb(29, 33, 34);
-    background-color: rgb(220, 232, 242);
+    color:rgb(255, 255, 255);
+    background-color: rgb(80, 137, 187);
     font-weight: 500;
 }
-
+.customButton:hover{
+    color:white;
+    background-color: rgb(44, 64, 82);
+}
