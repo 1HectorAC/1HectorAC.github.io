@@ -128,3 +128,14 @@ a:hover {
     color: white;
     background-color: rgb(44, 64, 82);
 }
+
+.customButton2 {
+    color: rgb(255, 255, 255);
+    background-color: rgb(75, 147, 152);
+    font-weight: 500;
+}
+
+.customButton2:hover {
+    color: white;
+    background-color: rgb(38, 77, 83);
+}
