@@ -22,7 +22,7 @@
     </div>
     <div class="container text-center">
         <div class="whitePanel">
-            <h2>Art-Portfolio Blog (React & Redux)</h2>
+            <h2>Art-Portfolio Blog (React.js & Redux)</h2>
         </div>
     </div>
     <div class="container">
@@ -68,7 +68,7 @@
                         <li><a href="#storeSection">Store</a></li>
                         <li><a href="#filtersSection">Filters Component</a></li>
                         <li><a href="#imagesSection">Images Component</a></li>
-
+                        <li><a href="#finalSection">Final thoughts</a></li>
                     </ol>
                 </div>
             </div>
@@ -105,8 +105,8 @@ npm install @reduxjs/toolkit react-redux
             </div>
             <p class="paragraphText">
                 I then created a "src/redux" folder to store all redux related files like the store and slice
-                reducers .I also added a home.js file located in the "src/pages" folder. This is where the home,
-                filter section, and image section components will be located.
+                reducers. I also added a home.js file located in the "src/pages" folder. This is where the home,
+                filters section, and images section components will be located.
             </p>
 
             <br /><br />
@@ -156,6 +156,7 @@ export const selectFilter = state =&gt; state.filter.value
                 </div>
                 <div class="col-md-7">
                     <pre class="codeBlockPanel"><code>
+// store.js
 import { configureStore } from '@reduxjs/toolkit'
 import filterReducer from './filterSlice'
 
@@ -164,6 +165,30 @@ export default configureStore({
         filter: filterReducer
     }
 })
+                    </code></pre>
+                </div>
+                <div class="col-md-4">
+                    <p class="paragraphText">
+                        I will quickly note that the store will be set in the index.js file and wrap around the App
+                        component using a Provider tag. Example shown:
+
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    <pre class="codeBlockPanel"><code>
+// index.js
+...
+import store from './redux/store';
+import { Provider } from 'react-redux'
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;Provider store={store}&gt;
+    &lt;App /&gt;
+    &lt;/Provider&gt;
+    &lt;/React.StrictMode&gt;
+);
                     </code></pre>
                 </div>
             </div>
@@ -177,20 +202,16 @@ export default configureStore({
                 where it will be passed to the Home component using props. From there the Home component will create a
                 Filter Section component that will have this data also passed down through props.
             </p>
-            <div class="row">
-                <div class="col-md-5">
-                    <p class="paragraphText">
-                        Next I added the filter component. Note that the useSelector function and useDispatch function
-                        are setup to access the state value and the function to change it. The map function is then used
-                        to create a button for every filter option in the "filterOption" list that was passed through
-                        the props. For each button, the onclick will call the dispatch function with changeFilter to
-                        change the filter based on the filter name. The filter value will also be used to disable/enable
-                        a button based on if the button name matches the current filter state.
-                    </p>
-                </div>
-                <div class="col-md-7">
-                    <pre class="codeBlockPanel"><code>
-//Filter Component in Home.js
+            <p class="paragraphText">
+                Next I added the filter component. Note that the useSelector function and useDispatch function
+                are setup to access the state value and the function to change it. The map function is then used
+                to create a button for every filter option in the "filterOption" list that was passed through
+                the props. For each button, the onclick will call the dispatch function with changeFilter to
+                change the filter based on the filter name. The filter value will also be used to disable/enable
+                a button based on if the button name matches the current filter state.
+            </p>
+            <pre class="codeBlockPanel"><code>
+//FilterSection Component in Home.js
 import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter, selectFilter } from '../redux/filterSlice'
 
@@ -205,9 +226,7 @@ const FilterSection = (props) =&gt; {
         )
     )
 };
-                    </code></pre>
-                </div>
-            </div>
+            </code></pre>
             <br /><br />
             <h4 id="imagesSection">6. Images Component</h4>
             <hr class="whiteLine" />
@@ -217,18 +236,17 @@ const FilterSection = (props) =&gt; {
                 displayed, the file name is to locate it, tall is to know how much horizontal space to give it, and the
                 format is the filter category it falls in.
             </p>
-            <div class="row">
-                <div class="col-md-5">
-                    <p class="paragraphText">
-                        In the Images component I first set a filter variable using the useSelector function, same as in
-                        the filters component. This filter is used to know which images will be shown. After that a map
-                        function is used on the data to create an image for each item. Note that there are 2 ternary
-                        operations to give the correct class for the width and to display if its format matches the
-                        current filter.
-                    </p>
-                </div>
-                <div class="col-md-7">
-                    <pre class="codeBlockPanel">
+
+            <p class="paragraphText">
+                In the Images component I first set a filter variable using the useSelector function, same as in
+                the filters component. This filter is used to know which images will be shown. After that a map
+                function is used on the data to create an image for each item. Note that there are 2 ternary
+                operations to give the correct class for the width and to display if its format matches the
+                current filter.
+            </p>
+
+            <pre class="codeBlockPanel"><code>
+//ImageSection Component in Home.js
 const ImageSection = (props) =&gt; {
     const filter = useSelector(selectFilter)
     return (
@@ -239,9 +257,20 @@ const ImageSection = (props) =&gt; {
         )
     )
 };
-                    </pre>
-                </div>
-            </div>
+            </code></pre>
+
+            <br /><br />
+            <h4 id="finalSection">7. Final thoughts</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                Redux was something that took me a bit to understand how it works. It might be the fact that
+                there was so much extra code involved in setting things up so understanding it all just felt like extra
+                work. Two resources that really helped in my understanding of it was this video in youtube about <a
+                    href="https://www.youtube.com/watch?v=iBUJVy8phqw">Redux Toolkit</a> and this <a
+                    href="https://redux.js.org/tutorials/essentials/part-2-app-structure">guide</a>. With these two
+                resources I had a pretty easy time using it in this project. I
+                probably spend more than twice as much time overall researching than writing the code.
+            </p>
         </div>
     </div>
 </body>
