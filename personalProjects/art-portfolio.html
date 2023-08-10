@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta cahrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/default.css">
+    <title>Art-Portfolio Blog</title>
+</head>
+
+<body>
+    <div class="title text-center">
+        <h1><a href="../index.html">Programming Portfolio</a></h1>
+        <h6><i>By Hector Acosta-Cervantes</i></h6>
+    </div>
+    <div class="blackBar">
+        <a href="../index.html">Home</a> >
+        <a href="../personalProjectsPage.html">Personal Projects (Web Development)</a> >
+        Art-Portfolio Blog
+    </div>
+    <div class="container text-center">
+        <div class="whitePanel">
+            <h2>Art-Portfolio Blog (React & Redux)</h2>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Summary</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        This is an image gallery website to display artwork. Images can also be filtered based on art
+                        mediums. Link to the git hub
+                        repositiory <a href="https://github.com/1HectorAC/art-portfolio">here.</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Goal</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        The goal was to get started using Redux with the React.js library.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Tools</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        I used React.js and Redux (with Redux Toolkit) libraries.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#introSection">Intro</a></li>
+                        <li><a href="#setupSection">Setup</a></li>
+                        <li><a href="#sliceSection">Slice Reducer</a></li>
+                        <li><a href="#storeSection">Store</a></li>
+                        <li><a href="#filtersSection">Filters Component</a></li>
+                        <li><a href="#imagesSection">Images Component</a></li>
+
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="blackPanelWithMorePadding">
+            <h4 id="introSection">1. Intro</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">Redux will be the main focus in this blog. I talked about the basics of React.js in
+                a previous blog so I
+                won't focus too much on it. I will be using the Redux Toolkit instead of plain Redux. Redux Toolkit is
+                easier to use with less boilerplate involved.</p>
+            <p class="paragraphText">
+                Redux is a state managing library that lets you manage states across components. In the home page of
+                this website there is a filter section component to set the filter and an image section component to
+                view the images. Both of these component need to access the current filter which is why redux will be
+                used to manage it. I should note that Redux would normally be used in more complex applications than
+                this one but my goal is just to understand Redux.
+            </p>
+
+            <br /><br />
+            <h4 id="setupSection">2. Setup</h4>
+            <hr class="whiteLine" />
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="paragraphText">
+                        To use Redux and Redux Toolkit I first installed the necessary dependencies.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+npm install @reduxjs/toolkit react-redux
+                    </code></pre>
+                </div>
+            </div>
+            <p class="paragraphText">
+                I then created a "src/redux" folder to store all redux related files like the store and slice
+                reducers .I also added a home.js file located in the "src/pages" folder. This is where the home,
+                filter section, and image section components will be located.
+            </p>
+
+            <br /><br />
+            <h4 id="sliceSection">3. Slice Reducer</h4>
+            <hr class="whiteLine" />
+            <div class="row">
+                <div class="col-md-5">
+                    <p class="paragraphText">
+                        The code shown will create a slice reducer. This is where the filter state is stored and its
+                        function to change it. The first part initialized it. The next part makes the reducers which
+                        will just have a function to change the filter value. The last part exports the reducer (for the
+                        store) and some other functions involving the filter.
+                    </p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+// filterSlice.js
+import { createSlice } from '@reduxjs/toolkit'
+
+export const filterSlice = createSlice({
+    name: 'filter',
+    initialState: {
+        value: 'All'
+    },
+    reducers: {
+        changeFilter: (state, action) =&gt; {
+            state.value = action.payload
+        }
+    }
+})
+
+export const { changeFilter } = filterSlice.actions
+export default filterSlice.reducer
+export const selectFilter = state =&gt; state.filter.value
+                    </code></pre>
+                </div>
+            </div>
+            <br /><br />
+            <h4 id="storeSection">4. Store</h4>
+            <hr class="whiteLine" />
+            <div class="row">
+                <div class="col-md-5">
+                    <p class="paragraphText">
+                        The code shown will create the store. This is where the reducers will be set. Not much else to
+                        explain here.
+                    </p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+import { configureStore } from '@reduxjs/toolkit'
+import filterReducer from './filterSlice'
+
+export default configureStore({
+    reducer: {
+        filter: filterReducer
+    }
+})
+                    </code></pre>
+                </div>
+            </div>
+
+            <br /><br />
+            <h4 id="filtersSection">5. Filters Component</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                Before I explain the filter component I need to explain where the filter values are coming from. There
+                is a list of filters located in the ImageInfo.js file. This list will be imported in the App.js file
+                where it will be passed to the Home component using props. From there the Home component will create a
+                Filter Section component that will have this data also passed down through props.
+            </p>
+            <div class="row">
+                <div class="col-md-5">
+                    <p class="paragraphText">
+                        Next I added the filter component. Note that the useSelector function and useDispatch function
+                        are setup to access the state value and the function to change it. The map function is then used
+                        to create a button for every filter option in the "filterOption" list that was passed through
+                        the props. For each button, the onclick will call the dispatch function with changeFilter to
+                        change the filter based on the filter name. The filter value will also be used to disable/enable
+                        a button based on if the button name matches the current filter state.
+                    </p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+//Filter Component in Home.js
+import { useSelector, useDispatch } from 'react-redux';
+import { changeFilter, selectFilter } from '../redux/filterSlice'
+
+const FilterSection = (props) =&gt; {
+    const filter = useSelector(selectFilter)
+    const dispatch = useDispatch()
+    return (
+        props.filterOptions.map((val, i) =>
+            &lt;button className="btn button2" onClick={() =&gt; dispatch(changeFilter(val))} disabled={filter === val ? "True" : ""} key={"filter" + i}&gt;
+                {val}
+            &lt;/button&gt;
+        )
+    )
+};
+                    </code></pre>
+                </div>
+            </div>
+            <br /><br />
+            <h4 id="imagesSection">6. Images Component</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                Like with the filter options list, there is a list of images and their data that will be retrieved and
+                passed down the same way. Image data includes a title, file name, tall, and format. The title will be
+                displayed, the file name is to locate it, tall is to know how much horizontal space to give it, and the
+                format is the filter category it falls in.
+            </p>
+            <div class="row">
+                <div class="col-md-5">
+                    <p class="paragraphText">
+                        In the Images component I first set a filter variable using the useSelector function, same as in
+                        the filters component. This filter is used to know which images will be shown. After that a map
+                        function is used on the data to create an image for each item. Note that there are 2 ternary
+                        operations to give the correct class for the width and to display if its format matches the
+                        current filter.
+                    </p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel">
+const ImageSection = (props) =&gt; {
+    const filter = useSelector(selectFilter)
+    return (
+        props.data.map((val, i) =&gt;
+            &lt;div className={val.tall ? "col-sm-3" : "col-sm-6"} style={{ display: filter === val.format || filter === "All" ? "block" : "none" }} key={"art" + i}&gt;
+                &lt;img className="displayArt" src={require('../images/art/' + val.file)} alt=""&gt;&lt;/img&gt;
+            &lt;/div&gt;
+        )
+    )
+};
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
