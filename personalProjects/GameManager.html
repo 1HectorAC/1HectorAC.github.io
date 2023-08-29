@@ -66,6 +66,14 @@
                     <ol>
                         <li><a href="#introSection">Intro</a></li>
                         <li><a href="#databaseSection">Database</a></li>
+                        <li><a href="#setupSection">About Setup</a></li>
+                        <li><a href="#moneyAnalysis">Money Analysis</a>
+                            <ul>
+                                <li><a href="#moneyAnalysisPart1">GET Version</a>
+                                <li><a href="#moneyAnalysisPart2">BuyData ViewModel</a>
+                                <li><a href="#moneyAnalysisPart3">Post Version</a>
+                            </ul>
+                        </li>
                     </ol>
                 </div>
             </div>
@@ -85,6 +93,169 @@
             <br /><br />
             <h4 id="databaseSection">2. Database</h4>
             <hr class="whiteLine" />
+            <p class="paragraphText">
+                There are 3 main tables in the database with some other auto generated account tables. There is the
+                "GameUsers" table to manage the user, the "Games" table store data relating to a game, and a
+                "GameSystems" table to store the system options that a game can be from.
+            </p>
+            <p class="paragraphText">
+                The "GameUsers" and "GameSystem" are simple enough were they don’t need an explanation. I should mention
+                that the "GameSystem" table is populated by the "up" script and is not edited by the user. The "Games"
+                table is the biggest table given that it has to track various factors that will be analyzed. I will note
+                that Game bought and Games played can be analyzed in different pages which is why they have different
+                date fields. Also game replayed or borrowed wouldn’t be bought which is why some purchase related fields
+                can be null.
+            </p>
+            <br /><br />
+            <h4 id="setupSection">3. About Setup</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                While I won't go too into the setup I wanted to quickly mention a few things that are important to at
+                least know about. First, it has account management. This can be setup when making a project in Visual
+                Studio. I also used ASP.NET MVC scaffolding to make the CRUD page for managing Games.
+            </p>
+            <br /><br />
+            <h4 id="moneyAnalysis">4. Money Analysis</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                The money analysis page will first require the user select a year to analyze from a dropdown (Note that
+                if the user bought no games then no year will be shown.) After that it will show information about
+                bought game in the form of listed totals and charts. In the GamesController there are two function that
+                return an actionResult involving MoneyAnalysis. One is the GET and the other is a POST version.
+            </p>
+            <br /><br />
+            <h5 id="moneyAnalysisPart1"><i>4.a GET Version</i></h5>
+            <p class="paragraphText">
+                The GET version of MoneyAnalysis is when the page is initially visited. It will setup a dropdown to
+                select a year to analyze. After a year is submitted then the POST version gets called. Below is an
+                Example of the GET version. The only notable part is the Linq query to get a list of years based on the
+                users games.
+            </p>
+            <pre class="codeBlockPanel"><code>
+//GET Version of MoneyAnalysis in Controllers/GamesController.cs
+[Authorize]
+    public ActionResult MoneyAnalysis()
+    {
+        var gamesList = GetUserGamesList(User.Identity.GetUserId());
+        var yearsList = gamesList.Where(g =&gt; g.DateOfPurchase != null).Select(g =&gt; g.DateOfPurchase.Value.Year).Distinct();
+
+        if (yearsList.Count() &gt;= 1)
+            ViewBag.SelectYear = new SelectList(yearsList);
+
+        return View();
+    }
+            </code></pre>
+            <br /><br />
+            <h5 id="moneyAnalysisPart2"><i>4.b BuyData ViewModel</i></h5>
+            <p class="paragraphText">
+                Before I get to the POST version of the MoneyAnalysis I need to cover how the data is setup. This is
+                done with a View Model that contains all the information relating to the analysis. It contains various
+                total counts, monthly counts, and game system totals. There is an array for price range counts with its
+                label. Example of the ViewModel called BuyData is shown below:
+            </p>
+            <pre class="codeBlockPanel"><code>
+//Models/ViewModels/BuyData.cs
+public class BuyData
+    {
+        public int TotalSpent { get; set; }
+        public int TotalGames { get; set; }
+        public int AverageSpend { get; set; }
+        public int TotalPhysical { get; set; }
+        public int TotalDigital { get; set; }
+        public int[] MonthlyTotalSpent { get; set; }
+        public int[] MonthlyTotalGames { get; set; }
+        public int[] MonthlyTotalPhysical { get; set; }
+        public int[] MonthlyTotalDigital { get; set; }
+        public int[] TotalByPriceRange { get; set; }
+        public string[] SystemNames { get; set; }
+        public int[] SystemCounts { get; set; }
+
+        public string[] Months { get; set; } = new string[] {
+            "January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+        };
+
+        public string[] PriceLabels = new string[] {
+            "&lt;$20", "$20-$29", "$30-$39", "$40-$49", "$50-$59", "$60-$69", "$70-$79", "$80-$89", "$90-$99", ">$100"
+        };
+    }
+            </code></pre>
+            <br /><br />
+            <h5 id="moneyAnalysisPart3"><i>4.c Post Version</i></h5>
+            <p class="paragraphText">
+                The POST Version of the MoneyAnalysis largely involved setting up data and return a view with it. The
+                function starts by initialize any variables that will be needed in setting up the BuyData ViewModel.
+            </p>
+            <pre class="codeBlockPanel"><code>
+//POST Version of MoneyAnalysis in Controllers/GamesController.cs
+    var gamesList = GetUserGamesList(User.Identity.GetUserId());
+    var gamesListOfYear = gamesList.Where(g =&gt; g.DateOfPurchase != null && g.Price != null && g.DateOfPurchase.Value.Year == SelectYear).OrderByDescending(g =&gt; g.DateOfPurchase);
+
+    // Make variables for buyData fields.
+    var totalSpent = (int)gamesListOfYear.Sum(g =&gt; g.Price);
+    var totalGames = gamesListOfYear.Count();
+    var systemInfo = gamesListOfYear.GroupBy(c =&gt; c.SystemName);
+    int[] monthlyCost = new int[12];
+    int[] monthlyCount = new int[12];
+    int[] monthlyPhysicalCount = new int[12];
+    int[] monthlyDigitalCount = new int[12];
+    int[] priceRange = new int[10];
+    int index = 0;
+            </code></pre>
+            <p class="paragraphText">
+                The monthly related arrays (and price range) are then setup using a foreach loop to go through every
+                game. At first I tried to do this with a Linq Query but I had trouble accounting for months with no
+                games not being counted.
+            </p>
+            <pre class="codeBlockPanel"><code>
+//POST Version of MoneyAnalysis in Controllers/GamesController.cs
+foreach (Game g in gamesListOfYear.ToList())
+{
+    // Increment cost and count.
+    monthlyCost[g.DateOfPurchase.Value.Month - 1] += (int)g.Price;
+    monthlyCount[g.DateOfPurchase.Value.Month - 1] += 1;
+
+    // Increment montlyPhysicalCount or monthlyDigitalCount.
+    if (g.Physical)
+        monthlyPhysicalCount[g.DateOfPurchase.Value.Month - 1] += 1;
+    else
+        monthlyDigitalCount[g.DateOfPurchase.Value.Month - 1] += 1;
+
+    // Increment for price range.
+    decimal gameCost = g.Price.Value;
+    if (gameCost &lt; 20)
+        priceRange[0]++;
+    else if (gameCost &gt;= 100)
+        priceRange[9]++;
+    else
+        priceRange[(int)Math.Floor(gameCost / 10) - 1]++;
+    index++;
+}
+            </code></pre>
+            <p class="paragraphText">
+                BuyData is then created using the variables that were setup before.
+            </p>
+            <pre class="codeBlockPanel"><code>
+//POST Version of MoneyAnalysis in Controllers/GamesController.cs
+BuyData buyData = new BuyData
+{
+    TotalSpent = totalSpent,
+    TotalGames = totalGames,
+    AverageSpend = (int)Math.Round((decimal)(totalSpent / totalGames)),
+    TotalPhysical = gamesListOfYear.Where(g =&gt; g.Physical == true).Count(),
+    TotalDigital = gamesListOfYear.Where(g =&gt; g.Physical == false).Count(),
+    MonthlyTotalSpent = monthlyCost,
+    MonthlyTotalGames = monthlyCount,
+    MonthlyTotalPhysical = monthlyPhysicalCount,
+    MonthlyTotalDigital = monthlyDigitalCount,
+    TotalByPriceRange = priceRange,
+    SystemNames = systemInfo.Select(c =&gt; c.Key).ToArray(),
+    SystemCounts = systemInfo.Select(c =&gt; c.Count()).ToArray()
+};
+…
+return View(buyData);
+            </code></pre>
+
+
         </div>
     </div>
 </body>
