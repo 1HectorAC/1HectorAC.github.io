@@ -72,9 +72,12 @@
                                 <li><a href="#moneyAnalysisPart1">GET Version</a>
                                 <li><a href="#moneyAnalysisPart2">BuyData ViewModel</a>
                                 <li><a href="#moneyAnalysisPart3">Post Version</a>
+                                <li><a href="#moneyAnalysisPart4">Charts</a>
+                                <li><a href="#moneyAnalysisPart5">View</a>
                             </ul>
                         </li>
                     </ol>
+                    <li><a href="#finalSection">Final Thoughts</a></li>
                 </div>
             </div>
         </div>
@@ -132,7 +135,7 @@
                 users games.
             </p>
             <pre class="codeBlockPanel"><code>
-//GET Version of MoneyAnalysis in Controllers/GamesController.cs
+// GET Version of MoneyAnalysis in Controllers/GamesController.cs
 [Authorize]
     public ActionResult MoneyAnalysis()
     {
@@ -154,7 +157,7 @@
                 label. Example of the ViewModel called BuyData is shown below:
             </p>
             <pre class="codeBlockPanel"><code>
-//Models/ViewModels/BuyData.cs
+// Models/ViewModels/BuyData.cs
 public class BuyData
     {
         public int TotalSpent { get; set; }
@@ -186,7 +189,7 @@ public class BuyData
                 function starts by initialize any variables that will be needed in setting up the BuyData ViewModel.
             </p>
             <pre class="codeBlockPanel"><code>
-//POST Version of MoneyAnalysis in Controllers/GamesController.cs
+// POST Version of MoneyAnalysis in Controllers/GamesController.cs
     var gamesList = GetUserGamesList(User.Identity.GetUserId());
     var gamesListOfYear = gamesList.Where(g =&gt; g.DateOfPurchase != null && g.Price != null && g.DateOfPurchase.Value.Year == SelectYear).OrderByDescending(g =&gt; g.DateOfPurchase);
 
@@ -207,7 +210,7 @@ public class BuyData
                 games not being counted.
             </p>
             <pre class="codeBlockPanel"><code>
-//POST Version of MoneyAnalysis in Controllers/GamesController.cs
+// POST Version of MoneyAnalysis in Controllers/GamesController.cs
 foreach (Game g in gamesListOfYear.ToList())
 {
     // Increment cost and count.
@@ -235,7 +238,7 @@ foreach (Game g in gamesListOfYear.ToList())
                 BuyData is then created using the variables that were setup before.
             </p>
             <pre class="codeBlockPanel"><code>
-//POST Version of MoneyAnalysis in Controllers/GamesController.cs
+// POST Version of MoneyAnalysis in Controllers/GamesController.cs
 BuyData buyData = new BuyData
 {
     TotalSpent = totalSpent,
@@ -254,8 +257,168 @@ BuyData buyData = new BuyData
 …
 return View(buyData);
             </code></pre>
+            <br /><br />
+            <h5 id="moneyAnalysisPart4"><i>4.d Charts</i></h5>
+            <div class="row">
+                <div class="col-md-5">
+                    <p class="paragraphText">
+                        Before I cover the MoneyAnalysis view section I wanted to go over some chart functions. The
+                        function for the bar graph is shown. The most notable parts would be the parameters. The
+                        "canvasId" is used to identify the html element where the chart will be added, "GraphTitle" is
+                        the title that will display, "xValues" is the data (money), and "yValues" is the labels
+                        (months).
+                    </p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+// Scripts/GraphSetup.js
+﻿function BarGraphSetup(canvasId,graphTitle, xValues, yValues) {
+    var g1 = '#38ef7d';
+    var g2 = '#11998e';
+    var g3 = '#05665b';
+    var color1 = [g1, g2, g1, g2, g1, g2, g1, g2, g1, g2, g1, g2];
+    var color2 = [g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3,];
 
+    new Chart(canvasId, {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: color1,
+                data: yValues,
+                borderColor: color2,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: graphTitle,
+                fontSize: 25
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+                    </code></pre>
+                </div>
+                <div class="col-md-5">
+                    <p class="paragraphText">
+                        Below is the setup for the pie chart.I should note that the "type" is used to make it a pie
+                        chart instead of a bar graph like the previous one.
+                    </p>
+                </div>
+                <div class="col-md-7">
+                    <pre class="codeBlockPanel"><code>
+// Scripts/GraphSetup.js
+function PieGraphSetup(canvasId, graphTitle, xValues, yValues) {
+    var g3 = '#05665b';
+    var color1 = ['#38ef7d', '#18AD94', '#12E8DD', '#2E96E6', '#315AA6', '#656EE6', '#7DE843', '#6ADB00', '#63C757', '#59A6CF' ];
+    var color2 = [g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3,];
 
+    new Chart(canvasId, {
+        type: "pie",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: color1,
+                data: yValues,
+                borderColor: color2
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: graphTitle,
+                fontSize: 25
+            },
+        }
+    });
+}
+                    </code></pre>
+                </div>
+            </div>
+            <br /><br />
+            <h5 id="moneyAnalysisPart5"><i>4.e View</i></h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="paragraphText">
+                        One of the first things in the view is the model that gets passed into it. The code shows this.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+// Views/Games/MoneyAnalysis.cshtml
+@model GameManager.Models.ViewModels.BuyData
+                    </code></pre>
+                </div>
+                <div class="col-md-6">
+                    <p class="paragraphText">
+                        This code shows a quick example on how to access the data from the BuyData ViewModel that was
+                        setup before.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <pre class="codeBlockPanel"><code>
+// Views/Games/MoneyAnalysis.cshtml
+&lt;h1&gt;@Model.TotalSpent&lt;/h1&gt;
+                    </code></pre>
+                </div>
+            </div>
+            <p class="paragraphText">
+                The chart.js cdn is needed at the top of the page to access the library. Example shown below:
+            </p>
+            <pre class="codeBlockPanel"><code>
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"&gt;&lt;/script&gt;
+            </code></pre>
+            <p class="paragraphText">
+                The canvas element is then needed in the view to know where the chart will be placed. Example of this
+                shown below. Note that the id will be used specify which canvas element to add a chart to.
+            </p>
+            <pre class="codeBlockPanel"><code>
+// Views/Games/MoneyAnalysis.cshtml
+&lt;canvas id="costBarGraph" width="700" height="275"&gt;&lt;/canvas&gt;
+&lt;canvas id="consolePie" height="350" style="width:100%;max-width:600px;"&gt;&lt;/canvas&gt;
+            </code></pre>
+            <p class="paragraphText">
+                In the final part of the charts, the data is setup and passed to the function to make the charts.
+                Something to note is how the data from the model was converted to Javascript in the process. This was
+                accomplished by encoding it to Json and then reading the raw html of it. Example shown below:
+            </p>
+            <pre class="codeBlockPanel"><code>
+// Views/Games/MoneyAnalysis.cshtml
+&lt;script src="@Url.Content("~/Scripts/GraphSetup.js")" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script&gt;
+    //Setup monthly cost(costData) for chart.
+    var costData = @Html.Raw(Json.Encode(Model.MonthlyTotalSpent));
+
+    //Setup system name and data for chart.
+    var systemData = @Html.Raw(Json.Encode(Model.SystemCounts));
+    var systemNames = @Html.Raw(Json.Encode(Model.SystemNames));
+
+    BarGraphSetup("costBarGraph", "Money Spent by Month($)", ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], costData);
+    PieGraphSetup("consolePie", "Games Bought by Console", systemNames, systemData);
+&gt;/script&gt;
+            </code></pre>
+            <br /><br />
+            <h4 id="finalSection">5. Final Thoughts</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                The easiest part for me was the ASP.NET MVC web Framework features due to my familiarity with it. One
+                thing that took me a bit more time was the tables setup in the database. I find that creating a database
+                isn't hard but creating an efficient/organized one required more thought. To create a good database
+                requires a good understanding of how the data is going to be used and that means a lot more pre-planning
+                of the project. The chart related features were new to me but was a lot easier to setup than I expected.
+                The <a href="https://www.chartjs.org/">chartjs.org</a> website provides easy to follow examples that
+                helped.
+            </p>
         </div>
     </div>
 </body>
