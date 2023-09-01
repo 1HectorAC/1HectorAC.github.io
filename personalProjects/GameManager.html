@@ -101,14 +101,29 @@
                 "GameUsers" table to manage the user, the "Games" table store data relating to a game, and a
                 "GameSystems" table to store the system options that a game can be from.
             </p>
-            <p class="paragraphText">
-                The "GameUsers" and "GameSystem" are simple enough were they don’t need an explanation. I should mention
-                that the "GameSystem" table is populated by the "up" script and is not edited by the user. The "Games"
-                table is the biggest table given that it has to track various factors that will be analyzed. I will note
-                that Game bought and Games played can be analyzed in different pages which is why they have different
-                date fields. Also game replayed or borrowed wouldn’t be bought which is why some purchase related fields
-                can be null.
-            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="paragraphText">
+                        The "GameUsers" and "GameSystem" are simple enough were they don’t need an explanation. I should
+                        mention
+                        that the "GameSystem" table is populated by the "up" script and is not edited by the user. The
+                        "Games"
+                        table is the biggest table given that it has to track various factors that will be analyzed. I
+                        will note
+                        that Game bought and Games played can be analyzed in different pages which is why they have
+                        different
+                        date fields. Also game replayed or borrowed wouldn’t be bought which is why some purchase
+                        related fields
+                        can be null. I have provided a simple diagram of the database tables. There is also a more
+                        detailed setup in the "App_Data/up.sql" file.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img class="formatedImage" src="images/GameManagerDBDiagram.PNG" alt="">
+                </div>
+            </div>
+
+
             <br /><br />
             <h4 id="setupSection">3. About Setup</h4>
             <hr class="whiteLine" />
@@ -283,7 +298,7 @@ return View(buyData);
     var g2 = '#11998e';
     var g3 = '#05665b';
     var color1 = [g1, g2, g1, g2, g1, g2, g1, g2, g1, g2, g1, g2];
-    var color2 = [g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3,];
+    var color2 = [g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3];
 
     new Chart(canvasId, {
         type: "bar",
