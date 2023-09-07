@@ -102,14 +102,29 @@
                 "GameUsers" table to manage the user, the "Games" table store data relating to a game, and a
                 "GameSystems" table to store the system options that a game can be from.
             </p>
-            <p class="paragraphText">
-                The "GameUsers" and "GameSystem" are simple enough were they don’t need an explanation. I should mention
-                that the "GameSystem" table is populated by the "up" script and is not edited by the user. The "Games"
-                table is the biggest table given that it has to track various factors that will be analyzed. I will note
-                that Game bought and Games played can be analyzed in different pages which is why they have different
-                date fields. Also game replayed or borrowed wouldn’t be bought which is why some purchase related fields
-                can be null.
-            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="paragraphText">
+                        The "GameUsers" and "GameSystem" are simple enough were they don’t need an explanation. I should
+                        mention
+                        that the "GameSystem" table is populated by the "up" script and is not edited by the user. The
+                        "Games"
+                        table is the biggest table given that it has to track various factors that will be analyzed. I
+                        will note
+                        that Game bought and Games played can be analyzed in different pages which is why they have
+                        different
+                        date fields. Also game replayed or borrowed wouldn’t be bought which is why some purchase
+                        related fields
+                        can be null. I have provided a simple diagram of the database tables. There is also a more
+                        detailed setup in the "App_Data/up.sql" file.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img class="formatedImage" src="images/GameManagerDBDiagram.PNG" alt="">
+                </div>
+            </div>
+
+
             <br /><br />
             <h4 id="setupSection">3. About Setup</h4>
             <hr class="whiteLine" />
@@ -141,7 +156,9 @@
     public ActionResult MoneyAnalysis()
     {
         var gamesList = GetUserGamesList(User.Identity.GetUserId());
-        var yearsList = gamesList.Where(g =&gt; g.DateOfPurchase != null).Select(g =&gt; g.DateOfPurchase.Value.Year).Distinct();
+        var yearsList = gamesList
+                .Where(g =&gt; g.DateOfPurchase != null)
+                .Select(g =&gt; g.DateOfPurchase.Value.Year).Distinct();
 
         if (yearsList.Count() &gt;= 1)
             ViewBag.SelectYear = new SelectList(yearsList);
@@ -175,11 +192,13 @@ public class BuyData
         public int[] SystemCounts { get; set; }
 
         public string[] Months { get; set; } = new string[] {
-            "January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+            "January", "Feburary", "March", "April", "May", "June", "July",
+            "August", "September", "October", "November", "December"
         };
 
         public string[] PriceLabels = new string[] {
-            "&lt;$20", "$20-$29", "$30-$39", "$40-$49", "$50-$59", "$60-$69", "$70-$79", "$80-$89", "$90-$99", ">$100"
+            "&lt;$20", "$20-$29", "$30-$39", "$40-$49", "$50-$59",
+            "$60-$69", "$70-$79", "$80-$89", "$90-$99", ">$100"
         };
     }
             </code></pre>
@@ -192,7 +211,9 @@ public class BuyData
             <pre class="codeBlockPanel"><code>
 // POST Version of MoneyAnalysis in Controllers/GamesController.cs
     var gamesList = GetUserGamesList(User.Identity.GetUserId());
-    var gamesListOfYear = gamesList.Where(g =&gt; g.DateOfPurchase != null && g.Price != null && g.DateOfPurchase.Value.Year == SelectYear).OrderByDescending(g =&gt; g.DateOfPurchase);
+    var gamesListOfYear = gamesList
+            .Where(g =&gt; g.DateOfPurchase != null && g.Price != null && g.DateOfPurchase.Value.Year == SelectYear)
+            .OrderByDescending(g =&gt; g.DateOfPurchase);
 
     // Make variables for buyData fields.
     var totalSpent = (int)gamesListOfYear.Sum(g =&gt; g.Price);
@@ -273,12 +294,12 @@ return View(buyData);
                 <div class="col-md-7">
                     <pre class="codeBlockPanel"><code>
 // Scripts/GraphSetup.js
-﻿function BarGraphSetup(canvasId,graphTitle, xValues, yValues) {
+﻿function BarGraphSetup(canvasId, graphTitle, xValues, yValues) {
     var g1 = '#38ef7d';
     var g2 = '#11998e';
     var g3 = '#05665b';
     var color1 = [g1, g2, g1, g2, g1, g2, g1, g2, g1, g2, g1, g2];
-    var color2 = [g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3,];
+    var color2 = [g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3];
 
     new Chart(canvasId, {
         type: "bar",
@@ -321,7 +342,10 @@ return View(buyData);
 // Scripts/GraphSetup.js
 function PieGraphSetup(canvasId, graphTitle, xValues, yValues) {
     var g3 = '#05665b';
-    var color1 = ['#38ef7d', '#18AD94', '#12E8DD', '#2E96E6', '#315AA6', '#656EE6', '#7DE843', '#6ADB00', '#63C757', '#59A6CF' ];
+    var color1 = [
+        '#38ef7d', '#18AD94', '#12E8DD', '#2E96E6', '#315AA6',
+        '#656EE6', '#7DE843', '#6ADB00', '#63C757', '#59A6CF'
+        ];
     var color2 = [g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3, g3,];
 
     new Chart(canvasId, {
@@ -404,9 +428,11 @@ function PieGraphSetup(canvasId, graphTitle, xValues, yValues) {
     var systemData = @Html.Raw(Json.Encode(Model.SystemCounts));
     var systemNames = @Html.Raw(Json.Encode(Model.SystemNames));
 
-    BarGraphSetup("costBarGraph", "Money Spent by Month($)", ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], costData);
+    var monthsLabel = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    BarGraphSetup("costBarGraph", "Money Spent by Month($)", monthsLabel, costData);
     PieGraphSetup("consolePie", "Games Bought by Console", systemNames, systemData);
-&gt;/script&gt;
+&lt;/script&gt;
             </code></pre>
             <br /><br />
             <h4 id="finalSection">5. Final Thoughts</h4>

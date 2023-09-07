@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="blackPanelWithMorePadding">
-            <h4 id="setupSection">1. Setup:</h4>
+            <h4 id="setupSection">1. Setup</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
@@ -136,7 +136,7 @@ connect(db="test", host=os.getenv('DB_HOST'), port=27017)
             </div>
 
             <br /><br />
-            <h4 id="templateSection">2. Templates:</h4>
+            <h4 id="templateSection">2. Templates</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">I wanted to briefly mention some of the template setup that made removing
                 redundancy in the html parts
@@ -174,7 +174,7 @@ Individual.html:
                 </div>
             </div>
             <br /><br />
-            <h4 id="userModelSection">3. User Model:</h4>
+            <h4 id="userModelSection">3. User Model</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
@@ -199,7 +199,7 @@ class ShowUser(Document):
                 </div>
             </div>
             <br /><br />
-            <h4 id="userAccountSection">4. User Account Functionality:</h4>
+            <h4 id="userAccountSection">4. User Account Functionality</h4>
             <hr class="whiteLine" />
             <p>There are 3 user account functionality that I added to my project. The ability to login, logout, and
                 register an account. I will run through the process involved in sending data to doing the action needed.
@@ -212,7 +212,7 @@ class ShowUser(Document):
             </ol>
 
             <br /><br />
-            <h5 id="userAccountSection1"><i>4.a HTML Form:</i></h5>
+            <h5 id="userAccountSection1"><i>4.a HTML Form</i></h5>
             <div class="row">
                 <div class="col-md-5">
                     <p class="paragraphText">I added a simplified version of the log-in form as an example. The general
@@ -232,7 +232,7 @@ class ShowUser(Document):
                 </div>
             </div>
             <br /><br />
-            <h5 id="userAccountSection2"><i>4.b Ajax Form Handling:</i></h5>
+            <h5 id="userAccountSection2"><i>4.b Ajax Form Handling</i></h5>
             <div class="row">
                 <div class="col-md-6">
                     <p class="paragraphText">This part is about how a form gets handled after it is submitted. I should
@@ -279,7 +279,7 @@ $("form[name=login_form]").submit(function(e){
                 </div>
             </div>
             <br /><br />
-            <h5 id="userAccountSection3"><i>4.c Routes with Flask:</i></h5>
+            <h5 id="userAccountSection3"><i>4.c Routes with Flask</i></h5>
             <div class="row">
                 <div class="col-md-6">
                     <p class="paragraphText">All user related routes will be placed in the "user/routes.py" file. These
@@ -301,7 +301,7 @@ def login():
                 </div>
             </div>
             <br /><br />
-            <h5 id="userAccountSection4"><i>4.d User Functions:</i></h5>
+            <h5 id="userAccountSection4"><i>4.d User Functions</i></h5>
             <div class="row">
                 <div class="col-md-6">
                     <p class="paragraphText">In the "user/models.py" file I added a "User" class that will have all the
@@ -377,7 +377,7 @@ def signout(self):
                 </div>
             </div>
             <br /><br />
-            <h4 id="userRestSection">5. User Restricted Pages:</h4>
+            <h4 id="userRestSection">5. User Restricted Pages</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-5">
@@ -407,7 +407,7 @@ def dashboard():
                 </div>
             </div>
             <br /><br />
-            <h4 id="showSection">6. Shows:</h4>
+            <h4 id="showSection">6. Shows</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">I added the basic CRUD (create, read, update, delete) features involving the
                 management of shows by
@@ -415,7 +415,7 @@ def dashboard():
                 so I will largely focus on just the logic portion in the functions. I will also just show a simplified
                 version of the code for each part usually with less data validation.</p>
             <br /><br />
-            <h5 id="showSection1"><i>6.a Adding Shows:</i></h5>
+            <h5 id="showSection1"><i>6.a Adding Shows</i></h5>
             <p class="paragraphText">The addShow function will be stored in the User class in the user/models.py file.To
                 add a show I first create a dictionary called "show" with data values that taken
                 from the form values. I then push this show dictionary to the list of shows of the current user
@@ -442,7 +442,7 @@ def addShow(self):
     return jsonify({"error": "Title of show already exits."}), 401
             </code></pre>
             <br /><br />
-            <h5 id="showSection2"><i>6.b View Shows:</i></h5>
+            <h5 id="showSection2"><i>6.b View Shows</i></h5>
             <p class="paragraphText">View shows will be setup in the dashboard function in the app.py file. Viewing the
                 show list of a user
                 involves getting the shows owned by the user, organizing it, returning the page with the data, and then
@@ -487,7 +487,7 @@ def getShowsList(userEmail):
     return userList
             </code></pre>
             <br /><br />
-            <h5 id="showSection3"><i>6.c Edit Shows:</i></h5>
+            <h5 id="showSection3"><i>6.c Edit Shows</i></h5>
             <p class="paragraphText">The editShow function will be stored in the user/models.py file. To edit a show it
                 first involves making an old show dictionary based on the title passed in. This is the show that we want
                 to edit. Then I make a new show dictionary based on form data. After that I updated the users shows list
@@ -516,7 +516,7 @@ def editShow(self,title):
     return jsonify({"success": "Sucess"}), 200
             </code></pre>
             <br /><br />
-            <h5 id="showSection4"><i>6.d Delete Shows:</i></h5>
+            <h5 id="showSection4"><i>6.d Delete Shows</i></h5>
             <p class="paragraphText">The removeShow function will be stored in the user/models.py file. To delete a show
                 I just update the users shows list and pull the show based on title passed into the function.</p>
             <pre class="codeBlockPanel"><code>
@@ -526,7 +526,7 @@ def removeShow(self, title):
     return redirect('/dashboard/')
             </code></pre>
             <br /><br />
-            <h4 id="finalSection">7. Final Thoughts:</h4>
+            <h4 id="finalSection">7. Final Thoughts</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">One thing I learned more about from this project is on how user accounts work. My
                 previous experience with user accounts has been automatically handled and auto generated so some of the

@@ -84,29 +84,16 @@
             <h4 id="databaseSection">1. Database</h4>
             <hr class="whiteLine" />
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <p class="paragraphText">I used a database first approach so one of my first task was just setting
                         up a database. The
                         database was
-                        pretty simple with just 2 table. The two tables were BatteryTrackerUser and Device. The tables
-                        are simple enough were I don't really need a diagram to explain them so I made a basic
-                        description of their columns. After that I used SQL management studio to make the database.</p>
+                        pretty simple with just 2 table. The tables were BatteryTrackerUser and Device. I provided a
+                        diagram of them. After that I used SQL management studio to make the
+                        database.</p>
                 </div>
-                <div class="col-md-7">
-                    <pre class="codeBlockPanel"><code>
-// TABLES
-Device:                          BatteryTrackerUser:
-   Id (INT PRIMARY KEY)             Name (INT PRIMARY KEY)
-   OwnerId (INT FOREIGN KEY)        kAspNetUserId (NVARCHAR)
-   Name (NVARCHAR)
-   BatteryReplacementCount (INT)
-   DateBought (DATE)
-   BatteryCapacity (INT)
-   BatteryVoltage (INT)
-   LastRechargeDate (DATE)
-   RechargeCycle (INT)
-                    </code></pre>
-
+                <div class="col-md-6">
+                    <img class="formatedImage" src="images/BatteryTrackerDBDiagram.PNG" alt="">
                 </div>
             </div>
             <br /><br />
