@@ -27,8 +27,7 @@
         </div>
     </div>
 
-
-    <div class="container ">
+    <div class="container">
         <div class="blackPanel">
             <h4>Assignment Summary</h4>
             <hr class="whiteLine" />
@@ -40,10 +39,34 @@
                     href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW3_1819.html">here.</a>
             </p>
         </div>
-    </div>
-    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#setupSection">Setting Up</a></li>
+                        <li><a href="#javaSection">Java Code</a></li>
+                        <li><a href="#gitSection">Git Setup</a></li>
+                        <li><a href="#cSharpSection">C# Changes</a></li>
+                        <ul>
+                            <li><a href="#cSharp1Section">Node.java to Node.cs</a></li>
+                            <li><a href="#cSharp2Section">QueueInterface.java to IQueue.cs</a></li>
+                            <li><a href="#cSharp3Section">QueueUnderflowException.java to QueueUnderflowException.cs</a>
+                            </li>
+                            <li><a href="#cSharp4Section">LinkedQueue.java to LinkedQueue.cs</a></li>
+                            <li><a href="#cSharp5Section">Main.java to Program.cs</a></li>
+                            <li><a href="#cSharp6Section">General Changes</a></li>
+
+                        </ul>
+                        <li><a href="#resultSection">Results</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
         <div class="blackPanelWithMorePadding">
-            <h4>1. Setting Up</h4>
+            <h4 id="setupSection">1. Setting Up</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The first thing we had to do was to download and install the visual studio IDE. I
                 already had it on my
@@ -52,7 +75,7 @@
                 just learned what I needed at the time and I didn't have much of a foundation.
             </p>
             <br /><br />
-            <h4>2. Java Code</h4>
+            <h4 id="javaSection">2. Java Code</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">I dont have a whole lot of experience with java but I have learned it a while back
                 on my own so reading
@@ -62,7 +85,7 @@
                 either. I will largely take note of differences that will need to be resolved in translating the file.
             </p>
             <br /><br />
-            <h4>3. Git Setup</h4>
+            <h4 id="gitSection">3. Git Setup</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
@@ -90,9 +113,9 @@ git merge HW3Ver
                 </div>
             </div>
             <br /><br />
-            <h4>4. C# Changes</h4>
+            <h4 id="cSharpSection">4. C# Changes</h4>
             <hr class="whiteLine" />
-            <h5><i>4.a Node.java to Node.cs</i></h5>
+            <h5 id="cSharp1Section"><i>4.a Node.java to Node.cs</i></h5>
             <div class="row">
                 <div class="col-md-7">
                     <p class="paragraphText">The big difference here was just setting up a property to get and set the
@@ -114,12 +137,12 @@ public T Data
                     </code></pre>
                 </div>
             </div>
-            <h5><i>4.b QueueInterface.java to IQueue.cs</i></h5>
+            <h5 id="cSharp2Section"><i>4.b QueueInterface.java to IQueue.cs</i></h5>
             <p class="paragraphText">The big difference here was the file name change. In C# it was more proper to start
                 interfaces
                 with "I".
             </p>
-            <h5><i>4.c QueueUnderflowException.java to QueueUnderflowException.cs</i></h5>
+            <h5 id="cSharp3Section"><i>4.c QueueUnderflowException.java to QueueUnderflowException.cs</i></h5>
             <div class="row">
                 <div class="col-md-6">
                     <p class="paragraphText">Some differences that I came across where how to extend a class. They
@@ -142,7 +165,7 @@ public class QueueUnderFlowException : SystemException
                     </code></pre>
                 </div>
             </div>
-            <h5><i>4.d LinkedQueue.java to LinkedQueue.cs</i></h5>
+            <h5 id="cSharp4Section"><i>4.d LinkedQueue.java to LinkedQueue.cs</i></h5>
             <div class="row">
                 <div class="col-md-8">
                     <p class="paragraphText">This file had a difference in implementing an interface by using “:”
@@ -160,7 +183,7 @@ T tmp = default(T);
                     </code></pre>
                 </div>
             </div>
-            <h5><i>4.e Main.java to Program.cs</i></h5>
+            <h5 id="cSharp5Section"><i>4.e Main.java to Program.cs</i></h5>
             <div class="row">
                 <div class="col-md-6">
                     <p class="paragraphText">The first thing to note is that the file that was first generated by visual
@@ -186,7 +209,7 @@ int maxLength = output.getLast().length(); //Java
                 instead of
                 System.out.println() to outputted in command line and name changes that aren't really worth
                 mentioning considering how trivial they are.</p>
-            <h5><i>4.f General changes</i></h5>
+            <h5 id="cSharp6Section"><i>4.f General Changes</i></h5>
             <div class="row">
                 <div class="col-md-6">
                     <p class="paragraphText">Some general things that were noted were xml comments for classes and
@@ -208,7 +231,7 @@ public T Pop()
                 </div>
             </div>
             <br /><br />
-            <h4>5. Results</h4>
+            <h4 id="resultSection">5. Results</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
