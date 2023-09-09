@@ -32,15 +32,34 @@
             <hr class="whiteLine" />
             <p class="paragraphText">The main objective is make a MVC web application using a pre-existing database. We
                 will use as Code First with an Existing Database workflow. The program will involve looking up
-                information about a person from a database from a search of their name. Assignment details can be found <a
-                    href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW6_1819.html">here.</a>
+                information about a person from a database from a search of their name. Assignment details can be found
+                <a href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW6_1819.html">here.</a>
             </p>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#setupSection">Setup</a></li>
+                        <li><a href="#linqSection">Linq Query</a></li>
+                        <li><a href="#searchSection">Search Name</a></li>
+                        <li><a href="#displayInfoSection">Display Information</a></li>
+                        <ul>
+                            <li><a href="#displayInfo1Section">Index.cshtml</a></li>
+                            <li><a href="#displayInfo2Section">PersonDashboardVM.cs</a></li>
+                            <li><a href="#displayInfo3Section">HomeController.cs</a></li>
+                            <li><a href="#displayInfo4Section">Detail.cshtml</a></li>
 
-    <div class="container">
+                        </ul>
+                        <li><a href="#resultSection">Results</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
         <div class="blackPanelWithMorePadding">
-            <h4>1. Setup</h4>
+            <h4 id="setupSection">1. Setup</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The first thing I needed to do was to download microsoft sql server management
                 studio and sql express. I
@@ -48,7 +67,7 @@
                 this assignment. Then I used Nuget to add microsoft.SqlServer.Types and entity framework. I also
                 downloaded LinqPad5. Then I proceeded to restore the database.</p>
             <br /><br />
-            <h4>2. Linq Query</h4>
+            <h4 id="linqSection">2. Linq Query</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">I then began messing around with linq query searches with LinqPad5 before writing
                 any code. Somethings
@@ -57,7 +76,7 @@
                 was sure to use in the assignment. I will not show them here since they will just be shown in the code
                 in later parts of the blog.</p>
             <br /><br />
-            <h4>3. Search Name</h4>
+            <h4 id="searchSection">3. Search Name</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">This part is just how the name was being searched.</p>
             <div class="row">
@@ -75,21 +94,21 @@
                 </div>
             </div>
             <br /><br />
-            <h4>4. Display Information</h4>
+            <h4 id="displayInfoSection">4. Display Information</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">To display information on the searched person I used POST and passed an id number.
                 The page has access to
                 the person ID number since I passed in a list of people in the previous part.</p>
             <div class="row">
                 <div class="col-md-6">
-                    <h5><i>Index.cshtml</i></h5>
+                    <h5 id="displayInfo1Section"><i>4.a Index.cshtml</i></h5>
                     <p class="paragraphText">So this page pretty much just has the form setup. Not much else to it.</p>
                 </div>
                 <div class="col-md-6">
                     <img class="formatedImage" src="images/hw6Images/index.PNG" alt=""><br /><br />
                 </div>
                 <div class="col-md-12">
-                    <h5><i>PersonDashboardVM.cs</i></h5>
+                    <h5 id="displayInfo2Section"><i>4.b PersonDashboardVM.cs</i></h5>
                     <p class="paragraphText">So before I get into the HomeController logic of calling a view with a
                         model contain all the
                         information need to display I needed to make a View Model. </p>
@@ -99,10 +118,9 @@
                         only pass one model to the view. Note that I also made another View Model containing purchase
                         Information for a profitable purchased Item. I needed a list of these in the PersonDashboardVM
                         since I need to store 10 of them.</p>
-                    <br />
                 </div>
                 <div class="col-md-6">
-                    <h5><i>HomeController.cs</i></h5>
+                    <h5 id="displayInfo3Section"><i>4.c HomeController.cs</i></h5>
                     <p class="paragraphText">So the Detail Action to get the Detail view is where most of the query
                         searches and logic is. It
                         is a Post and takes in an ID. So we Initialize the a PersonDashboardVM object to store all the
@@ -129,7 +147,7 @@
                     <img class="formatedImage" src="images/hw6Images/HCDetail3.PNG" alt=""><br /><br />
                 </div>
                 <div class="col-md-12">
-                    <h5><i>Detail.cshtml</i></h5>
+                    <h5 id="displayInfo4Section"><i>4.d Detail.cshtml</i></h5>
                     <p class="paragraphText">This part just displays all the parts of the PersonDashboardMV model that
                         It needs to show using
                         razor html and lambda functions. One thing to note is that I use one “if” check so see if the
@@ -139,7 +157,7 @@
                 </div>
             </div>
             <br /><br />
-            <h4>5. Results</h4>
+            <h4 id="resultSection">5. Results</h4>
             <hr class="whiteLine" />
             <p>Test Result Video (No Sound):</p>
             <iframe class="video" src="https://www.youtube.com/embed/Iz3a1izgO4M" frameborder="0"

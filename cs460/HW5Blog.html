@@ -31,16 +31,37 @@
         <div class="blackPanel">
             <h4>Assignment Summary</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText">The main objective is to write an MVC web application that uses a one table local database. The web
+            <p class="paragraphText">The main objective is to write an MVC web application that uses a one table local
+                database. The web
                 application will have a page to make request to the landlord though a form online and a page to view all
                 requests in the database. Assignment details can be found <a
                     href="http://www.wou.edu/~morses/classes/cs46x/assignments/HW5_1819.html">here.</a>
             </p>
         </div>
-    </div>
-    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#setupSection">Setup</a></li>
+                        <li><a href="#databaseSection">Database Setup</a></li>
+                        <li><a href="#codeSection">Code</a></li>
+                        <ul>
+                            <li><a href="#code1Section">TennantRequest.cs</a></li>
+                            <li><a href="#code2Section">TennantRequestContext.cs</a></li>
+                            <li><a href="#code3Section">Web.Config</a></li>
+                            <li><a href="#code4Section">HomeController.cs</a></li>
+                            <li><a href="#code5Section">Create.cshtml</a></li>
+                            <li><a href="#code6Section">Display.cshtml</a></li>
+                        </ul>
+                        <li><a href="#resultSection">Results</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
         <div class="blackPanelWithMorePadding">
-            <h4>1. Setup</h4>
+            <h4 id="setupSection">1. Setup</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The first think I did was setup the home page. I pretty much just set up the links
                 I will need and
@@ -48,7 +69,7 @@
                 Not much else happened here. The _Layout page is also had a few cosmetic changes that aren't really
                 worth mentioning.</p>
             <br /><br />
-            <h4>2. Database Setup</h4>
+            <h4 id="databaseSection">2. Database Setup</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">So I I created the database by opening the SQL object explorer in visual studio.
                 There I just
@@ -56,9 +77,9 @@
                 up.sql and down.sql in the App_Data. The code were pretty simple and similar to the examples in class so
                 I won't mention much else about them.</p>
             <br /><br />
-            <h4>3. Code</h4>
+            <h4 id="codeSection">3. Code</h4>
             <hr class="whiteLine" />
-            <h5><i>3.a TennantRequest.cs</i></h5>
+            <h5 id="code1Section"><i>3.a TennantRequest.cs</i></h5>
             <div class="row">
                 <div class="col-md-8">
                     <p class="paragraphText">This file was the model to represent a request. It was saved in the model
@@ -75,7 +96,7 @@
                     <img src="images/hw5Images/model%20snip.PNG" class="formatedImage" alt=""><br /><br />
                 </div>
             </div>
-            <h5><i>3.b TennantRequestContext.cs</i></h5>
+            <h5 id="code2Section"><i>3.b TennantRequestContext.cs</i></h5>
             <div class="row">
                 <div class="col-md-8">
                     <p class="paragraphText">This file was the database context class that had the connection to the
@@ -86,7 +107,7 @@
                     <img src="images/hw5Images/context.PNG" class="formatedImage" alt=""><br /><br />
                 </div>
             </div>
-            <h5><i>3.c Web.Config:</i></h5>
+            <h5 id="code3Section"><i>3.c Web.Config</i></h5>
             <div class="row">
                 <div class="col-md-5">
                     <p class="paragraphText"> I then had to set up the string connection to actually connect to the
@@ -100,7 +121,7 @@
                     <img src="images/hw5Images/webConfig.PNG" class="formatedImage" alt="">
                 </div>
             </div>
-            <h5><i>3.d HomeController.cs:</i></h5>
+            <h5 id="code4Section"><i>3.d HomeController.cs</i></h5>
             <div class="row">
                 <div class="col-md-6">
                     <p class="paragraphText">This part had the way to setup the views. A key part here was how a context
@@ -117,7 +138,7 @@
                     <br /><br />
                 </div>
             </div>
-            <h5><i>3.e Create.cshtml:</i></h5>
+            <h5 id="code5Section"><i>3.e Create.cshtml</i></h5>
             <div class="row">
                 <div class="col-md-6">
                     <p class="paragraphText">The notable part here was how I used lambda functions to set up the form
@@ -128,7 +149,7 @@
                     <img src="images/hw5Images/create.PNG" class="formatedImage" alt=""><br /><br />
                 </div>
             </div>
-            <h5><i>3.f Display.cshtml:</i></h5>
+            <h5 id="code6Section"><i>3.f Display.cshtml</i></h5>
             <div class="row">
                 <div class="col md-6">
                     <p class="paragraphText">The important part here was how the items in the TennantRequests list were
@@ -141,7 +162,7 @@
                 </div>
             </div>
             <br /><br />
-            <h4>4. Results</h4>
+            <h4 id="resultSection">4. Results</h4>
             <hr class="whiteLine" />
             <p>Test Result Video (No Sound):</p>
             <iframe class="video" src="https://www.youtube.com/embed/7qyE3nGka_c" frameborder="0"
