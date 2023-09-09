@@ -59,10 +59,21 @@
                     </p>
                 </div>
             </div>
-
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#primeSection">Is Prime Function</a></li>
+                        <li><a href="#sequentialSection">Sequential Version</a></li>
+                        <li><a href="#parallelSection">Parallel Version</a></li>
+                        <li><a href="#resultSection">Results</a></li>
+                    </ol>
+                </div>
+            </div>
         </div>
         <div class="blackPanelWithMorePadding">
-            <h4>1. Is Prime Function</h4>
+            <h4 id="primeSection">1. Is Prime Function</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-7">
@@ -84,7 +95,7 @@ def is_prime(n):
                 </div>
             </div>
             <br /><br />
-            <h4>2. Sequential Version</h4>
+            <h4 id="sequentialSection">2. Sequential Version</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-6">
@@ -120,7 +131,7 @@ def SequentialRun(list):
                 </div>
             </div>
             <br /><br />
-            <h4>3. Parallel Version</h4>
+            <h4 id="parallelSection">3. Parallel Version</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-5">
@@ -174,7 +185,7 @@ def ParallelRun(list):
                 </div>
             </div>
             <br /><br />
-            <h4>4. Results</h4>
+            <h4 id="resultSection">4. Results</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">Here are the results of running both version with a specified array length and
                 number range. Console

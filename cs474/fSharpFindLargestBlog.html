@@ -60,9 +60,21 @@
                     </p>
                 </div>
             </div>
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#getLargestSection">Get Largest Function</a></li>
+                        <li><a href="#sequentialSection">Sequential Version</a></li>
+                        <li><a href="#parallelSection">Parallel Version</a></li>
+                        <li><a href="#resultSection">Results</a></li>
+                    </ol>
+                </div>
+            </div>
         </div>
         <div class="blackPanelWithMorePadding">
-            <h4>1. Get Largest function</h4>
+            <h4 id="getLargestSection">1. Get Largest Function</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The fist part I made was just a simple function to find the largest number between
                 two numbers in an
@@ -75,7 +87,7 @@
 let GetLargestBetweenTwoInArray (one,two: int, f: array&lt;_&gt;) = if f.[one] &gt; f.[two] then one else two
             </code></pre>
             <br /><br />
-            <h4>2. Sequential Version</h4>
+            <h4 id="sequentialSection">2. Sequential Version</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">This is the function to find the largest number in an array sequentially. Here more
                 differences to C#:
@@ -93,7 +105,7 @@ let SequentialLargestAlgorithm (arr:array&lt;_&gt;) =
     arr[maxIndex]
             </code></pre>
             <br /><br />
-            <h4>3. Parallel Version</h4>
+            <h4 id="parallelSection">3. Parallel Version</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">This is the function to find the largest number in an array parallelly. There isn't
                 much to note that
@@ -113,7 +125,7 @@ let ParallelLargestAlgorithm (arr:array&lt;_&gt;, chunk: int) =
     arr[maxIndex]
             </code></pre>
             <br /><br />
-            <h4>4. Results</h4>
+            <h4 id="resultSection">4. Results</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The results involve running the sequential and parallel version with various array
                 sizes and recoding

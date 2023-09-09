@@ -57,15 +57,27 @@
                     </p>
                 </div>
             </div>
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#sequentialSection">Sequential Version</a></li>
+                        <li><a href="#parallelSection">Parallel Version</a></li>
+                        <li><a href="#resultSection">Results</a></li>
+                    </ol>
+                </div>
+            </div>
+
         </div>
         <div class="blackPanelWithMorePadding">
-            <h4>1. Sequential Version</h4>
+            <h4 id="sequentialSection">1. Sequential Version</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The sequential version doesn’t require a whole lot of explaining. It involves a for
                 loop to iterate over
                 every value in the array to find the largest one.</p>
             <br /><br />
-            <h4>2. Parallel Version:</h4>
+            <h4 id="parallelSection">2. Parallel Version</h4>
             <hr class="whiteLine" />
             <div class="row">
                 <div class="col-md-5">
@@ -103,7 +115,7 @@ static int LargestNumberFinderParallel(int[] array, int chunk)
                 </div>
             </div>
             <br /><br />
-            <h4>3. Results</h4>
+            <h4 id="resultSection">3. Results</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">The results involve running the sequential and parallel version with various array
                 sizes and recoding the
