@@ -134,6 +134,18 @@ a:hover {
     background-color: rgb(38, 77, 83);
 }
 
+.customNavItem{
+    font-weight: 500;
+    font-size: 18px;
+}
+.customNavItem:hover{  
+    border-radius: 5px;
+    background-color: rgb(110, 141, 160);
+}
+.customNavItem a{
+    color:white;
+}
+
 @media (max-width: 978px) {
     .blackPanelWithMorePadding {
         padding: 20px 20px 20px 20px;
@@ -148,4 +160,19 @@ a:hover {
         font-size: 10px;
     }
 
+}
+
+.navBarColor{
+    background-color:rgba(43, 51, 61, 0.952);
+}
+
+.accordionSectionBack{
+    background-color: rgb(208, 218, 221);
+}
+.accordionSectionFront{
+    background-color: rgb(69, 88, 100);
+    border-radius: 5px;
+}
+.accordionSectionFront a{
+    color:white;
 }
