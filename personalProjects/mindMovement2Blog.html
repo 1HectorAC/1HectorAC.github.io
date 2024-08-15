@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../css/default.css">
     <title> MindMovment2 Blog</title>
 </head>
@@ -15,11 +17,33 @@
         <h1><a href="../index.html">Programming Portfolio</a></h1>
         <h6><i>By Hector Acosta-Cervantes</i></h6>
     </div>
-    <div class="blackBar">
-        <a href="../index.html">Home</a> >
-        <a href="../personalProjectsPage.html">Personal Projects<i> - Web Development</i></a> >
-        MindMovment2 Blog
-    </div>
+    <nav class="navbar navbar-expand-sm sticky-top navBarColor">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+                style="background-color:white">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                </ul>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item customNavItem" href="../index.html">Home</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../projects.html">Projects</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../about.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div class="container text-center">
         <div class="whitePanel">
@@ -349,7 +373,8 @@ $('.gameBtn2').click(function(){
             <br /><br />
             <h4 id="finalSection">6. Final Thoughts</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText">An important idea I tried to keep in mind was separating logic from content. Something like this is easy
+            <p class="paragraphText">An important idea I tried to keep in mind was separating logic from content.
+                Something like this is easy
                 to forget when you just work on html and Javascript. This sort of thing just make the code easier to
                 read and understand. In the future I might also want to think about how I setup variables in Javascript
                 more. I tried to minimize how many variables I had to avoid confusion but I still ran into some problem
