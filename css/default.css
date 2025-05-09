@@ -16,9 +16,11 @@ body {
     background-color: rgb(207, 217, 231);
     color: rgb(41, 54, 79)
 }
+
 .whitePanel h4 {
     line-height: 15px;
 }
+
 .blackPanel {
     border-radius: 10px;
     padding: 20px 20px 20px 30px;
@@ -26,6 +28,7 @@ body {
     background-color: rgb(41, 46, 52, .8);
     color: white;
 }
+
 .blackPanelWithMorePadding {
     border-radius: 10px;
     padding: 40px 80px 20px 80px;
@@ -33,11 +36,13 @@ body {
     background-color: rgb(41, 46, 52, .8);
     color: white;
 }
+
 .blackBar {
     background-color: rgb(48, 57, 69);
     color: white;
     padding: 4px;
 }
+
 .codeBlockPanel {
     color: white;
     background-color: rgba(196, 209, 255, 0.13);
@@ -47,27 +52,41 @@ body {
     margin: 10px 0px 10px 0px;
     font-size: 13px;
 }
+
 @media (max-width: 978px) {
     .blackPanelWithMorePadding {
         padding: 20px 20px 20px 20px;
     }
+
     .video {
         width: 290px;
         height: 160px
     }
+
     .codeBlockPanel {
         font-size: 10px;
     }
 }
+
 .video {
     width: 560px;
     height: 315px;
 }
+
 .formatedImage {
     width: 100%;
     border-radius: 8px;
 }
 
+.footerSection {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #292e34;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
 
 /*------------------------- Buttons -----------------------------------*/
 .customButton {
@@ -75,29 +94,35 @@ body {
     background-color: rgb(80, 137, 187);
     font-weight: 500;
 }
+
 .customButton:hover {
     color: white;
     background-color: rgb(44, 64, 82);
 }
+
 .customButton2 {
     color: rgb(255, 255, 255);
     background-color: rgb(75, 147, 152);
     font-weight: 500;
 }
+
 .customButton2:hover {
     color: white;
     background-color: rgb(38, 77, 83);
 }
-.customNavItem{
+
+.customNavItem {
     font-weight: 500;
     font-size: 18px;
 }
-.customNavItem:hover{  
+
+.customNavItem:hover {
     border-radius: 5px;
     background-color: rgb(110, 141, 160);
 }
-.customNavItem a{
-    color:white;
+
+.customNavItem a {
+    color: white;
 }
 
 
@@ -107,6 +132,7 @@ body {
     color: white;
     padding: 15px;
 }
+
 .title h1 a {
     text-decoration: none;
     font-weight: 700;
@@ -115,19 +141,24 @@ body {
     background-clip: text;
     -webkit-background-clip: text;
 }
+
 .ulShift {
     display: inline-block;
     text-align: left;
 }
+
 .ulShift li {
     margin-bottom: 15px;
 }
+
 .addedListSpace li {
     margin-bottom: 20px;
 }
+
 .smallListSpacing p {
     line-height: 5px;
 }
+
 .paragraphText {
     text-indent: 30px;
     text-align: left;
@@ -139,22 +170,28 @@ body {
     background-color: white;
     margin: 5px;
 }
-.navBarColor{
-    background-color:rgba(43, 51, 61, 0.952);
+
+.navBarColor {
+    background-color: rgba(43, 51, 61, 0.952);
 }
-.accordionSectionBack{
+
+.accordionSectionBack {
     background-color: rgb(208, 218, 221);
 }
-.accordionSectionFront{
+
+.accordionSectionFront {
     background-color: rgb(69, 88, 100);
     border-radius: 5px;
 }
-.accordionSectionFront a{
-    color:white;
+
+.accordionSectionFront a {
+    color: white;
 }
+
 a {
     color: rgb(149, 184, 255);
 }
+
 a:hover {
     color: rgb(239, 243, 255);
 }
