@@ -41,6 +41,7 @@ body {
     background-color: rgb(48, 57, 69);
     color: white;
     padding: 4px;
+    text-align: center;
 }
 
 .codeBlockPanel {
@@ -163,6 +164,27 @@ body {
     text-indent: 30px;
     text-align: left;
 }
+.blackPanelWithMorePadding h1,
+.blackPanelWithMorePadding h2,
+.blackPanelWithMorePadding h3,
+.blackPanelWithMorePadding h4,
+.blackPanelWithMorePadding h5 {
+    font-weight: bold;
+}
+.blackPanel h1,
+.blackPanel h2,
+.blackPanel h3,
+.blackPanel h4,
+.blackPanel h5 {
+    font-weight: bold;
+}
+
+.whitePanel h1,
+.whitePanel h2 {
+    font-weight: bold;
+}
+
+
 
 
 /*------------------------ Color --------------------------------*/
