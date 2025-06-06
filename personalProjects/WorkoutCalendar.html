@@ -91,11 +91,16 @@
                     <h4>Table of Contents</h4>
                     <hr class="whiteLine" />
                     <ol>
-                        <li><a href="#section1">Title1</a></li>
-                        <li><a href="#section2">Title2</a></li>
-                        <li><a href="#section3">Title3</a></li>
-                        <li><a href="#section4">Title4</a></li>
-                        <li><a href="#section5">Title5</a></li>
+                        <li><a href="#section1">Introduction</a></li>
+                        <li><a href="#section2">MERN File Overview</a></li>
+                        <ul>
+                            <li><a href="#section2a">Backend</a></li>
+                            <li><a href="#section2b">Frontend</a></li>
+                        </ul>
+                        <li><a href="#section3">Authentication</a></li>
+
+                        <li><a href="#section4">Final Thoughts</a></li>
+                        <li><a href="#section5">Resources</a></li>
                     </ol>
                 </div>
             </div>
@@ -120,42 +125,96 @@
             <p class="paragraphText">
                 A backend and frontend project will need to be setup that will be ran separately.
             </p>
-            <h5 id="moneyAnalysisPart5"><i>2.a Backend</i></h5>
+            <h5 id="section2a"><i>2.a Backend</i></h5>
             <ul>
-                <li>WorkoutModel.js:</li>
-                <p>test</p>
-                <li>WorkoutController.js:</li>
-                <li>workoutRoutes:</li>
-                <li>Server.js: </li>
-
+                <li><u>workoutModel.js:</u> This is use to map an object to the database documents for easier use.</li>
+                <li><u>workoutController.js:</u> This is where the workout logic will be. It contains functions to get
+                    workouts, add a workout, delete a workout, etc. It will also use the workout Model to make the edits
+                    to the database.</li>
+                <li><u>workoutRoutes.js:</u> This is where the workout endpoints are setup. I define workout URIs that
+                    call a specific workout action from the workout Controller.</li>
+                <li><u>server.js:</u> This is the main server file that will be ran and listens for requests. Important
+                    things like the port number, db connection, route usage are setup here.</li>
             </ul>
+            <p class="paragraphText">
+                Note: there are also some user related files but that will be discussed more later.
+            </p>
+            <h5 id="section2b"><i>2.b Frontend</i></h5>
+            <p class="paragraphText">
+                The bulk of the workout related content will be in the MyWorkouts.js file. It contains things involving
+                displaying and adding workouts.
+            </p>
 
-            <h5 id="moneyAnalysisPart5"><i>2.b Frontend</i></h5>
+            <pre class="codeBlockPanel"><code>
+// Example of getting workouts using fetch
+//MyWorkouts.js, in useEffect
+...
+const response = await fetch('/api/workout/workouts', {
+    headers:{'Authorization': `Bearer ${user.token}`}
+});
+...
+// Note: authorization fields in header is related to how authentication is done. This is discussed more later.
+            </code></pre>
 
+            <pre class="codeBlockPanel"><code>
+// Example of Adding a workout using fetch
+//MyWorkouts.js, in handleSubmit function
+...
+// workout parameters are stored in react state variable and are set in the form elements.
+const workout = { title, reps, sets, weekday, bodyPart};
 
+const response = await fetch('/api/workout/workout', {
+    method: 'POST',
+    body: JSON.stringify(workout),
+    headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+    }
+})
+...
+            </code></pre>
+            <p class="paragraphText">Something to note is that there will be a cors error when trying to run a fetch
+                request from a frontend to a backend of the same locations so I used a proxy to deal with this error.
+            </p>
+            <pre class="codeBlockPanel"><code>
+// Example code to add in package.json to add proxy
+// port 4000 is the same as the backend
+"proxy": "http://localhost:4000",
+            </code></pre>
 
-            <!-- Remove bottom portion-->
             <br /><br />
-            <h4 id="section3">3. title</h4>
+            <h4 id="section3">3. Authentication</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText"></p>
-           
+            <p class="paragraphText">There is a user model, controller, and route file for actions relating to users. To
+                get authentication going I use JSON Web token to verify users. When a user signs-up/logs-in from the
+                frontend, a JSON Web token will get created in the backend. This token is then sent to the frontend
+                where it gets stored locally. After that, any subsequent request by the frontend that require
+                authentication, will also send back the token. This token gets verified and does the action in the
+                backend. The next sections will go more in depth on how its done.</p>
+            <h5 id="section2a"><i>3.a Password Check (Backend)</i></h5>
+            <p class="paragraphText">
+                Add Text
+            </p>
+
+            <h5 id="section3b"><i>3.b Token Creation (Backend)</i></h5>
+            <p class="paragraphText">Add Text</p>
+            <h5 id="section3c"><i>3.c Setting Token (Frontend)</i></h5>
+            <p class="paragraphText">Add Text</p>
+            <h5 id="section3d"><i>3.d sending Token (Frontend)</i></h5>
+            <p class="paragraphText">Add Text</p>
+            <h5 id="section3e"><i>3.e Token Check (Backend)</i></h5>
+            <p class="paragraphText">Add Text</p>
+
             <br /><br />
-            <h4 id="section4">4. title 4</h4>
+            <h4 id="section4">4. Final Thoughts</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText"></p>
-            
-               
+            <p class="paragraphText">Add Text</p>
+
             <br /><br />
-            <h4 id="section5">5. title5</h4>
+            <h4 id="section5">Resources</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText"></p>
-            
-         
-            <br /><br />
-            <h4 id="section6">6. Final Thoughts</h4>
-            <hr class="whiteLine" />
-            <p class="paragraphText"></p>
+            <p class="paragraphText">Add Text</p>
+
             <hr class="whiteLine" />
             <br />
             <a href="../projects.html">Back to Projects</a>
