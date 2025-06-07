@@ -193,13 +193,53 @@ const response = await fetch('/api/workout/workout', {
                 backend. The next sections will go more in depth on how its done.</p>
             <h5 id="section2a"><i>3.a Password Check (Backend)</i></h5>
             <p class="paragraphText">
-                Add Text
+                Storing the passwords involve using the "bcrypt" library to hash the password with a generated salt
+                value and store it in the database. When the user logs in, the password is compared to the stored hash
+                password (with salt) using the "bcrypt" library. To accomplish this I added a static function to the
+                user models called 'signup' and 'login.' This is where password related checks are done.
             </p>
+            <pre class="codeBlockPanel"><code>
+// userModel.js, in "signup" static function
+// Example of how the password is stored
+const salt = await bcrypt.genSalt(10);
+const hash = await bcrypt.hash(password,salt);
 
+const user = await this.create({email, password:hash});
+            </code></pre>
+            <pre class="codeBlockPanel"><code>
+// userModel.js, in "login" static function
+// Example of how password is checked
+// password is passed into function as paramter, and user.password is retrived from db using the email parameter
+const match = await bcrypt.compare(password,user.password);
+    if(!match){
+        throw Error('Incorrect Password');
+    }
+            </code></pre>
             <h5 id="section3b"><i>3.b Token Creation (Backend)</i></h5>
-            <p class="paragraphText">Add Text</p>
+            <p class="paragraphText">Token generation is done in the backend User controller. First there is a function
+                to create the token:</p>
+            <pre class="codeBlockPanel"><code>
+// In userController.js
+// function to generate jwt.
+const jwt = require('jsonwebtoken');
+...
+const createToken = (_id) => {
+    return jwt.sign({_id}, process.env.SECRET, {expiresIn:'1d'});
+}
+//Note: secret string is stored in a hidden file.
+            </code></pre>
+            <p class="paragraphText">
+                With the above function, Tokens will be generated when the user sign in/logs in.
+            </p>
+            <pre class="codeBlockPanel"><code>
+// In userController.js, in login_user or signup_user function
+// Generating token that gets return to user in frontend
+const token = createToken(user._id);
+            </code></pre>
+
             <h5 id="section3c"><i>3.c Setting Token (Frontend)</i></h5>
             <p class="paragraphText">Add Text</p>
+
             <h5 id="section3d"><i>3.d sending Token (Frontend)</i></h5>
             <p class="paragraphText">Add Text</p>
             <h5 id="section3e"><i>3.e Token Check (Backend)</i></h5>
