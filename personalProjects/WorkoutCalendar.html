@@ -238,10 +238,33 @@ const token = createToken(user._id);
             </code></pre>
 
             <h5 id="section3c"><i>3.c Setting Token (Frontend)</i></h5>
-            <p class="paragraphText">Add Text</p>
+            <p class="paragraphText">In the frontend, I have signup and login page with some form setup. When a form are
+                submitted, a signup/login hook will handle the API request to the backend. The backend will then respond
+                the a token and email.</p>
+            <pre class="codeBlockPanel"><code>
+//in useLogin.js hook
+// Example of calling API to login 
+const response = await fetch('/api/user/login', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({email,password})
+    })
+const json = await response.json();
+            </code></pre>
+            <p class="paragraphText">The token will then be store to local storage (after some other checks.)</p>
+            <pre class="codeBlockPanel"><code>
+// In useLogin.js hook
+// Example of saving response (token and email) to local storage
+localStorage.setItem('user', JSON.stringify(json));
+            </code></pre>
 
-            <h5 id="section3d"><i>3.d sending Token (Frontend)</i></h5>
-            <p class="paragraphText">Add Text</p>
+            <h5 id="section3d"><i>3.d Sending Token (Frontend)</i></h5>
+            <p class="paragraphText">With a jwt stored, we can send the token with any subsequent workout related
+                requests to the backend. Example of this can be seen in the "MERN File Overview/frontend" section,
+                specifically the part involving how a request is made to the backend ( Authorization fields in the
+                header). There is also an "AuthContext" file that sets the user data (like the token) when logging in.
+                This context is used to have global token access and allow the "MyWorkouts" page to use it.</p>
+
             <h5 id="section3e"><i>3.e Token Check (Backend)</i></h5>
             <p class="paragraphText">Add Text</p>
 
