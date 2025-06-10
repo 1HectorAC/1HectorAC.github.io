@@ -266,8 +266,41 @@ localStorage.setItem('user', JSON.stringify(json));
                 This context is used to have global token access and allow the "MyWorkouts" page to use it.</p>
 
             <h5 id="section3e"><i>3.e Token Check (Backend)</i></h5>
-            <p class="paragraphText">Add Text</p>
+            <p class="paragraphText">In the backend, there is a middleware file called "requireAuth.js" which checks the
+                token (stored in the header) of all workout related requests. Using the 'jsonwebtoken' library, the
+                token gets verified to make sure the user is valid.</p>
+            <pre class="codeBlockPanel"><code>
+// In requireAuth.js
+// Code used to verify a user based on jwt received
+const requireAuth = async (req, res, next) => {
+    const {authorization} = req.headers;
 
+    if(!authorization){
+        res.status(401).json({error:'Authorization token required'});
+    }
+    
+    // remove beginning part of token.
+    const token = authorization.split(' ')[1];
+
+    // Set user based on token.
+    try{
+        const{_id} = jwt.verify(token, process.env.SECRET);
+        req.user = await User.findOne({_id}).select('_id');
+        next();
+    }catch(error){
+        res.status(401).json({error:'Request is not authorized'});
+    }
+}
+            </code></pre>
+
+            <pre class="codeBlockPanel"><code>
+// In workoutRoutes.js
+// how requireAuth is used before routes
+const requireAuth = require('../middleware/requireAuth');
+...
+router.use(requireAuth);
+.. // workout routes
+            </code></pre>
             <br /><br />
             <h4 id="section4">4. Final Thoughts</h4>
             <hr class="whiteLine" />
