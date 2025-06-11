@@ -147,7 +147,7 @@
 
             <pre class="codeBlockPanel"><code>
 // Example of getting workouts using fetch
-//MyWorkouts.js, in useEffect
+// MyWorkouts.js, in useEffect
 ...
 const response = await fetch('/api/workout/workouts', {
     headers:{'Authorization': `Bearer ${user.token}`}
@@ -158,7 +158,7 @@ const response = await fetch('/api/workout/workouts', {
 
             <pre class="codeBlockPanel"><code>
 // Example of Adding a workout using fetch
-//MyWorkouts.js, in handleSubmit function
+// MyWorkouts.js, in handleSubmit function
 ...
 // workout parameters are stored in react state variable and are set in the form elements.
 const workout = { title, reps, sets, weekday, bodyPart};
@@ -226,7 +226,7 @@ const jwt = require('jsonwebtoken');
 const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, {expiresIn:'1d'});
 }
-//Note: secret string is stored in a hidden file.
+// Note: secret string is stored in a hidden file.
             </code></pre>
             <p class="paragraphText">
                 With the above function, Tokens will be generated when the user sign in/logs in.
@@ -242,7 +242,7 @@ const token = createToken(user._id);
                 submitted, a signup/login hook will handle the API request to the backend. The backend will then respond
                 the a token and email.</p>
             <pre class="codeBlockPanel"><code>
-//in useLogin.js hook
+// In useLogin.js hook
 // Example of calling API to login 
 const response = await fetch('/api/user/login', {
         method: 'POST',
@@ -304,7 +304,15 @@ router.use(requireAuth);
             <br /><br />
             <h4 id="section4">4. Final Thoughts</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText">Add Text</p>
+            <p class="paragraphText">One thing I found interesting about the MERN stack was on how the frontend and
+                backend are setup and ran independently. It made me wonder about how different part can be swapped out,
+                like instead of using React as a frontend what stops one from using something like Flask. Two important
+                concepts I came across were Cors and Json Web Token. Cors (cross origin resource sharing) is important
+                when it came to security on the internet that was deeply intergraded into how the MERN stack worked. It
+                involved requests within the same location, which is what happens in a MERN stack if you run the
+                frontend and backend from the same place. Json Web tokens was also a useful thing to learn when storing
+                user data. One thing I could try next time is trying to use cookies more for a better understanding of
+                storing things locally.</p>
 
             <br /><br />
             <h4 id="section5">Resources</h4>
