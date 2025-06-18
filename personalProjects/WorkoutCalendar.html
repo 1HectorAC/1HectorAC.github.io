@@ -64,7 +64,7 @@
                     <hr class="whiteLine" />
                     <p class="paragraphText">
                         Manage your workout routine with this workout calendar website. Logged in uses can view, add,
-                        and delete workouts to their plan. Link to the GitHub repo here.
+                        and delete workouts to their plan. Link to the GitHub repo <a href="https://github.com/1HectorAC/WorkoutCalendar">here.</a>
                     </p>
                 </div>
             </div>
@@ -98,6 +98,13 @@
                             <li><a href="#section2b">Frontend</a></li>
                         </ul>
                         <li><a href="#section3">Authentication</a></li>
+                        <ul>
+                            <li><a href="#section3a">Password Check (Backend)</a></li>
+                            <li><a href="#section3b">Token Creation (Backend)</a></li>
+                            <li><a href="#section3c">Setting Token (Frontend)</a></li>
+                            <li><a href="#section3d">Sending Token (Frontend)</a></li>
+                            <li><a href="#section3e">Token Check (Backend)</a></li>
+                        </ul>
 
                         <li><a href="#section4">Final Thoughts</a></li>
                         <li><a href="#section5">Resources</a></li>
@@ -191,7 +198,7 @@ const response = await fetch('/api/workout/workout', {
                 where it gets stored locally. After that, any subsequent request by the frontend that require
                 authentication, will also send back the token. This token gets verified and does the action in the
                 backend. The next sections will go more in depth on how its done.</p>
-            <h5 id="section2a"><i>3.a Password Check (Backend)</i></h5>
+            <h5 id="section3a"><i>3.a Password Check (Backend)</i></h5>
             <p class="paragraphText">
                 Storing the passwords involve using the "bcrypt" library to hash the password with a generated salt
                 value and store it in the database. When the user logs in, the password is compared to the stored hash
@@ -317,7 +324,7 @@ router.use(requireAuth);
             <br /><br />
             <h4 id="section5">Resources</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText">Add Text</p>
+            <p class="paragraphText"><i>"Mern Auth Tutorial." Youtube,</i> created by Net Ninja, 9 Aug. 2022, <a href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9g8OhpOZxNdhXggFz2lOuCT">https://www.youtube.com/playlist?list=PL4cUxeGkcC9g8OhpOZxNdhXggFz2lOuCT</a></p>
 
             <hr class="whiteLine" />
             <br />
