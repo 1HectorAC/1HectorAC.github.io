@@ -117,7 +117,8 @@
             <h4 id="section2">2. Setup</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">
-                On the frontend, it's important to mention the socket connection setup. A context file is used to setup the Socket context given that it will be used in different pages.
+                On the frontend, it's important to mention the socket connection setup. A context file is used for this
+                given that it will be used in different pages. Below is the context file and how it gets used.
             </p>
             <pre class="codeBlockPanel"><code>
 // Frontend, SocketContext.js
@@ -130,42 +131,234 @@ export const SocketContext = createContext();
             </code>
             </pre>
             <pre class="codeBlockPanel"><code>
-//Frontend, App.js
+// Frontend, App.js
 // socket context setup
 &lt;div className="App"&gt;
-        &lt;div className='InApp'&gt;
-        &lt;SocketContext.Provider value={socket}&gt;
-            &lt;BrowserRouter&gt;
-            ...
-            &lt;/BrowserRouter&gt;
-        &lt;/SocketContext.Provider&gt;
+    &lt;div className='InApp'&gt;
+    &lt;SocketContext.Provider value={socket}&gt;
+        &lt;BrowserRouter&gt;
+        ...
+        &lt;/BrowserRouter&gt;
+    &lt;/SocketContext.Provider&gt;
 &lt;/div>
             </code></pre>
 
-            
+            <pre class="codeBlockPanel"><code>
+// Frontend, where ever socket will be used.
+import { SocketContext } from "../context/SocketContext";
+const socket = useContext(SocketContext);
+
+            </code></pre>
+            <p class="paragraphText">
+                On the backend, there is a server.js file that handles all the socket related communication. Setup is
+                pretty straightforward.
+            </p>
+            <pre class="codeBlockPanel"><code>
+//Backend, server.js
+const express = require('express');
+const http = require('http');
+const {Server} = require('socket.io');
+
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {cors: {origin:'*', methods:['GET','POST']}});
+io.on('connection', socket => {
+    //socket events here
+    socket.on('disconnect', () => {
+            console.log("disconnected, user:" + socket.id);
+        })
+    })
+server.listen(5000, () => {console.log("Listening on 5000...")});
+            </code></pre>
 
             <br /><br />
             <h4 id="section3">3. Rooms</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText">Test</p>
+            <p class="paragraphText">When a user first enter the app they will be taken to the Home.js page. This page
+                has a text box (for a room), a create poll button, and a join poll button. It should be noted that rooms
+                for created polls need to be unique and joined poll need to already exits. The main thing to note is
+                that when one of the buttons are pressed a socket is called, passing the room and userType.</p>
+            <pre class="codeBlockPanel"><code>
+// Frontend, Home.js , in onCreateClick/onJoinClick function
+// In join button, 'creator' will be 'other'
+socket.emit('join_room', {room:room,user:'creator'});
+            </code></pre>
+            <p class="paragraphText">
+                From there the server will listen/receive the data. In the server side, the room and the userType will
+                be checked. Based on the existence of the room and user type, it will join/create the room and send a
+                confirmation using socket.emit to the same user who sent the message. This is specified by using socket
+                emit (back to sender) instead of io.emit (all users.)
+
+            </p>
+            <pre class="codeBlockPanel"><code>
+// Backend, server.js
+// Socket listening for join_room from creator or other
+socket.on('join_room', (data) => {
+    const roomExists = io.sockets.adapter.rooms.has(data.room);
+    if(data.user === 'creator' && !roomExists){
+        socket.join(data.room);
+        socket.emit('join_room_confirmation', {check:true, userType:data.user})
+    }
+    else if(data.user === 'other' && roomExists){
+        socket.join(data.room);
+        socket.to(data.room).emit('user_enter');
+        socket.emit('join_room_confirmation', {check:true, userType:data.user})
+    }
+    else{
+        socket.emit('join_room_confirmation', {check:false, userType:data.user})
+
+    }
+})
+            </code></pre>
+            <p class="paragraphText">
+                The last step in joining a room is that the user (on Home.js), will listen for the join room
+                confirmation signal and handle the appropriate redirect/error message based on it.
+            </p>
+            <pre class="codeBlockPanel"><code>
+// Frontend, Home.js, in useEffect:
+socket.on('join_room_confirmation', confirm_data => {
+    if(confirm_data.check){
+        const data = {room:room};
+        if(confirm_data.userType === 'creator')
+            navigate('/Create', {state:data})
+        else if(confirm_data.userType === 'other'){
+            navigate('/Join', {state:data});
+        }
+    }
+    else
+        setError('If creating: room already exits. if Joining: room doesnt exist')
+})
+            </code></pre>
+
+            <p class="paragraphText">
+                From there the user get directed to the Create.js or Join.js page based on the button pressed. There is
+                a bit of back and forth between these two pages when it comes to the poll. Also note that Joined users
+                need to join after the creator enters a room.
+            </p>
 
             <br /><br />
 
             <h4 id="section4">4. Creating Poll</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText">Test</p>
+            <p class="paragraphText">For users on the Join.js page, they will see a "waiting on poll" text. For the user
+                on the Create.js page, they will see two text boxes to enter a question and options. Once everyone has
+                joined and the poll creator submits their question/options, the poll will then get sent to the server
+                where it gets emitted to all users in the room.</p>
+            <pre class="codeBlockPanel"><code>
+//frontend, Create.js, in onPollClick function
+//Note that question and options are both react states 
+const totalOptions = options.split(',').length;
+let initialResponses = [];
+    for (let i = 0; i &lt; totalOptions; i++) {
+        initialResponses.push(0);
+    }
+    setResponses(initialResponses);
+
+socket.emit('poll', { question: question, options: options });
+setScreenState(screenStates.QUESTION);
+            </code></pre>
+            <pre class="codeBlockPanel"><code>
+// Backend, In server.js
+socket.on('poll', data =&gt; {
+    const room = getFirstRoom(socket);
+    socket.to(room).emit('get_poll', data);
+})
+            </code></pre>
+            <pre class="codeBlockPanel"><code>
+// frontend, Join.js, in useEffect
+socket.on('get_poll', data =&gt; {
+    setQuestion(data.question);
+    setOptions(data.options);
+    setScreenState(screenStates.QUESTION);
+});
+            </code></pre>
+            <p class="paragraphText">After the creator and other users have the poll data, their screens will then
+                update to the next part. This is done with a screen state that got update.</p>
 
             <br /><br />
 
             <h4 id="section5">5. Responses</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText">Test</p>
+            <p class="paragraphText">At this point, users will see a radio button option and a submit button. When a
+                joined user submits their response, they send it though a socket to the server, where the server will
+                then send it to the creator. After that the joined user waits for the poll to end. </p>
+            <pre class="codeBlockPanel"><code>
+// Frontend, Join.js
+//Example of Joined user sending response to server thought socket
+function onSubmitResponseClick() {
+    socket.emit('user_response', response);
+    setScreenState(screenStates.WAITING);
+}
+            </code></pre>
+
+            <pre class="codeBlockPanel"><code>
+// Backend, server.js
+// Example of server getting joined user response and emitting to socket that the creator is listening on.
+socket.on('user_response', data =&gt; {
+    const room = getFirstRoom(socket);
+    socket.to(room).emit('get_user_response', data);
+})
+            </code></pre>
+
+            <p class="paragraphText">
+                The creator will be listening for response results and will update its 'responses' array based on
+                received values. Once the creator submits their response, the 'responses' array gets update with their
+                answer and sent to the server.
+            </p>
+            <pre class="codeBlockPanel"><code>
+// Frontend, Creator.js
+// Example of creator updating  responses when getting a response from other users
+socket.on('get_user_response', (data) =&gt; {
+    setUserResponseCount(userResponseCount + 1);
+    let temp = [...responses];
+    temp[data] = temp[data] + 1;
+    setResponses(temp);
+})
+            </code></pre>
+            <pre class="codeBlockPanel"><code>
+// Frontend, Creator.js
+// Example of creator editing and sending responses though socket.
+function onSubmitResponseClick() {
+    // Adding creators response to the responses array
+    const temp = [...responses];
+    temp[response] = temp[response] + 1;
+    setResponses(temp);
+
+    // Need to use temp since setting response is async, so using response would run at same time
+    socket.emit('results', { responses: temp });
+    setScreenState(screenStates.RESULT);
+}
+            </code></pre>
+
+            <p class="paragraphText">
+                From the server it gets emitted to all users in the room to synchronize the responses array of every
+                user. The creator and other users will have their screen state value update.
+            </p>
+            <pre class="codeBlockPanel"><code>
+// Backend, server.js
+// Example of server getting responses and emitting to all users in room
+socket.on('results', (data) => {
+    console.log('Results sent, data:' + data)
+    const room = getFirstRoom(socket);
+    socket.to(room).emit('get_results', data);
+})
+            </code></pre>
+
+            <pre class="codeBlockPanel"><code>
+// Frontend, Join.js
+// Example of Joined users getting responses and setting it.
+socket.on('get_results', data => {
+            setResponses(data.responses);
+            setScreenState(screenStates.ANSWER);
+})
+            </code></pre>
 
             <br /><br />
-
             <h4 id="section6">6. Results Display</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText">Test</p>
+            <p class="paragraphText">By the end of the previous part, all users have a copy of the results in the
+                'responses' variable. They also have the list of options. With that, results are displayed with a loop
+                though every value.</p>
 
             <br /><br />
             <h4 id="section7">7. Final Thoughts</h4>
@@ -175,7 +368,8 @@ export const SocketContext = createContext();
             <br /><br />
             <h4 id="section8">Resources</h4>
             <hr class="whiteLine" />
-
+                <p class="paragraphText"><i>“How to Use with React.” *Socket.IO*</i>, 31 July 2025, <a href="https://socket.io/how-to/use-with-react">https://socket.io/how-to/use-with-react</a>.
+</p>
             <hr class="whiteLine" />
             <br />
             <a href="../projects.html">Back to Projects</a>
