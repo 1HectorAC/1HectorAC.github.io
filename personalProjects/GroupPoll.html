@@ -73,7 +73,7 @@
                 <div class="blackPanel">
                     <h4>Goal</h4>
                     <hr class="whiteLine" />
-                    <p class="paragraphText">Improve familiarity with web sockets.</p>
+                    <p class="paragraphText">Improve familiarity with WebSockets.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -81,7 +81,7 @@
                     <h4>Tools</h4>
                     <hr class="paragraphText" />
                     <p class="paragraphText">
-                        Node.js & Express.js for backend, React.js for frontend, and socket.io as main library.
+                        Node.js & Express.js for backend, React.js for frontend, and socket.io as the main library.
                     </p>
                 </div>
             </div>
@@ -117,8 +117,9 @@
             <h4 id="section2">2. Setup</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">
-                On the frontend, it's important to mention the socket connection setup. A context file is used for this
-                given that it will be used in different pages. Below is the context file and how it gets used.
+                On the frontend, it's important to mention the WebSocket connection setup. A context file is used for
+                this
+                given that it will be referenced in different pages. Below is the context file and how it gets used.
             </p>
             <pre class="codeBlockPanel"><code>
 // Frontend, SocketContext.js
@@ -150,7 +151,7 @@ const socket = useContext(SocketContext);
 
             </code></pre>
             <p class="paragraphText">
-                On the backend, there is a server.js file that handles all the socket related communication. Setup is
+                On the backend, there is a server.js file that handles all WebSocket related communication. Setup is
                 pretty straightforward.
             </p>
             <pre class="codeBlockPanel"><code>
@@ -245,8 +246,8 @@ socket.on('join_room_confirmation', confirm_data => {
                 joined and the poll creator submits their question/options, the poll will then get sent to the server
                 where it gets emitted to all users in the room.</p>
             <pre class="codeBlockPanel"><code>
-//frontend, Create.js, in onPollClick function
-//Note that question and options are both react states 
+// Frontend, Create.js, in onPollClick function
+// Note that question and options are both react states 
 const totalOptions = options.split(',').length;
 let initialResponses = [];
     for (let i = 0; i &lt; totalOptions; i++) {
@@ -265,7 +266,7 @@ socket.on('poll', data =&gt; {
 })
             </code></pre>
             <pre class="codeBlockPanel"><code>
-// frontend, Join.js, in useEffect
+// Frontend, Join.js, in useEffect
 socket.on('get_poll', data =&gt; {
     setQuestion(data.question);
     setOptions(data.options);
@@ -284,7 +285,7 @@ socket.on('get_poll', data =&gt; {
                 then send it to the creator. After that the joined user waits for the poll to end. </p>
             <pre class="codeBlockPanel"><code>
 // Frontend, Join.js
-//Example of Joined user sending response to server thought socket
+// Example of Joined user sending response to server thought socket
 function onSubmitResponseClick() {
     socket.emit('user_response', response);
     setScreenState(screenStates.WAITING);
@@ -363,13 +364,27 @@ socket.on('get_results', data => {
             <br /><br />
             <h4 id="section7">7. Final Thoughts</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText">test</p>
+            <p class="paragraphText">I found that WebSockets were fairly easy to use. You setup the socket
+                connection and emit/listen to a specific socket signal. There are some nuances to it like managing
+                rooms, cleaning up socket.on function and so on but nothing too bad. More of the difficulty came in
+                trying to structure things for efficiency and managing security. An example of this would be on how the
+                results should be stored. Some of the options I considered were everyone storing a copy, the creator
+                storing a master copy that gets synched in the end, and the server storing it with the creators id. From
+                these options I thought about which results in the least amount of back and forth communication as well
+                what sort of other checks need to be in placed depending on where its stored. Another example was
+                around securing room entry/exit throughout the application. My approach to dealing with the issue was as
+                follow: test a case I thought of and then add a check to prevent it. This approach works for smaller
+                application like this but might be something I should try to improve when dealing with more complex
+                problems. I will end this by saying working with web sockets has made more interested in different
+                communication standards. Most of my experience has been with REST APIs, so this was a good change up.
+                Maybe next time I'll look into something like Web RTC.</p>
 
             <br /><br />
             <h4 id="section8">Resources</h4>
             <hr class="whiteLine" />
-                <p class="paragraphText"><i>“How to Use with React.” *Socket.IO*</i>, 31 July 2025, <a href="https://socket.io/how-to/use-with-react">https://socket.io/how-to/use-with-react</a>.
-</p>
+            <p class="paragraphText"><i>“How to Use with React.” *Socket.IO*</i>, 31 July 2025, <a
+                    href="https://socket.io/how-to/use-with-react">https://socket.io/how-to/use-with-react</a>.
+            </p>
             <hr class="whiteLine" />
             <br />
             <a href="../projects.html">Back to Projects</a>
