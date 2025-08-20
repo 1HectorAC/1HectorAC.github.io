@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta cahrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/default.css">
+    <title>HAC Portfolio - Meal Rate Blog</title>
+</head>
+
+<body>
+    <div class="title text-center">
+        <h1><a href="../index.html">Programming Portfolio</a></h1>
+        <h6><i>By Hector Acosta-Cervantes</i></h6>
+    </div>
+    <nav class="navbar navbar-expand-sm sticky-top navBarColor">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+                style="background-color:white">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item customNavItem" href="../index.html">Home</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../projects.html">Projects</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../about.html">About</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="blackBar"><a href="../projects.html">Projects</a> / Web Development / Meal Rate Blog</div>
+    <div class="container text-center">
+        <div class="whitePanel">
+            <h2>Meal Rate Blog</h2>
+            <h4><i>LLM AI GEMINI, React, Node/Express</i></h4>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Summary</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        A website where users enter a meal (list of food items) and an AI will output nutritional
+                        Info/rating.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Goal</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">To understand how to incorporate AI LLMs into an application.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Tools</h4>
+                    <hr class="paragraphText" />
+                    <p class="paragraphText">
+                        Node/Express (backend), React (frontend), and googles Gemini API keys.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <li><a href="#section1">Introduction</a></li>
+                        <li><a href="#section2">Setup</a></li>
+                        <li><a href="#section3">How to use API</a></li>
+                        <li><a href="#section4">System Prompts</a></li>
+                        <li><a href="#section5">Security</a></li>
+                        <li><a href="#section6">Result Example</a></li>
+                        <li><a href="#section7">Final Thoughts</a></li>
+                        <li><a href="#section8">Resources</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="blackPanelWithMorePadding">
+            <h4 id="section1">1. Introduction</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                With the rise of AI I thought I would try my hand in understanding how to utilize them in a project. The
+                main focus of this blog is my journey on how to use Large Language Models in an application and some key
+                take aways I got around the technology. Large Language Models are AI that understands human language and
+                responds to it when prompted. I will assume some basic understanding of JavaScript and related
+                frameworks/tools like Node, Express, and React. The project has Node/Express backend and a React
+                frontend. We will largely be looking at the backend where most of the logic around AI related code is
+                done.
+            </p>
+            <br /><br />
+            <h4 id="section2">2. Setup</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                The main thing to setup is the API keys for the LLM. In this project, I use googles Gemini API for this,
+                which are free to use and available here. These keys should be private so they are stored in a ".env"
+                file in the backend. I hope it goes without saying, but things like API Keys should generally not be
+                made public for security reasons.
+            </p>
+            <pre class="codeBlockPanel"><code>
+// .env file
+GEMINI_API_KEY="Your key here"
+            </code></pre>
+            <p>I also use googles library involving generative ai. This will handle most of the details in connecting
+                and setup when using the AI. Note that this is installed in the backend only.</p>
+            <pre class="codeBlockPanel"><code>
+// Example of installing
+npm install @google/generative-ai
+            </code></pre>
+
+            <br /><br />
+            <h4 id="section3">3. How to use API</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">The API is simple to use with only a bit of boilerplate code that needs to get
+                setup involving googles generative-ai library. Once the boilerplate is setup, there will be a 'model'
+                object where you pass it in a prompt string and it will output a response to the prompt as a response
+                object. </p>
+            <pre class="codeBlockPanel"><code>
+//server.js
+// setup of library/use at top
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+const genAi = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+// In Post request 
+const prompt = "Do this ….";
+const model = genAi.getGenerativeModel({ model: 'gemini-2.5-flash' });
+const result = await model.generateContent(prompt);
+const response = result.response;
+const text = response.text();
+            </code></pre>
+
+            <br /><br />
+
+            <h4 id="section4">4. System Prompts</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">System Prompts can be thought of as set of rules that are prepended to the user
+                prompt to add more contexts. This is a vital part in tailoring the AI to do specifically what the app
+                requires. For example, the goal of my app is that the user inputs a list of foods and it will output
+                info/rating about the nutritional value. However, If I only pass the prompt the user enters and pass it
+                to the AI then the AI has no context of what it should be doing with that list of food items. That is
+                where system prompts come in. To do this I added a string (system prompt) that gives more context, for
+                example "You are a nutritionist expert and give advice on the following food items: " and then attach
+                the users prompt of food items at the end, and pass that to the AI. This example is a bit simplified
+                compared to my actual system prompt but you get the point. System prompts can also be used to format the
+                results in certain ways and even add various restrictions.</p>
+
+            <br /><br />
+
+            <h4 id="section5">5. Security</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">When it came to maintaining security around using LLMs, there were 3 areas that
+                needed the most attention. 1) Checking the user prompt before sending to the AI. This can involve things
+                like null check or validation. I didn’t include much validation to allow user flexibility but in
+                hindsight, it might not have been the best choice. I probably should have added more specification to
+                how to enter data and incorporate some checks to go with them. 2) Adding Checks in the system prompt, in
+                other words, make the AI handle some of the checks . This can be things like "if anything that isn't a
+                food item is provided in the list then respond with only food is acceptable". 3) Checking the response
+                of the AI. This part can include things like format checking. For example, my system prompt includes a
+                part about returning result in a json format so I also included some checks making sure it is json and
+                that it has the right fields in it.</p>
+
+            <br /><br />
+
+            <h4 id="section6">6. Result Example:</h4>
+            <hr class="whiteLine" />
+            <p>Example (before submiting):</p>
+            <img src="images/mealRateEx1.png" class="formatedImage" alt="">
+            <br/><br/><p>Example (after submiting):</p>
+            <img src="images/mealRateEx2.png" class="formatedImage" alt="">
+            <br /><br />
+            <h4 id="section7">7. Final Thoughts</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">My overall takeaways from using LLMs is that it is interesting and simple to use
+                but also provides some difficulties in certain areas like security. I had a number of project ideas
+                involving LLMs but I ended up focusing on a meal rating app given my interest in eating healthy. The
+                expected input and output of the app was also pretty simple so once I got the AI working I was up and
+                running pretty quickly. After that came the matter of security. Something to not about LLMs is that they
+                are non-deterministic. In other words, one input can produce different outputs. This made testing for
+                expected outputs challenging. There are various checks I had in place around AI prompts and results but
+                the nature of AI makes a bit unpredictable. I think because it understands human language it becomes
+                hard to cover the ground of everything that can logically be said. And that not even mentioning the
+                problem of how does one verify the correctness of a response. Maybe for my next project I will look into
+                more security methods around LLMs or different techniques like RAG to get a better grasp of AI.</p>
+
+            <br /><br />
+            <h4 id="section8">Resources</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">Google. <i>AI Studio.</i> <a
+                    href="https://ai.google.dev/aistudio">https://ai.google.dev/aistudio.</a> Accessed 10 Aug. 2025.
+            </p>
+            <hr class="whiteLine" />
+            <br />
+            <a href="../projects.html">Back to Projects</a>
+
+        </div>
+    </div>
+    <footer class="footerSection">
+        <p>Email: 1hector.ac@gmail.com | <a href="https://github.com/1HectorAC">GitHub Profile</a></p>
+    </footer>
+</body>
+
+</html>
