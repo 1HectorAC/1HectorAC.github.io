@@ -116,6 +116,16 @@ body {
     background-color: rgb(38, 77, 83);
 }
 
+.customButton3 {
+    color: rgb(255, 255, 255);
+    background-color: rgb(79, 103, 149);
+    font-weight: 500;
+}
+.customButton3:hover {
+    color: white;
+    background-color: rgb(43, 53, 95);
+}
+
 .customNavItem {
     font-weight: 500;
     font-size: 18px;
