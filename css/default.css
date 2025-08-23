@@ -1,3 +1,9 @@
+:root {
+    --main-dark1 : #292e34;
+    --main-dark2: rgb(46, 54, 65);
+    --main-dark3 : rgb(50, 61, 72);
+}
+
 body {
     background: rgb(139, 201, 225);
     background: linear-gradient(0deg, rgba(139, 201, 225, 1) 0%, rgba(38, 57, 75, 1) 100%);
@@ -14,7 +20,7 @@ body {
     padding: 20px 20px 20px 30px;
     margin: 10px;
     background-color: rgb(207, 217, 231);
-    color: rgb(41, 54, 79)
+    color: rgb(41, 54, 79);
 }
 
 .whitePanel h4 {
@@ -25,7 +31,7 @@ body {
     border-radius: 10px;
     padding: 20px 20px 20px 20px;
     margin: 10px;
-    background-color: rgb(41, 46, 52, .8);
+    background-color: var(--main-dark3);
     color: white;
 }
 .titlePanel{
@@ -37,7 +43,7 @@ body {
     border-radius: 10px;
     padding: 50px 15% 20px 15%;
     margin: 10px;
-    background-color: rgb(41, 46, 52, .8);
+    background-color: var(--main-dark3);
     color: white;
 }
 
@@ -89,7 +95,7 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #292e34;
+    background-color: var(--main-dark1);
     color: white;
     text-align: center;
     padding: 20px;
@@ -145,7 +151,7 @@ body {
 
 /*------------------------- Text ---------------------------------*/
 .title {
-    background-color: #292e34;
+    background-color: var(--main-dark1);
     color: white;
     padding: 15px;
 }
@@ -210,11 +216,12 @@ body {
 }
 
 .navBarColor {
-    background-color: rgba(43, 51, 61, 0.952);
+    background-color: var(--main-dark2);
 }
 
 .accordionSectionBack {
     background-color: rgb(208, 218, 221);
+
 }
 
 .accordionSectionFront {
@@ -224,6 +231,8 @@ body {
 
 .accordionSectionFront a {
     color: white;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 a {
