@@ -1,0 +1,447 @@
+<html lang="en">
+
+<head>
+    <meta cahrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/default.css">
+    <title>HAC Portfolio - Library System Blog</title>
+</head>
+
+<body>
+    <div class="title text-center">
+        <h1><a href="../index.html">Programming Portfolio</a></h1>
+        <h6><i>By Hector Acosta-Cervantes</i></h6>
+    </div>
+    <nav class="navbar navbar-expand-sm sticky-top navBarColor">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+                style="background-color:white">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item customNavItem" href="../index.html">Home</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../projects.html">Projects</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../about.html">About</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="blackBar"><a href="../projects.html">Projects</a> / Main Projects / Library System Blog | <a
+            href="https://github.com/1HectorAC/LibrarySystem">Code</a></div>
+    <div class="container text-center">
+        <div class="whitePanel">
+            <h2>Library System Blog</h2>
+            <h4><i>
+                    ASP.NET Core Web API
+                </i></h4>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Summary</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        An API for managing a library system. can do CRUD operations on Books, Users, Checkouts,
+                        Authors, Genre, Publishers, BookCopies, and BookGenres. Can also check-out/check-books. There is
+                        also login and Authorization restrictions for certain endpoints.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Goal</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        Get a better understanding of APIs and some key features around them.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Tools</h4>
+                    <hr class="paragraphText" />
+                    <p class="paragraphText">
+                        ASP.NET Core Web API, SQL Server, Entity Framework Core
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <!--EDIT TABLE OF CONTENTS-->
+                        <li><a href="#section1">Intro</a></li>
+                        <li><a href="#section2">Database Setup</a></li>
+                        <li><a href="#section3">Secret Management</a></li>
+                        <li><a href="#section4">Code First Database Generation</a></li>
+                        <li><a href="#section5">Authentication</a></li>
+                        <li><a href="#section6">Default Admin</a></li>
+                        <li><a href="#section7">Caching</a></li>
+                        <li><a href="#section8">Results</a></li>
+                        <li><a href="#section9">Final Thoughts</a></li>
+                        <li><a href="#section10">Resources</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="blackPanelWithMorePadding">
+            <h4 id="section1">1. Intro</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                APIs are a fundamental tool in web development so I spent some time improving my knowledge on them. My
+                experience with APIs isn't much and the main the focus of this project was to show some of the key
+                things I learned in my research. I chose to use ASP.NET Core as the framework given my previous
+                experience with it. I will mainly focus on the key concepts learned and show some of the code involved.
+                Some fundamental ASP.NET Core concepts will be glossed over to keep this short.
+            </p>
+
+            <!--ENTER CODE-->
+            <pre class="codeBlockPanel"><code>
+// SAMPLE CODE
+            </code></pre>
+
+
+            <br /><br />
+            <h4 id="section2">2. Database Setup</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                I will start with a quick mention of the database tables. There isn't anything too noteworthy here but
+                it will help understand later sections. The project has the following tables: Author, Book, BookCopy,
+                Genre, BookGenre, Publisher, Checkout, and User. The relationships are pretty straight forward and not
+                important enough to mention. Users also have a "Password" and "Role" field that will be mentioned more
+                later about how Authentication is implemented.
+            </p>
+
+            <br /><br />
+            <h4 id="section3">3. Secret Management</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                Managing secrets is very important so I will make a quick mention on how it was done. In this project I
+                have a .env file that store the secret environment variables used in the project. The .env file is also
+                added to the .gitignore to keep it out of the repository. This .env file will be read/set in the
+                projects Program.cs file where it will then be accessible elsewhere. Here are the steps take to setup:
+            </p>
+            <ol>
+                <li>Add .env file with secrets. Ex "DB_CONNECTION=xxxxx"</li>
+                <li>Install DotNetEnv package (dealing with envioement variables in applicaiton):</li>
+                <li>Load in the environment variables in Program.cs "at the top"</li>
+                <pre class="codeBlockPanel"><code>
+// Top of Program.cs
+Env.Load();
+builder.Configuration.AddEvironmentVariables();
+            </code></pre>
+                <li>Example of How to access:</li>
+                <pre class="codeBlockPanel"><code>
+Environment.GetEnviromentVariable("DB_CONNECTION");
+            </code></pre>
+            </ol>
+            <br /><br />
+
+            <h4 id="section4">4. Code First Database Generation</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                In my previous experience I normally make the database first and then generate the models with them
+                using Entity Framework code generation tools but this time I tried a code first approach. Here are the
+                steps:
+            </p>
+            <ol>
+                <li>Create Model classes for each entity</li>
+                <li>Add neccessary package: Microsoft.EntityFrameworkCore.SqlServer,
+                    Microsoft.EntityFrameworkCore.Tools, Microsoft.EntityFrameworkCore.Design</li>
+                <li>Added Context File (LibraryDbContext.css) with code references to models. Ex:</li>
+                <pre class="codeBlockPanel"><code>
+public class LibraryDbContext: DbContext
+{
+    public LibraryDbContext(DbContextOptions&lt;LibraryDbContext&gt; options) : base(options) { }
+
+	protected override void OnModelCreating(ModelBuilder modelBuilder)
+	{
+		base.OnModelCreating(modelBuilder);
+	}
+	public DbSet&lt;Author&gt; Authors { get; set; }
+… other models
+}
+            </code></pre>
+                <li>Add dbContext to DI container in Program.cs</li>
+                <pre class="codeBlockPanel"><code>
+builder.Services.AddDbContext&lt;LibraryDbContext&gt;(options =&gt; options.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION")));
+            </code></pre>
+                <li>Added Migration and updated database </li>
+                <pre class="codeBlockPanel"><code>
+// Note: Need to install dotnet-ef cli tool if using dotnet cli
+dotnet ef migrations migi1
+dotent ef database update
+            </code></pre>
+            </ol>
+            <br /><br />
+
+            <h4 id="section5">5. Authentication</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                For many of the endpoints there are restricted access to only authenticated users. There is an endpoint
+                to login where a user will pass in credentials (Email & Password) to the body and the endpoint will
+                return a Json Web Token. This JWT can then be passed in the header of subsequent requests that require
+                authentication to gain access. Passwords are also store as hashes using bcrypt since sensitive info
+                should normally not be store as plain text. There are also a lot of setting that can be set around JWT
+                but I used a minimal amount of restrictions so that I could quickly show it working. There also is no
+                endpoint to register a user but rather an endpoint called addUser that can only be accessed by certain
+                authenticated users. The idea behind this was that only an employee with the "employee" or "admin" role
+                could make users. Here are the step to set things up:
+            </p>
+            <ol>
+                <li>Add necessary packages:</li>
+                <li>Added SECRET_KEY to .env file (for password hashing algorithm)</li>
+                <li>Added authentication (with configurations) to DI Container. This will setup the use of JWT for
+                    Authentication and what will be checked.</li>
+                <pre class="codeBlockPanel"><code>
+//Program.cs
+var secretKey = Environment.GetEnvironmentVariable("SECRET_KEY") ?? throw new InvalidOperationException("Secret key not found in environment variables.");
+
+builder.Services.AddAuthentication(
+    options =&gt; {
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options => 
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+    }
+);
+...
+// at at botton
+app.UseAuthentication();
+app.UseAuthorization();
+            </code></pre>
+            </ol>
+            <p>Next I will go over how passwords are hashed. This part intertwines with the next part but I thought I
+                would separated it for clarity. The Bcrypt library has a function to hash a password and to compare a
+                password to its hashed value (for verification). The first is used when creating a user and the second
+                is used for logging in. Example code:</p>
+            <pre class="codeBlockPanel"><code>
+//Hashing Password
+Bcrypt.Net.Bcrypt.HashPassword(user.Password)
+// Verifiy Password
+BCrypt.Net.BCrypt.Verify(inputedPassword, storedHashedPassword)
+            </code></pre>
+            <p>After than I will go over how a JWT is made/returned in the Login endpoint. In the AuthController I first
+                setup an IConfiguration variable to gain access to the environment variable SECRET_KEY. This is needed
+                for creating signature for the token. Signature is just a string generating using an algorithm that
+                takes the content and a secret key. The signature is used to make sure that the content wasn't tampered
+                with given that it can't be generated without the secret key which only the server has. </p>
+<pre class="codeBlockPanel"><code>
+// Example of passing Iconfiguration in AuthController Contructor:
+private readonly IConfiguration _configuration;
+
+public AuthController( IConfiguration configuration)
+{
+    _configuration = configuration;
+}
+            </code></pre>
+            <p>Below is the code in the Login endpoint that goes though the steps of generating/returning a JWT. Most of
+                it is just setting things up like the roles, claims, algorithm used in signing, token configurations,
+                etc.</p>
+            <pre class="codeBlockPanel"><code>
+// AuthController, in Login endpoint
+List&lt;Claim&gt; claims = new()
+{
+    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+    new Claim(ClaimTypes.Email, user.Email)
+};
+var roles = user.Roles.Split(',');
+foreach (var role in roles)
+{
+    claims.Add(new Claim(ClaimTypes.Role, role.Trim()));
+}
+
+// Setup Key and Credentials
+var Secret_key = _configuration["SECRET_KEY"] ?? throw new InvalidOperationException("Secret key not found in configuration. Controller: AuthController, Method: Login");
+var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(Secret_key));
+var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+// Create the Token
+var token = new JwtSecurityToken(
+    issuer: null,
+    audience: null,
+    claims: claims,
+    expires: DateTime.Now.AddMinutes(30),
+    signingCredentials: creds
+);
+var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+return Ok(new { Token = tokenString });
+            </code></pre>
+
+            <p>Now that login capabilities were added the next part is adding restricted access to endpoints. This is
+                done with the Authorize attribute (ex. "[Authorize]") at the top of a Controller or Action. This is
+                added to many of the endpoints. Also note that some have specific Role access, as in only Users with a
+                certain Role String can access them. This can be specified in the Authorize attribute (ex.
+                "[Authorize(Roles="admin, employee")]").</p>
+
+            <br /><br />
+
+            <h4 id="section6">6. Default Admin</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                While working on the project I realized that I needed to add a default admin user. This was because only
+                authorized users with an "Admin" or "employee" role can add new users but if the database is empty at
+                the start then nobody has access to it. I considered making an example script to make an admin user, I
+                thought doing it in the application level made it more usable for the user. To do this I first added the
+                environment variables "ADMIN_PASSOWORD" and "ADMIN_EMAIL" to the .env file. These are used to configure
+                an initial admin user. Then, in the Program.cs file I added the configurations. The Configurations
+                involve the following:
+            </p>
+            <ol>
+                <li>Creates a container with scoped lifetime (this is needed to get access to DbContext which has a
+                    scoped lifetime)</li>
+                <li>Check if any users with admin privilages exits using an instance of the dbContext</li>
+                <li>If not exits, check If Enviroment Variables for password and email exits</li>
+                <li>It yes, Create a user and save</li>
+            </ol>
+            <pre class="codeBlockPanel"><code>
+// Program.cs, under build (var app = builder.Build();)
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService&lt;LibraryDbContext&gt;();
+    dbContext.Database.Migrate();
+
+    if(!dbContext.Users.Any(i =&gt; i.Roles == "admin") )
+    {
+        Console.WriteLine("No admin user found. Creating default admin user...");
+        var adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL");
+        if(string.IsNullOrEmpty(adminEmail))
+        {
+            throw new InvalidOperationException("Admin email not set in environment variables.");
+        }
+        var adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
+        if(string.IsNullOrEmpty(adminPassword))
+        {
+            throw new InvalidOperationException("Admin password not set in environment variables.");
+        }
+
+        var adminUser = new LibrarySystem.Models.User
+        {
+            FirstName = "Admin",
+            LastName = "Admin",
+            Email = adminEmail,
+            Password = BCrypt.Net.BCrypt.HashPassword(adminPassword),
+            Roles = "admin"
+        };
+
+        dbContext.Users.Add(adminUser);
+        dbContext.SaveChanges();
+        Console.WriteLine("Admin user created with email: " + adminEmail);
+    }
+}
+            </code></pre>
+            <br /><br />
+
+            <h4 id="section7">7. Caching</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                In this project, in memory caching was used to improve performance. A quick rundown on how it works is
+                that certain requests that access the database will have the results stored in memory for a certain
+                period of time. When subsequent request are made to the same endpoint the cache is checked first and
+                retrieved from there instead of the database if it exits. In memory storage is faster than accessing the
+                database so the result is a faster response. A few things to note is that there are different types of
+                caching (in-memory, distributed) and different types of expiration policies (absolute, sliding, manual)
+                that can be set when using caching. I chose to use in-memory caching and absolute expiration policy
+                (expires after x amount of time) since they were the simplest option. Here are the steps to setup and
+                use caching:
+            </p>
+            <ol>
+                <li>Add In memory Service to DI container:</li>
+                <pre class="codeBlockPanel"><code>
+builder.Services.AddMemoryCache();
+            </code></pre>
+                <li>In controllers that will use caching, inject IMemoryCache into the contructor. Can also set a
+                    timeExpiration variable at the top </li>
+                <pre class="codeBlockPanel"><code>
+private readonly TimeSpan _cachExpiration = TimeSpan.FromMinutes(30);
+            </code></pre>
+                <li>Example of saving cache value in memory:</li>
+                <pre class="codeBlockPanel"><code>
+_cache.Set(cacheKey, value, _cacheExpiration);
+            </code></pre>
+                <li>Example of removing value from cache:</li>
+                <pre class="codeBlockPanel"><code>
+_cache.Remove(cacheKey);
+            </code></pre>
+                <li>Example checking if book exists and getting</li>
+                <pre class="codeBlockPanel"><code>
+if (!_cache.TryGetValue(cacheKey, out Book? book))
+{
+	// Book will be null here and will need to get from db
+}
+// book is retrieved from cache and book is set with its value
+            </code></pre>
+            </ol>
+            <br /><br />
+
+            <h4 id="section8">8. Result</h4>
+            <hr class="whiteLine" />
+            <p>Coming Soon</p>
+            <!--EXAMPLE IMAGE-->
+            <!--<img src="images/IMAGE.png" class="formatedImage" alt="">-->
+            <br /><br />
+
+            <h4 id="section9">9. Final Thoughts</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                The big takeaways I had with this project was the security on Web APIs and the importance/usefulness of
+                caching. In terms of web security I got a more in-depth understanding on how Json Web Tokens work and
+                some of the security options around them. When it came to caching, I haven't used it before and using
+                in-memory caching seems like a quick and easy way to improve performance with a database. When it came
+                to topics I had familiarity with, I focused on gaining a greater understanding on them. Things like
+                using Entity Framework, environment variables, and JSON Web Tokens. I also tried to focus more on the
+                larger pictures concepts rather than on simple stuff like how to setup an API. A final important thing I
+                learned was that focusing more on an in-depth understanding, playing around with features, and spending
+                more time planning out a project played a big part in improving the speed I worked on this project. You
+                really hit the ground running when you know what you want to do and how to do it ahead of time.
+                <br /><br />
+
+            <h4 id="section10">Resources</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">Dot Net Tutorials. <i>ASP.NET Core Web API Tutorials.</i> <a href="https://dotnettutorials.net/course/asp-net-core-web-api-tutorials/. ">https://dotnettutorials.net/course/asp-net-core-web-api-tutorials/. </a> Accessed 1 Oct. 2025.
+            </p>
+            <hr class="whiteLine" />
+            <br />
+            <a href="../projects.html">Back to Projects</a>
+
+        </div>
+    </div>
+    <footer class="footerSection">
+        <p>Email: 1hector.ac@gmail.com | <a href="https://github.com/1HectorAC">GitHub</a> | <a
+                href="https://www.linkedin.com/in/hector-acosta-cervantes/">LinkedIn</a></p>
+    </footer>
+</body>
+
+</html>
