@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta cahrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/default.css">
+    <title>HAC Portfolio - Movie Theater App Blog</title>
+</head>
+
+<body>
+    <div class="title text-center">
+        <h1><a href="../index.html">Programming Portfolio</a></h1>
+        <h6><i>By Hector Acosta-Cervantes</i></h6>
+    </div>
+    <nav class="navbar navbar-expand-sm sticky-top navBarColor">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+                style="background-color:white">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item customNavItem">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item customNavItem" href="../index.html">Home</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../projects.html">Projects</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../about.html">About</a></li>
+                    <li><a class="dropdown-item customNavItem" href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="blackBar"><a href="../projects.html">Projects</a> / Main Projects / Movie Theater App Blog | <a
+            href="https://github.com/1HectorAC/MovieTheaterApplication">Code</a></div>
+    <div class="container text-center">
+        <div class="whitePanel">
+            <h2>Movie Theater App Blog</h2>
+            <h4><i>
+                    ASP.NET Core MVC
+                </i></h4>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Summary</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        A website to create movie tickets. User selects a movie, showing, and a seat. After that a
+                        ticket will be created and saved in the database.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Goal</h4>
+                    <hr class="whiteLine" />
+                    <p class="paragraphText">
+                        Get a better understanding on how seat selection works at a movie theater both in the frontend
+                        and backend. Also incorporate some good coding practices (repository/service pattern and
+                        testing).
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blackPanel">
+                    <h4>Tools</h4>
+                    <hr class="paragraphText" />
+                    <p class="paragraphText">
+                        ASP.NET Core MVC, Microsoft SQL Server, Entity Framework Core.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                <div class="blackPanel">
+                    <h4>Table of Contents</h4>
+                    <hr class="whiteLine" />
+                    <ol>
+                        <!--EDIT TABLE OF CONTENTS-->
+                        <li><a href="#section1">Introduction</a></li>
+                        <li><a href="#section2">Database Setup</a></li>
+                        <li><a href="#section3">Seat Display</a></li>
+                        <li><a href="#section4">Repository & Service</a></li>
+                        <li><a href="#section5">Testing</a></li>
+                        <li><a href="#section6">Final Thoughts</a></li>
+                        <li><a href="#section7">Resources</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="blackPanelWithMorePadding">
+            <h4 id="section1">1. Introduction</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                When I go to the movie theater and see the seat selection monitor I wonder how does it work?
+                Specifically, how is seat data stored and displayed. These questions are how this project came into
+                being. My focus wasn’t to make a full movie theater app but just enough to make a ticket for seat
+                selection. The basic flow of the website is this: Users select a movie, a showing, and then a seat. I
+                also tried to apply some good software development practices that I don’t normally do. The bulk of this
+                blog will be on how seat selection was done and things I learned/tried in the process.
+            </p>
+
+            <br /><br />
+            <h4 id="section2">2. Database Setup</h4>
+            <hr class="whiteLine" />
+            <img src="images/MovieTheaterERDiagram.png" class="formatedImage" alt="">
+            <p class="paragraphText">
+                Something to note is that I did run into an error as a result of SQL Server not allowing multiple
+                cascade deletion paths to the same table. Cascade deletion is when an entity in a database gets deleted,
+                it will automatically delete any entities that depend on it. I had generated the database based on
+                models using Entity Framework tools, which will by default add cascade deletion to tables that depend on
+                each other. So in my schema, a Ticket depended on both a Showing and a Seat which meant that this is
+                where the multiple cascade deletion path was. The solution to this was to disable cascade deletion on
+                ticket to Seat/Showing (can be one or both). This can be done in the DbContext with the following in the
+                OnModelCreating:
+            </p>
+            <pre class="codeBlockPanel"><code>
+modelBuilder.Entity&lt;Ticket&gt;()
+    .HasOne(t =&gt; t.Seat)
+    .WithMany(s =&gt; s.Tickets)
+    .HasForeignKey(t =&gt; t.SeatId)
+    .OnDelete(DeleteBehavior.Restrict); 
+            </code></pre>
+
+            <br /><br />
+            <h4 id="section3">3. Seat Display</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                When it came to storing/displaying seat data my initial though was an array. There were some problems
+                with that in that you can't really store an array that well in a database and the rows and columns would
+                be limited by hard set values in the frontend when displayed. After some research I decided that on
+                using a Seat table that will have a "row" and "column" field. I also need a way to track taken seats
+                when displaying them. This was done by getting seatIds from the tickets of the current showing and then
+                adding a "IsSelected" fields for each seat in a ViewModel. This way I could conditionally disabled
+                button when displaying them. Here are the steps taken to do this:
+            </p>
+            <p>Backend (In Controller)</p>
+            <ul>
+                <li>Get a List seats based on the showingId route value</li>
+                <li>Get an array of SeatIds of exiting tickets for current showing</li>
+                <li>Create a ViewModel with seat info and a bool value "IsSelected" that is set based on if the seatId
+                    is in the existing seatIds (From existing Tickets)</li>
+                <li>Group the Data based on row</li>
+                <li>Format data and return to view</li>
+            </ul>
+            <pre class="codeBlockPanel"><code>
+// Example Seat Formating in Controller
+var seatIdsForTickets = await _service.GetSeatIdsOfTicketsByShowingId(ShowingId);
+var formatedSeats = seats.Select(i =&gt; new SeatListViewModel { 
+    SeatId = i.Id,
+    Column = i.Column,
+    Row = i.Row,
+    IsSelected = seatIdsForTickets.Contains(i.Id)
+});
+            
+var groupedFormatedSeats = formatedSeats.GroupBy(i =&gt; i.Row);
+
+SeatSelectionViewModel data = new SeatSelectionViewModel
+{
+    // format data
+};
+return View(data);
+            </code></pre>
+            <p>Frontend (View)</p>
+            <ul>
+                <li>Loop over grouped section of seats</li>
+                <li>Loop to display each section</li>
+                <li>Display checkbox for each seat</li>
+                <li>Based on seat "IsSelected" value, add class (for color display of open/taken seats) and disabled
+                    value</li>
+            </ul>
+            <pre class="codeBlockPanel"><code>
+// Example section of loop in View, SeatSelection.cshtml
+@foreach (var group in Model.GroupedSeats)
+{
+    &lt;div class=&quot;row&quot;&gt;
+        @foreach (var seat in group)
+        {
+            &lt;div class=&quot;col-sm-4&quot;&gt;
+                &lt;div class=&quot;@(seat.IsSelected ? &quot;seatStatusTaken&quot; : &quot;seatStatusNormal&quot;)&quot;&gt;
+                    &lt;label for=&quot;seat@(group.Key)@(seat.Column)&quot;>@group.Key @seat.Column&lt;/label&gt;
+
+                    &lt;input id=&quot;seat@(group.Key)@(seat.Column)&quot;
+                            class=&quot;seatElement&quot;
+                            name=&quot;SeatIds&quot;
+                            type=&quot;checkbox&quot;
+                            value=&quot;@seat.SeatId&quot;
+                            disabled=&quot;@(seat.IsSelected)&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        }
+    &lt;/div&gt;
+}
+            </code></pre>
+            <br /><br />
+
+            <h4 id="section4">4. Repository & Service</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                Repository and Service class patterns are something new I tried to incorporate into my project. The idea
+                behind a Repository is that it is the data access layer, the part that has access to the database. The
+                idea behind the Service class is that it represents the business logic or rules/process that define the
+                system. This section separation make the code more maintainable and allows for easier testing.
+                Ultimately, I had one Repository (MovieTheaterRepository) and one service class (MovieTheaterService) to
+                contain all functionality. Normally It's better practice to have different repositories and services for
+                different models but I tried to keep things a bit simplified. I also have an interface for both of the
+                these classes and use dependency injection when using them.
+                Example of adding them to DI container in Program.cs:
+            </p>
+            <pre class="codeBlockPanel"><code>
+builder.Services.AddScoped&lt;IMovieTheaterService, MovieTheaterService&gt;();
+            </code></pre>
+            <br /><br />
+
+            <h4 id="section5">5. Testing</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                In large projects testing is pretty essential so I incorporated it and tried to learn a bit on best
+                practices. The tests I wrote were mostly on Repository/Service functions. I will mainly go over the
+                setup and not the specifics. The actual code was very repetitive and not too noteworthy.
+            </p>
+            <p> Here are the basic steps I took to setup Tests (with xunit):</p>
+            <ul>
+                <li>Add test project to root (note: root file has solution file and main project folder)</li>
+                <pre class="codeBlockPanel"><code>
+dotnet new xunit -o MovieTheaterApplicationTests
+            </code></pre>
+                <li>Added test project to solution</li>
+                <pre class="codeBlockPanel"><code>
+dotnet  sln add MovieTheaterApplicationTests // in root
+            </code></pre>
+                <li>Added main project reference to test project</li>
+                <pre class="codeBlockPanel"><code>
+dotnet add MovieTheaterApplicationTests/MovieTheaterApplicationTests.csproj 
+    reference MovieTheaterApplication/MovieTheaterApplication.csproj
+            </code></pre>
+                <li>Add a cs file with test functions, which contain the following:</li>
+                <p>[Fact] attribute on function, Returns void or task, has Assert Function</p>
+                <li>Run test</li>
+                <pre class="codeBlockPanel"><code>
+dotnet test
+            </code></pre>
+            </ul>
+            <p class="paragraphText">
+                Some conventions to mention are naming and AAA. Test function were named based on the format of
+                "FunctionName_BaseState_Result". And the AAA pattern was used which stands for Arrange, Act, and Assert.
+                Arrange involves setting up variables and conditions. Act is running the functionality that is being
+                tested. Assert is assessing the results for correctness.
+            </p>
+            <p class="paragraphText">
+                When it came to testing the Repository/Service Classes, dependencies to the database where something
+                that needed to dealt with. Ultimately, there were two options I used in different parts. The first was
+                using the Moq library where a fake version of the dependency is made with a simple input/output setup
+                for functions. Moq is the more lightweight options. The second was using an in-memory database instance
+                where an instance of the dbContext is created but instead of connecting to the normal database, an
+                inmemory database is used instead. This solution is heavier but since it incorporates the dbContext,
+                Entity Framework functionality is accessible.
+            </p>
+            <p>How to use Moq (Example with Service class)</p>
+            <ul>
+                <li>Install Moq Package</li>
+                <li>Make a mock instance of Repository interface</li>
+                <li>Setup function for mock repo</li>
+                <li>Pass mock repo to service instance</li>
+                <li>Call Service Function</li>
+            </ul>
+            <pre class="codeBlockPanel"><code>
+// using dotnet cli
+Dotnet add package Moq
+
+// in Test Function
+var repo = new Mock&lt;IMovieTheaterRepository&gt;();
+repo.Setup(r =&gt; r.ExRepoFunction(1)).ReturnsAsync(1);
+var service = new MovieTheaterService(repo.Object);
+// Where ExServiceFunction uses ExRepoFunction
+Var result = service.ExServiceFunction();
+            </code></pre>
+            <p>How to use In-memory db (Example with Service Class):</p>
+            <ul>
+                <li>Make DbContext instance</li>
+                <li>Add values to context(.Add) and save changes(.SaveChanges)</li>
+                <li>Make Repo instance (pass in context)</li>
+                <li>Make Service instance (pass in repository instance)</li>
+                <li>Call Service Function</li>
+            </ul>
+            <pre class="codeBlockPanel"><code>
+var options = new DbContextOptionsBuilder&lt;ExampleDbContext&gt;()
+	.UseInMemoryDatabase(Guid.NewGuid().ToString())
+	.Options;
+var context = new ExampleDbContext(options);
+var repo = new ExampleRepository(context);
+var service = new ExampleService(repo);
+var result = service.ExServiceFunction();
+            </code></pre>
+            <p class="paragraphText">
+                A noteworthy issue I ran into is that when a mock Repository(with DbContext) is passed into a Service
+                instance, there are certain functions that are extend as result of going from DbSet to IQueriable/Other
+                that won't exits in the mock version. In my case, I had a repository function return an IQueriable that
+                was called by a Service class function. The Service function would then do some filtering and use
+                "ToListAsync" at the end. "ToListAsync" is not a function of IQueriable, so in the mock version where
+                just an IQueriable is returned, the result would be an error. I needed to use an in-memory database in
+                order to have Entity Framework specific functionality incorporated.
+            </p>
+            <br /><br />
+
+            <h4 id="section6">6. Final Thoughts</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">
+                My main takeaways are that planning ahead really makes building core functionality a lot faster. I spent
+                a bit of time trying to plan out how to organize the database with seat selection in mind and from there
+                things moved quickly. My use of technology I already know might have also helped. More time coding and
+                less time researching. Something I didn’t expect were a few of the non-trivial errors I ran into. Things
+                like the "multi cascade delete to single table in SQL Server" issue and testing object with database
+                dependencies. These issue required a bit of research to understand. Another things I realized is that
+                good coding practices and testing can be a bit of a pain to setup. I incorporated them due to their
+                importance, especially in larger projects, but it did take some time and felt like it didn’t add
+                anything functional to my project. That said, I will continue to use them to improve my familiar with
+                them in future projects.
+                <br /><br />
+
+            <h4 id="section7">Resources</h4>
+            <hr class="whiteLine" />
+            <p class="paragraphText">EXAMPLE_ORG. <i>EXAMPLE_PAGE.</i> <a href="/">EXAMPLE.COM.</a> Accessed 10 Aug.
+                2025.
+            </p>
+            <hr class="whiteLine" />
+            <br />
+            <a href="../projects.html">Back to Projects</a>
+
+        </div>
+    </div>
+    <footer class="footerSection">
+        <p>Email: 1hector.ac@gmail.com | <a href="https://github.com/1HectorAC">GitHub</a> | <a
+                href="https://www.linkedin.com/in/hector-acosta-cervantes/">LinkedIn</a></p>
+    </footer>
+</body>
+
+</html>
