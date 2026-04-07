@@ -102,8 +102,8 @@
                         <li><a href="#section3">Seat Display</a></li>
                         <li><a href="#section4">Repository & Service</a></li>
                         <li><a href="#section5">Testing</a></li>
-                        <li><a href="#section6">Final Thoughts</a></li>
-                        <li><a href="#section7">Resources</a></li>
+                        <li><a href="#section6">Result</a></li>
+                        <li><a href="#section7">Final Thoughts</a></li>
                     </ol>
                 </div>
             </div>
@@ -113,7 +113,7 @@
             <h4 id="section1">1. Introduction</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">
-                When I go to the movie theater and see the seat selection monitor I wonder how does it work?
+                Whenever I go to the movie theater and see the seat selection monitor I wonder how does it work?
                 Specifically, how is seat data stored and displayed. These questions are how this project came into
                 being. My focus wasn’t to make a full movie theater app but just enough to make a ticket for seat
                 selection. The basic flow of the website is this: Users select a movie, a showing, and then a seat. I
@@ -124,14 +124,17 @@
             <br /><br />
             <h4 id="section2">2. Database Setup</h4>
             <hr class="whiteLine" />
-            <img src="images/MovieTheaterERDiagram.png" class="formatedImage" alt="">
+
+            <img src="images/MovieTheaterApp/MovieTheaterERDiagram.png" class="formatedImage" alt="">
+            <p style="text-align:center; font-style: italic;">Database ER Diagram</p>
             <p class="paragraphText">
                 Something to note is that I did run into an error as a result of SQL Server not allowing multiple
-                cascade deletion paths to the same table. Cascade deletion is when an entity in a database gets deleted,
+                cascade deletion paths to the same table. Cascade deletion is a database setting that when an entity
+                gets deleted,
                 it will automatically delete any entities that depend on it. I had generated the database based on
                 models using Entity Framework tools, which will by default add cascade deletion to tables that depend on
                 each other. So in my schema, a Ticket depended on both a Showing and a Seat which meant that this is
-                where the multiple cascade deletion path was. The solution to this was to disable cascade deletion on
+                where the multiple cascade deletion path was. The solution was to disable cascade deletion on
                 ticket to Seat/Showing (can be one or both). This can be done in the DbContext with the following in the
                 OnModelCreating:
             </p>
@@ -143,6 +146,11 @@ modelBuilder.Entity&lt;Ticket&gt;()
     .OnDelete(DeleteBehavior.Restrict); 
             </code></pre>
 
+            <p class="paragraphText">
+                Note that an alternative solution could also be to use a different database since this is a Sql
+                Server specific related issue.
+            </p>
+
             <br /><br />
             <h4 id="section3">3. Seat Display</h4>
             <hr class="whiteLine" />
@@ -150,17 +158,15 @@ modelBuilder.Entity&lt;Ticket&gt;()
                 When it came to storing/displaying seat data my initial though was an array. There were some problems
                 with that in that you can't really store an array that well in a database and the rows and columns would
                 be limited by hard set values in the frontend when displayed. After some research I decided that on
-                using a Seat table that will have a "row" and "column" field. I also need a way to track taken seats
-                when displaying them. This was done by getting seatIds from the tickets of the current showing and then
+                using a Seat table that will have a "row" and "column" field. I also had to indicate take seats when selecting. This was done by getting seatIds from the tickets of the current showing and then
                 adding a "IsSelected" fields for each seat in a ViewModel. This way I could conditionally disabled
                 button when displaying them. Here are the steps taken to do this:
             </p>
-            <p>Backend (In Controller)</p>
+            <h5>Backend (Controller)</h5>
             <ul>
-                <li>Get a List seats based on the showingId route value</li>
-                <li>Get an array of SeatIds of exiting tickets for current showing</li>
-                <li>Create a ViewModel with seat info and a bool value "IsSelected" that is set based on if the seatId
-                    is in the existing seatIds (From existing Tickets)</li>
+                <li>Get a List of seats (based on the showingId route value)</li>
+                <li>Get an array of SeatIds based on tickets for current showing</li>
+                <li>Create a ViewModel with the following: seat info and "IsSelected" bool (based on if current seatId in seatIds from Tickets)</li>
                 <li>Group the Data based on row</li>
                 <li>Format data and return to view</li>
             </ul>
@@ -182,7 +188,7 @@ SeatSelectionViewModel data = new SeatSelectionViewModel
 };
 return View(data);
             </code></pre>
-            <p>Frontend (View)</p>
+            <h5>Frontend (View)</h5>
             <ul>
                 <li>Loop over grouped section of seats</li>
                 <li>Loop to display each section</li>
@@ -222,7 +228,7 @@ return View(data);
                 behind a Repository is that it is the data access layer, the part that has access to the database. The
                 idea behind the Service class is that it represents the business logic or rules/process that define the
                 system. This section separation make the code more maintainable and allows for easier testing.
-                Ultimately, I had one Repository (MovieTheaterRepository) and one service class (MovieTheaterService) to
+                Ultimately, I had one Repository class (MovieTheaterRepository) and one Service class (MovieTheaterService) to
                 contain all functionality. Normally It's better practice to have different repositories and services for
                 different models but I tried to keep things a bit simplified. I also have an interface for both of the
                 these classes and use dependency injection when using them.
@@ -240,15 +246,15 @@ builder.Services.AddScoped&lt;IMovieTheaterService, MovieTheaterService&gt;();
                 practices. The tests I wrote were mostly on Repository/Service functions. I will mainly go over the
                 setup and not the specifics. The actual code was very repetitive and not too noteworthy.
             </p>
-            <p> Here are the basic steps I took to setup Tests (with xunit):</p>
+            <h5>Setup xunit testing project (with dotnet cli)</h5>
             <ul>
                 <li>Add test project to root (note: root file has solution file and main project folder)</li>
                 <pre class="codeBlockPanel"><code>
 dotnet new xunit -o MovieTheaterApplicationTests
             </code></pre>
-                <li>Added test project to solution</li>
+                <li>Add test project to solution</li>
                 <pre class="codeBlockPanel"><code>
-dotnet  sln add MovieTheaterApplicationTests // in root
+dotnet sln add MovieTheaterApplicationTests // in root
             </code></pre>
                 <li>Added main project reference to test project</li>
                 <pre class="codeBlockPanel"><code>
@@ -272,12 +278,12 @@ dotnet test
                 When it came to testing the Repository/Service Classes, dependencies to the database where something
                 that needed to dealt with. Ultimately, there were two options I used in different parts. The first was
                 using the Moq library where a fake version of the dependency is made with a simple input/output setup
-                for functions. Moq is the more lightweight options. The second was using an in-memory database instance
+                for functions. Moq is the more lightweight option. The second was using an in-memory database instance
                 where an instance of the dbContext is created but instead of connecting to the normal database, an
-                inmemory database is used instead. This solution is heavier but since it incorporates the dbContext,
+                inmemory database is used. This solution is heavier but since it incorporates the dbContext,
                 Entity Framework functionality is accessible.
             </p>
-            <p>How to use Moq (Example with Service class)</p>
+            <h5>How to use Moq (Example with Service class)</h5>
             <ul>
                 <li>Install Moq Package</li>
                 <li>Make a mock instance of Repository interface</li>
@@ -296,7 +302,7 @@ var service = new MovieTheaterService(repo.Object);
 // Where ExServiceFunction uses ExRepoFunction
 Var result = service.ExServiceFunction();
             </code></pre>
-            <p>How to use In-memory db (Example with Service Class):</p>
+            <h5>How to use In-memory db (Example with Service Class):</h5>
             <ul>
                 <li>Make DbContext instance</li>
                 <li>Add values to context(.Add) and save changes(.SaveChanges)</li>
@@ -324,7 +330,16 @@ var result = service.ExServiceFunction();
             </p>
             <br /><br />
 
-            <h4 id="section6">6. Final Thoughts</h4>
+            <h4 id="section7">6. Result</h4>
+            <hr class="whiteLine" />
+            <img src="images/MovieTheaterApp/MovieSelect.png" class="formatedImage" alt="">
+            <img src="images/MovieTheaterApp/ScreeningSelect.png" class="formatedImage" alt="">
+            <img src="images/MovieTheaterApp/SeatSelect.png" class="formatedImage" alt="">
+            <img src="images/MovieTheaterApp/Confirm.png" class="formatedImage" alt="">
+
+            <br /><br/>
+
+            <h4 id="section7">7. Final Thoughts</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">
                 My main takeaways are that planning ahead really makes building core functionality a lot faster. I spent
@@ -339,11 +354,6 @@ var result = service.ExServiceFunction();
                 them in future projects.
                 <br /><br />
 
-            <h4 id="section7">Resources</h4>
-            <hr class="whiteLine" />
-            <p class="paragraphText">EXAMPLE_ORG. <i>EXAMPLE_PAGE.</i> <a href="/">EXAMPLE.COM.</a> Accessed 10 Aug.
-                2025.
-            </p>
             <hr class="whiteLine" />
             <br />
             <a href="../projects.html">Back to Projects</a>
