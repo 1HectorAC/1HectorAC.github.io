@@ -102,9 +102,8 @@
                         <li><a href="#section5">Authentication</a></li>
                         <li><a href="#section6">Default Admin</a></li>
                         <li><a href="#section7">Caching</a></li>
-                        <li><a href="#section8">Result</a></li>
-                        <li><a href="#section9">Final Thoughts</a></li>
-                        <li><a href="#section10">Resources</a></li>
+                        <li><a href="#section8">Final Thoughts</a></li>
+                        <li><a href="#section9">Resources</a></li>
                     </ol>
                 </div>
             </div>
@@ -120,12 +119,6 @@
                 experience with it. I will mainly focus on the key concepts learned and show some of the code involved.
                 Some fundamental ASP.NET Core concepts will be glossed over to keep this short.
             </p>
-
-            <!--ENTER CODE-->
-            <pre class="codeBlockPanel"><code>
-// SAMPLE CODE
-            </code></pre>
-
 
             <br /><br />
             <h4 id="section2">2. Database Setup</h4>
@@ -190,7 +183,8 @@ public class LibraryDbContext: DbContext
             </code></pre>
                 <li>Add dbContext to DI container in Program.cs</li>
                 <pre class="codeBlockPanel"><code>
-builder.Services.AddDbContext&lt;LibraryDbContext&gt;(options =&gt; options.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION")));
+builder.Services.AddDbContext&lt;LibraryDbContext&gt;(
+    options =&gt; options.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION")));
             </code></pre>
                 <li>Added Migration and updated database </li>
                 <pre class="codeBlockPanel"><code>
@@ -221,7 +215,8 @@ dotent ef database update
                     Authentication and what will be checked.</li>
                 <pre class="codeBlockPanel"><code>
 //Program.cs
-var secretKey = Environment.GetEnvironmentVariable("SECRET_KEY") ?? throw new InvalidOperationException("Secret key not found in environment variables.");
+var secretKey = Environment.GetEnvironmentVariable("SECRET_KEY") ??
+    throw new InvalidOperationException("Secret key not found in environment variables.");
 
 builder.Services.AddAuthentication(
     options =&gt; {
@@ -257,7 +252,7 @@ BCrypt.Net.BCrypt.Verify(inputedPassword, storedHashedPassword)
                 for creating signature for the token. Signature is just a string generating using an algorithm that
                 takes the content and a secret key. The signature is used to make sure that the content wasn't tampered
                 with given that it can't be generated without the secret key which only the server has. </p>
-<pre class="codeBlockPanel"><code>
+            <pre class="codeBlockPanel"><code>
 // Example of passing Iconfiguration in AuthController Contructor:
 private readonly IConfiguration _configuration;
 
@@ -283,7 +278,8 @@ foreach (var role in roles)
 }
 
 // Setup Key and Credentials
-var Secret_key = _configuration["SECRET_KEY"] ?? throw new InvalidOperationException("Secret key not found in configuration. Controller: AuthController, Method: Login");
+var Secret_key = _configuration["SECRET_KEY"] ??
+    throw new InvalidOperationException("Secret key not found in configuration. Controller: AuthController, Method: Login");
 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(Secret_key));
 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
@@ -406,14 +402,7 @@ if (!_cache.TryGetValue(cacheKey, out Book? book))
             </ol>
             <br /><br />
 
-            <h4 id="section8">8. Result</h4>
-            <hr class="whiteLine" />
-            <p>Coming Soon</p>
-            <!--EXAMPLE IMAGE-->
-            <!--<img src="images/IMAGE.png" class="formatedImage" alt="">-->
-            <br /><br />
-
-            <h4 id="section9">9. Final Thoughts</h4>
+            <h4 id="section8">8. Final Thoughts</h4>
             <hr class="whiteLine" />
             <p class="paragraphText">
                 The big takeaways I had with this project was the security on Web APIs and the importance/usefulness of
@@ -428,9 +417,11 @@ if (!_cache.TryGetValue(cacheKey, out Book? book))
                 really hit the ground running when you know what you want to do and how to do it ahead of time.
                 <br /><br />
 
-            <h4 id="section10">Resources</h4>
+            <h4 id="section9">Resources</h4>
             <hr class="whiteLine" />
-            <p class="paragraphText">Dot Net Tutorials. <i>ASP.NET Core Web API Tutorials.</i> <a href="https://dotnettutorials.net/course/asp-net-core-web-api-tutorials/. ">https://dotnettutorials.net/course/asp-net-core-web-api-tutorials/. </a> Accessed 1 Oct. 2025.
+            <p class="paragraphText">Dot Net Tutorials. <i>ASP.NET Core Web API Tutorials.</i> <a
+                    href="https://dotnettutorials.net/course/asp-net-core-web-api-tutorials/. ">https://dotnettutorials.net/course/asp-net-core-web-api-tutorials/.
+                </a> Accessed 1 Oct. 2025.
             </p>
             <hr class="whiteLine" />
             <br />
