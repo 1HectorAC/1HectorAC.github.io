@@ -133,7 +133,8 @@
                 gets deleted,
                 it will automatically delete any entities that depend on it. I had generated the database based on
                 models using Entity Framework tools, which will by default add cascade deletion to tables that depend on
-                each other. So in my schema, a Ticket depended on both a Showing and a Seat which meant that this is
+                each other. So in my schema, a Ticket depended on both a Showing and a Seat, and they both depend on an
+                Auditorium, which meant that this is
                 where the multiple cascade deletion path was. The solution was to disable cascade deletion on
                 ticket to Seat/Showing (can be one or both). This can be done in the DbContext with the following in the
                 OnModelCreating:
@@ -158,7 +159,8 @@ modelBuilder.Entity&lt;Ticket&gt;()
                 When it came to storing/displaying seat data my initial though was an array. There were some problems
                 with that in that you can't really store an array that well in a database and the rows and columns would
                 be limited by hard set values in the frontend when displayed. After some research I decided that on
-                using a Seat table that will have a "row" and "column" field. I also had to indicate take seats when selecting. This was done by getting seatIds from the tickets of the current showing and then
+                using a Seat table that will have a "row" and "column" field. I also had to indicate take seats when
+                selecting. This was done by getting seatIds from the tickets of the current showing and then
                 adding a "IsSelected" fields for each seat in a ViewModel. This way I could conditionally disabled
                 button when displaying them. Here are the steps taken to do this:
             </p>
@@ -166,7 +168,8 @@ modelBuilder.Entity&lt;Ticket&gt;()
             <ul>
                 <li>Get a List of seats (based on the showingId route value)</li>
                 <li>Get an array of SeatIds based on tickets for current showing</li>
-                <li>Create a ViewModel with the following: seat info and "IsSelected" bool (based on if current seatId in seatIds from Tickets)</li>
+                <li>Create a ViewModel with the following: seat info and "IsSelected" bool (based on if current seatId
+                    in seatIds from Tickets)</li>
                 <li>Group the Data based on row</li>
                 <li>Format data and return to view</li>
             </ul>
@@ -228,7 +231,8 @@ return View(data);
                 behind a Repository is that it is the data access layer, the part that has access to the database. The
                 idea behind the Service class is that it represents the business logic or rules/process that define the
                 system. This section separation make the code more maintainable and allows for easier testing.
-                Ultimately, I had one Repository class (MovieTheaterRepository) and one Service class (MovieTheaterService) to
+                Ultimately, I had one Repository class (MovieTheaterRepository) and one Service class
+                (MovieTheaterService) to
                 contain all functionality. Normally It's better practice to have different repositories and services for
                 different models but I tried to keep things a bit simplified. I also have an interface for both of the
                 these classes and use dependency injection when using them.
@@ -293,9 +297,9 @@ dotnet test
             </ul>
             <pre class="codeBlockPanel"><code>
 // using dotnet cli
-Dotnet add package Moq
+dotnet add package Moq
 
-// in Test Function
+// In Test Function
 var repo = new Mock&lt;IMovieTheaterRepository&gt;();
 repo.Setup(r =&gt; r.ExRepoFunction(1)).ReturnsAsync(1);
 var service = new MovieTheaterService(repo.Object);
@@ -304,6 +308,7 @@ Var result = service.ExServiceFunction();
             </code></pre>
             <h5>How to use In-memory db (Example with Service Class):</h5>
             <ul>
+                <li>Install package</li>
                 <li>Make DbContext instance</li>
                 <li>Add values to context(.Add) and save changes(.SaveChanges)</li>
                 <li>Make Repo instance (pass in context)</li>
@@ -311,6 +316,10 @@ Var result = service.ExServiceFunction();
                 <li>Call Service Function</li>
             </ul>
             <pre class="codeBlockPanel"><code>
+// using dotnet cli
+dotnet add package Microsoft.EntityFrameworkCore.InMemory
+
+// In Test function
 var options = new DbContextOptionsBuilder&lt;ExampleDbContext&gt;()
 	.UseInMemoryDatabase(Guid.NewGuid().ToString())
 	.Options;
@@ -337,7 +346,7 @@ var result = service.ExServiceFunction();
             <img src="images/MovieTheaterApp/SeatSelect.png" class="formatedImage" alt="">
             <img src="images/MovieTheaterApp/Confirm.png" class="formatedImage" alt="">
 
-            <br /><br/>
+            <br /><br />
 
             <h4 id="section7">7. Final Thoughts</h4>
             <hr class="whiteLine" />
@@ -354,9 +363,9 @@ var result = service.ExServiceFunction();
                 them in future projects.
                 <br /><br />
 
-            <hr class="whiteLine" />
-            <br />
-            <a href="../projects.html">Back to Projects</a>
+                <hr class="whiteLine" />
+                <br />
+                <a href="../projects.html">Back to Projects</a>
 
         </div>
     </div>
