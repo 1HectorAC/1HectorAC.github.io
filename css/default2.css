@@ -55,7 +55,7 @@ html {
     padding: 20px;
     color:black;
     margin:0px;
-    flex-grow: 1;
+    flex: 1;
 }
 .projectCardContainer{
     display:flex;
@@ -85,7 +85,7 @@ html {
 
 .gridLayout{
     display:grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap:20px;
 }
 @media(max-width: 500px){
@@ -94,6 +94,21 @@ html {
         flex-direction: column;
     }
 }
+
+.textDivider{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.textDivider hr{
+    flex:1;
+}
+.textDivider p{
+   margin:0 10px 5px 10px;
+   
+}
+
 
 
 /********* BUTTONS/LINK *********/
@@ -127,9 +142,7 @@ a{
 a:hover{
     color:var(--main-yellow-darker2);
 }
-.hidden{
-   
-}
+
 
 /********* FONTS *********/
 .shrikhand-regular {

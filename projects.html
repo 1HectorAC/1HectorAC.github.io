@@ -37,13 +37,17 @@
     <div class="lowerWidthContainer">
       <h1 class="generalHeaderText shrikhand-regular">My Projects</h1>
       <br />
-
+      <div class="textDivider">
+        <hr />
+        <p>Top 3 Projects</p>
+        <hr />
+      </div>
       <div class="projectCardContainer">
         <div class="projectCard">
           <h5>EZcommerce</h5>
           <p>ASP.NET Core MVC</p>
-          <a href="personalProjects/EZcommerce.html"><button class="btn button1">Blog</button></a>
-          <a href="https://github.com/1HectorAC/EZcommerce"><button class="btn button1">Code</button></a>
+          <a href="personalProjects/EZcommerce.html" class="btn button1">Blog</a>
+          <a href="https://github.com/1HectorAC/EZcommerce" class="btn button1">Code</a>
         </div>
         <div class="projectCard">
           <h5>Library System</h5>
@@ -63,287 +67,114 @@
       <button class="btn button3" disabled>More</button>
 
       <div class="hidden">
-        <hr />
-        <div class="gridLayout">
-          <div class="projectCard">
-            <h5>Movie Theater App</h5>
-            <p>ASP.NET Core MVC</p>
-            <a href="personalProjects/MovieTheaterApp.html"> <button class="btn button1">Blog</button></a>
-            <a href="https://github.com/1HectorAC/MovieTheaterApplication"> <button
-                class="btn button1">Code</button></a>
-          </div>
-          <div class="projectCard">
-            <h5>Group Poll</h5>
-            <p>WebSocket | React | Node/Express</p>
-            <a href="personalProjects/GroupPoll.html"> <button class="btn button1">Blog</button></a>
-            <a href="https://github.com/1HectorAC/GroupPoll"> <button class="btn button1">Code</button></a>
-          </div>
-          <div class="projectCard">
-            <h5>Workout Calendar</h5>
-            <p>MERN Stack</p>
-            <a href="personalProjects/WorkoutCalendar.html"> <button class="btn button1">Blog</button></a>
-            <a href="https://github.com/1HectorAC/WorkoutCalendar"> <button class="btn button1">Code</button></a>
-          </div>
-          <!---
-          <div class="projectCard">
-            <h5>Title of Project</h5>
-            <p>Websocket | React | Node</p>
-            <button class="btn button1">Blog</button>
-            <button class="btn button1">Code</button>
-            <button class="btn button1">Demo</button>
-          </div>
-        -->
+        <br/>
+        <div class="textDivider">
+          <hr />
+          <p>Extra Projects</p>
+          <hr />
+        </div>
+        <div class="gridLayout extraProjects">
+          <!-- Javascript will add items here-->
+        </div>
+        <br /><br /><br/>
+
+        <div class="textDivider">
+          <hr />
+          <p>Software Development Class (cs460)</p>
+          <hr />
+        </div>
+        <div class="gridLayout softwareDevProjects">
+          <!-- Javascript will add items here-->
+        </div>
+        <br /><br /><br/>
+
+        <div class="textDivider">
+          <hr />
+          <p>Concurrent Systems Class (cs474)</p>
+          <hr />
+        </div>
+        <div class="gridLayout concurrentSystemsProjects">
+          <!-- Javascript will add items here-->
         </div>
         <br />
       </div>
-
-    </div>
-
-  </div>
-
-  <!--
-  <div class="title text-center">
-    <h1><a href="./index.html">Programming Portfolio</a></h1>
-    <h6><i>By Hector Acosta-Cervantes</i></h6>
-  </div>
-  <nav class="navbar navbar-expand-sm sticky-top navBarColor">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
-        style="background-color:white">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item customNavItem">
-            <a class="nav-link" href="./index.html">Home</a>
-          </li>
-          <li class="nav-item customNavItem">
-            <a class="nav-link active" aria-current="page" href="./projects.html">Projects</a>
-          </li>
-          <li class="nav-item customNavItem">
-            <a class="nav-link" href="./about.html">About</a>
-          </li>
-          <li class="nav-item customNavItem">
-            <a class="nav-link" aria-current="page" href="./contact.html">Contact</a>
-          </li>
-        </ul>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item customNavItem" href="./index.html">Home</a></li>
-          <li><a class="dropdown-item customNavItem" href="./projects.html">Projects</a></li>
-          <li><a class="dropdown-item customNavItem" href="./about.html">About</a></li>
-          <li><a class="dropdown-item customNavItem" href="./contact.html">Contact</a></li>
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-md-10 offset-md-1">
-        <div class="titlePanel blackPanel">
-          <h2>Projects</h2>
-          <hr class="whiteLine" />
-          <p class="text-center">
-            Explore projects I've worked with blogs covering key aspects, challenges, and
-            reflections. Some projects even feature live demos.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-8 offset-md-2">
-        <div class="blackPanel">
-          <div id="accordion">
-            <div class="card accordionSectionBack">
-              <div class="card-header accordionSectionFront">
-                <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
-                  Main Projects
-                </a>
-              </div>
-              <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
-                <div class="card-body">
-                  <div class="row text-start">
-                    <div class="col-md-6">
-                      <ul class="addedListSpace">
-                        <li><b>EZcommerce</b><br /><i>ASP.NET Core MVC</i><br />
-                          <a class="btn customButton" href="personalProjects/EZcommerce.html">Blog</a>
-                          <a class="btn customButton3"
-                            href="https://github.com/1HectorAC/EZcommerce">Code</a>
-                        </li>
-                        <li><b>Movie Theater App</b><br /><i>ASP.NET Core MVC</i><br />
-                          <a class="btn customButton" href="personalProjects/MovieTheaterApp.html">Blog</a>
-                          <a class="btn customButton3"
-                            href="https://github.com/1HectorAC/MovieTheaterApplication">Code</a>
-                        </li>
-                        <li><b>Library System</b><br /><i>ASP.NET Core API</i><br />
-                          <a class="btn customButton" href="personalProjects/LibrarySystem.html">Blog</a>
-                          <a class="btn customButton3" href="https://github.com/1HectorAC/LibrarySystem">Code</a>
-                        </li>
-                        
-                      </ul>
-                    </div>
-                    <div class="col-md-6">
-                      <ul class="addedListSpace">
-                        <li><b>Meal Rate</b><br /><i>LLM AI, React, Node/Express</i><br />
-                          <a class="btn customButton" href="personalProjects/MealRate.html">Blog</a>
-                          <a class="btn customButton3" href="https://github.com/1HectorAC/MealRate">Code</a>
-                        </li>
-                        <li><b>Group Poll</b><br /><i>WebSocket, React, Node/Express</i><br />
-                          <a class="btn customButton" href="personalProjects/GroupPoll.html">Blog</a>
-                          <a class="btn customButton3" href="https://github.com/1HectorAC/GroupPoll">Code</a>
-                        </li>
-                        <li><b>Workout Calendar</b><br /><i>MERN Stack</i><br />
-                          <a class="btn customButton" href="personalProjects/WorkoutCalendar.html">Blog</a>
-                          <a class="btn customButton3" href="https://github.com/1HectorAC/WorkoutCalendar">Code</a>
-                        </li>
-                      </ul>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card accordionSectionBack">
-              <div class="card-header accordionSectionFront">
-                <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
-                  Main Projects (Extra)
-                </a>
-              </div>
-              <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-                <div class="card-body">
-                  <div class="row text-start">
-                    <div class="col-md-6">
-                      <ul class="addedListSpace">
-                        <li><b>Art-Portfolio</b><br /><i>React.js & Redux</i><br />
-                          <a class="btn customButton" href="personalProjects/art-portfolio.html">Blog</a>
-                          <a class="btn customButton3" href="https://github.com/1HectorAC/art-portfolio">Code</a>
-                          <a class="btn customButton2" href="https://hector-art-portfolio.netlify.app/">Demo</a>
-                        </li>
-                        <li><b>Money-Saver-Calculator</b><br /><i>React.js</i><br />
-                          <a class="btn customButton" href="personalProjects/money-saver-calculator.html">Blog</a>
-                          <a class="btn customButton3"
-                            href="https://github.com/1HectorAC/money-saver-calculator">Code</a>
-                          <a class="btn customButton2" href="https://money-saver-calculator.netlify.app/">Demo</a>
-                        </li>
-                        <li><b>Game Manager</b><br /><i>ASP.NET MVC & Chart.js</i><br />
-                          <a class="btn customButton" href="personalProjects/GameManager.html">Blog</a>
-                          <a class="btn customButton3" href="https://github.com/1HectorAC/GameManager">Code</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col-md-6">
-                      <ul class="addedListSpace">
-                        <li><b>Battery Charge</b><br /><i>ASP.NET Core MVC</i><br />
-                          <a class="btn customButton" href="personalProjects/BatteryCharge.html">Blog</a>
-                          <a class="btn customButton3" href="https://github.com/1HectorAC/BatteryCharge">Code</a>
-                        </li>
-                        <li><b>Show Tracker</b><br /><i>Flask (Python)</i><br />
-                          <a class="btn customButton" href="personalProjects/ShowTracker.html">Blog</a>
-                          <a class="btn customButton3" href="https://github.com/1HectorAC/ShowTracker">Code</a>
-                          <a class="btn customButton2" href="https://showtracker.onrender.com/">Demo</a>
-                        </li>
-                        <li><b>MindMovement2</b><br /><i>HTML, CSS, Javascript</i><br />
-                          <a class="btn customButton" href="personalProjects/mindMovement2Blog.html">Blog</a>
-                          <a class="btn customButton3" href="https://github.com/1HectorAC/mindMovement2">Code</a>
-                          <a class="btn customButton2" href="https://mind-movement.netlify.app/">Demo</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card accordionSectionBack">
-              <div class="card-header accordionSectionFront">
-                <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
-                  Software Development Class (cs460)
-                </a>
-              </div>
-              <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
-                <div class="card-body">
-                  <div class="row text-start">
-                    <div class="col-md-6">
-                      <ul class="addedListSpace">
-                        <li>
-                          <b>HW1</b><br /><i>HTML, CSS, and Bootstrap</i><br />
-                          <a class="btn customButton" href="cs460/HW1Blog.html">Blog</a>
-                          <a class="btn customButton2" href="cs460/demo/HW1/index.html">Demo</a>
-                        </li>
-
-                        <li>
-                          <b>HW2</b><br /><i>Javascript and JQuery</i><br />
-                          <a class="btn customButton" href="cs460/HW2Blog.html">Blog</a>
-                          <a class="btn customButton2" href="cs460/demo/HW2/index.html">Demo</a>
-                        </li>
-
-                        <li><b>HW3</b><br /><i>C#</i><br /><a class="btn customButton"
-                            href="cs460/HW3Blog.html">Blog</a></li>
-
-                        <li><b>HW4</b><br /><i>MVC App No Database</i><br /><a class="btn customButton"
-                            href="cs460/HW4Blog.html">Blog</a></li>
-
-                        <li><b>HW5</b><br /><i>MVC App Simple Database</i><br /><a class="btn customButton"
-                            href="cs460/HW5Blog.html">Blog</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-md-6">
-                      <ul class="addedListSpace">
-                        <li><b>HW6</b><br /><i>MVC Existing Database</i><br /><a class="btn customButton"
-                            href="cs460/HW6Blog.html">Blog</a></li>
-
-                        <li><b>HW7</b><br /><i>Ajax and API</i><br /><a class="btn customButton"
-                            href="cs460/HW7Blog.html">Blog</a></li>
-
-                        <li><b>HW8</b><br /><i>MVC App with Relational Database</i><br /><a class="btn customButton"
-                            href="cs460/HW8Blog.html">Blog</a></li>
-
-                        <li><b>HW9</b><br /><i>Deploy on Azure</i><br /><a class="btn customButton"
-                            href="cs460/HW9Blog.html">Blog</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card accordionSectionBack">
-              <div class="card-header accordionSectionFront">
-                <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseFour">
-                  Concurrent Systems Class (cs474)
-                </a>
-              </div>
-              <div id="collapseFour" class="collapse" data-bs-parent="#accordion">
-                <div class="card-body">
-                  <div class="row text-start">
-                    <div class="col-md-6">
-                      <ul class="addedListSpace">
-                        <li><b>Find Largest</b><br /><i>C#</i><br /><a class="btn customButton"
-                            href="./cs474/findLargestBlog.html">Blog</a></li>
-                        <li><b>Area Under Curve</b><br /><i>C#</i><br /><a class="btn customButton"
-                            href="./cs474/areaUnderCurve.html">Blog</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-md-6">
-                      <ul class="addedListSpace">
-                        <li><b>F# Find Largest</b><br /><i>F#</i><br /><a class="btn customButton"
-                            href="./cs474/fSharpFindLargestBlog.html">Blog</a></li>
-                        <li><b>Prime Range</b><br /><i>Python</i><br /><a class="btn customButton"
-                            href="./cs474/primeRangeBlog.html">Blog</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
--->
 
+  <script>
+    var extraProjects = [
+      { Title: "Movie Theater App", SubTitle: "ASP.NET Core MVC", blogLink: "personalProjects/MovieTheaterApp.html", codeLink: "https://github.com/1HectorAC/MovieTheaterApplication", demoLink: "" },
+      { Title: "GroupPoll", SubTitle: "WebSocket | React | Node/Express", blogLink: "personalProjects/GroupPoll.html", codeLink: "https://github.com/1HectorAC/GroupPoll", demoLink: "" },
+      { Title: "Workout Calendar", SubTitle: "MERN Stack", blogLink: "personalProjects/WorkoutCalendar.html", codeLink: "https://github.com/1HectorAC/WorkoutCalendar", demoLink: "" },
+      { Title: "Art-Portfolio", SubTitle: "React.js | Redux", blogLink: "personalProjects/art-portfolio.html", codeLink: "https://github.com/1HectorAC/art-portfolio", demoLink: "https://hector-art-portfolio.netlify.app/" },
+      { Title: "Money-Saver-Calculator", SubTitle: "React.js", blogLink: "personalProjects/money-saver-calculator.html", codeLink: "https://github.com/1HectorAC/money-saver-calculator", demoLink: "https://money-saver-calculator.netlify.app/" },
+      { Title: "Battery Charge", SubTitle: "ASP.NET Core MVC", blogLink: "personalProjects/BatteryCharge.html", codeLink: "https://github.com/1HectorAC/BatteryCharge", demoLink: "" },
+      { Title: "Game Manager", SubTitle: "ASP.NET MVC | Chart.js", blogLink: "personalProjects/GameManager.html", codeLink: "https://github.com/1HectorAC/GameManager", demoLink: "" },
+      { Title: "Show Tracker", SubTitle: "Flask | Python", blogLink: "personalProjects/ShowTracker.html", codeLink: "https://github.com/1HectorAC/ShowTracker", demoLink: "https://showtracker.onrender.com/" },
+      { Title: "MindMovement2", SubTitle: "HTML | CSS | Javascript", blogLink: "personalProjects/mindMovement2Blog.html", codeLink: "https://github.com/1HectorAC/mindMovement2", demoLink: "https://mind-movement.netlify.app/" }
+    ];
+    var SoftwareDevClass = [
+      { Title: "HW1", SubTitle: "HTML | CSS | Bootstrap", blogLink: "cs460/HW1Blog.html", codeLink: "", demoLink: "cs460/demo/HW1/index.html" },
+      { Title: "HW2", SubTitle: "Javascript and JQuery", blogLink: "cs460/HW2Blog.html", codeLink: "", demoLink: "cs460/demo/HW2/index.html" },
+      { Title: "HW3", SubTitle: "C#", blogLink: "cs460/HW3Blog.html", codeLink: "", demoLink: "" },
+      { Title: "HW4", SubTitle: "MVC App No Database", blogLink: "cs460/HW4Blog.html", codeLink: "", demoLink: "" },
+      { Title: "HW5", SubTitle: "MVC App Simple Database", blogLink: "cs460/HW5Blog.html", codeLink: "", demoLink: "" },
+      { Title: "HW6", SubTitle: "MVC Existing Database", blogLink: "cs460/HW6Blog.html", codeLink: "", demoLink: "" },
+      { Title: "HW7", SubTitle: "Ajax and API", blogLink: "cs460/HW7Blog.html", codeLink: "", demoLink: "" },
+      { Title: "HW8", SubTitle: "MVC App with Relational Database", blogLink: "cs460/HW8Blog.html", codeLink: "", demoLink: "" },
+      { Title: "HW9", SubTitle: "Deploy on Azure", blogLink: "cs460/HW9Blog.html", codeLink: "", demoLink: "" }
+    ];
+    var ConcurrentSystemClass = [
+      { Title: "Find Largest", SubTitle: "C#", blogLink: "./cs474/findLargestBlog.html", codeLink: "", demoLink: "" },
+      { Title: "Area Under Curve", SubTitle: "C#", blogLink: "./cs474/areaUnderCurve.html", codeLink: "", demoLink: "" },
+      { Title: "F# Find Largest", SubTitle: "F#", blogLink: "./cs474/fSharpFindLargestBlog.html", codeLink: "", demoLink: "" },
+      { Title: "Prime Range", SubTitle: "Python", blogLink: "./cs474/primeRangeBlog.html", codeLink: "", demoLink: "" }
+    ];
+
+    addEntriesToElement(".extraProjects", extraProjects);
+    addEntriesToElement(".softwareDevProjects", SoftwareDevClass);
+    addEntriesToElement(".concurrentSystemsProjects", ConcurrentSystemClass);
+
+
+    function addEntriesToElement(elementString, entries) {
+      var mainElement = document.querySelector(elementString);
+      entries.forEach((entry) => {
+        var divCard = document.createElement("div");
+        divCard.classList.add("projectCard");
+        var header = document.createElement("h5");
+        header.textContent = entry.Title;
+        var subheader = document.createElement("p");
+        subheader.textContent = entry.SubTitle;
+        divCard.append(header);
+        divCard.append(subheader);
+
+        if (entry.blogLink != "") {
+          var link = document.createElement("a");
+          link.href = entry.blogLink;
+          link.classList.add("btn", "button1");
+          link.textContent = "Blog";
+          divCard.append(link);
+        }
+        if (entry.codeLink != "") {
+          var link = document.createElement("a");
+          link.href = entry.codeLink;
+          link.classList.add("btn", "button1");
+          link.textContent = "Code";
+          divCard.append(link);
+        }
+        if (entry.demoLink != "") {
+          var link = document.createElement("a");
+          link.href = entry.demoLink;
+          link.classList.add("btn", "button1");
+          link.textContent = "Demo";
+          divCard.append(link);
+        }
+
+        mainElement.append(divCard);
+      });
+    }
+
+  </script>
   <footer class="footerSection">
     <p>Email: 1hector.ac@gmail.com | <a href="https://github.com/1HectorAC">GitHub</a> | <a
         href="https://www.linkedin.com/in/hector-acosta-cervantes/">LinkedIn</a></p>
