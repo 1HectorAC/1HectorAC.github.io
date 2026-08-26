@@ -21,13 +21,15 @@ html {
     flex-grow: 1;
 
 }
-.flexCompleteCenter{
+
+.flexCompleteCenter {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
-.flexHorizontalCenter{
+
+.flexHorizontalCenter {
     display: flex;
     justify-content: center;
 }
@@ -45,70 +47,115 @@ html {
     font-style: normal;
 }
 
-.generalHeaderText{
-    color:var(--main-yellow);
+.generalHeaderText {
+    color: var(--main-yellow);
+    margin: 30px 0 30px 0;
 }
 
-.projectCard{
-    background-color: rgb(255, 255, 255); 
+.projectCard {
+    background-color: rgb(255, 255, 255);
     border-radius: 5px;
     padding: 20px;
-    color:black;
-    margin:0px;
+    color: black;
+    margin: 0px;
     flex: 1;
 }
-.projectCardContainer{
-    display:flex;
+
+.projectCardContainer {
+    display: flex;
     justify-content: center;
     gap: 20px;
 }
-@media(max-width: 500px){
-    .projectCardContainer{
-    flex-direction: column;
+
+@media(max-width: 500px) {
+    .projectCardContainer {
+        flex-direction: column;
 
     }
 }
-.projectCard p{
+
+.projectCard p {
     font-size: 12px;
     color: rgb(103, 103, 103);
 }
 
-.lowerWidthContainer{
+.lowerWidthContainer {
     width: 70%;
     padding-top: 30px;
 }
-@media(max-width: 500px){
-    .lowerWidthContainer{
+
+.lowerWidthContainer2 {
+    width: 50%;
+    padding-top: 30px;
+}
+
+@media(max-width: 500px) {
+    .lowerWidthContainer {
+        width: 90%;
+    }
+
+    .lowerWidthContainer2 {
         width: 90%;
     }
 }
 
-.gridLayout{
-    display:grid;
+.gridLayout {
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap:20px;
+    gap: 20px;
 }
-@media(max-width: 500px){
-    .gridLayout{
+
+@media(max-width: 500px) {
+    .gridLayout {
         display: flex;
         flex-direction: column;
     }
 }
 
-.textDivider{
-    display:flex;
+.textDivider {
+    display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 20px;
 }
-.textDivider hr{
-    flex:1;
-}
-.textDivider p{
-   margin:0 10px 5px 10px;
-   
+
+.textDivider hr {
+    flex: 1;
 }
 
+.textDivider p {
+    margin: 0 10px 5px 10px;
+
+}
+
+.verticalMargin {
+    margin: 50px 0 50px 0;
+}
+
+
+
+.infoOval{
+    background-color: rgb(234, 234, 234);
+    color:black;
+    border-radius: 5px;
+    padding: 3px 5px 3px 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display:inline-block
+}
+
+.aboutSkillContainer{
+    display: flex;
+    justify-content: start;
+    gap:15px;
+    margin-bottom: 25px;
+}
+
+/********* TEXT *********/
+.paragraphText {
+    text-indent: 30px;
+    text-align: left;
+}
 
 
 /********* BUTTONS/LINK *********/
@@ -127,20 +174,23 @@ html {
     background-color: var(--main-yellow);
     color: black;
 }
-.button3{
+
+.button3 {
     background-color: white;
-    color:black;
+    color: black;
     font-weight: bold;
 }
 
 .headerButton {
     width: 130px;
 }
-a{
-    color:var(--main-yellow-darker);
+
+a {
+    color: var(--main-yellow-darker);
 }
-a:hover{
-    color:var(--main-yellow-darker2);
+
+a:hover {
+    color: var(--main-yellow-darker2);
 }
 
 
