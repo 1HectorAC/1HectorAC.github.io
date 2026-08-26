@@ -8,11 +8,100 @@
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="css/default.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Shrikhand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/default2.css">
   <title>HAC Portfolio - Projects</title>
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light pt-2 pb-2">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-2 me-4 navHeader" href="./index.html"><span>H</span>ector
+        <span>A</span>costa-<span>C</span>ervantes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ">
+          <a class="nav-link" href="./index.html">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">Projects</a>
+          <a class="nav-link" href="./about.html">About</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="stretchContent flexHorizontalCenter">
+    <div class="lowerWidthContainer">
+      <h1 class="generalHeaderText shrikhand-regular">My Projects</h1>
+      <br />
+
+      <div class="projectCardContainer">
+        <div class="projectCard">
+          <h5>EZcommerce</h5>
+          <p>ASP.NET Core MVC</p>
+          <a href="personalProjects/EZcommerce.html"><button class="btn button1">Blog</button></a>
+          <a href="https://github.com/1HectorAC/EZcommerce"><button class="btn button1">Code</button></a>
+        </div>
+        <div class="projectCard">
+          <h5>Library System</h5>
+          <p>ASP.NET Core API</p>
+          <a href="personalProjects/LibrarySystem.html"> <button class="btn button1">Blog</button></a>
+          <a href="https://github.com/1HectorAC/LibrarySystem"> <button class="btn button1">Code</button></a>
+        </div>
+        <div class="projectCard">
+          <h5>Meal Rate</h5>
+          <p>LLM AI | React | Node/Express</p>
+          <a href="personalProjects/MealRate.html"> <button class="btn button1">Blog</button></a>
+          <a href="https://github.com/1HectorAC/MealRate"> <button class="btn button1">Code</button></a>
+        </div>
+      </div>
+      <br />
+
+      <button class="btn button3" disabled>More</button>
+
+      <div class="hidden">
+        <hr />
+        <div class="gridLayout">
+          <div class="projectCard">
+            <h5>Movie Theater App</h5>
+            <p>ASP.NET Core MVC</p>
+            <a href="personalProjects/MovieTheaterApp.html"> <button class="btn button1">Blog</button></a>
+            <a href="https://github.com/1HectorAC/MovieTheaterApplication"> <button
+                class="btn button1">Code</button></a>
+          </div>
+          <div class="projectCard">
+            <h5>Group Poll</h5>
+            <p>WebSocket | React | Node/Express</p>
+            <a href="personalProjects/GroupPoll.html"> <button class="btn button1">Blog</button></a>
+            <a href="https://github.com/1HectorAC/GroupPoll"> <button class="btn button1">Code</button></a>
+          </div>
+          <div class="projectCard">
+            <h5>Workout Calendar</h5>
+            <p>MERN Stack</p>
+            <a href="personalProjects/WorkoutCalendar.html"> <button class="btn button1">Blog</button></a>
+            <a href="https://github.com/1HectorAC/WorkoutCalendar"> <button class="btn button1">Code</button></a>
+          </div>
+          <!---
+          <div class="projectCard">
+            <h5>Title of Project</h5>
+            <p>Websocket | React | Node</p>
+            <button class="btn button1">Blog</button>
+            <button class="btn button1">Code</button>
+            <button class="btn button1">Demo</button>
+          </div>
+        -->
+        </div>
+        <br />
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--
   <div class="title text-center">
     <h1><a href="./index.html">Programming Portfolio</a></h1>
     <h6><i>By Hector Acosta-Cervantes</i></h6>
@@ -253,6 +342,7 @@
       </div>
     </div>
   </div>
+-->
 
   <footer class="footerSection">
     <p>Email: 1hector.ac@gmail.com | <a href="https://github.com/1HectorAC">GitHub</a> | <a

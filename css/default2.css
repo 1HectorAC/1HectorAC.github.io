@@ -17,13 +17,19 @@ html {
     height: 100%
 }
 
-.content {
+.stretchContent {
     flex-grow: 1;
+
+}
+.flexCompleteCenter{
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-
+}
+.flexHorizontalCenter{
+    display: flex;
+    justify-content: center;
 }
 
 .footerSection {
@@ -37,6 +43,56 @@ html {
     font-family: "Lobster", sans-serif;
     font-weight: 400;
     font-style: normal;
+}
+
+.generalHeaderText{
+    color:var(--main-yellow);
+}
+
+.projectCard{
+    background-color: rgb(255, 255, 255); 
+    border-radius: 5px;
+    padding: 20px;
+    color:black;
+    margin:0px;
+    flex-grow: 1;
+}
+.projectCardContainer{
+    display:flex;
+    justify-content: center;
+    gap: 20px;
+}
+@media(max-width: 500px){
+    .projectCardContainer{
+    flex-direction: column;
+
+    }
+}
+.projectCard p{
+    font-size: 12px;
+    color: rgb(103, 103, 103);
+}
+
+.lowerWidthContainer{
+    width: 70%;
+    padding-top: 30px;
+}
+@media(max-width: 500px){
+    .lowerWidthContainer{
+        width: 90%;
+    }
+}
+
+.gridLayout{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    gap:20px;
+}
+@media(max-width: 500px){
+    .gridLayout{
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 
@@ -56,6 +112,11 @@ html {
     background-color: var(--main-yellow);
     color: black;
 }
+.button3{
+    background-color: white;
+    color:black;
+    font-weight: bold;
+}
 
 .headerButton {
     width: 130px;
@@ -66,11 +127,13 @@ a{
 a:hover{
     color:var(--main-yellow-darker2);
 }
-
+.hidden{
+   
+}
 
 /********* FONTS *********/
 .shrikhand-regular {
-    font-family: "Shrikhand" serif;
+    font-family: "Shrikhand", serif;
     font-weight: 400;
     font-style: normal;
 }
