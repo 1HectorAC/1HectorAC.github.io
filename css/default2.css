@@ -1,13 +1,15 @@
 :root {
     --main-black: #201e26;
+    --main-blacker: #141218;
     --main-yellow: #f6c65c;
     --main-yellow-darker: #b49043;
     --main-yellow-darker2: #a1813c;
+    --main-white: rgb(241, 240, 235);
 }
 
 body {
     background-color: var(--main-black);
-    color: rgb(241, 240, 235);
+    color: var(--main-white);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -36,7 +38,7 @@ html {
 
 .footerSection {
     background-color: white;
-    color: black;
+    color: var(--main-black);
     text-align: center;
     padding: 20px;
 }
@@ -45,38 +47,9 @@ html {
     font-family: "Lobster", sans-serif;
     font-weight: 400;
     font-style: normal;
-}
-
-.generalHeaderText {
-    color: var(--main-yellow);
-    margin: 30px 0 30px 0;
-}
-
-.projectCard {
-    background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    padding: 20px;
-    color: black;
-    margin: 0px;
-    flex: 1;
-}
-
-.projectCardContainer {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-@media(max-width: 500px) {
-    .projectCardContainer {
-        flex-direction: column;
-
-    }
-}
-
-.projectCard p {
-    font-size: 12px;
-    color: rgb(103, 103, 103);
+    color: var(--main-black);
+    margin-left: 10px;
+    margin-right: 20px;
 }
 
 .lowerWidthContainer {
@@ -98,18 +71,9 @@ html {
         width: 90%;
     }
 }
-
-.gridLayout {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-}
-
-@media(max-width: 500px) {
-    .gridLayout {
-        display: flex;
-        flex-direction: column;
-    }
+.navbar{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .textDivider {
@@ -133,7 +97,48 @@ html {
 }
 
 
+/********* PROJECT PAGE *********/
+.projectCard {
+    background-color: var(--main-white);
+    border-radius: 5px;
+    padding: 20px;
+    color: var(--main-black);
+    margin: 0px;
+    flex: 1;
+}
 
+.projectCardContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media(max-width: 500px) {
+    .projectCardContainer {
+        flex-direction: column;
+
+    }
+}
+
+.projectCard p {
+    font-size: 12px;
+    color: rgb(103, 103, 103);
+}
+
+.gridLayout {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+@media(max-width: 500px) {
+    .gridLayout {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/********* ABOUT PAGE *********/
 .infoOval{
     background-color: rgb(234, 234, 234);
     color:black;
@@ -156,28 +161,31 @@ html {
     text-indent: 30px;
     text-align: left;
 }
-
+.generalHeaderText {
+    color: var(--main-yellow);
+    margin: 30px 0 30px 0;
+}
 
 /********* BUTTONS/LINK *********/
 .button1 {
-    background-color: black;
+    background-color: var(--main-blacker);
     color: var(--main-yellow);
     border: 1px solid var(--main-yellow);
 }
 
 .button1:hover {
     background-color: var(--main-yellow);
-    color: black;
+    color: var(--main-blacker);
 }
 
 .button2 {
     background-color: var(--main-yellow);
-    color: black;
+    color: var(--main-blacker);
 }
 
 .button3 {
     background-color: white;
-    color: black;
+    color:  var(--main-blacker);
     font-weight: bold;
 }
 
