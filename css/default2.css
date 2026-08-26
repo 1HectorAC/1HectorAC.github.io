@@ -71,7 +71,8 @@ html {
         width: 90%;
     }
 }
-.navbar{
+
+.navbar {
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -96,6 +97,52 @@ html {
     margin: 50px 0 50px 0;
 }
 
+/********* BLOG PAGE *********/
+.TopInfoSection {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media(max-width: 500px) {
+    .TopInfoSection {
+        flex-direction: column;
+
+    }
+}
+
+.TopInfoSection div {
+    flex: 1;
+    border: 1px solid var(--main-white);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.blogContentContainer {
+    display: flex;
+    margin: 50px 0px 50px 0px;
+}
+
+.blogContentContainer .textSection {
+    flex: 1;
+}
+
+.blogContentContainer .tableOfContents {
+    width: 250px;
+    border: 1px solid var(--main-white);
+    border-radius: 5px;
+    padding: 20px;
+    position:sticky;
+    right:0;
+}
+.codeBlockPanel {
+    background-color: rgba(196, 209, 255, 0.13);
+    border-radius: 10px;
+    text-align: left;
+    padding-left: 10px;
+    margin: 10px 5px 10px 5px;
+    font-size: 13px;
+}
 
 /********* PROJECT PAGE *********/
 .projectCard {
@@ -139,20 +186,20 @@ html {
 }
 
 /********* ABOUT PAGE *********/
-.infoOval{
+.infoOval {
     background-color: rgb(234, 234, 234);
-    color:black;
+    color: black;
     border-radius: 5px;
     padding: 3px 5px 3px 5px;
     margin-right: 5px;
     margin-bottom: 5px;
-    display:inline-block
+    display: inline-block
 }
 
-.aboutSkillContainer{
+.aboutSkillContainer {
     display: flex;
     justify-content: start;
-    gap:15px;
+    gap: 15px;
     margin-bottom: 25px;
 }
 
@@ -161,6 +208,7 @@ html {
     text-indent: 30px;
     text-align: left;
 }
+
 .generalHeaderText {
     color: var(--main-yellow);
     margin: 30px 0 30px 0;
@@ -185,7 +233,7 @@ html {
 
 .button3 {
     background-color: white;
-    color:  var(--main-blacker);
+    color: var(--main-blacker);
     font-weight: bold;
 }
 
