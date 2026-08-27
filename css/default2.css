@@ -6,19 +6,21 @@
     --main-yellow-darker2: #a1813c;
     --main-white: rgb(241, 240, 235);
 }
+
 @font-face {
-  font-family: "Lobster";
+    font-family: "Lobster";
     src: url("../fonts/Lobster-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
+
 @font-face {
-  font-family: "Shrikhand";
+    font-family: "Shrikhand";
     src: url("../fonts/Shrikhand-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 body {
@@ -67,7 +69,7 @@ html {
 }
 
 .lowerWidthContainer {
-    width: 70%;
+    width: 65%;
     padding-top: 30px;
 }
 
@@ -76,7 +78,7 @@ html {
     padding-top: 30px;
 }
 
-@media(max-width: 500px) {
+@media(max-width: 900px) {
     .lowerWidthContainer {
         width: 90%;
     }
@@ -129,16 +131,21 @@ html {
     flex: 1;
     border: 1px solid var(--main-white);
     border-radius: 5px;
-    padding: 10px;
+    padding: 15px;
+    font-size: 18px;
 }
 
 .blogContentContainer {
     display: flex;
     margin: 50px 0px 50px 0px;
+    font-size: 18px;
+
 }
 
 .blogContentContainer .textSection {
     flex: 1;
+    margin-right: 20px;
+
 }
 
 .blogContentContainer .tableOfContents {
@@ -146,9 +153,39 @@ html {
     border: 1px solid var(--main-white);
     border-radius: 5px;
     padding: 20px;
-    position:sticky;
-    right:0;
+    height: 300px;
+    margin-bottom: 40px;
+    display: none;
 }
+
+.tableOfContentsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tableOfContents2 {
+    margin: 20px;
+    border: 1px solid var(--main-white);
+    border-radius: 5px;
+    padding: 20px 40px 20px 40px;
+}
+
+@media(max-width:900px) {
+    .blogContentContainer {
+        flex-direction: column-reverse;
+    }
+
+    .blogContentContainer .textSection {
+        margin-right: 0px;
+    }
+
+    .blogContentContainer .tableOfContents {
+        width: auto;
+    }
+
+}
+
 .codeBlockPanel {
     background-color: rgba(196, 209, 255, 0.13);
     border-radius: 10px;
