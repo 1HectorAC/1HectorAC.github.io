@@ -137,7 +137,6 @@ html {
     border: 1px solid var(--main-white);
     border-radius: 5px;
     padding: 15px;
-    font-size: 18px;
 }
 
 .blogContent {  
@@ -215,6 +214,20 @@ html {
     }
 }
 
+#moreSection{
+    max-height: 0;
+    transition: max-height .5s ease;
+    overflow:hidden;
+
+}
+#moreSection.show{
+    max-height: 1600px;
+}
+#moreBtn{
+    margin-bottom: 20px;
+}
+
+
 /********* ABOUT PAGE *********/
 .infoOval {
     background-color: rgb(234, 234, 234);
@@ -237,6 +250,7 @@ html {
 .paragraphText {
     text-indent: 30px;
     text-align: left;
+    font-size: 18px;
 }
 
 .generalHeaderText {

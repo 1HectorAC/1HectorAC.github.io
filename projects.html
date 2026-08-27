@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-   <link rel="stylesheet" href="css/default2.css">
+  <link rel="stylesheet" href="css/default2.css">
   <title>HAC Portfolio - Projects</title>
 </head>
 
@@ -38,6 +38,11 @@
       </div>
       <div class="projectCardContainer">
         <div class="projectCard">
+          <h5>Medias Delight</h5>
+          <p>ASP.NET Core MVC | LLM AI API</p>
+          <a href="https://github.com/1HectorAC/MediasDelight" class="btn button1">Code</a>
+        </div>
+        <div class="projectCard">
           <h5>EZcommerce</h5>
           <p>ASP.NET Core MVC</p>
           <a href="personalProjects/EZcommerce.html" class="btn button1">Blog</a>
@@ -49,18 +54,12 @@
           <a href="personalProjects/LibrarySystem.html"> <button class="btn button1">Blog</button></a>
           <a href="https://github.com/1HectorAC/LibrarySystem"> <button class="btn button1">Code</button></a>
         </div>
-        <div class="projectCard">
-          <h5>Meal Rate</h5>
-          <p>LLM AI | React | Node/Express</p>
-          <a href="personalProjects/MealRate.html"> <button class="btn button1">Blog</button></a>
-          <a href="https://github.com/1HectorAC/MealRate"> <button class="btn button1">Code</button></a>
-        </div>
       </div>
       <br />
 
-      <!--<button class="btn button3" disabled>More</button>-->
+      <button id="moreBtn" class="btn button3">More</button>
 
-      <div class="hidden">
+      <div id="moreSection">
         <br />
         <div class="textDivider">
           <hr />
@@ -97,6 +96,7 @@
 
   <script>
     var extraProjects = [
+      { Title: "Meal Rate", SubTitle: "LLM AI | React | Node/Express", blogLink: "personalProjects/MealRate.html", codeLink: "https://github.com/1HectorAC/MealRate", demoLink: "" },
       { Title: "Movie Theater App", SubTitle: "ASP.NET Core MVC", blogLink: "personalProjects/MovieTheaterApp.html", codeLink: "https://github.com/1HectorAC/MovieTheaterApplication", demoLink: "" },
       { Title: "GroupPoll", SubTitle: "WebSocket | React | Node/Express", blogLink: "personalProjects/GroupPoll.html", codeLink: "https://github.com/1HectorAC/GroupPoll", demoLink: "" },
       { Title: "Workout Calendar", SubTitle: "MERN Stack", blogLink: "personalProjects/WorkoutCalendar.html", codeLink: "https://github.com/1HectorAC/WorkoutCalendar", demoLink: "" },
@@ -128,7 +128,6 @@
     addEntriesToElement(".extraProjects", extraProjects);
     addEntriesToElement(".softwareDevProjects", SoftwareDevClass);
     addEntriesToElement(".concurrentSystemsProjects", ConcurrentSystemClass);
-
 
     function addEntriesToElement(elementString, entries) {
       var mainElement = document.querySelector(elementString);
@@ -167,6 +166,21 @@
         mainElement.append(divCard);
       });
     }
+
+    
+    // CLICK EVENT: handle "more" button, toggle showing more projects
+    const moreBtn = document.querySelector("#moreBtn");
+    const moreSection = document.querySelector("#moreSection");
+    moreBtn.addEventListener("click", () => {
+      moreSection.classList.toggle("show");
+      if (moreBtn.textContent == "More") {
+        moreBtn.textContent = "Less"
+      }
+      else {
+        moreBtn.textContent = "More"
+      }
+
+    })
 
   </script>
   <footer class="footerSection">
