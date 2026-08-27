@@ -112,6 +112,11 @@ html {
 .verticalMargin {
     margin: 50px 0 50px 0;
 }
+.formatedImage {
+    width: 100%;
+    border-radius: 8px;
+    padding: 5px;
+}
 
 /********* BLOG PAGE *********/
 .TopInfoSection {
@@ -135,27 +140,9 @@ html {
     font-size: 18px;
 }
 
-.blogContentContainer {
-    display: flex;
+.blogContent {  
     margin: 50px 0px 50px 0px;
     font-size: 18px;
-
-}
-
-.blogContentContainer .textSection {
-    flex: 1;
-    margin-right: 20px;
-
-}
-
-.blogContentContainer .tableOfContents {
-    width: 250px;
-    border: 1px solid var(--main-white);
-    border-radius: 5px;
-    padding: 20px;
-    height: 300px;
-    margin-bottom: 40px;
-    display: none;
 }
 
 .tableOfContentsContainer {
@@ -164,26 +151,11 @@ html {
     justify-content: center;
 }
 
-.tableOfContents2 {
+.tableOfContents {
     margin: 20px;
     border: 1px solid var(--main-white);
     border-radius: 5px;
     padding: 20px 40px 20px 40px;
-}
-
-@media(max-width:900px) {
-    .blogContentContainer {
-        flex-direction: column-reverse;
-    }
-
-    .blogContentContainer .textSection {
-        margin-right: 0px;
-    }
-
-    .blogContentContainer .tableOfContents {
-        width: auto;
-    }
-
 }
 
 .codeBlockPanel {
@@ -193,6 +165,14 @@ html {
     padding-left: 10px;
     margin: 10px 5px 10px 5px;
     font-size: 13px;
+}
+.blogSectionHeader{
+    margin-top: 50px;
+}
+.backLink{
+    margin-top: 50px;
+  
+   
 }
 
 /********* PROJECT PAGE *********/
@@ -214,7 +194,6 @@ html {
 @media(max-width: 500px) {
     .projectCardContainer {
         flex-direction: column;
-
     }
 }
 
