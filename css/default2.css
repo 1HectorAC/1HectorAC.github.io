@@ -6,6 +6,20 @@
     --main-yellow-darker2: #a1813c;
     --main-white: rgb(241, 240, 235);
 }
+@font-face {
+  font-family: "Lobster";
+    src: url("../fonts/Lobster-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shrikhand";
+    src: url("../fonts/Shrikhand-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
     background-color: var(--main-black);
