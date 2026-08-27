@@ -4,93 +4,59 @@
 <head>
     <meta cahrset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../css/default.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/default2.css">
     <title>HAC Portfolio - Workout Calendar Blog</title>
 </head>
 
 <body>
-    <div class="title text-center">
-        <h1><a href="../index.html">Programming Portfolio</a></h1>
-        <h6><i>By Hector Acosta-Cervantes</i></h6>
-    </div>
-    <nav class="navbar navbar-expand-sm sticky-top navBarColor">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
-                style="background-color:white">
+            <a class="navbar-brand navHeader" href="../index.html">Hector Acosta-Cervantes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item customNavItem">
-                        <a class="nav-link" href="../index.html">Home</a>
-                    </li>
-                    <li class="nav-item customNavItem">
-                        <a class="nav-link" href="../projects.html">Projects</a>
-                    </li>
-                    <li class="nav-item customNavItem">
-                        <a class="nav-link" href="../about.html">About</a>
-                    </li>
-                    <li class="nav-item customNavItem">
-                        <a class="nav-link" href="../contact.html">Contact</a>
-                    </li>
-                </ul>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item customNavItem" href="../index.html">Home</a></li>
-                    <li><a class="dropdown-item customNavItem" href="../projects.html">Projects</a></li>
-                    <li><a class="dropdown-item customNavItem" href="../about.html">About</a></li>
-                    <li><a class="dropdown-item customNavItem" href="../contact.html">Contact</a></li>
-                </ul>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ">
+                    <a class="nav-link" href="../index.html">Home</a>
+                    <a class="nav-link" href="../projects.html">Projects</a>
+                    <a class="nav-link" href="../about.html">About</a>
+                </div>
             </div>
         </div>
     </nav>
-    <div class="blackBar"><a href="../projects.html">Projects</a> / Main Projects / Workout Calendar Blog | <a
-            href="https://github.com/1HectorAC/WorkoutCalendar">Code</a></div>
-    <div class="container text-center">
-        <div class="whitePanel">
-            <h2>Workout Calendar Blog</h2>
-            <h4><i>MERN</i></h4>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="blackPanel">
-                    <h4>Summary</h4>
-                    <hr class="whiteLine" />
-                    <p class="paragraphText">
-                        Manage your workout routine with this workout calendar website. Logged in uses can view, add,
-                        and delete workouts to their plan.</a>
-                    </p>
+    <div class="stretchContent flexHorizontalCenter">
+        <div class="lowerWidthContainer">
+            <div><a href="../projects.html">Projects</a> / Workout Calendar Blog | <a
+                    href="https://github.com/1HectorAC/WorkoutCalendar">Code</a></div>
+            <!--ENTER BLOG NAME-->
+            <h1 class="generalHeaderText shrikhand-regular">Workout Calendar Blog</h1>
+            <div class="TopInfoSection">
+                <div>
+                    <h5>Summary</h5>
+                    <p class="paragraphText">Manage your workout routine with this workout calendar website. Logged in
+                        uses can view, add,
+                        and delete workouts to their plan.</p>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blackPanel">
-                    <h4>Goal</h4>
-                    <hr class="whiteLine" />
+                <div>
+                    <h5>Goal</h5>
                     <p class="paragraphText">To get more familiar with the MERN stack and how to authenticate logged in
                         users using Json Web Tokens.</p>
+
+                </div>
+                <div>
+                    <h5>Tools</h5>
+                    <p class="paragraphText">MERN related tools such as MongoDB, Express.js, React, and Node. JavaScript
+                        is the main language
+                        used.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="blackPanel">
-                    <h4>Tools</h4>
-                    <hr class="paragraphText" />
-                    <p class="paragraphText">
-                        MERN related tools such as MongoDB, Express.js, React, and Node. JavaScript is the main language
-                        used.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-6 offset-md-3">
-                <div class="blackPanel">
-                    <h4>Table of Contents</h4>
-                    <hr class="whiteLine" />
+
+            <div class="tableOfContentsContainer">
+                <div class="tableOfContents">
+                    <h5>Table of Contents</h5>
                     <ol>
                         <li><a href="#section1">Introduction</a></li>
                         <li><a href="#section2">MERN File Overview</a></li>
@@ -112,48 +78,54 @@
                     </ol>
                 </div>
             </div>
-        </div>
+            <div class="blogContent">
+                <h4 id="section1" class="blogSectionHeader">1. Introduction</h4>
+                <p class="paragraphText">
+                    For the sake of keeping this short I will gloss over basic node, express, and react setups. The main
+                    goal involves what I learned about the MERN stack so I will be talking about the larger picture of
+                    how
+                    parts connect and how authentication was done.
+                    The structure of a MERN stack is based on having a backend and frontend project that will connect to
+                    each other using API fetch requests. The backend will be using Node and express, will have access to
+                    the
+                    database (Mongodb in this case), and will expose API endpoints that can take different actions
+                    relating
+                    to the database. The frontend will be using React, is the view of the webpage, and will be what
+                    makes
+                    requests to the backend.
+                </p>
 
-        <div class="blackPanelWithMorePadding">
-            <h4 id="section1">1. Introduction</h4>
-            <hr class="whiteLine" />
-            <p class="paragraphText">
-                For the sake of keeping this short I will gloss over basic node, express, and react setups. The main
-                goal involves what I learned about the MERN stack so I will be talking about the larger picture of how
-                parts connect and how authentication was done.
-                The structure of a MERN stack is based on having a backend and frontend project that will connect to
-                each other using API fetch requests. The backend will be using Node and express, will have access to the
-                database (Mongodb in this case), and will expose API endpoints that can take different actions relating
-                to the database. The frontend will be using React, is the view of the webpage, and will be what makes
-                requests to the backend.
-            </p>
-            <br /><br />
-            <h4 id="section2">2. MERN File Overview</h4>
-            <hr class="whiteLine" />
-            <p class="paragraphText">
-                A backend and frontend project will need to be setup that will be ran separately.
-            </p>
-            <h5 id="section2a"><i>2.a Backend</i></h5>
-            <ul>
-                <li><u>workoutModel.js:</u> This is use to map an object to the database documents for easier use.</li>
-                <li><u>workoutController.js:</u> This is where the workout logic will be. It contains functions to get
-                    workouts, add a workout, delete a workout, etc. It will also use the workout Model to make the edits
-                    to the database.</li>
-                <li><u>workoutRoutes.js:</u> This is where the workout endpoints are setup. I define workout URIs that
-                    call a specific workout action from the workout Controller.</li>
-                <li><u>server.js:</u> This is the main server file that will be ran and listens for requests. Important
-                    things like the port number, db connection, route usage are setup here.</li>
-            </ul>
-            <p class="paragraphText">
-                Note: there are also some user related files but that will be discussed more later.
-            </p>
-            <h5 id="section2b"><i>2.b Frontend</i></h5>
-            <p class="paragraphText">
-                The bulk of the workout related content will be in the MyWorkouts.js file. It contains things involving
-                displaying and adding workouts.
-            </p>
+                <h4 id="section2" class="blogSectionHeader">2. MERN File Overview</h4>
+                <p class="paragraphText">
+                    A backend and frontend project will need to be setup that will be ran separately.
+                </p>
+                <h5 id="section2a"><i>2.a Backend</i></h5>
+                <ul>
+                    <li><u>workoutModel.js:</u> This is use to map an object to the database documents for easier use.
+                    </li>
+                    <li><u>workoutController.js:</u> This is where the workout logic will be. It contains functions to
+                        get
+                        workouts, add a workout, delete a workout, etc. It will also use the workout Model to make the
+                        edits
+                        to the database.</li>
+                    <li><u>workoutRoutes.js:</u> This is where the workout endpoints are setup. I define workout URIs
+                        that
+                        call a specific workout action from the workout Controller.</li>
+                    <li><u>server.js:</u> This is the main server file that will be ran and listens for requests.
+                        Important
+                        things like the port number, db connection, route usage are setup here.</li>
+                </ul>
+                <p class="paragraphText">
+                    Note: there are also some user related files but that will be discussed more later.
+                </p>
+                <h5 id="section2b"><i>2.b Frontend</i></h5>
+                <p class="paragraphText">
+                    The bulk of the workout related content will be in the MyWorkouts.js file. It contains things
+                    involving
+                    displaying and adding workouts.
+                </p>
 
-            <pre class="codeBlockPanel"><code>
+                <pre class="codeBlockPanel"><code>
 // Example of getting workouts using fetch
 // MyWorkouts.js, in useEffect
 ...
@@ -164,7 +136,7 @@ const response = await fetch('/api/workout/workouts', {
 // Note: authorization fields in header is related to how authentication is done. This is discussed more later.
             </code></pre>
 
-            <pre class="codeBlockPanel"><code>
+                <pre class="codeBlockPanel"><code>
 // Example of Adding a workout using fetch
 // MyWorkouts.js, in handleSubmit function
 ...
@@ -181,32 +153,33 @@ const response = await fetch('/api/workout/workout', {
 })
 ...
             </code></pre>
-            <p class="paragraphText">Something to note is that there will be a cors error when trying to run a fetch
-                request from a frontend to a backend of the same locations so I used a proxy to deal with this error.
-            </p>
-            <pre class="codeBlockPanel"><code>
+                <p class="paragraphText">Something to note is that there will be a cors error when trying to run a fetch
+                    request from a frontend to a backend of the same locations so I used a proxy to deal with this
+                    error.
+                </p>
+                <pre class="codeBlockPanel"><code>
 // Example code to add in package.json to add proxy
 // port 4000 is the same as the backend
 "proxy": "http://localhost:4000",
             </code></pre>
 
-            <br /><br />
-            <h4 id="section3">3. Authentication</h4>
-            <hr class="whiteLine" />
-            <p class="paragraphText">There is a user model, controller, and route file for actions relating to users. To
-                get authentication going I use JSON Web token to verify users. When a user signs-up/logs-in from the
-                frontend, a JSON Web token will get created in the backend. This token is then sent to the frontend
-                where it gets stored locally. After that, any subsequent request by the frontend that require
-                authentication, will also send back the token. This token gets verified and does the action in the
-                backend. The next sections will go more in depth on how its done.</p>
-            <h5 id="section3a"><i>3.a Password Check (Backend)</i></h5>
-            <p class="paragraphText">
-                Storing the passwords involve using the "bcrypt" library to hash the password with a generated salt
-                value and store it in the database. When the user logs in, the password is compared to the stored hash
-                password (with salt) using the "bcrypt" library. To accomplish this I added a static function to the
-                user models called 'signup' and 'login.' This is where password related checks are done.
-            </p>
-            <pre class="codeBlockPanel"><code>
+                <h4 id="section3" class="blogSectionHeader">3. Authentication</h4>
+                <p class="paragraphText">There is a user model, controller, and route file for actions relating to
+                    users. To
+                    get authentication going I use JSON Web token to verify users. When a user signs-up/logs-in from the
+                    frontend, a JSON Web token will get created in the backend. This token is then sent to the frontend
+                    where it gets stored locally. After that, any subsequent request by the frontend that require
+                    authentication, will also send back the token. This token gets verified and does the action in the
+                    backend. The next sections will go more in depth on how its done.</p>
+                <h5 id="section3a"><i>3.a Password Check (Backend)</i></h5>
+                <p class="paragraphText">
+                    Storing the passwords involve using the "bcrypt" library to hash the password with a generated salt
+                    value and store it in the database. When the user logs in, the password is compared to the stored
+                    hash
+                    password (with salt) using the "bcrypt" library. To accomplish this I added a static function to the
+                    user models called 'signup' and 'login.' This is where password related checks are done.
+                </p>
+                <pre class="codeBlockPanel"><code>
 // userModel.js, in "signup" static function
 // Example of how the password is stored
 const salt = await bcrypt.genSalt(10);
@@ -214,7 +187,7 @@ const hash = await bcrypt.hash(password,salt);
 
 const user = await this.create({email, password:hash});
             </code></pre>
-            <pre class="codeBlockPanel"><code>
+                <pre class="codeBlockPanel"><code>
 // userModel.js, in "login" static function
 // Example of how password is checked
 // password is passed into function as paramter, and user.password is retrived from db using the email parameter
@@ -223,10 +196,11 @@ const match = await bcrypt.compare(password,user.password);
         throw Error('Incorrect Password');
     }
             </code></pre>
-            <h5 id="section3b"><i>3.b Token Creation (Backend)</i></h5>
-            <p class="paragraphText">Token generation is done in the backend User controller. First there is a function
-                to create the token:</p>
-            <pre class="codeBlockPanel"><code>
+                <h5 id="section3b"><i>3.b Token Creation (Backend)</i></h5>
+                <p class="paragraphText">Token generation is done in the backend User controller. First there is a
+                    function
+                    to create the token:</p>
+                <pre class="codeBlockPanel"><code>
 // In userController.js
 // function to generate jwt.
 const jwt = require('jsonwebtoken');
@@ -236,20 +210,22 @@ const createToken = (_id) => {
 }
 // Note: secret string is stored in a hidden file.
             </code></pre>
-            <p class="paragraphText">
-                With the above function, Tokens will be generated when the user sign in/logs in.
-            </p>
-            <pre class="codeBlockPanel"><code>
+                <p class="paragraphText">
+                    With the above function, Tokens will be generated when the user sign in/logs in.
+                </p>
+                <pre class="codeBlockPanel"><code>
 // In userController.js, in login_user or signup_user function
 // Generating token that gets return to user in frontend
 const token = createToken(user._id);
             </code></pre>
 
-            <h5 id="section3c"><i>3.c Setting Token (Frontend)</i></h5>
-            <p class="paragraphText">In the frontend, I have signup and login page with some form setup. When a form are
-                submitted, a signup/login hook will handle the API request to the backend. The backend will then respond
-                the a token and email.</p>
-            <pre class="codeBlockPanel"><code>
+                <h5 id="section3c"><i>3.c Setting Token (Frontend)</i></h5>
+                <p class="paragraphText">In the frontend, I have signup and login page with some form setup. When a form
+                    are
+                    submitted, a signup/login hook will handle the API request to the backend. The backend will then
+                    respond
+                    the a token and email.</p>
+                <pre class="codeBlockPanel"><code>
 // In useLogin.js hook
 // Example of calling API to login 
 const response = await fetch('/api/user/login', {
@@ -259,25 +235,27 @@ const response = await fetch('/api/user/login', {
     })
 const json = await response.json();
             </code></pre>
-            <p class="paragraphText">The token will then be store to local storage (after some other checks.)</p>
-            <pre class="codeBlockPanel"><code>
+                <p class="paragraphText">The token will then be store to local storage (after some other checks.)</p>
+                <pre class="codeBlockPanel"><code>
 // In useLogin.js hook
 // Example of saving response (token and email) to local storage
 localStorage.setItem('user', JSON.stringify(json));
             </code></pre>
 
-            <h5 id="section3d"><i>3.d Sending Token (Frontend)</i></h5>
-            <p class="paragraphText">With a jwt stored, we can send the token with any subsequent workout related
-                requests to the backend. Example of this can be seen in the "MERN File Overview/frontend" section,
-                specifically the part involving how a request is made to the backend ( Authorization fields in the
-                header). There is also an "AuthContext" file that sets the user data (like the token) when logging in.
-                This context is used to have global token access and allow the "MyWorkouts" page to use it.</p>
+                <h5 id="section3d"><i>3.d Sending Token (Frontend)</i></h5>
+                <p class="paragraphText">With a jwt stored, we can send the token with any subsequent workout related
+                    requests to the backend. Example of this can be seen in the "MERN File Overview/frontend" section,
+                    specifically the part involving how a request is made to the backend ( Authorization fields in the
+                    header). There is also an "AuthContext" file that sets the user data (like the token) when logging
+                    in.
+                    This context is used to have global token access and allow the "MyWorkouts" page to use it.</p>
 
-            <h5 id="section3e"><i>3.e Token Check (Backend)</i></h5>
-            <p class="paragraphText">In the backend, there is a middleware file called "requireAuth.js" which checks the
-                token (stored in the header) of all workout related requests. Using the 'jsonwebtoken' library, the
-                token gets verified to make sure the user is valid.</p>
-            <pre class="codeBlockPanel"><code>
+                <h5 id="section3e"><i>3.e Token Check (Backend)</i></h5>
+                <p class="paragraphText">In the backend, there is a middleware file called "requireAuth.js" which checks
+                    the
+                    token (stored in the header) of all workout related requests. Using the 'jsonwebtoken' library, the
+                    token gets verified to make sure the user is valid.</p>
+                <pre class="codeBlockPanel"><code>
 // In requireAuth.js
 // Code used to verify a user based on jwt received
 const requireAuth = async (req, res, next) => {
@@ -301,7 +279,7 @@ const requireAuth = async (req, res, next) => {
 }
             </code></pre>
 
-            <pre class="codeBlockPanel"><code>
+                <pre class="codeBlockPanel"><code>
 // In workoutRoutes.js
 // how requireAuth is used before routes
 const requireAuth = require('../middleware/requireAuth');
@@ -309,29 +287,31 @@ const requireAuth = require('../middleware/requireAuth');
 router.use(requireAuth);
 .. // workout routes
             </code></pre>
-            <br /><br />
-            <h4 id="section4">4. Final Thoughts</h4>
-            <hr class="whiteLine" />
-            <p class="paragraphText">One thing I found interesting about the MERN stack was on how the frontend and
-                backend are setup and ran independently. It made me wonder about how different part can be swapped out,
-                like instead of using React as a frontend what stops one from using something like Flask. Two important
-                concepts I came across were Cors and Json Web Token. Cors (cross origin resource sharing) is important
-                when it came to security on the internet that was deeply intergraded into how the MERN stack worked. It
-                involved requests within the same location, which is what happens in a MERN stack if you run the
-                frontend and backend from the same place. Json Web tokens was also a useful thing to learn when storing
-                user data. One thing I could try next time is trying to use cookies more for a better understanding of
-                storing things locally.</p>
 
-            <br /><br />
-            <h4 id="section5">Resources</h4>
-            <hr class="whiteLine" />
-            <p class="paragraphText"><i>"Mern Auth Tutorial." Youtube,</i> created by Net Ninja, 9 Aug. 2022, <a
-                    href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9g8OhpOZxNdhXggFz2lOuCT">https://www.youtube.com/playlist?list=PL4cUxeGkcC9g8OhpOZxNdhXggFz2lOuCT</a>
-            </p>
+                <h4 id="section4" class="blogSectionHeader">4. Final Thoughts</h4>
+                <p class="paragraphText">One thing I found interesting about the MERN stack was on how the frontend and
+                    backend are setup and ran independently. It made me wonder about how different part can be swapped
+                    out,
+                    like instead of using React as a frontend what stops one from using something like Flask. Two
+                    important
+                    concepts I came across were Cors and Json Web Token. Cors (cross origin resource sharing) is
+                    important
+                    when it came to security on the internet that was deeply intergraded into how the MERN stack worked.
+                    It
+                    involved requests within the same location, which is what happens in a MERN stack if you run the
+                    frontend and backend from the same place. Json Web tokens was also a useful thing to learn when
+                    storing
+                    user data. One thing I could try next time is trying to use cookies more for a better understanding
+                    of
+                    storing things locally.</p>
 
-            <hr class="whiteLine" />
-            <br />
-            <a href="../projects.html">Back to Projects</a>
+                <h4 id="section5" class="blogSectionHeader">Resources</h4>
+                <p class="paragraphText"><i>"Mern Auth Tutorial." Youtube,</i> created by Net Ninja, 9 Aug. 2022, <a
+                        href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9g8OhpOZxNdhXggFz2lOuCT">https://www.youtube.com/playlist?list=PL4cUxeGkcC9g8OhpOZxNdhXggFz2lOuCT</a>
+                </p>
+
+                <a href="../projects.html" class="backLink">Back to Projects</a>
+            </div>
 
         </div>
     </div>
@@ -339,6 +319,9 @@ router.use(requireAuth);
         <p>Email: 1hector.ac@gmail.com | <a href="https://github.com/1HectorAC">GitHub</a> | <a
                 href="https://www.linkedin.com/in/hector-acosta-cervantes/">LinkedIn</a></p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
