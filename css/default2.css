@@ -221,7 +221,7 @@ html {
 
 }
 #moreSection.show{
-    max-height: 1600px;
+    max-height: 5000px;
 }
 #moreBtn{
     margin-bottom: 20px;

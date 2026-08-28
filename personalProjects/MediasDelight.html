@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta cahrset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/default2.css">
+    <title>HAC Portfolio - Medias Delight Blog</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand navHeader" href="../index.html">Hector Acosta-Cervantes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ">
+                    <a class="nav-link" href="../index.html">Home</a>
+                    <a class="nav-link" href="../projects.html">Projects</a>
+                    <a class="nav-link" href="../about.html">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="stretchContent flexHorizontalCenter">
+        <div class="lowerWidthContainer">
+            <div><a href="../projects.html">Projects</a> / Medias Delight Blog | <a
+                    href="https://github.com/1HectorAC/MediasDelight">Code</a></div>
+            <h1 class="generalHeaderText shrikhand-regular">Medias Delight Blog</h1>
+
+            <div class="tableOfContentsContainer">
+                <div class="tableOfContents">
+                    <h5>Table of Contents</h5>
+                    <ol>
+                        <!--EDIT TABLE OF CONTENTS-->
+                        <li><a href="#section1">Introduction</a></li>
+                        <li><a href="#section2">Extending User(Identity)</a></li>
+                        <li><a href="#section3">API Setup</a></li>
+                        <li><a href="#section4">Pagination/Filter/Search</a></li>
+                        <li><a href="#section5">Active Nav Item</a></li>
+                        <!--<li><a href="#section6">Result</a></li>-->
+                        <li><a href="#section7">Final Thoughts</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="blogContent">
+                <h4 id="section1" class="blogSectionHeader">1. Introduction</h4>
+                <p class="paragraphText">
+                    Here we are again, testing both my ability to learn tech and also write about it. As I usually do,
+                    let's get to the point, this time around I focused more on making something useful to me. Medias
+                    Delight is a web app that helps user understand their media preferences better. There are CRUD
+                    operations to manage media items, which can then be used to get an analysis about on them using AI.
+                    I pretty much wanted something to help me chose the next game/movie to play/watch. This blog largely
+                    covers some of the things I learned along the way and will not go over generic ASP.NET Core stuff
+                    that I have already covered in previous blogs. With that said, let's get started.
+                </p>
+
+                <!--EXAMPLE IMAGE-->
+                <!--<img src="images/IMAGE.png" class="formatedImage" alt="">-->
+
+                <h4 id="section2" class="blogSectionHeader">2. Extending User(Identity)</h4>
+                <p class="paragraphText">
+                    One of the first issues I ran into was a database schema issue involving the user in ASP.NET
+                    Identify (Microsoft system for managing users). I need to have the user model have a list of
+                    MediaItems in order to setup the one to many relationship between them. The issue is that the
+                    default user in Identify is auto created. The solution I found was to create a user model class
+                    (stores any other fields you want the user to have) that extends IdentityUser (this is the default
+                    user type used in Identity), and then passing that to the dbContext as well as in the program file
+                    when setting up the dbContext DI. Below is some of the code to show how it was setup:
+                </p>
+                <pre class="codeBlockPanel"><code>
+// ApplicationUser.cs
+//extending IdentityUser
+public class ApplicationUser: IdentityUser
+{
+    public ICollection&lt;MediaItem&gt; MediaItems {get; set;} = [];
+}
+
+// AppDbContext.cs
+public class AppDbContext: IdentityDbContext&lt;ApplicationUser, IdentityRole, string&gt;
+{...}
+
+// Program.cs
+builder.Services.AddDefaultIdentity&lt;ApplicationUser&gt;()
+    .AddRoles&lt;IdentityRole&gt;()
+    .AddEntityFrameworkStores&lt;AppDbContext&gt;();
+                </code></pre>
+
+                <h4 id="section3" class="blogSectionHeader">3. API Setup</h4>
+                <p class="paragraphText">
+                    The next thing I had to figure out was calling an API. I have previous experience dealing with APIs,
+                    but I haven't really done so in ASP.NET Core and I knew it was going to be more verbose than doing
+                    in JavaScript. A quick search lead me to 3 main ways to make an API request. The first is creating
+                    an instance of the HttpClient. This is the least recommended way given that it doesn’t have any
+                    socket management setup. The second is using a HttpClientFactory and creating instances of the
+                    HttpClient with it (you can setup DI). This method does have socket management as well some other
+                    stuff. The final way is "Named Client", which uses HttpClientFactory under the hood with some added
+                    information, specifically a class that get setup with configurations when setting up DI. I stuck
+                    with the best practice option which is Named Client. Here is how I set it up:
+                </p>
+                <!--ENTER CODE-->
+                <pre class="codeBlockPanel"><code>
+//Program.cs
+//DI Setup:
+builder.Services.AddHttpClient&lt;GeminiService&gt;("Gemini", client =&gt;
+{
+    client.BaseAddress = new Uri("https://generativelanguage.googleapis.com/v1beta/");
+    client.DefaultRequestHeaders.Add("x-goog-api-key",
+    Environment.GetEnvironmentVariable("GEMINI_API_KEY")
+    );
+});
+
+// GeminiService.cs
+public class GeminiService
+{
+    private readonly HttpClient _http;
+
+    public GeminiService(HttpClient http)
+    {
+        _http = http;
+    }
+    public async Task&lt;string&gt; GenerateTextAsync(string prompt)
+    {
+        var body = new { model="gemini-3.6-flash", input = prompt};
+        //var json = JsonSerializer.Serialize(body);
+
+        var response = await _http.PostAsync(
+            "interactions",
+            JsonContent.Create(body)
+        );
+
+// Any Class that needs to call API
+//Example use:
+// add GeminiService as readonly variable and set with contructor
+var result = await _geminiService.GenerateTextAsync(prompt);
+                </code></pre>
+
+                <h4 id="section4" class="blogSectionHeader">4. Pagination/Filter/Search</h4>
+                <p class="paragraphText">
+                    For this part I decided to go over Pagination/Filters/Searches all together since they are related
+                    and it saves me time. The context that we are talking about here is visiting a page with a table of
+                    items that can then be filtered in some way (either by the name, some filter, or restriction of page
+                    quantity). The core flow/steps involved are as follow:
+                </p>
+                <ul>
+                    <li>User visits page</li>
+                    <li>Action method has parameters with default values(page=1, pageSize=3, searchTerm… other filters)
+                    </li>
+                    <li>Action method gets list of items and applies filters as needed (which is not much at first, just
+                        page restrictions)</li>
+                    <li>Action method returns View + ViewModel (list of data, values mention above, some extra
+                        calculated data like TotalItems, TotalPages, hasPrevPage, hasNextPage)</li>
+                    <li>View is visited by User: can hit filter+submit or next page button</li>
+                    <li>Note: Next Page Button is a link element that references the same page but also passes in all
+                        values from the ViewModel with page number being incremented</li>
+                    <li>Note: filter+submit section is a from to the same page but will also have some of the values
+                        from the ViewModel set in input secret elements</li>
+                    <li>If "Next" or "Filter+Submit" is hit, will make request to same page but with added parameters
+                    </li>
+                    <li>Repeat the process, but this time values are passed rather than using default values</li>
+                </ul>
+
+                <h4 id="section5" class="blogSectionHeader">5. Active Nav Item</h4>
+                <p class="paragraphText">
+                    Last part I wanted to mention was how to highlight the current nav Item in the navbar in ASP.NET
+                    Core MVC app. The way you do this is that in the _Layout.cshtml page, you first get the Controller
+                    and Action name. These can be retrieved with the ViewContext. With the Controller/Action names you
+                    can then just add an "if" check in each nav Link to add a styled "active" class. Example shown
+                    below.
+                </p>
+                <!--ENTER CODE-->
+                <pre class="codeBlockPanel"><code>
+// _Layout.cshtml
+// section below must be in body element
+@{
+        var currentController = ViewContext.RouteData.Values["controller"]?.ToString() ?? string.Empty;
+        var currentAction = ViewContext.RouteData.Values["action"]?.ToString() ?? string.Empty;
+    }
+//  Example class value for navbar "a" element
+"nav-link @(currentController == "Home" && currentAction == "Index" ? "active" : "")"
+                    </code></pre>
+
+                <!--<h4 id="section6" class="blogSectionHeader">6. Result</h4>-->
+                <!--ENTER TEXT-->
+
+                <h4 id="section7" class="blogSectionHeader">6. Final Thoughts</h4>
+                <p class="paragraphText">
+                    Something to note is that most of my recent projects have centered around understanding a larger
+                    concept (API, ecommerce, etc.), but not this time. I started with an idea I liked for a project and
+                    moved on from there. I largely stuck with core technologies I knew and it resulted in a pretty quick
+                    development time. As a result of this, more of my time was spend in understanding smaller nuance
+                    features that built upon what I already knew. I also felt like I had more time and energy to refine
+                    my understanding of these smaller features. For this blog I tried to not incorporate too much code.
+                    Moving forward, my focus will be in detailing concepts over specific code. The code is always
+                    provided in a link so I think it's not necessary to go over it again here, Especially when I think
+                    the full code provides better context.
+                </p>
+
+                <a href="../projects.html" class="backLink">Back to Projects</a>
+            </div>
+
+        </div>
+    </div>
+    <footer class="footerSection">
+        <p>Email: 1hector.ac@gmail.com | <a href="https://github.com/1HectorAC">GitHub</a> | <a
+                href="https://www.linkedin.com/in/hector-acosta-cervantes/">LinkedIn</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
